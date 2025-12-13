@@ -65,7 +65,7 @@ RAG_Sanskrit_VidhiSaxena/
 │   └── Sanskrit documents (.txt / .pdf)
 │
 ├── models/
-│   └── phi3.gguf
+│   └── phi3.gguf #installed locally
 │
 ├── report/
 │   └── RAG_Sanskrit_Report.pdf
