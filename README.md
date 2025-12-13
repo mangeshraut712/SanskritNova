@@ -130,10 +130,7 @@ Enter a Sanskrit query when prompted.
 
 ## Example Query
 
-```
 <img width="1355" height="681" alt="image" src="https://github.com/user-attachments/assets/b548043c-1f22-4f86-bb49-9a62a05b44d5" />
-
-```
 
 ---
 
