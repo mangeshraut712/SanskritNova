@@ -1,5 +1,7 @@
 from llama_cpp import Llama
+import os
 
+os.environ["LLAMA_CPP_LOG_LEVEL"] = "ERROR"
 class Generator:
     def __init__(self):
         self.llm = Llama(
@@ -13,9 +15,11 @@ class Generator:
         result = self.llm(
             prompt,
             max_tokens=300,
-            temperature=0.2
+            temperature=0.2,
+            stop=["<|end|>","<|assistant|>"]
         )
         return result["choices"][0]["text"]
+
 
 if __name__ == "__main__":
     g = Generator()
