@@ -131,13 +131,8 @@ Enter a Sanskrit query when prompted.
 ## Example Query
 
 ```
-योगः किम्?
-```
+<img width="1355" height="681" alt="image" src="https://github.com/user-attachments/assets/b548043c-1f22-4f86-bb49-9a62a05b44d5" />
 
-## Example Output
-
-```
-योगः चित्तवृत्तिनिरोधः।
 ```
 
 ---
