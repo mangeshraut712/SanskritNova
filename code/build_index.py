@@ -18,9 +18,9 @@ except ImportError:  # pragma: no cover
 
 
 def _sentence_transformer_embeddings(texts: list[str]) -> np.ndarray:
-    import os
     import multiprocessing
-    
+    import os
+
     # Fix for segmentation fault on macOS with Python 3.13+
     # Set environment variables BEFORE importing sentence_transformers
     os.environ["TOKENIZERS_PARALLELISM"] = "false"

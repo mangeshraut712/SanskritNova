@@ -44,7 +44,9 @@ def load_settings() -> Settings:
         data_dir=data_dir,
         index_path=repo_root / os.getenv("SANSKRIT_RAG_INDEX_PATH", "code/faiss_index.bin"),
         chunks_path=repo_root / os.getenv("SANSKRIT_RAG_CHUNKS_PATH", "code/chunks.json"),
-        legacy_chunks_path=repo_root / os.getenv("SANSKRIT_RAG_LEGACY_CHUNKS_PATH", "code/chunks.npy"),
+        legacy_chunks_path=repo_root / os.getenv(
+            "SANSKRIT_RAG_LEGACY_CHUNKS_PATH", "code/chunks.npy"
+        ),
         tfidf_vectorizer_path=repo_root
         / os.getenv("SANSKRIT_RAG_TFIDF_VECTORIZER_PATH", "code/tfidf_vectorizer.joblib"),
         embedding_backend=os.getenv("SANSKRIT_RAG_EMBEDDING_BACKEND", "tfidf"),

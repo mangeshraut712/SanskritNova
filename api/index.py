@@ -347,7 +347,9 @@ async def _grounded_openrouter_answer(message: str, sources: list[dict[str, obje
 
     try:
         async with httpx.AsyncClient(timeout=45.0) as client:
-            response = await client.post(OPENROUTER_URL, headers=_openrouter_headers(), json=payload)
+            response = await client.post(
+                OPENROUTER_URL, headers=_openrouter_headers(), json=payload
+            )
             response.raise_for_status()
     except httpx.HTTPStatusError as exc:
         raise HTTPException(status_code=exc.response.status_code, detail=exc.response.text) from exc
@@ -420,7 +422,9 @@ async def chat(request: ChatRequest) -> ChatResponse:
 
     try:
         async with httpx.AsyncClient(timeout=45.0) as client:
-            response = await client.post(OPENROUTER_URL, headers=_openrouter_headers(), json=payload)
+            response = await client.post(
+                OPENROUTER_URL, headers=_openrouter_headers(), json=payload
+            )
             response.raise_for_status()
     except httpx.HTTPStatusError as exc:
         raise HTTPException(
