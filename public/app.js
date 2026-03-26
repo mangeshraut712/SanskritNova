@@ -18,6 +18,7 @@ const tracksEndpoint = `${apiBase}/tracks`;
 const transliterationEndpoint = `${apiBase}/transliterate`;
 
 let activeMode = "learn";
+let isGroundedMode = false;
 
 const setStatus = (label) => {
   statusPill.textContent = label;
@@ -65,14 +66,46 @@ const loadTracks = async () => {
 
 modeButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    activeMode = button.dataset.mode;
-    modeButtons.forEach((item) => item.classList.toggle("active", item === button));
+    const mode = button.dataset.mode;
+
+    if (mode === "grounded") {
+      // Toggle grounded mode
+      isGroundedMode = !isGroundedMode;
+      button.classList.toggle("active", isGroundedMode);
+    } else {
+      // Set chat mode
+      activeMode = mode;
+      // Update active state for chat mode buttons (exclude grounded toggle)
+      modeButtons.forEach((item) => {
+        if (item.dataset.mode !== "grounded") {
+          item.classList.toggle("active", item === button);
+        }
+      });
+    }
   });
 });
 
 sampleButtons.forEach((button) => {
   button.addEventListener("click", () => {
+    const sampleMode = button.dataset.mode;
     promptInput.value = button.textContent.trim();
+
+    // If sample has a mode, switch to that mode
+    if (sampleMode) {
+      if (sampleMode === "grounded") {
+        isGroundedMode = true;
+        modeButtons.forEach(btn => {
+          if (btn.dataset.mode === "grounded") btn.classList.add("active");
+        });
+      } else {
+        activeMode = sampleMode;
+        modeButtons.forEach(btn => {
+          if (btn.dataset.mode === sampleMode) btn.classList.add("active");
+          else if (btn.dataset.mode !== "grounded") btn.classList.remove("active");
+        });
+      }
+    }
+
     promptInput.focus();
   });
 });
@@ -89,9 +122,10 @@ form.addEventListener("submit", async (event) => {
   setStatus("Thinking");
 
   try {
-    const endpoint = activeMode === "grounded" ? groundedEndpoint : chatEndpoint;
-    const payload =
-      activeMode === "grounded" ? { message, k: 3 } : { message, mode: activeMode };
+    const endpoint = isGroundedMode ? groundedEndpoint : chatEndpoint;
+    const payload = isGroundedMode
+      ? { message, k: 3 }
+      : { message, mode: activeMode };
 
     const response = await fetch(endpoint, {
       method: "POST",
@@ -107,7 +141,7 @@ form.addEventListener("submit", async (event) => {
     }
 
     appendMessage(body.reply, "assistant");
-    if (activeMode === "grounded" && Array.isArray(body.sources) && body.sources.length > 0) {
+    if (isGroundedMode && Array.isArray(body.sources) && body.sources.length > 0) {
       const sourceSummary = body.sources
         .map((source) => `${source.source}#${source.chunk_id}`)
         .join(", ");

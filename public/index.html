@@ -74,14 +74,15 @@
 
           <div class="mode-switch" role="tablist" aria-label="Learning mode">
             <button class="mode-button active" data-mode="learn">Learn</button>
-            <button class="mode-button" data-mode="grounded">Grounded</button>
             <button class="mode-button" data-mode="translate">Translate</button>
             <button class="mode-button" data-mode="analyze">Analyze</button>
+            <button class="mode-button grounded-toggle" data-mode="grounded">Grounded</button>
           </div>
 
           <div class="message-thread" id="message-thread">
             <article class="message assistant">
-              <p>Use <strong>Grounded</strong> for source-backed answers from the indexed Sanskrit corpus.</p>
+              <p>Welcome to SanskritNova AI! Choose a mode above to start learning. Use <strong>Grounded</strong> for
+                answers backed by the Sanskrit corpus.</p>
             </article>
           </div>
 
@@ -91,8 +92,12 @@
               placeholder="Example: Explain योगः चित्तवृत्तिनिरोधः in clear English, then show the Sanskrit sense."></textarea>
             <div class="composer-footer">
               <div class="sample-prompts">
-                <button type="button" class="sample-prompt">What is meant by योगः चित्तवृत्तिनिरोधः?</button>
-                <button type="button" class="sample-prompt">Explain sandhi in रामो गच्छति</button>
+                <button type="button" class="sample-prompt" data-mode="learn">Explain योगः चित्तवृत्तिनिरोधः in simple
+                  English</button>
+                <button type="button" class="sample-prompt" data-mode="analyze">Analyze sandhi in रामो गच्छति</button>
+                <button type="button" class="sample-prompt" data-mode="translate">Translate धर्मः into English</button>
+                <button type="button" class="sample-prompt" data-mode="grounded">What is yoga according to this
+                  text?</button>
               </div>
               <button class="button primary submit-button" type="submit">Send</button>
             </div>
@@ -231,7 +236,8 @@
             <div class="resource-card featured">
               <p class="resource-label">Beginner</p>
               <strong>Shloka reading starter</strong>
-              <p>Learn verse boundaries, common markers, and the difference between Vedic and classical study contexts.</p>
+              <p>Learn verse boundaries, common markers, and the difference between Vedic and classical study contexts.
+              </p>
             </div>
             <div class="resource-card">
               <p class="resource-label">Core</p>
