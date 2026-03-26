@@ -144,6 +144,17 @@ app = FastAPI(
     description="FastAPI backend for SanskritNova AI.",
 )
 
+
+@app.on_event("startup")
+async def startup_event():
+    """Log environment variables status on startup."""
+    import sys
+    print("=== Vercel Environment Check ===", file=sys.stderr)
+    print(f"OPENROUTER_API_KEY set: {bool(os.getenv('OPENROUTER_API_KEY'))}", file=sys.stderr)
+    print(f"OPENROUTER_MODEL: {os.getenv('OPENROUTER_MODEL', 'not set')}", file=sys.stderr)
+    print(f"GOOGLE_API_KEY set: {bool(os.getenv('GOOGLE_API_KEY'))}", file=sys.stderr)
+    print("===================================", file=sys.stderr)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -336,7 +347,7 @@ handler = None
 try:
     from mangum import Mangum
 
-    handler = Mangum(app, lifespan="off")
+    handler = Mangum(app)
 except Exception as e:
     # Log the error for debugging
     import sys
