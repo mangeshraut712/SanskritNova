@@ -187,6 +187,7 @@ class TransliterationResponse(BaseModel):
 class GroundedAnswerRequest(BaseModel):
     message: str = Field(..., min_length=1, max_length=4000)
     k: int = Field(default=3, ge=1, le=8)
+    lang: str = "en"
 
 
 class GroundedSource(BaseModel):
@@ -394,12 +395,26 @@ def _retrieve_grounded_results(query: str, k: int) -> list[dict[str, object]]:
     return _retrieve_from_legacy_chunks(query, k)
 
 
-async def _grounded_openrouter_answer(message: str, sources: list[dict[str, object]]) -> str:
+async def _grounded_openrouter_answer(
+    message: str,
+    sources: list[dict[str, object]],
+    lang: str = "en",
+) -> str:
     context = "\n\n".join(f"[{s['source']}#{s['chunk_id']}]\n{s['text']}" for s in sources)
+    system_prompt = SYSTEM_PROMPT
+    if lang == "hi":
+        system_prompt = """आप संस्कृतनोवा AI हैं, एक विशेषज्ञ संस्कृत शिक्षक।
+
+नियम:
+- स्पष्टता के साथ सिखाएं और सांस्कृतिक सम्मान बनाए रखें।
+- उपयोगकर्ता पूछे बिना गहराई से समझाएं।
+- सहायक अंग्रेजी में संस्कृत उदाहरणों का उपयोग करें।
+- लिप्यंतरण के लिए पूछे जाने पर देवनागरी और रोमन लिप्यंतरण दोनों प्रदान करें।
+- यदि कोई दावा अनिश्चित है तो सीधे कहें।"""
     payload = {
         "model": _openrouter_model(),
         "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "system", "content": system_prompt},
             {"role": "system", "content": f"Context:\n{context}"},
             {"role": "user", "content": message},
         ],
@@ -522,7 +537,7 @@ async def grounded_api(request: GroundedAnswerRequest):
     sources = _retrieve_grounded_results(request.message, request.k)
     if not sources:
         raise HTTPException(status_code=503, detail="Grounded sources unavailable.")
-    reply = await _grounded_openrouter_answer(request.message, sources)
+    reply = await _grounded_openrouter_answer(request.message, sources, request.lang)
     return GroundedAnswerResponse(
         reply=reply,
         model=_openrouter_model(),

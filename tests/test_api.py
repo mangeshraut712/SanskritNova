@@ -45,7 +45,7 @@ def test_transliterate_endpoint():
 
 
 def test_grounded_answer_endpoint(monkeypatch):
-    async def fake_answer(message, sources):
+    async def fake_answer(message, sources, lang="en"):
         return "Grounded answer"
 
     monkeypatch.setattr(
@@ -60,6 +60,29 @@ def test_grounded_answer_endpoint(monkeypatch):
     body = response.json()
     assert body["reply"] == "Grounded answer"
     assert body["sources"][0]["source"] == "Rag-docs.docx"
+
+
+def test_grounded_answer_passes_lang(monkeypatch):
+    captured = {}
+
+    async def fake_answer(message, sources, lang="en"):
+        captured["lang"] = lang
+        return "Grounded answer"
+
+    monkeypatch.setattr(
+        api_index,
+        "_retrieve_grounded_results",
+        lambda message, k: [{"source": "Rag-docs.docx", "chunk_id": 1, "text": "योगः ..."}],
+    )
+    monkeypatch.setattr(api_index, "_grounded_openrouter_answer", fake_answer)
+
+    response = client.post(
+        "/api/grounded-answer",
+        json={"message": "योग क्या है?", "k": 1, "lang": "hi"},
+    )
+
+    assert response.status_code == 200
+    assert captured["lang"] == "hi"
 
 
 def test_grounded_results_prefer_local_retriever(monkeypatch):
@@ -98,7 +121,7 @@ def test_grounded_results_fall_back_to_legacy_chunks(tmp_path, monkeypatch):
 def test_grounded_answer_requires_sources(monkeypatch):
     called = False
 
-    async def fake_answer(message, sources):
+    async def fake_answer(message, sources, lang="en"):
         nonlocal called
         called = True
         return "should not be called"

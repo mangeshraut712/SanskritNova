@@ -15,9 +15,20 @@ const TRANSLATIONS = {
     begin: "Begin",
     transliterate: "Transliterate",
     introduction: "Introduction",
+    aboutText: "SanskritNova bridges the ancient wisdom of Sanskrit with modern AI technology. Our platform provides intelligent translation, precise transliteration, and grounded answers from the vast corpus of Sanskrit literature.",
     vedicLiterature: "Vedic Literature",
     aiPowered: "AI Powered",
     scriptConversion: "Script Conversion",
+    features: ["Vedic Literature", "AI Powered", "Script Conversion"],
+    loadingTracks: "Loading learning tracks...",
+    failedTracks: "Failed to load learning tracks",
+    startTrack: "Start Track",
+    downloadTrack: "Download",
+    downloadedTrack: "Downloaded",
+    downloadSuccess: "Track \"{slug}\" downloaded for offline use!",
+    downloadFailure: "Download failed. Please try again.",
+    trackComingSoon: "Starting {slug} track - Feature coming soon!",
+    speechUnsupported: "Speech synthesis not supported in this browser",
     connectingWisdom: "Connecting ancient wisdom to modern minds"
   },
   hi: {
@@ -31,9 +42,20 @@ const TRANSLATIONS = {
     begin: "शुरू करें",
     transliterate: "लिप्यंतरण करें",
     introduction: "परिचय",
+    aboutText: "संस्कृतनोवा संस्कृत की प्राचीन बुद्धिमत्ता को आधुनिक AI तकनीक से जोड़ता है। हमारा मंच बुद्धिमान अनुवाद, सटीक लिप्यंतरण और संस्कृत साहित्य के विशाल स्रोतों से आधारित उत्तर प्रदान करता है।",
     vedicLiterature: "वैदिक साहित्य",
     aiPowered: "AI संचालित",
     scriptConversion: "लिपि रूपांतरण",
+    features: ["वैदिक साहित्य", "AI संचालित", "लिपि रूपांतरण"],
+    loadingTracks: "शिक्षण ट्रैक लोड हो रहे हैं...",
+    failedTracks: "शिक्षण ट्रैक लोड नहीं हो सके",
+    startTrack: "ट्रैक शुरू करें",
+    downloadTrack: "डाउनलोड",
+    downloadedTrack: "डाउनलोड हो गया",
+    downloadSuccess: "ट्रैक \"{slug}\" ऑफलाइन उपयोग के लिए डाउनलोड हो गया!",
+    downloadFailure: "डाउनलोड असफल रहा। कृपया पुनः प्रयास करें।",
+    trackComingSoon: "{slug} ट्रैक शुरू हो रहा है - यह सुविधा जल्द आएगी!",
+    speechUnsupported: "इस ब्राउज़र में स्पीच सिंथेसिस समर्थित नहीं है",
     connectingWisdom: "प्राचीन ज्ञान को आधुनिक दिमाग से जोड़ना"
   }
 };
@@ -69,6 +91,13 @@ const tracksContainer = document.getElementById('tracks-container');
 // Utility Functions
 function t(key) {
   return TRANSLATIONS[currentLang][key] || key;
+}
+
+function tf(key, values = {}) {
+  return Object.entries(values).reduce(
+    (text, [name, value]) => text.replace(`{${name}}`, value),
+    t(key)
+  );
 }
 
 function switchLanguage(lang) {
@@ -117,20 +146,21 @@ function updateUI() {
 
   const aboutText = document.querySelector('.about-text');
   if (aboutText) {
-    aboutText.innerHTML = `SanskritNova bridges the ancient wisdom of Sanskrit with modern AI technology.
-    Our platform provides intelligent translation, precise transliteration, and
-    grounded answers from the vast corpus of Sanskrit literature.`;
+    aboutText.textContent = t('aboutText');
   }
 
   const features = document.querySelectorAll('.feature-text');
-  features.forEach(feature => {
-    if (feature.textContent.includes('Vedic Literature')) feature.textContent = t('vedicLiterature');
-    if (feature.textContent.includes('AI Powered')) feature.textContent = t('aiPowered');
-    if (feature.textContent.includes('Script Conversion')) feature.textContent = t('scriptConversion');
+  features.forEach((feature, index) => {
+    feature.textContent = t('features')[index] || feature.textContent;
   });
 
   const footerSub = document.querySelector('.footer-sub');
   if (footerSub) footerSub.textContent = t('connectingWisdom');
+
+  const loadingTracks = tracksContainer?.querySelector('.loading-tracks');
+  if (loadingTracks) {
+    loadingTracks.textContent = t('loadingTracks');
+  }
 }
 
 // Utility Functions
@@ -296,7 +326,7 @@ function handlePronounce() {
       pronounceBtn.style.opacity = '1';
     };
   } else {
-    alert('Speech synthesis not supported in this browser');
+    alert(t('speechUnsupported'));
   }
 }
 
@@ -337,7 +367,7 @@ async function loadTracks() {
     const tracks = await response.json();
     renderTracks(tracks);
   } catch (error) {
-    tracksContainer.innerHTML = '<div class="loading-tracks">Failed to load learning tracks</div>';
+    tracksContainer.innerHTML = `<div class="loading-tracks">${t('failedTracks')}</div>`;
     console.error('Tracks loading error:', error);
   }
 }
@@ -355,10 +385,10 @@ function renderTracks(tracks) {
       <p class="track-focus">${track.focus}</p>
       <div class="track-actions">
         <button class="track-btn primary" onclick="startTrack('${track.slug}')">
-          Start Track
+          ${t('startTrack')}
         </button>
         <button class="track-btn" onclick="downloadTrack('${track.slug}', event)">
-          📥 Download
+          📥 ${t('downloadTrack')}
         </button>
       </div>
     </div>
@@ -370,7 +400,7 @@ function renderTracks(tracks) {
 function startTrack(slug) {
   // Navigate to track or open modal
   console.log('Starting track:', slug);
-  alert(`Starting ${slug} track - Feature coming soon!`);
+  alert(tf('trackComingSoon', { slug }));
 }
 
 async function downloadTrack(slug, event) {
@@ -388,17 +418,17 @@ async function downloadTrack(slug, event) {
     localStorage.setItem('offlineTracks', JSON.stringify(offlineTracks));
 
     // Show success message
-    alert(`Track "${slug}" downloaded for offline use!`);
+    alert(tf('downloadSuccess', { slug }));
 
     // Update button state
     const btn = event?.currentTarget;
     if (btn) {
-      btn.textContent = '✓ Downloaded';
+      btn.textContent = `✓ ${t('downloadedTrack')}`;
       btn.disabled = true;
     }
   } catch (error) {
     console.error('Download failed:', error);
-    alert('Download failed. Please try again.');
+    alert(t('downloadFailure'));
   }
 }
 
