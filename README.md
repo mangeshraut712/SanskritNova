@@ -1,119 +1,203 @@
 # SanskritNova AI
 
-SanskritNova AI is a Sanskrit learning web app backed by a preserved local RAG prototype. The active web product lives in `api/` and `public/`; the original document retrieval pipeline and local indexing flow live in `code/`.
+A modern Sanskrit learning platform with AI-powered tutoring, RAG-based grounded answers, and Devanagari ↔ IAST transliteration.
 
-## Current Product Surface
+[![Python 3.13](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-green.svg)](https://fastapi.tiangolo.com/)
+[![Vercel](https://img.shields.io/badge/vercel-deployed-black.svg)](https://vercel.com)
 
-Working now:
-- AI chat through `learn`, `translate`, and `analyze` modes
-- grounded answers from the original Sanskrit corpus
-- Devanagari to IAST transliteration
-- study tracks from `GET /api/tracks`
-- a static frontend in `public/` with API-backed interactions
+[🌐 Live Demo](https://sanskritnova-ai.vercel.app) • [📖 API Docs](#api-endpoints) • [🚀 Quick Start](#quick-start)
 
-## Repository Layout
+## ✨ Features
 
-```text
-api/      FastAPI backend
-public/   Static frontend
-code/     Original Sanskrit RAG modules and local index artifacts
-docs/     Setup, roadmap, and comparison notes
-tests/    API and utility tests
-docker/   Optional container assets
-k8s/      Optional Kubernetes manifest
-```
+### 🤖 Intelligent Learning
+- **AI Chat Modes**: Learn, Translate, and Analyze with context-aware AI
+- **Grounded Answers**: RAG-powered responses from authentic Sanskrit corpus
+- **Real-time Transliteration**: Devanagari ↔ IAST conversion
 
-## Setup
+### 🎨 Modern Interface
+- **Glass-morphism Design**: Inspired by ancient Indian art aesthetics
+- **Responsive UI**: Optimized for desktop, tablet, and mobile
+- **Progressive Web App**: Offline capabilities and native app experience
+
+### 🚀 Production Ready
+- **Global Deployment**: Vercel edge network for worldwide performance
+- **Container Support**: Docker and Kubernetes manifests included
+- **CI/CD Pipeline**: Automated testing and deployment
+
+## 🏗️ Tech Stack
+
+- **Backend**: Python 3.13, FastAPI, Pydantic v2
+- **AI/ML**: OpenRouter API, ChromaDB, sentence-transformers
+- **Frontend**: Vanilla JavaScript, CSS3, Glass-morphism
+- **Deployment**: Vercel, Docker, Kubernetes
+- **DevOps**: GitHub Actions, automated testing
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.13+
+- OpenRouter API key
+
+### Installation
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
+# Clone repository
+git clone https://github.com/mangeshraut712/SanskritNova.git
+cd SanskritNova
+
+# Install dependencies
 pip install -r requirements.txt
-```
 
-Optional local RAG dependencies:
-
-```bash
-pip install -e ".[local]"
-```
-
-The lightweight web install from `requirements.txt` is enough for:
-- `chat`
-- `tracks`
-- `transliteration`
-
-The optional local RAG extras are needed to rebuild or fully use the original retrieval pipeline in `code/`.
-
-## Run Locally
-
-```bash
+# Run locally
 make serve-api
-make serve-site
+# Open http://localhost:8001
 ```
 
-Original RAG commands:
+### Environment Setup
 
 ```bash
-make rag-index
-make rag-cli
+# Copy environment template
+cp .env.example .env
+
+# Add your API key
+OPENROUTER_API_KEY=your_key_here
 ```
 
-## Grounded Answer Note
+## 💬 Chat Modes
 
-`POST /api/grounded-answer` is connected to the original retrieval corpus in `code/`.
+| Mode | Description | Example |
+|------|-------------|---------|
+| **Learn** | Interactive explanations | "What is dharma?" |
+| **Translate** | Bidirectional translation | "Translate: yoga" |
+| **Analyze** | Grammar analysis | "Analyze sandhi in रामो गच्छति" |
+| **Grounded** | Corpus-backed answers | "What does the Gita say about karma?" |
 
-It currently:
-- prefers the retrieval path exposed through `sanskrit_rag.retriever`
-- falls back to scanning `code/chunks.npy` if the full local retrieval stack is unavailable
+## 🔤 Transliteration
 
-For local indexing stability, the default embedding backend is:
+Convert between Devanagari script and IAST romanization:
 
 ```bash
-SANSKRIT_RAG_EMBEDDING_BACKEND=tfidf
+Input:  नमस्ते
+Output: namaste
+
+Input: rāmo gacchati
+Output: रामो गच्छति
 ```
 
-You can opt into sentence-transformers explicitly if your environment is stable:
+## 📚 Study Tracks
+
+Structured learning paths for Sanskrit learners:
+
+- **Foundations**: Script basics, pronunciation, vocabulary
+- **Gita Study**: Verse-by-verse Bhagavad Gita analysis
+- **Grammar Lab**: Advanced sandhi, compounds, syntax
+
+## 🔧 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/health` | Service health check |
+| `GET` | `/api/info` | API information |
+| `GET` | `/api/tracks` | Study tracks |
+| `POST` | `/api/chat` | AI chat with mode selection |
+| `POST` | `/api/grounded-answer` | RAG-powered answers |
+| `POST` | `/api/transliterate` | Script conversion |
+
+### Example Usage
+
+```python
+import requests
+
+# Chat with AI
+response = requests.post("https://sanskritnova-ai.vercel.app/api/chat", json={
+    "message": "Explain योगः चित्तवृत्तिनिरोधः",
+    "mode": "learn"
+})
+
+# Transliterate text
+response = requests.post("https://sanskritnova-ai.vercel.app/api/transliterate", json={
+    "text": "रामो गच्छति"
+})
+```
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/mangeshraut712/SanskritNova)
+
+1. Import GitHub repository
+2. Set build command: `pip install -r requirements.txt`
+3. Add environment variables
+4. Deploy automatically
+
+### Docker
 
 ```bash
-export SANSKRIT_RAG_EMBEDDING_BACKEND=sentence-transformers
+# Build and run
+docker build -t sanskritnova -f docker/Dockerfile .
+docker run -p 8001:8001 --env-file .env sanskritnova
 ```
 
-## Environment Variables
+### Kubernetes
 
-API:
-- `OPENROUTER_API_KEY`
-- `OPENROUTER_MODEL`
-- `OPENROUTER_APP_NAME`
-- `OPENROUTER_APP_URL`
+```bash
+kubectl apply -f k8s/deployment.yaml
+```
 
-Original RAG:
-- `SANSKRIT_RAG_DATA_DIR`
-- `SANSKRIT_RAG_INDEX_PATH`
-- `SANSKRIT_RAG_CHUNKS_PATH`
-- `SANSKRIT_RAG_MODEL_PATH`
-- `SANSKRIT_RAG_EMBEDDING_BACKEND`
+## 🧪 Development
 
-Use [`.env.example`](.env.example) as the local template.
+```bash
+# Install dev dependencies
+pip install -e ".[dev]"
 
-## API Endpoints
+# Run tests
+pytest tests/ -v
 
-- `GET /api/health`
-- `GET /api/info`
-- `GET /api/tracks`
-- `POST /api/chat`
-- `POST /api/grounded-answer`
-- `POST /api/transliterate`
+# Code quality
+ruff check .
+ruff format .
 
-## Optional Deployment Assets
+# Start development server
+make serve-api
+```
 
-- `docker/Dockerfile`
-- `docker/docker-compose.yml`
-- `docker/nginx.conf`
-- `k8s/deployment.yaml`
-- `vercel.json`
+## 📁 Project Structure
 
-## Docs
+```
+sanskritnova-ai/
+├── api/                 # FastAPI backend
+├── public/              # Frontend assets
+├── src/sanskrit_rag/    # Core modules
+├── docker/              # Container configs
+├── k8s/                 # Kubernetes manifests
+├── tests/               # Test suite
+└── docs/                # Documentation
+```
 
-- [project-setup-guide.md](docs/project-setup-guide.md)
-- [transformation-roadmap.md](docs/transformation-roadmap.md)
-- [original-vs-current.md](docs/original-vs-current.md)
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests: `pytest tests/`
+5. Submit a pull request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Sanskrit scholars and linguistic community
+- OpenRouter for AI infrastructure
+- Open source contributors
+
+---
+
+**योगः कर्मसु कौशलम्** - Yoga is skill in action
+
+Made with ❤️ for Sanskrit learners worldwide.
