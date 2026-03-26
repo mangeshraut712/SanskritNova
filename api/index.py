@@ -145,6 +145,19 @@ app = FastAPI(
 )
 
 
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for debugging."""
+    return {
+        "status": "ok",
+        "env": {
+            "OPENROUTER_API_KEY": bool(os.getenv("OPENROUTER_API_KEY")),
+            "OPENROUTER_MODEL": os.getenv("OPENROUTER_MODEL", "not set"),
+            "GOOGLE_API_KEY": bool(os.getenv("GOOGLE_API_KEY")),
+        }
+    }
+
+
 @app.on_event("startup")
 async def startup_event():
     """Log environment variables status on startup."""
