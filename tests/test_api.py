@@ -68,11 +68,37 @@ def test_grounded_results_fall_back_to_legacy_chunks(tmp_path, monkeypatch):
 
     monkeypatch.setattr(api_index, "_load_local_retriever", lambda: None)
     monkeypatch.setattr(api_index, "LEGACY_CHUNKS_PATH", chunks_path)
+    seen = {}
+
+    def fake_load(path, allow_pickle):
+        seen["allow_pickle"] = allow_pickle
+        return np.array(["योगः चित्तवृत्तिनिरोधः", "धर्मक्षेत्रे कुरुक्षेत्रे"])
+
+    monkeypatch.setattr(api_index.np, "load", fake_load)
 
     results = api_index._retrieve_grounded_results("योगः", 1)
 
+    assert seen["allow_pickle"] is False
     assert results[0]["source"] == "SanskritCorpus"
     assert results[0]["chunk_id"] == 0
+
+
+def test_grounded_answer_requires_sources(monkeypatch):
+    called = False
+
+    async def fake_answer(message, sources):
+        nonlocal called
+        called = True
+        return "should not be called"
+
+    monkeypatch.setattr(api_index, "_retrieve_grounded_results", lambda message, k: [])
+    monkeypatch.setattr(api_index, "_grounded_openrouter_answer", fake_answer)
+
+    response = client.post("/api/grounded-answer", json={"message": "What is yoga?", "k": 1})
+
+    assert response.status_code == 503
+    assert response.json()["detail"] == "Grounded sources unavailable."
+    assert called is False
 
 
 def test_chat_requires_openrouter_key(monkeypatch):

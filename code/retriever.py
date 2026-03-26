@@ -43,14 +43,21 @@ class Retriever:
 
     def _load_chunks(self):
         if settings.chunks_path.exists():
-            with settings.chunks_path.open("r", encoding="utf-8") as f:
-                return json.load(f)
+            try:
+                with settings.chunks_path.open("r", encoding="utf-8") as f:
+                    chunks = json.load(f)
+                if isinstance(chunks, list) and all(
+                    isinstance(chunk, dict) and "text" in chunk for chunk in chunks
+                ):
+                    return chunks
+            except (OSError, json.JSONDecodeError, TypeError, ValueError):
+                pass
 
         if settings.legacy_chunks_path.exists():
             return [
                 {"chunk_id": index, "source": "unknown", "text": text}
                 for index, text in enumerate(
-                    np.load(settings.legacy_chunks_path, allow_pickle=True).tolist()
+                    np.load(settings.legacy_chunks_path, allow_pickle=False).tolist()
                 )
             ]
 

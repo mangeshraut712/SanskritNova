@@ -15,7 +15,7 @@ dependencies = [
     "fastapi>=0.115",
     "httpx>=0.28",
     "mangum>=0.17",
-    "numpy>=2.0",
+    "numpy<2.0",
     "pydantic>=2.0",
     "uvicorn[standard]>=0.34"
 ]
@@ -33,7 +33,7 @@ local = [
     "pdfplumber>=0.11",
     "python-docx>=1.1",
     "llama-cpp-python>=0.3",
-    "numpy>=2.0",
+    "numpy<2.0",
     "scikit-learn>=1.5"
 ]
 

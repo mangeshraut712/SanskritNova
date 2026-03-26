@@ -44,6 +44,10 @@
           <span class="nav-icon">📜</span>
           परिचय
         </a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="hi">हि</button>
+        </div>
       </nav>
     </div>
   </header>
@@ -95,28 +99,28 @@
 
       <div class="chat-container">
         <div class="chat-modes">
-          <button class="mode-card active" data-mode="learn">
+          <button class="mode-card active" data-mode="learn" aria-pressed="true">
             <div class="mode-icon">🎓</div>
             <div class="mode-info">
               <h3>शिक्षण</h3>
               <p>Learn Mode</p>
             </div>
           </button>
-          <button class="mode-card" data-mode="analyze">
+          <button class="mode-card" data-mode="analyze" aria-pressed="false">
             <div class="mode-icon">🔍</div>
             <div class="mode-info">
               <h3>विश्लेषण</h3>
               <p>Analyze Mode</p>
             </div>
           </button>
-          <button class="mode-card" data-mode="translate">
+          <button class="mode-card" data-mode="translate" aria-pressed="false">
             <div class="mode-icon">🌐</div>
             <div class="mode-info">
               <h3>अनुवाद</h3>
               <p>Translate Mode</p>
             </div>
           </button>
-          <button class="mode-card" data-mode="grounded">
+          <button class="mode-card" data-mode="grounded" aria-pressed="false">
             <div class="mode-icon">📖</div>
             <div class="mode-info">
               <h3>आधारित</h3>

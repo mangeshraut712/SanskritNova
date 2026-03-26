@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import os
-from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
@@ -141,6 +140,7 @@ DIGITS = {
 VIRAMA = "्"
 REPO_ROOT = Path(__file__).resolve().parent.parent
 LEGACY_CHUNKS_PATH = REPO_ROOT / "code/chunks.npy"
+_LOCAL_RETRIEVER = None
 
 
 class ChatRequest(BaseModel):
@@ -227,17 +227,24 @@ def _mode_instruction(mode: str) -> str:
     return "Teach the user as a Sanskrit tutor. Use examples."
 
 
-@lru_cache(maxsize=1)
 def _load_local_retriever():
+    global _LOCAL_RETRIEVER
+
+    if _LOCAL_RETRIEVER is not None:
+        return _LOCAL_RETRIEVER
+
     try:
         from sanskrit_rag.retriever import Retriever
     except Exception:
         return None
 
     try:
-        return Retriever()
+        retriever = Retriever()
     except Exception:
         return None
+
+    _LOCAL_RETRIEVER = retriever
+    return retriever
 
 
 def _retrieve_with_local_retriever(query: str, k: int) -> list[dict[str, object]]:
@@ -263,7 +270,7 @@ def _retrieve_from_legacy_chunks(query: str, k: int) -> list[dict[str, object]]:
         return []
 
     try:
-        chunks = np.load(LEGACY_CHUNKS_PATH, allow_pickle=True).tolist()
+        chunks = np.load(LEGACY_CHUNKS_PATH, allow_pickle=False).tolist()
     except Exception:
         return []
 
@@ -391,6 +398,8 @@ async def chat_api(request: ChatRequest):
 @app.post("/api/grounded-answer", response_model=GroundedAnswerResponse)
 async def grounded_api(request: GroundedAnswerRequest):
     sources = _retrieve_grounded_results(request.message, request.k)
+    if not sources:
+        raise HTTPException(status_code=503, detail="Grounded sources unavailable.")
     reply = await _grounded_openrouter_answer(request.message, sources)
     return GroundedAnswerResponse(
         reply=reply,
