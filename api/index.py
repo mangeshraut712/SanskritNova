@@ -231,10 +231,18 @@ def transliterate_to_iast(text: str) -> str:
     return "".join(output)
 
 def _retrieve_grounded_results(query: str, k: int) -> list[dict[str, object]]:
+    """Retrieve grounding results from local corpus.
+    
+    Returns empty list if files don't exist (for Vercel compatibility).
+    """
     chunks_path = Path("code/chunks.npy")
     if not chunks_path.exists():
+        # Return empty results for Vercel (no local files)
         return []
-    chunks = np.load(chunks_path, allow_pickle=True).tolist()
+    try:
+        chunks = np.load(chunks_path, allow_pickle=True).tolist()
+    except Exception:
+        return []
     tokens = [t for t in query.lower().split() if t]
     ranked = []
     for idx, text in enumerate(chunks):
@@ -349,9 +357,10 @@ try:
 
     handler = Mangum(app)
 except Exception as e:
-    # Log the error for debugging
     import sys
-    print(f"Mangum handler creation error: {e}", file=sys.stderr)
+    print(f"ERROR: Failed to create Mangum handler: {e}", file=sys.stderr)
+    import traceback
+    traceback.print_exc(file=sys.stderr)
 
 # For local development
 if __name__ == "__main__":
