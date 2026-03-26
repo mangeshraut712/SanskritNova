@@ -1,42 +1,34 @@
-.PHONY: help install dev test lint format typecheck security serve index clean
+.PHONY: help install install-local serve-api serve-site rag-index rag-cli test lint format build
 
-help: ## Show this help
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
+help: ## Show available commands
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-16s\033[0m %s\n", $$1, $$2}'
 
-install: ## Install production dependencies
-	pip install -e .
+install: ## Install the web app and developer dependencies
+	pip install -e ".[dev]"
 
-dev: ## Install all dependencies (dev + nlp)
-	pip install -e ".[all]"
+install-local: ## Install original local RAG dependencies
+	pip install -e ".[local]"
 
-test: ## Run all tests with coverage
-	pytest tests/ -v --cov=src/sanskrit_rag --cov-report=term-missing
+serve-api: ## Run the FastAPI backend locally (port 8000)
+	uvicorn api.index:app --reload --host 0.0.0.0 --port 8000
 
-test-unit: ## Run unit tests only
-	pytest tests/unit/ -v
+serve-site: ## Serve the static frontend locally
+	python -m http.server 3000 --directory public
 
-lint: ## Run linter
-	ruff check src/ tests/
+rag-index: ## Build the original local index
+	python -m code.build_index
 
-format: ## Format code
-	ruff format src/ tests/
+rag-cli: ## Run the original local CLI
+	python -m code.app
 
-typecheck: ## Run type checker
-	mypy src/ --ignore-missing-imports
+test: ## Run tests
+	pytest tests
 
-security: ## Run security checks
-	pip-audit
-	bandit -r src/ -q
+lint: ## Run ruff on API, RAG modules, and tests
+	ruff check api code tests
 
-serve: ## Start the API server
-	python -m sanskrit_rag.cli serve
+format: ## Format code with ruff
+	ruff format api code tests
 
-index: ## Build the vector index
-	python -m sanskrit_rag.cli build-index
-
-clean: ## Clean build artifacts
-	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
-	find . -type d -name .pytest_cache -exec rm -rf {} + 2>/dev/null || true
-	find . -type d -name .mypy_cache -exec rm -rf {} + 2>/dev/null || true
-	find . -type d -name .ruff_cache -exec rm -rf {} + 2>/dev/null || true
-	rm -rf dist/ build/ *.egg-info/ htmlcov/ coverage.xml
+build: ## Byte-compile source for a quick build sanity check
+	python -m compileall api code

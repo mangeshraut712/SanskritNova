@@ -7,7 +7,7 @@ try:
     from .build_index import build_faiss_index
     from .config import settings
     from .rag_pipeline import SanskritRAG
-except ImportError:  # pragma: no cover - supports direct script execution
+except ImportError:  # pragma: no cover
     from build_index import build_faiss_index
     from config import settings
     from rag_pipeline import SanskritRAG
@@ -61,7 +61,7 @@ def answer(request: QueryRequest):
 def rebuild_index():
     try:
         build_faiss_index()
-    except Exception as exc:  # pragma: no cover - lightweight service boundary
+    except Exception as exc:  # pragma: no cover
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
     global rag

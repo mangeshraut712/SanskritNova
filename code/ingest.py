@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 from pathlib import Path
 
 import docx
@@ -11,15 +10,18 @@ def load_txt(path):
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
 
+
 def load_pdf(path):
     with pdfplumber.open(path) as pdf:
         pages = [page.extract_text() or "" for page in pdf.pages]
         return "\n".join(pages)
 
+
 def load_docx(path):
     doc = docx.Document(path)
     text = "\n".join([para.text for para in doc.paragraphs])
     return text
+
 
 def load_document_records(data_path="data"):
     records = []

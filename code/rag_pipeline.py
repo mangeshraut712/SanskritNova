@@ -3,9 +3,10 @@ from __future__ import annotations
 try:
     from .generator import Generator
     from .retriever import Retriever
-except ImportError:  # pragma: no cover - supports direct script execution
+except ImportError:  # pragma: no cover
     from generator import Generator
     from retriever import Retriever
+
 
 class SanskritRAG:
     def __init__(self):
@@ -24,8 +25,7 @@ class SanskritRAG:
             }
 
         context = "\n\n".join(
-            f"[{item['source']}#{item['chunk_id']}]\n{item['text']}"
-            for item in results
+            f"[{item['source']}#{item['chunk_id']}]\n{item['text']}" for item in results
         )
 
         prompt = f"""

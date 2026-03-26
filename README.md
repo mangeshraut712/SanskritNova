@@ -1,197 +1,119 @@
-# 🕉️ Sanskrit RAG System
+# SanskritNova AI
 
-> **AI-powered Sanskrit education platform with Retrieval-Augmented Generation**
+SanskritNova AI is a Sanskrit learning web app backed by a preserved local RAG prototype. The active web product lives in `api/` and `public/`; the original document retrieval pipeline and local indexing flow live in `code/`.
 
-[![CI](https://github.com/vidhiisaxena/Sanskrit_RagSystem/actions/workflows/ci.yml/badge.svg)](https://github.com/vidhiisaxena/Sanskrit_RagSystem/actions/workflows/ci.yml)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+## Current Product Surface
 
-## Overview
+Working now:
+- AI chat through `learn`, `translate`, and `analyze` modes
+- grounded answers from the original Sanskrit corpus
+- Devanagari to IAST transliteration
+- study tracks from `GET /api/tracks`
+- a static frontend in `public/` with API-backed interactions
 
-This project implements a **Retrieval-Augmented Generation (RAG)** system for answering user queries based on **Sanskrit documents**. It ingests Sanskrit text documents, preprocesses and indexes them using vector embeddings, retrieves relevant context for a given query, and generates responses using a lightweight Large Language Model (LLM).
+## Repository Layout
 
-### ✨ Features
-
-- 📖 **Sanskrit Q&A** — Ask questions about Sanskrit texts, get context-grounded answers
-- 🔍 **Smart Chunking** — Shloka-aware text splitting that respects verse boundaries (॥)
-- 🌐 **REST API** — FastAPI with streaming (SSE), auto-generated OpenAPI docs
-- 🔄 **Translation** — Sanskrit ↔ English/Hindi with word-by-word analysis
-- 💻 **CPU-only** — Runs without GPU using quantized models (Phi-3 Mini GGUF)
-- 🐳 **Docker Ready** — Multi-stage Dockerfile for reproducible deployments
-- ✅ **Tested** — Unit tests with pytest, CI/CD via GitHub Actions
-
----
-
-## Architecture
-
-```
-User ──→ FastAPI (REST/SSE) ──→ Retriever (FAISS + SentenceTransformers)
-                               ──→ Generator (Phi-3 Mini via llama-cpp)
-                               ──→ Response with source citations
+```text
+api/      FastAPI backend
+public/   Static frontend
+code/     Original Sanskrit RAG modules and local index artifacts
+docs/     Setup, roadmap, and comparison notes
+tests/    API and utility tests
+docker/   Optional container assets
+k8s/      Optional Kubernetes manifest
 ```
 
-## Quick Start
-
-### Prerequisites
-
-- Python 3.11+
-- [Phi-3 Mini GGUF model](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf) (download manually)
-
-### Installation
+## Setup
 
 ```bash
-# Clone
-git clone https://github.com/vidhiisaxena/Sanskrit_RagSystem.git
-cd Sanskrit_RagSystem
-
-# Create virtual environment
 python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-
-# Install
-pip install -e .
-
-# Copy and edit environment config
-cp .env.example .env
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
-### Setup Model
-
-Download **Phi-3 Mini GGUF** and place it in `models/`:
+Optional local RAG dependencies:
 
 ```bash
-mkdir -p models
-# Download from: https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf
-# Place as: models/phi3.gguf
+pip install -e ".[local]"
 ```
 
-### Add Sanskrit Documents
+The lightweight web install from `requirements.txt` is enough for:
+- `chat`
+- `tracks`
+- `transliteration`
 
-Place `.txt`, `.pdf`, or `.docx` Sanskrit files in the `data/` folder.
+The optional local RAG extras are needed to rebuild or fully use the original retrieval pipeline in `code/`.
 
-### Build Index & Run
+## Run Locally
 
 ```bash
-# Build vector index
-python -m sanskrit_rag.cli build-index
-
-# Option A: Interactive CLI
-python -m sanskrit_rag.cli
-
-# Option B: Start API server
-python -m sanskrit_rag.cli serve
-# → API docs at http://localhost:8000/docs
+make serve-api
+make serve-site
 ```
 
-### Docker
+Original RAG commands:
 
 ```bash
-cd docker
-docker compose up --build
+make rag-index
+make rag-cli
 ```
 
----
+## Grounded Answer Note
+
+`POST /api/grounded-answer` is connected to the original retrieval corpus in `code/`.
+
+It currently:
+- prefers the retrieval path in `code/retriever.py`
+- falls back to scanning `code/chunks.npy` if the full local retrieval stack is unavailable
+
+For local indexing stability, the default embedding backend is:
+
+```bash
+SANSKRIT_RAG_EMBEDDING_BACKEND=tfidf
+```
+
+You can opt into sentence-transformers explicitly if your environment is stable:
+
+```bash
+export SANSKRIT_RAG_EMBEDDING_BACKEND=sentence-transformers
+```
+
+## Environment Variables
+
+API:
+- `OPENROUTER_API_KEY`
+- `OPENROUTER_MODEL`
+- `OPENROUTER_APP_NAME`
+- `OPENROUTER_APP_URL`
+
+Original RAG:
+- `SANSKRIT_RAG_DATA_DIR`
+- `SANSKRIT_RAG_INDEX_PATH`
+- `SANSKRIT_RAG_CHUNKS_PATH`
+- `SANSKRIT_RAG_MODEL_PATH`
+- `SANSKRIT_RAG_EMBEDDING_BACKEND`
+
+Use [`.env.example`](.env.example) as the local template.
 
 ## API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/health` | Health check & readiness |
-| `POST` | `/api/v1/query` | Ask a Sanskrit question |
-| `POST` | `/api/v1/query/stream` | Streaming answer (SSE) |
-| `POST` | `/api/v1/translate` | Translate Sanskrit text |
+- `GET /api/health`
+- `GET /api/info`
+- `GET /api/tracks`
+- `POST /api/chat`
+- `POST /api/grounded-answer`
+- `POST /api/transliterate`
 
-See full API docs at `/docs` (Swagger) or `/redoc` (ReDoc) when the server is running.
+## Optional Deployment Assets
 
----
+- `docker/Dockerfile`
+- `docker/docker-compose.yml`
+- `docker/nginx.conf`
+- `k8s/deployment.yaml`
+- `vercel.json`
 
-## Project Structure
+## Docs
 
-```
-Sanskrit_RagSystem/
-├── src/sanskrit_rag/        # Main package
-│   ├── api/                 # FastAPI endpoints
-│   ├── generation/          # LLM inference & prompt templates
-│   ├── indexing/            # Embeddings & FAISS vector store
-│   ├── ingest/              # Document loaders (PDF, DOCX, TXT)
-│   ├── processing/          # Sanskrit-aware text cleaning & chunking
-│   ├── retrieval/           # Search interface with citations
-│   ├── utils/               # Logging, error handling
-│   ├── config.py            # Centralized settings (env vars)
-│   ├── pipeline.py          # RAG orchestrator
-│   └── cli.py               # CLI entry point
-├── tests/                   # Unit & integration tests
-├── data/                    # Sanskrit documents
-├── docker/                  # Dockerfile & compose
-├── .github/workflows/       # CI/CD pipeline
-├── code/                    # Original prototype (legacy)
-├── pyproject.toml           # Dependencies & tooling config
-├── Makefile                 # Developer commands
-└── CONTRIBUTING.md          # Contribution guide
-```
-
----
-
-## Development
-
-```bash
-# Install with dev dependencies
-pip install -e ".[all]"
-
-# Run tests
-make test
-
-# Lint & format
-make lint
-make format
-
-# Type check
-make typecheck
-```
-
----
-
-## Technologies
-
-| Component | Technology |
-|-----------|-----------|
-| **Language** | Python 3.11+ |
-| **API Framework** | FastAPI + Uvicorn |
-| **Embeddings** | SentenceTransformers (multilingual) |
-| **Vector Search** | FAISS (CPU) |
-| **LLM Inference** | llama-cpp-python (CPU) |
-| **LLM Model** | Phi-3 Mini (GGUF quantized) |
-| **Config** | Pydantic Settings + .env |
-| **Logging** | structlog (JSON) |
-| **Testing** | pytest + coverage |
-| **CI/CD** | GitHub Actions |
-| **Container** | Docker (multi-stage) |
-
----
-
-## Roadmap
-
-- [ ] Hybrid retrieval (dense + BM25 sparse search)
-- [ ] Cross-encoder reranking
-- [ ] Next.js web frontend with chat UI
-- [ ] Sanskrit morphological analysis (sandhi, samāsa)
-- [ ] Transliteration (Devanagari ↔ IAST ↔ Roman)
-- [ ] Multi-model LLM support (Phi-4, Gemma 3, Gemini)
-- [ ] Gamification (XP, badges, learning streaks)
-- [ ] AR flashcards for Sanskrit learning
-- [ ] Blockchain-verified learning credentials
-- [ ] Kubernetes deployment with autoscaling
-
----
-
-## Contributing
-
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## License
-
-MIT License — see [LICENSE](LICENSE) for details.
-
----
-
-<p align="center">🙏 संस्कृतं जीवतु — May Sanskrit thrive!</p>
+- [project-setup-guide.md](docs/project-setup-guide.md)
+- [transformation-roadmap.md](docs/transformation-roadmap.md)
+- [original-vs-current.md](docs/original-vs-current.md)

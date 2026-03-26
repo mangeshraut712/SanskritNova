@@ -4,11 +4,13 @@ from llama_cpp import Llama
 
 try:
     from .config import settings
-except ImportError:  # pragma: no cover - supports direct script execution
+except ImportError:  # pragma: no cover
     from config import settings
 
 
 os.environ["LLAMA_CPP_LOG_LEVEL"] = "ERROR"
+
+
 class Generator:
     def __init__(self):
         if not settings.model_path.exists():
@@ -29,7 +31,7 @@ class Generator:
             prompt,
             max_tokens=settings.llm_max_tokens,
             temperature=settings.llm_temperature,
-            stop=["<|end|>","<|assistant|>"]
+            stop=["<|end|>", "<|assistant|>"],
         )
         return result["choices"][0]["text"].strip()
 

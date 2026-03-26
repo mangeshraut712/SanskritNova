@@ -1,21 +1,21 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
-import numpy as np
 import faiss
-from sentence_transformers import SentenceTransformer
+import joblib
+import numpy as np
 
 try:
     from .config import settings
-except ImportError:  # pragma: no cover - supports direct script execution
+except ImportError:  # pragma: no cover
     from config import settings
 
 
 class Retriever:
     def __init__(self):
-        self.model = SentenceTransformer(settings.embedding_model)
+        self.backend = settings.embedding_backend.strip().lower()
+        self.model = self._load_model()
         if not settings.index_path.exists():
             raise FileNotFoundError(
                 f"Missing FAISS index at {settings.index_path}. Run build_index first."
@@ -23,6 +23,23 @@ class Retriever:
 
         self.index = faiss.read_index(str(settings.index_path))
         self.chunks = self._load_chunks()
+
+    def _load_model(self):
+        if self.backend == "sentence-transformers":
+            from sentence_transformers import SentenceTransformer
+
+            return SentenceTransformer(settings.embedding_model)
+        if self.backend == "tfidf":
+            if not settings.tfidf_vectorizer_path.exists():
+                raise FileNotFoundError(
+                    f"Missing TF-IDF vectorizer at {settings.tfidf_vectorizer_path}. "
+                    "Run build_index first."
+                )
+            return joblib.load(settings.tfidf_vectorizer_path)
+        raise ValueError(
+            f"Unsupported embedding backend: {settings.embedding_backend}. "
+            "Use 'tfidf' or 'sentence-transformers'."
+        )
 
     def _load_chunks(self):
         if settings.chunks_path.exists():
@@ -45,7 +62,12 @@ class Retriever:
         if not query.strip():
             return []
 
-        query_emb = self.model.encode([query], convert_to_numpy=True)
+        k = max(1, min(k, len(self.chunks)))
+        if self.backend == "sentence-transformers":
+            query_emb = self.model.encode([query], convert_to_numpy=True).astype("float32")
+        else:
+            query_emb = self.model.transform([query]).toarray().astype("float32")
+        faiss.normalize_L2(query_emb)
         _, indices = self.index.search(query_emb, k)
         results = []
         for rank, index in enumerate(indices[0], start=1):
@@ -63,6 +85,7 @@ class Retriever:
             )
 
         return results
+
 
 if __name__ == "__main__":
     r = Retriever()

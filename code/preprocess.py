@@ -1,10 +1,11 @@
 import re
 
+
 def clean_text(text):
-    # Keep Devanagari content, common Latin references, and sentence punctuation.
     text = re.sub(r"[^0-9A-Za-z\u0900-\u097F\s।॥,;:!?()'\"-]", " ", text)
     text = re.sub(r"\s+", " ", text)
     return text.strip()
+
 
 def chunk_text(text, chunk_size=300, overlap=50):
     if not text:
@@ -37,6 +38,7 @@ def chunk_text(text, chunk_size=300, overlap=50):
         chunks.append(" ".join(current_units))
 
     return chunks
+
 
 if __name__ == "__main__":
     sample = "अथ योगानुशासनम्। योगः चित्तवृत्तिनिरोधः॥"

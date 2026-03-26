@@ -12,6 +12,8 @@ class Settings:
     index_path: Path
     chunks_path: Path
     legacy_chunks_path: Path
+    tfidf_vectorizer_path: Path
+    embedding_backend: str
     embedding_model: str
     model_path: Path
     chunk_size: int
@@ -43,6 +45,9 @@ def load_settings() -> Settings:
         index_path=repo_root / os.getenv("SANSKRIT_RAG_INDEX_PATH", "code/faiss_index.bin"),
         chunks_path=repo_root / os.getenv("SANSKRIT_RAG_CHUNKS_PATH", "code/chunks.json"),
         legacy_chunks_path=repo_root / os.getenv("SANSKRIT_RAG_LEGACY_CHUNKS_PATH", "code/chunks.npy"),
+        tfidf_vectorizer_path=repo_root
+        / os.getenv("SANSKRIT_RAG_TFIDF_VECTORIZER_PATH", "code/tfidf_vectorizer.joblib"),
+        embedding_backend=os.getenv("SANSKRIT_RAG_EMBEDDING_BACKEND", "tfidf"),
         embedding_model=os.getenv(
             "SANSKRIT_RAG_EMBEDDING_MODEL",
             "distiluse-base-multilingual-cased-v1",

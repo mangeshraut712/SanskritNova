@@ -2,7 +2,7 @@ from __future__ import annotations
 
 try:
     from .rag_pipeline import SanskritRAG
-except ImportError:  # pragma: no cover - supports direct script execution
+except ImportError:  # pragma: no cover
     from rag_pipeline import SanskritRAG
 
 
