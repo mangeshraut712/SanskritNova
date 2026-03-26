@@ -1,7 +1,7 @@
 // Service Worker for SanskritNova PWA
-const CACHE_NAME = 'sanskritnova-v1.0.0';
-const STATIC_CACHE = 'sanskritnova-static-v1.0.0';
-const DYNAMIC_CACHE = 'sanskritnova-dynamic-v1.0.0';
+const CACHE_NAME = 'sanskritnova-v1.1.0';
+const STATIC_CACHE = 'sanskritnova-static-v1.1.0';
+const DYNAMIC_CACHE = 'sanskritnova-dynamic-v1.1.0';
 
 // Assets to cache immediately
 const STATIC_ASSETS = [
@@ -10,8 +10,8 @@ const STATIC_ASSETS = [
     '/styles.css',
     '/app.js',
     '/manifest.json',
-    '/icon-192.png',
-    '/icon-512.png'
+    '/icon-192.svg',
+    '/icon-512.svg'
 ];
 
 // Install event - cache static assets
@@ -53,7 +53,7 @@ self.addEventListener('fetch', event => {
     if (request.method !== 'GET') return;
 
     // Skip external requests
-    if (!url.origin.includes('localhost') && !url.origin.includes('sanskritnova')) return;
+    if (url.origin !== self.location.origin) return;
 
     // Handle API requests differently
     if (url.pathname.startsWith('/api/')) {
@@ -70,7 +70,16 @@ self.addEventListener('fetch', event => {
                 })
                 .catch(() => {
                     // Return cached API response if available
-                    return caches.match(request);
+                    return caches.match(request).then(response =>
+                        response || new Response(JSON.stringify({
+                            error: 'Offline'
+                        }), {
+                            status: 503,
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                    );
                 })
         );
         return;
@@ -97,44 +106,21 @@ self.addEventListener('fetch', event => {
                     })
                     .catch(() => {
                         // Return offline fallback for HTML pages
-                        if (request.headers.get('accept').includes('text/html')) {
-                            return caches.match('/index.html');
+                        const accept = request.headers.get('accept') || '';
+                        if (accept.includes('text/html')) {
+                            return caches.match('/index.html').then(response =>
+                                response || new Response('', {
+                                    status: 503,
+                                    statusText: 'Offline'
+                                })
+                            );
                         }
+
+                        return new Response('', {
+                            status: 503,
+                            statusText: 'Offline'
+                        });
                     });
             })
     );
 });
-
-// Background sync for offline messages
-self.addEventListener('sync', event => {
-    if (event.tag === 'background-sync-chat') {
-        event.waitUntil(syncChatMessages());
-    }
-});
-
-async function syncChatMessages() {
-    try {
-        const cache = await caches.open(DYNAMIC_CACHE);
-        const keys = await cache.keys();
-
-        const failedRequests = keys.filter(request =>
-            request.url.includes('/api/chat') || request.url.includes('/api/grounded-answer')
-        );
-
-        await Promise.all(
-            failedRequests.map(async request => {
-                try {
-                    const response = await fetch(request);
-                    if (response.ok) {
-                        await cache.put(request, response);
-                        await cache.delete(request); // Remove the failed request
-                    }
-                } catch (error) {
-                    console.log('Sync failed for:', request.url);
-                }
-            })
-        );
-    } catch (error) {
-        console.log('Background sync failed:', error);
-    }
-}

@@ -357,7 +357,7 @@ function renderTracks(tracks) {
         <button class="track-btn primary" onclick="startTrack('${track.slug}')">
           Start Track
         </button>
-        <button class="track-btn" onclick="downloadTrack('${track.slug}')">
+        <button class="track-btn" onclick="downloadTrack('${track.slug}', event)">
           📥 Download
         </button>
       </div>
@@ -373,7 +373,7 @@ function startTrack(slug) {
   alert(`Starting ${slug} track - Feature coming soon!`);
 }
 
-async function downloadTrack(slug) {
+async function downloadTrack(slug, event) {
   try {
     // Create offline content for the track
     const trackData = {
@@ -391,9 +391,11 @@ async function downloadTrack(slug) {
     alert(`Track "${slug}" downloaded for offline use!`);
 
     // Update button state
-    const btn = event.target;
-    btn.textContent = '✓ Downloaded';
-    btn.disabled = true;
+    const btn = event?.currentTarget;
+    if (btn) {
+      btn.textContent = '✓ Downloaded';
+      btn.disabled = true;
+    }
   } catch (error) {
     console.error('Download failed:', error);
     alert('Download failed. Please try again.');
@@ -404,10 +406,10 @@ async function downloadTrack(slug) {
 const langBtns = document.querySelectorAll('.lang-btn');
 langBtns.forEach(btn => {
   btn.addEventListener('click', (e) => {
-    const lang = e.target.dataset.lang;
+    const lang = e.currentTarget.dataset.lang;
     switchLanguage(lang);
     langBtns.forEach(b => b.classList.remove('active'));
-    e.target.classList.add('active');
+    e.currentTarget.classList.add('active');
   });
 });
 

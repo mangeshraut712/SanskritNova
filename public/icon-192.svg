@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="SanskritNova icon">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#120b1a" />
+      <stop offset="100%" stop-color="#1a1225" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff8c5a" />
+      <stop offset="100%" stop-color="#d4a853" />
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="40" fill="url(#bg)" />
+  <circle cx="96" cy="96" r="68" fill="none" stroke="url(#accent)" stroke-width="8" opacity="0.9" />
+  <circle cx="96" cy="96" r="48" fill="none" stroke="#f5f0e8" stroke-opacity="0.25" stroke-width="4" />
+  <text x="96" y="112" text-anchor="middle" font-size="72" font-family="serif" fill="#f5f0e8">ॐ</text>
+</svg>
