@@ -332,12 +332,14 @@ async def vision_google(request: VisionRequest):
 
 
 # Vercel serverless function handler
-from mangum import Mangum
+try:
+    from mangum import Mangum
 
-# Create Mangum handler for Vercel
-handler = Mangum(app, lifespan="off")
+    handler = Mangum(app, lifespan="off")
+except ImportError:  # pragma: no cover
+    handler = None
 
 # For local development
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
