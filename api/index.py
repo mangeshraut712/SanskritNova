@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
@@ -125,8 +126,21 @@ VOWEL_SIGNS = {
 }
 
 MARKS = {"ं": "ṃ", "ः": "ḥ", "ँ": "m̐", "ऽ": "'", "।": ".", "॥": ".."}
-DIGITS = {"०": "0", "१": "1", "२": "2", "३": "3", "४": "4", "५": "5", "६": "6", "७": "7", "८": "8", "९": "9"}
+DIGITS = {
+    "०": "0",
+    "१": "1",
+    "२": "2",
+    "३": "3",
+    "४": "4",
+    "५": "5",
+    "६": "6",
+    "७": "7",
+    "८": "8",
+    "९": "9",
+}
 VIRAMA = "्"
+REPO_ROOT = Path(__file__).resolve().parent.parent
+LEGACY_CHUNKS_PATH = REPO_ROOT / "code/chunks.npy"
 
 
 class ChatRequest(BaseModel):
@@ -213,6 +227,59 @@ def _mode_instruction(mode: str) -> str:
     return "Teach the user as a Sanskrit tutor. Use examples."
 
 
+@lru_cache(maxsize=1)
+def _load_local_retriever():
+    try:
+        from sanskrit_rag.retriever import Retriever
+    except Exception:
+        return None
+
+    try:
+        return Retriever()
+    except Exception:
+        return None
+
+
+def _retrieve_with_local_retriever(query: str, k: int) -> list[dict[str, object]]:
+    retriever = _load_local_retriever()
+    if retriever is None:
+        return []
+
+    try:
+        return [
+            {
+                "source": item["source"],
+                "chunk_id": item["chunk_id"],
+                "text": item["text"],
+            }
+            for item in retriever.retrieve(query, k=k)
+        ]
+    except Exception:
+        return []
+
+
+def _retrieve_from_legacy_chunks(query: str, k: int) -> list[dict[str, object]]:
+    if not LEGACY_CHUNKS_PATH.exists():
+        return []
+
+    try:
+        chunks = np.load(LEGACY_CHUNKS_PATH, allow_pickle=True).tolist()
+    except Exception:
+        return []
+
+    tokens = [token for token in query.lower().split() if token]
+    ranked = []
+    for index, text in enumerate(chunks):
+        text_str = str(text)
+        score = sum(text_str.lower().count(token) for token in tokens) if tokens else 0
+        ranked.append((score, index, text_str))
+    ranked.sort(key=lambda item: item[0], reverse=True)
+    return [
+        {"source": "SanskritCorpus", "chunk_id": item[1], "text": item[2]}
+        for item in ranked[:k]
+    ]
+
+
 def transliterate_to_iast(text: str) -> str:
     output: list[str] = []
     index = 0
@@ -253,25 +320,10 @@ def transliterate_to_iast(text: str) -> str:
 
 
 def _retrieve_grounded_results(query: str, k: int) -> list[dict[str, object]]:
-    chunks_path = Path("code/chunks.npy")
-    if not chunks_path.exists():
-        return []
-    try:
-        chunks = np.load(chunks_path, allow_pickle=True).tolist()
-    except Exception:
-        return []
-
-    tokens = [token for token in query.lower().split() if token]
-    ranked = []
-    for index, text in enumerate(chunks):
-        text_str = str(text)
-        score = sum(text_str.lower().count(token) for token in tokens) if tokens else 0
-        ranked.append((score, index, text_str))
-    ranked.sort(key=lambda item: item[0], reverse=True)
-    return [
-        {"source": "SanskritCorpus", "chunk_id": item[1], "text": item[2]}
-        for item in ranked[:k]
-    ]
+    results = _retrieve_with_local_retriever(query, k)
+    if results:
+        return results
+    return _retrieve_from_legacy_chunks(query, k)
 
 
 async def _grounded_openrouter_answer(message: str, sources: list[dict[str, object]]) -> str:

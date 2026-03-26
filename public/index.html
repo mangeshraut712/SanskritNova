@@ -126,11 +126,11 @@
         </div>
 
         <div class="chat-panel">
-          <div class="chat-messages" id="chat-messages">
+          <div class="chat-messages" id="chat-messages" aria-live="polite" aria-relevant="additions text">
             <div class="message bot">
               <div class="message-avatar">🕉️</div>
               <div class="message-content">
-                <p>स्वागतं भवतः।SanskritNova awaits your inquiry. How shall we explore the depths of Sanskrit wisdom
+                <p>स्वागतं भवतः। SanskritNova awaits your inquiry. How shall we explore the depths of Sanskrit wisdom
                   together?</p>
               </div>
             </div>
@@ -139,7 +139,8 @@
           <form id="chat-form" class="chat-input-area">
             <div class="input-wrapper">
               <span class="input-decor">❧</span>
-              <input type="text" id="chat-input" placeholder="Type your query..." autocomplete="off">
+              <input type="text" id="chat-input" placeholder="Type your query..." autocomplete="off"
+                aria-label="Chat question">
               <button type="submit" class="send-btn">
                 <span>प्रेषय</span>
                 <span class="btn-icon">↗</span>
@@ -163,7 +164,8 @@
           <div class="card-pattern"></div>
           <div class="translit-input-group">
             <label>देवनागरी</label>
-            <input type="text" id="translit-input" placeholder="रामो गच्छति सीतां प्रति">
+            <input type="text" id="translit-input" placeholder="रामो गच्छति सीतां प्रति"
+              aria-label="Devanagari text to transliterate">
           </div>
           <button id="translit-btn" class="translit-btn">
             <span>परिवर्तय</span>

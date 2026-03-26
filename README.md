@@ -6,7 +6,7 @@ SanskritNova AI is a Sanskrit learning web app backed by a preserved local RAG p
 
 Working now:
 - AI chat through `learn`, `translate`, and `analyze` modes
-- grounded answers from the original Sanskrit corpus
+- grounded answers from the original Sanskrit corpus via the local retriever, with a legacy chunk fallback
 - Devanagari to IAST transliteration
 - study tracks from `GET /api/tracks`
 - a static frontend in `public/` with API-backed interactions
@@ -28,6 +28,12 @@ k8s/      Optional Kubernetes manifest
 ```bash
 python -m venv .venv
 source .venv/bin/activate
+pip install -e ".[dev]"
+```
+
+If you only want the lightweight runtime stack:
+
+```bash
 pip install -r requirements.txt
 ```
 
@@ -49,6 +55,8 @@ The optional local RAG extras are needed to rebuild or fully use the original re
 ```bash
 make serve-api
 make serve-site
+make test
+make lint
 ```
 
 Original RAG commands:
@@ -64,7 +72,7 @@ make rag-cli
 
 It currently:
 - prefers the retrieval path exposed through `sanskrit_rag.retriever`
-- falls back to scanning `code/chunks.npy` if the full local retrieval stack is unavailable
+- falls back to scanning `code/chunks.npy` if the full local retrieval stack or artifacts are unavailable
 
 For local indexing stability, the default embedding backend is:
 

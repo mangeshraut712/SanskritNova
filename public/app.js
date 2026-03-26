@@ -78,8 +78,15 @@ async function apiCall(endpoint, data) {
   });
 
   if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.detail || 'Request failed');
+    let errorMessage = 'Request failed';
+    try {
+      const error = await response.json();
+      errorMessage = error.detail || error.message || errorMessage;
+    } catch {
+      const text = await response.text();
+      errorMessage = text || errorMessage;
+    }
+    throw new Error(errorMessage);
   }
 
   return response.json();
@@ -160,8 +167,9 @@ if (translitBtn) {
 }
 
 if (translitInput) {
-  translitInput.addEventListener('keypress', (e) => {
+  translitInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
+      e.preventDefault();
       handleTranslit();
     }
   });

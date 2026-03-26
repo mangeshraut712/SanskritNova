@@ -7,11 +7,17 @@ This repo contains:
 
 ## Install
 
-Create a virtual environment and install the lightweight web stack:
+Create a virtual environment and install the web app with the development tooling:
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
+pip install -e ".[dev]"
+```
+
+If you only want the lightweight runtime stack:
+
+```bash
 pip install -r requirements.txt
 ```
 
@@ -44,6 +50,13 @@ make serve-site
 ```
 
 The frontend uses `/api/*` in deployed environments and the local API during development.
+
+Run the validation checks:
+
+```bash
+make test
+make lint
+```
 
 ## Run The Original RAG Workflow
 
@@ -90,7 +103,7 @@ Use [`.env.example`](../.env.example) as the local template.
 
 It currently:
 - prefers the retrieval path exposed through `sanskrit_rag.retriever`
-- falls back to `code/chunks.npy` if the full local retrieval stack is unavailable
+- falls back to `code/chunks.npy` if the full local retrieval stack or artifacts are unavailable
 
 ## Deployment Notes
 
@@ -100,4 +113,4 @@ It currently:
 
 ## Operational Reality
 
-For the strongest grounded behavior, the original local RAG artifacts must exist and the local RAG stack must be installed. The lightweight web install alone is enough for basic chat, tracks, and transliteration.
+For the strongest grounded behavior, the original local RAG artifacts should exist and the local RAG stack should be installed. The lightweight web install is enough for basic chat, tracks, transliteration, and the legacy grounded-answer fallback.
