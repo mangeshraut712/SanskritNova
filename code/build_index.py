@@ -1,30 +1,61 @@
-from sentence_transformers import SentenceTransformer
-import faiss
+from __future__ import annotations
+
+import json
+
 import numpy as np
-from ingest import load_documents
-from preprocess import clean_text, chunk_text
+import faiss
+from sentence_transformers import SentenceTransformer
+
+try:
+    from .config import settings
+    from .ingest import load_document_records
+    from .preprocess import chunk_text, clean_text
+except ImportError:  # pragma: no cover - supports direct script execution
+    from config import settings
+    from ingest import load_document_records
+    from preprocess import chunk_text, clean_text
 
 def build_faiss_index():
-    model = SentenceTransformer("distiluse-base-multilingual-cased-v1")
+    model = SentenceTransformer(settings.embedding_model)
+    records = load_document_records(settings.data_dir)
+    chunk_records = []
 
-    docs = load_documents("data")
-    all_chunks = []
+    for record in records:
+        cleaned = clean_text(record["text"])
+        for chunk_id, chunk in enumerate(
+            chunk_text(cleaned, settings.chunk_size, settings.chunk_overlap)
+        ):
+            if chunk:
+                chunk_records.append(
+                    {
+                        "chunk_id": chunk_id,
+                        "source": record["source"],
+                        "text": chunk,
+                    }
+                )
 
-    for doc in docs:
-        cleaned = clean_text(doc)
-        chunks = chunk_text(cleaned)
-        all_chunks.extend(chunks)
+    if not chunk_records:
+        raise ValueError(f"No indexable Sanskrit content found in {settings.data_dir}")
 
-    embeddings = model.encode(all_chunks, convert_to_numpy=True)
+    embeddings = model.encode(
+        [record["text"] for record in chunk_records],
+        convert_to_numpy=True,
+    )
 
     dim = embeddings.shape[1]
     index = faiss.IndexFlatL2(dim)
     index.add(embeddings)
 
-    np.save("code/chunks.npy", np.array(all_chunks))
-    faiss.write_index(index, "code/faiss_index.bin")
+    settings.index_path.parent.mkdir(parents=True, exist_ok=True)
+    settings.chunks_path.parent.mkdir(parents=True, exist_ok=True)
 
-    print("Index built with", len(all_chunks), "chunks")
+    with settings.chunks_path.open("w", encoding="utf-8") as f:
+        json.dump(chunk_records, f, ensure_ascii=False, indent=2)
+
+    np.save(settings.legacy_chunks_path, np.array([record["text"] for record in chunk_records]))
+    faiss.write_index(index, str(settings.index_path))
+
+    print("Index built with", len(chunk_records), "chunks")
 
 if __name__ == "__main__":
     build_faiss_index()
