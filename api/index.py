@@ -50,109 +50,48 @@ Rules:
 """
 
 INDEPENDENT_VOWELS = {
-    "अ": "a",
-    "आ": "ā",
-    "इ": "i",
-    "ई": "ī",
-    "उ": "u",
-    "ऊ": "ū",
-    "ऋ": "ṛ",
-    "ॠ": "ṝ",
-    "ऌ": "ḷ",
-    "ॡ": "ḹ",
-    "ए": "e",
-    "ऐ": "ai",
-    "ओ": "o",
-    "औ": "au",
+    "अ": "a", "आ": "ā", "इ": "i", "ई": "ī", "उ": "u", "ऊ": "ū",
+    "ऋ": "ṛ", "ॠ": "ṝ", "ऌ": "ḷ", "ॡ": "ḹ", "ए": "e", "ऐ": "ai",
+    "ओ": "o", "औ": "au",
 }
 
 CONSONANTS = {
-    "क": "k",
-    "ख": "kh",
-    "ग": "g",
-    "घ": "gh",
-    "ङ": "ṅ",
-    "च": "c",
-    "छ": "ch",
-    "ज": "j",
-    "झ": "jh",
-    "ञ": "ñ",
-    "ट": "ṭ",
-    "ठ": "ṭh",
-    "ड": "ḍ",
-    "ढ": "ḍh",
-    "ण": "ṇ",
-    "त": "t",
-    "थ": "th",
-    "द": "d",
-    "ध": "dh",
-    "न": "n",
-    "प": "p",
-    "फ": "ph",
-    "ब": "b",
-    "भ": "bh",
-    "म": "m",
-    "य": "y",
-    "र": "r",
-    "ल": "l",
-    "व": "v",
-    "श": "ś",
-    "ष": "ṣ",
-    "स": "s",
-    "ह": "h",
+    "क": "k", "ख": "kh", "ग": "g", "घ": "gh", "ङ": "ṅ",
+    "च": "c", "छ": "ch", "ज": "j", "झ": "jh", "ञ": "ñ",
+    "ट": "ṭ", "ठ": "ṭh", "ड": "ḍ", "ढ": "ḍh", "ण": "ṇ",
+    "त": "t", "थ": "th", "द": "d", "ध": "dh", "न": "n",
+    "प": "p", "फ": "ph", "ब": "b", "भ": "bh", "म": "m",
+    "य": "y", "र": "r", "ल": "l", "व": "v", "श": "ś",
+    "ष": "ṣ", "स": "s", "ह": "h",
 }
 
 VOWEL_SIGNS = {
-    "ा": "ā",
-    "ि": "i",
-    "ी": "ī",
-    "ु": "u",
-    "ू": "ū",
-    "ृ": "ṛ",
-    "ॄ": "ṝ",
-    "ॢ": "ḷ",
-    "ॣ": "ḹ",
-    "े": "e",
-    "ै": "ai",
-    "ो": "o",
-    "ौ": "au",
+    "ा": "ā", "ि": "i", "ी": "ī", "ु": "u", "ू": "ū",
+    "ृ": "ṛ", "ॄ": "ṝ", "ॢ": "ḷ", "ॣ": "ḹ", "े": "e",
+    "ै": "ai", "ो": "o", "ौ": "au",
 }
 
 MARKS = {
-    "ं": "ṃ",
-    "ः": "ḥ",
-    "ँ": "m̐",
-    "ऽ": "'",
-    "।": ".",
-    "॥": "..",
+    "ं": "ṃ", "ः": "ḥ", "ँ": "m̐", "ऽ": "'", "।": ".", "॥": "..",
 }
 
 DIGITS = {
-    "०": "0",
-    "१": "1",
-    "२": "2",
-    "३": "3",
-    "४": "4",
-    "५": "5",
-    "६": "6",
-    "७": "7",
-    "८": "8",
-    "९": "9",
+    "०": "0", "१": "1", "२": "2", "३": "3", "४": "4",
+    "५": "5", "६": "6", "७": "7", "८": "8", "९": "9",
 }
 
 VIRAMA = "्"
 
+# --- Models ---
 
 class ChatRequest(BaseModel):
     message: str = Field(..., min_length=1, max_length=4000)
     mode: Literal["learn", "translate", "analyze"] = "learn"
 
-
 class ChatResponse(BaseModel):
     reply: str
     model: str
     mode: str
-
 
 class Track(BaseModel):
     slug: str
@@ -161,37 +100,48 @@ class Track(BaseModel):
     duration: str
     focus: str
 
-
 class TransliterationRequest(BaseModel):
-    text: str = Field(..., min_length=1, max_length=4000)
-
+    text: str = Field(..., min_length=1)
 
 class TransliterationResponse(BaseModel):
     devanagari: str
     iast: str
 
-
 class GroundedAnswerRequest(BaseModel):
-    message: str = Field(..., min_length=1, max_length=4000)
+    message: str = Field(..., min_length=1)
     k: int = Field(default=3, ge=1, le=8)
-
 
 class GroundedSource(BaseModel):
     source: str
     chunk_id: int | str
     text: str
 
-
 class GroundedAnswerResponse(BaseModel):
     reply: str
     model: str
     sources: list[GroundedSource]
 
+class TranslateRequest(BaseModel):
+    text: str = Field(..., min_length=1)
+    target_language: str = "en"
+
+class TranslateResponse(BaseModel):
+    translated_text: str
+    detected_source_language: str
+
+class VisionRequest(BaseModel):
+    image_base64: str = Field(..., description="Base64 encoded image string")
+
+class VisionResponse(BaseModel):
+    text: str
+    explanation: str | None = None
+
+# --- App ---
 
 app = FastAPI(
     title="SanskritNova AI API",
     version="2.0.0",
-    description="FastAPI backend for SanskritNova AI, deployed as a Vercel Python function.",
+    description="FastAPI backend for SanskritNova AI.",
 )
 
 app.add_middleware(
@@ -202,19 +152,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# --- Helpers ---
 
 def _require_api_key() -> str:
     api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
         raise HTTPException(
             status_code=500,
-            detail=(
-                "OPENROUTER_API_KEY is not configured. Add it to your local environment "
-                "or the Vercel project environment variables."
-            ),
+            detail="OPENROUTER_API_KEY not configured."
         )
     return api_key
-
 
 def _openrouter_headers() -> dict[str, str]:
     return {
@@ -224,193 +171,110 @@ def _openrouter_headers() -> dict[str, str]:
         "X-Title": os.getenv("OPENROUTER_APP_NAME", "SanskritNova AI"),
     }
 
-
 def _openrouter_model() -> str:
-    return os.getenv("OPENROUTER_MODEL", "openai/gpt-4.1-mini")
-
+    return os.getenv("OPENROUTER_MODEL", "openai/gpt-5-vision")
 
 def _mode_instruction(mode: str) -> str:
-    if mode == "grounded":
-        return "Answer with explicit grounding and use only retrieved context when available."
     if mode == "translate":
-        return (
-            "Translate the user input clearly. Preserve nuance and include "
-            "transliteration when useful."
-        )
+        return "Translate the input clearly. Preserve nuance and include transliteration."
     if mode == "analyze":
-        return "Analyze the Sanskrit grammar, meaning, and context. Keep the structure readable."
-    return "Teach the user as a Sanskrit tutor. Use examples and keep the explanation practical."
-
+        return "Analyze the Sanskrit grammar, meaning, and context. Keep it readable."
+    return "Teach the user as a Sanskrit tutor. Use examples."
 
 def transliterate_to_iast(text: str) -> str:
     output: list[str] = []
     index = 0
-
     while index < len(text):
         char = text[index]
-
         if char in INDEPENDENT_VOWELS:
             output.append(INDEPENDENT_VOWELS[char])
             index += 1
             continue
-
         if char in CONSONANTS:
             chunk = CONSONANTS[char]
             next_char = text[index + 1] if index + 1 < len(text) else ""
-
             if next_char == VIRAMA:
                 output.append(chunk)
                 index += 2
                 continue
-
             if next_char in VOWEL_SIGNS:
                 output.append(chunk + VOWEL_SIGNS[next_char])
                 index += 2
                 continue
-
             output.append(chunk + "a")
             index += 1
             continue
-
         if char in MARKS:
             output.append(MARKS[char])
             index += 1
             continue
-
         if char in DIGITS:
             output.append(DIGITS[char])
             index += 1
             continue
-
         if char in VOWEL_SIGNS or char == VIRAMA:
             index += 1
             continue
-
         output.append(char)
         index += 1
-
     return "".join(output)
 
-
-def _fallback_grounded_results(query: str, k: int) -> list[dict[str, object]]:
+def _retrieve_grounded_results(query: str, k: int) -> list[dict[str, object]]:
     chunks_path = Path("code/chunks.npy")
     if not chunks_path.exists():
-        raise FileNotFoundError(
-            "Missing Sanskrit chunk index at code/chunks.npy. Build the original RAG index first."
-        )
-
+        return []
     chunks = np.load(chunks_path, allow_pickle=True).tolist()
-    tokens = [token for token in query.lower().split() if token]
+    tokens = [t for t in query.lower().split() if t]
     ranked = []
-    for index, chunk in enumerate(chunks):
-        text = str(chunk)
-        lowered = text.lower()
-        score = sum(lowered.count(token) for token in tokens) if tokens else 0
-        ranked.append((score, index, text))
-
-    ranked.sort(key=lambda item: (item[0], -item[1]), reverse=True)
-    return [
-        {"source": "Rag-docs.docx", "chunk_id": index, "text": text}
-        for _, index, text in ranked[:k]
-        if text.strip()
-    ]
-
-
-def _retrieve_grounded_results(query: str, k: int) -> list[dict[str, object]]:
-    try:
-        from sanskrit_rag.retriever import Retriever
-
-        return Retriever().retrieve(query, k=k)
-    except Exception:
-        return _fallback_grounded_results(query, k)
-
+    for idx, text in enumerate(chunks):
+        text_str = str(text)
+        score = sum(text_str.lower().count(t) for t in tokens) if tokens else 0
+        ranked.append((score, idx, text_str))
+    ranked.sort(key=lambda x: x[0], reverse=True)
+    return [{"source": "SanskritCorpus", "chunk_id": x[1], "text": x[2]} for x in ranked[:k]]
 
 async def _grounded_openrouter_answer(message: str, sources: list[dict[str, object]]) -> str:
-    context = "\n\n".join(
-        f"[{item['source']}#{item['chunk_id']}]\n{item['text']}" for item in sources
-    )
+    context = "\n\n".join(f"[{s['source']}#{s['chunk_id']}]\n{s['text']}" for s in sources)
     payload = {
         "model": _openrouter_model(),
         "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
-            {
-                "role": "system",
-                "content": (
-                    "Use only the supplied Sanskrit context. Answer clearly. "
-                    "End with a short 'Sources:' line using the provided source labels."
-                ),
-            },
             {"role": "system", "content": f"Context:\n{context}"},
             {"role": "user", "content": message},
         ],
     }
+    async with httpx.AsyncClient(timeout=45.0) as client:
+        res = await client.post(OPENROUTER_URL, headers=_openrouter_headers(), json=payload)
+        res.raise_for_status()
+        return res.json()["choices"][0]["message"]["content"].strip()
 
-    try:
-        async with httpx.AsyncClient(timeout=45.0) as client:
-            response = await client.post(
-                OPENROUTER_URL, headers=_openrouter_headers(), json=payload
-            )
-            response.raise_for_status()
-    except httpx.HTTPStatusError as exc:
-        raise HTTPException(status_code=exc.response.status_code, detail=exc.response.text) from exc
-    except httpx.HTTPError as exc:
-        raise HTTPException(status_code=502, detail=str(exc)) from exc
-
-    body = response.json()
-    try:
-        return body["choices"][0]["message"]["content"].strip()
-    except (KeyError, IndexError, TypeError) as exc:
-        raise HTTPException(status_code=502, detail="Invalid response from OpenRouter.") from exc
-
+# --- Routes ---
 
 @app.get("/api/health")
-async def health() -> dict[str, str]:
-    return {"status": "ok", "service": "sanskritai-studio-api"}
-
+async def health():
+    return {"status": "ok", "service": "sanskritnova-ai-api"}
 
 @app.get("/api/info")
-async def info() -> dict[str, object]:
+async def info():
     return {
         "name": "SanskritNova AI",
-        "frontend": "static-site",
-        "backend": "fastapi",
-        "provider": "openrouter",
-        "chat_modes": ["learn", "translate", "analyze"],
-        "grounded_answer": True,
-        "transliteration": True,
+        "provider": "openrouter + google",
+        "features": ["chat", "grounded", "transliteration", "vision", "translate"]
     }
 
-
 @app.get("/api/tracks", response_model=list[Track])
-async def tracks() -> list[Track]:
-    return [Track(**track) for track in LEARNING_TRACKS]
-
+async def tracks():
+    return [Track(**t) for t in LEARNING_TRACKS]
 
 @app.post("/api/transliterate", response_model=TransliterationResponse)
-async def transliterate(request: TransliterationRequest) -> TransliterationResponse:
+async def transliterate_api(request: TransliterationRequest):
     return TransliterationResponse(
         devanagari=request.text,
-        iast=transliterate_to_iast(request.text),
+        iast=transliterate_to_iast(request.text)
     )
-
-
-@app.post("/api/grounded-answer", response_model=GroundedAnswerResponse)
-async def grounded_answer(request: GroundedAnswerRequest) -> GroundedAnswerResponse:
-    try:
-        sources = _retrieve_grounded_results(request.message, request.k)
-    except Exception as exc:
-        raise HTTPException(status_code=503, detail=str(exc)) from exc
-
-    reply = await _grounded_openrouter_answer(request.message, sources)
-    return GroundedAnswerResponse(
-        reply=reply,
-        model=_openrouter_model(),
-        sources=[GroundedSource(**source) for source in sources],
-    )
-
 
 @app.post("/api/chat", response_model=ChatResponse)
-async def chat(request: ChatRequest) -> ChatResponse:
+async def chat_api(request: ChatRequest):
     payload = {
         "model": _openrouter_model(),
         "messages": [
@@ -419,25 +283,49 @@ async def chat(request: ChatRequest) -> ChatResponse:
             {"role": "user", "content": request.message},
         ],
     }
-
-    try:
-        async with httpx.AsyncClient(timeout=45.0) as client:
-            response = await client.post(
-                OPENROUTER_URL, headers=_openrouter_headers(), json=payload
-            )
-            response.raise_for_status()
-    except httpx.HTTPStatusError as exc:
-        raise HTTPException(
-            status_code=exc.response.status_code,
-            detail=exc.response.text,
-        ) from exc
-    except httpx.HTTPError as exc:
-        raise HTTPException(status_code=502, detail=str(exc)) from exc
-
-    body = response.json()
-    try:
-        reply = body["choices"][0]["message"]["content"].strip()
-    except (KeyError, IndexError, TypeError) as exc:
-        raise HTTPException(status_code=502, detail="Invalid response from OpenRouter.") from exc
-
+    async with httpx.AsyncClient(timeout=45.0) as client:
+        res = await client.post(OPENROUTER_URL, headers=_openrouter_headers(), json=payload)
+        res.raise_for_status()
+        reply = res.json()["choices"][0]["message"]["content"].strip()
     return ChatResponse(reply=reply, model=_openrouter_model(), mode=request.mode)
+
+@app.post("/api/grounded-answer", response_model=GroundedAnswerResponse)
+async def grounded_api(request: GroundedAnswerRequest):
+    sources = _retrieve_grounded_results(request.message, request.k)
+    reply = await _grounded_openrouter_answer(request.message, sources)
+    return GroundedAnswerResponse(reply=reply, model=_openrouter_model(), sources=[GroundedSource(**s) for s in sources])
+
+@app.post("/api/translate-google", response_model=TranslateResponse)
+async def translate_google(request: TranslateRequest):
+    api_key = os.getenv("GOOGLE_API_KEY")
+    url = f"https://translation.googleapis.com/language/translate/v2?key={api_key}"
+    payload = {"q": request.text, "target": request.target_language, "format": "text"}
+    async with httpx.AsyncClient() as client:
+        res = await client.post(url, json=payload)
+        res.raise_for_status()
+        data = res.json()["data"]["translations"][0]
+        return TranslateResponse(translated_text=data["translatedText"], detected_source_language=data.get("detectedSourceLanguage", "sa"))
+
+@app.post("/api/vision-ocr", response_model=VisionResponse)
+async def vision_google(request: VisionRequest):
+    api_key = os.getenv("GOOGLE_API_KEY")
+    url = f"https://vision.googleapis.com/v1/images:annotate?key={api_key}"
+    payload = {"requests": [{"image": {"content": request.image_base64}, "features": [{"type": "TEXT_DETECTION"}]}]}
+    async with httpx.AsyncClient() as client:
+        res = await client.post(url, json=payload)
+        res.raise_for_status()
+        data = res.json()["responses"][0]
+        full_text = data.get("textAnnotations", [{}])[0].get("description", "")
+        explanation = ""
+        if full_text:
+            payload_chat = {
+                "model": _openrouter_model(),
+                "messages": [
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": f"Briefly explain this Sanskrit text: {full_text}"}
+                ]
+            }
+            ai_res = await client.post(OPENROUTER_URL, headers=_openrouter_headers(), json=payload_chat)
+            if ai_res.is_success:
+                explanation = ai_res.json()["choices"][0]["message"]["content"].strip()
+        return VisionResponse(text=full_text, explanation=explanation)

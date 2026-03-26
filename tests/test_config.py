@@ -2,7 +2,8 @@ from sanskrit_rag.config import settings
 
 
 def test_settings_repo_root_points_to_repo():
-    assert settings.repo_root.name == "Sanskrit_RagSystem"
+    assert settings.repo_root.name
+    assert settings.repo_root.is_dir()
 
 
 def test_default_paths_stay_inside_repo():

@@ -22,7 +22,8 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
-    "ruff>=0.9"
+    "ruff>=0.9",
+    "bandit>=1.8"
 ]
 local = [
     "sentence-transformers>=3.4",

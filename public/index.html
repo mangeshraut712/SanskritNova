@@ -4,312 +4,218 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SanskritNova AI</title>
+  <title>SanskritNova AI | Ancient Wisdom, Modern Intelligence</title>
   <meta name="description"
-    content="A Sanskrit study interface with chat, grounded answers, transliteration, and live study tracks." />
+    content="Experience the synergy of ancient Sanskrit literature and cutting-edge Google AI. Transliterate, translate, and explore the Sanskrit corpus with Vision OCR and Grounded RAG." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="brand-lockup">
-        <div class="brand-mark">
-          <span></span>
-        </div>
-        <div class="brand-copy">
-          <p class="eyebrow">Sanskrit study</p>
-          <h1>SanskritNova AI</h1>
-          <p class="sanskrit-subtitle">संस्कृतस्य नवोन्मेषः</p>
+  <div class="glow-bg"></div>
+
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon"></div>
+        <div class="logo-text">
+          <span class="logo-main">SanskritNova</span>
+          <span class="logo-subtitle">Navonmeṣaḥ</span>
         </div>
       </div>
-      <nav class="site-nav">
-        <a href="#playground">Chat</a>
-        <a href="#features">Features</a>
-        <a href="#about-sanskrit">Sanskrit</a>
-        <a href="#learn">Learn</a>
+      <nav class="main-nav">
+        <a href="#vision" class="nav-item">Vision</a>
+        <a href="#translate" class="nav-item">Translate</a>
+        <a href="#chat" class="nav-item">Chat</a>
+        <a href="#transliterate" class="nav-item">IAST</a>
+        <a href="#tracks" class="nav-item">Tracks</a>
       </nav>
-    </header>
+      <div class="header-actions">
+        <span class="status-indicator">
+          <span class="status-dot"></span>
+          <span id="global-status">System Ready</span>
+        </span>
+      </div>
+    </div>
+  </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="kicker">Chat, grounded answers, transliteration</p>
-          <h2>A simple interface for reading and studying Sanskrit.</h2>
-          <p class="lede">
-            Use the chat for explanations, switch to Grounded for source-backed answers, and use
-            transliteration when you need a Roman-script reading aid.
-          </p>
-          <div class="hero-quote">
-            <span class="sanskrit">योगः कर्मसु कौशलम्</span>
-            <span class="english">Yoga is skill in action.</span>
-          </div>
-          <div class="hero-actions">
-            <a class="button primary" href="#playground">Open chat</a>
-            <a class="button secondary" href="#features">View features</a>
-          </div>
-          <ul class="tag-row">
-            <li>Sanskrit text</li>
-            <li>Grounded Answers</li>
-            <li>Transliteration</li>
-            <li>Study tracks</li>
-            <li>Learn mode</li>
-            <li>Analyze mode</li>
-          </ul>
+  <main class="content-container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="badge">V2.0.0 Modernized</div>
+        <h1 class="hero-title">Decode the Ancient<br><span class="accent">with Precision.</span></h1>
+        <p class="hero-description">
+          SanskritNova combines Google Cloud Vision OCR, neural translation, and grounded document retrieval to bring
+          unparalleled clarity to your Sanskrit study.
+        </p>
+        <div class="hero-cta">
+          <a href="#vision" class="btn btn-primary">Start with Vision OCR</a>
+          <a href="#chat" class="btn btn-secondary">Explore Chat</a>
         </div>
+      </div>
+      <div class="hero-visual">
+        <div class="sanskrit-sphere">
+          <div class="sphere-text">योगः कर्मसु कौशलम्</div>
+        </div>
+      </div>
+    </section>
 
-        <aside class="hero-card" id="playground">
-          <div class="panel-top">
-            <div>
-              <p class="panel-label">Study Console</p>
-              <h3>Chat, ground, translate, analyze</h3>
+    <!-- Lab Grid -->
+    <div class="labs-grid">
+      <!-- Vision OCR Lab -->
+      <section id="vision" class="lab-card vision-lab">
+        <div class="lab-header">
+          <div class="lab-icon ic-vision"></div>
+          <div>
+            <h3>Vision OCR Lab</h3>
+            <p>Upload handwritten or printed Sanskrit for instant decoding.</p>
+          </div>
+        </div>
+        <div class="vision-interface">
+          <div class="drop-zone" id="vision-drop-zone">
+            <input type="file" id="vision-upload" accept="image/*" hidden />
+            <div class="drop-prompt">
+              <span class="icon-upload"></span>
+              <p>Click to upload or drag image</p>
+              <small>JPEG, PNG supported</small>
             </div>
-            <span id="status-pill">Ready</span>
           </div>
-
-          <div class="mode-switch" role="tablist" aria-label="Learning mode">
-            <button class="mode-button active" data-mode="learn">Learn</button>
-            <button class="mode-button" data-mode="translate">Translate</button>
-            <button class="mode-button" data-mode="analyze">Analyze</button>
-            <button class="mode-button grounded-toggle" data-mode="grounded">Grounded</button>
+          <div class="vision-result hidden" id="vision-result-container">
+            <div class="result-box">
+              <p class="label">Detected Text</p>
+              <div id="ocr-text" class="devanagari-display"></div>
+            </div>
+            <div class="result-box">
+              <p class="label">AI Insight</p>
+              <div id="ocr-explanation" class="insight-display"></div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div class="message-thread" id="message-thread">
-            <article class="message assistant">
-              <p>Welcome to SanskritNova AI! Choose a mode above to start learning. Use <strong>Grounded</strong> for
-                answers backed by the Sanskrit corpus.</p>
-            </article>
+      <!-- Translation Lab -->
+      <section id="translate" class="lab-card translate-lab">
+        <div class="lab-header">
+          <div class="lab-icon ic-translate"></div>
+          <div>
+            <h3>Translation Lab</h3>
+            <p>Powered by Google Cloud Neutral Translation.</p>
           </div>
+        </div>
+        <div class="translate-interface">
+          <textarea id="translate-input" placeholder="Enter Sanskrit text..."></textarea>
+          <div class="translate-actions">
+            <button id="btn-translate-google" class="btn btn-action">Translate to English</button>
+          </div>
+          <div class="translate-output" id="translation-output">
+            <p class="label">Result</p>
+            <div id="translated-text" class="output-display">...</div>
+          </div>
+        </div>
+      </section>
 
-          <form id="chat-form" class="composer">
-            <label class="sr-only" for="prompt">Prompt</label>
-            <textarea id="prompt" name="prompt" rows="4"
-              placeholder="Example: Explain योगः चित्तवृत्तिनिरोधः in clear English, then show the Sanskrit sense."></textarea>
-            <div class="composer-footer">
-              <div class="sample-prompts">
-                <button type="button" class="sample-prompt" data-mode="learn">Explain योगः चित्तवृत्तिनिरोधः in simple
-                  English</button>
-                <button type="button" class="sample-prompt" data-mode="analyze">Analyze sandhi in रामो गच्छति</button>
-                <button type="button" class="sample-prompt" data-mode="translate">Translate धर्मः into English</button>
-                <button type="button" class="sample-prompt" data-mode="grounded">What is yoga according to this
-                  text?</button>
+      <!-- Translit Lab -->
+      <section id="transliterate" class="lab-card translit-lab">
+        <div class="lab-header">
+          <div class="lab-icon ic-translit"></div>
+          <div>
+            <h3>IAST Bridge</h3>
+            <p>Pure Devanagari to IAST Romanization.</p>
+          </div>
+        </div>
+        <div class="translit-interface">
+          <input type="text" id="translit-input" placeholder="e.g. रामो गच्छति" />
+          <div class="translit-result">
+            <span class="label">Output</span>
+            <div id="translit-result-text" class="iast-display">rāmo gacchati</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Chat Console (Main Interaction) -->
+    <section id="chat" class="chat-section">
+      <div class="chat-container">
+        <div class="chat-sidebar">
+          <div class="sidebar-header">
+            <h4>Study Modes</h4>
+          </div>
+          <div class="mode-list">
+            <button class="mode-item active" data-mode="learn">
+              <span class="mode-icon ic-learn"></span>
+              <div class="mode-info">
+                <strong>Learn</strong>
+                <p>Conceptual tutorial</p>
               </div>
-              <button class="button primary submit-button" type="submit">Send</button>
+            </button>
+            <button class="mode-item" data-mode="analyze">
+              <span class="mode-icon ic-analyze"></span>
+              <div class="mode-info">
+                <strong>Analyze</strong>
+                <p>Grammar breakdown</p>
+              </div>
+            </button>
+            <button class="mode-item" data-mode="translate">
+              <span class="mode-icon ic-trans"></span>
+              <div class="mode-info">
+                <strong>Translate</strong>
+                <p>AI Translation</p>
+              </div>
+            </button>
+            <button class="mode-item grounded" data-mode="grounded">
+              <span class="mode-icon ic-ground"></span>
+              <div class="mode-info">
+                <strong>Grounded</strong>
+                <p>Corpus Backed</p>
+              </div>
+            </button>
+          </div>
+          <div id="tracks" class="tracks-sidebar">
+            <p class="label">Learning Tracks</p>
+            <div id="track-list-container" class="track-list">
+              <!-- Dynamically populated -->
             </div>
-          </form>
-        </aside>
-      </section>
-
-      <section class="metrics">
-        <article>
-          <strong>Clear UI</strong>
-          <span>Simple surfaces, strong contrast, and mobile-safe spacing.</span>
-        </article>
-        <article>
-          <strong>Grounded mode</strong>
-          <span>Answers can be tied back to the Sanskrit retrieval corpus.</span>
-        </article>
-        <article>
-          <strong>Live tools</strong>
-          <span>Chat, grounded answers, transliteration, and study tracks are wired into the page.</span>
-        </article>
-      </section>
-
-      <section class="content-grid" id="features">
-        <article class="feature-card">
-          <p class="eyebrow">Working now</p>
-          <h3>Chat with four study modes.</h3>
-          <p>The console supports Learn, Grounded, Translate, and Analyze through the live API.</p>
-        </article>
-        <article class="feature-card">
-          <p class="eyebrow">Grounded answers</p>
-          <h3>Source-linked responses.</h3>
-          <p>Grounded mode returns an answer plus source chunk labels from the indexed material.</p>
-        </article>
-        <article class="feature-card">
-          <p class="eyebrow">Transliteration</p>
-          <h3>Devanagari to IAST.</h3>
-          <p>The transliteration lab converts Sanskrit script into readable Roman transliteration.</p>
-        </article>
-      </section>
-
-      <section class="sanskrit-overview" id="about-sanskrit">
-        <div class="section-heading">
-          <p class="eyebrow">About Sanskrit</p>
-          <h3>Context matters when you study a language with long literary and scholarly use.</h3>
+          </div>
         </div>
-        <div class="overview-grid">
-          <article class="overview-card overview-lead">
-            <h4>An ancient Indo-Aryan language with continuing scholarly use</h4>
-            <p>
-              Sanskrit is an ancient Indo-Aryan language of the Indo-European family. It is central to
-              Hindu, Buddhist, and Jain textual traditions, and it remains important in ritual,
-              philosophy, literature, scholarship, and cultural study.
-            </p>
-          </article>
-          <article class="overview-card">
-            <p class="resource-label">Historical arc</p>
-            <strong>Vedic roots, later refinement</strong>
-            <p>
-              Early Vedic material is associated with the Rigveda around 1500 to 1200 BCE. Later,
-              Pāṇini’s grammatical framework became a reference point for Classical Sanskrit.
-            </p>
-          </article>
-          <article class="overview-card">
-            <p class="resource-label">Why learners care</p>
-            <strong>Texts, thought, precision</strong>
-            <p>
-              Sanskrit opens direct access to the Vedas, the Mahābhārata, the Rāmāyaṇa, the Yogasūtra,
-              and major traditions in grammar, medicine, astronomy, and philosophical reasoning.
-            </p>
-          </article>
-        </div>
-        <div class="timeline fact-timeline">
-          <article>
-            <span>1500 BCE</span>
-            <h4>Vedic layer</h4>
-            <p>Earliest attested material appears in the Vedic corpus, especially the Rigveda.</p>
-          </article>
-          <article>
-            <span>4th c BCE</span>
-            <h4>Pāṇinian refinement</h4>
-            <p>Grammatical codification shapes the polished literary language associated with Classical Sanskrit.</p>
-          </article>
-          <article>
-            <span>1st millennium</span>
-            <h4>Scholarly lingua franca</h4>
-            <p>Sanskrit circulates widely across literature, ritual, philosophy, and technical writing.</p>
-          </article>
-          <article>
-            <span>Today</span>
-            <h4>Living heritage</h4>
-            <p>It remains studied globally and used in liturgical, educational, and cultural contexts.</p>
-          </article>
-        </div>
-      </section>
 
-      <section class="learning-panel" id="learn">
-        <div class="section-heading">
-          <p class="eyebrow">Learner path</p>
-          <h3>A simple study flow that matches the tools on the page.</h3>
-        </div>
-        <div class="learning-grid">
-          <article class="learning-rail">
-            <h4>Study sequence</h4>
-            <div class="study-step">
-              <span>1</span>
-              <div>
-                <strong>Orient yourself</strong>
-                <p>Start with the overview so the language is framed as a historical and intellectual tradition.</p>
+        <div class="chat-main">
+          <div class="message-area" id="chat-messages">
+            <div class="msg bot">
+              <div class="msg-content">
+                Welcome to <span class="accent-text">SanskritNova AI</span>. How can I assist your studies today?
               </div>
             </div>
-            <div class="study-step">
-              <span>2</span>
-              <div>
-                <strong>Use the right answer mode</strong>
-                <p>Choose Grounded for source-backed answers, or Learn for plain-language explanation.</p>
-              </div>
+          </div>
+          <div class="input-area">
+            <div class="input-controls">
+              <div class="active-mode-tag" id="current-mode-display">Learn Mode</div>
+              <div class="typing-indicator hidden" id="typing">Nova is thinking...</div>
             </div>
-            <div class="study-step">
-              <span>3</span>
-              <div>
-                <strong>Practice script and sound</strong>
-                <p>Use transliteration as a bridge for reading and pronunciation.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="resource-stack">
-            <h4>Learning resources</h4>
-            <div class="resource-card">
-              <p class="resource-label">Live API</p>
-              <strong>Suggested study tracks</strong>
-              <div class="track-list" id="track-list">
-                <p class="track-placeholder">Loading tracks from the API.</p>
-              </div>
-            </div>
-            <div class="resource-card featured">
-              <p class="resource-label">Beginner</p>
-              <strong>Shloka reading starter</strong>
-              <p>Learn verse boundaries, common markers, and the difference between Vedic and classical study contexts.
-              </p>
-            </div>
-            <div class="resource-card">
-              <p class="resource-label">Core</p>
-              <strong>Grammar snapshot</strong>
-              <p>Quick access to sandhi, transliteration, and vocabulary hints.</p>
-            </div>
-            <div class="resource-card">
-              <p class="resource-label">Advanced</p>
-              <strong>Analyze mode</strong>
-              <p>Use the analyzer for grammar-oriented reading when you want explanation as well as translation.</p>
-            </div>
-            <div class="resource-links">
-              <a href="#about-sanskrit">About Sanskrit</a>
-              <a href="#playground">Chat</a>
-              <a href="#learn">Learner path</a>
-            </div>
-          </article>
+            <form id="chat-form" class="chat-input-wrapper">
+              <textarea id="chat-prompt" placeholder="Ask about Sanskrit grammar, philosophy, or text..."
+                rows="1"></textarea>
+              <button type="submit" class="send-btn">
+                <span class="icon-send"></span>
+              </button>
+            </form>
+          </div>
         </div>
+      </div>
+    </section>
+  </main>
 
-        <div class="transliteration-lab">
-          <article class="transliteration-copy">
-            <p class="eyebrow">Transliteration lab</p>
-            <h4>Convert Devanagari into readable IAST.</h4>
-            <p>The tool gives you a simple bridge between Sanskrit script and Roman transliteration.</p>
-          </article>
-          <form id="transliteration-form" class="transliteration-form">
-            <label class="sr-only" for="transliteration-input">Devanagari text</label>
-            <textarea id="transliteration-input" rows="3" placeholder="Example: रामो गच्छति"></textarea>
-            <div class="transliteration-actions">
-              <button class="button secondary" type="submit">Transliterate</button>
-              <span id="transliteration-status">Ready</span>
-            </div>
-            <div class="transliteration-output">
-              <p class="resource-label">IAST output</p>
-              <strong id="transliteration-result">rāmo gacchati</strong>
-            </div>
-          </form>
-        </div>
-      </section>
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 SanskritNova AI Platform. Built with Google Cloud & OpenRouter.</p>
+    </div>
+  </footer>
 
-      <section class="workflow" id="workflow">
-        <div class="section-heading">
-          <p class="eyebrow">Study flow</p>
-          <h3>Use the features in the order they make sense.</h3>
-        </div>
-        <div class="timeline">
-          <article>
-            <span>01</span>
-            <h4>Ask</h4>
-            <p>Start in Learn mode if you want an explanation in plain language.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h4>Ground</h4>
-            <p>Switch to Grounded mode when you want the answer tied back to the indexed Sanskrit corpus.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h4>Read</h4>
-            <p>Use the overview and study tracks to move from one-off prompts into a learning path.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h4>Transliterate</h4>
-            <p>Use the transliteration tool when you need script support for reading or pronunciation.</p>
-          </article>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <script src="/app.js" defer></script>
+  <script src="app.js"></script>
 </body>
 
 </html>
