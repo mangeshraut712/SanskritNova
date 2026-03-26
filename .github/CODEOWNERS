@@ -1,0 +1,23 @@
+# Global owners - will be requested for review on all PRs
+* @mangeshraut712
+
+# Backend/API ownership
+api/ @mangeshraut712
+src/sanskrit_rag/ @mangeshraut712
+code/ @mangeshraut712
+
+# Frontend ownership
+public/ @mangeshraut712
+
+# Infrastructure and deployment
+docker/ @mangeshraut712
+k8s/ @mangeshraut712
+.github/ @mangeshraut712
+
+# Documentation
+README.md @mangeshraut712
+CONTRIBUTING.md @mageshraut712
+docs/ @mangeshraut712
+
+# Tests
+tests/ @mangeshraut712

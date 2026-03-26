@@ -1,9 +1,26 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "name": "sanskritnova-ai",
+  "buildCommand": "pip install -r requirements.txt",
+  "outputDirectory": "public",
+  "framework": null,
   "functions": {
     "api/index.py": {
+      "runtime": "python3.13",
       "maxDuration": 30,
-      "excludeFiles": "{tests/**,**/__pycache__/**,*.pyc}"
+      "memory": 1024,
+      "excludeFiles": [
+        "tests/**",
+        "**/__pycache__/**",
+        "*.pyc",
+        ".pytest_cache/**",
+        ".coverage",
+        "htmlcov/**",
+        "code/faiss_index.*",
+        "code/chunks.npy",
+        "data/**"
+      ]
     }
   },
   "routes": [
@@ -12,11 +29,57 @@
       "dest": "/api/index.py"
     },
     {
-      "handle": "filesystem"
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
     },
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
     }
-  ]
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "regions": [
+    "sin1",
+    "bom1"
+  ],
+  "env": {
+    "PYTHON_VERSION": "3.13"
+  }
 }
