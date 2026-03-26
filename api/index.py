@@ -144,6 +144,15 @@ app = FastAPI(
     description="FastAPI backend for SanskritNova AI.",
 )
 
+# Lazy httpx client for API calls
+_httpx_client = None
+
+def get_httpx_client():
+    global _httpx_client
+    if _httpx_client is None:
+        _httpx_client = httpx.AsyncClient(timeout=60.0)
+    return _httpx_client
+
 
 @app.get("/health")
 async def health_check():
@@ -156,17 +165,6 @@ async def health_check():
             "GOOGLE_API_KEY": bool(os.getenv("GOOGLE_API_KEY")),
         }
     }
-
-
-@app.on_event("startup")
-async def startup_event():
-    """Log environment variables status on startup."""
-    import sys
-    print("=== Vercel Environment Check ===", file=sys.stderr)
-    print(f"OPENROUTER_API_KEY set: {bool(os.getenv('OPENROUTER_API_KEY'))}", file=sys.stderr)
-    print(f"OPENROUTER_MODEL: {os.getenv('OPENROUTER_MODEL', 'not set')}", file=sys.stderr)
-    print(f"GOOGLE_API_KEY set: {bool(os.getenv('GOOGLE_API_KEY'))}", file=sys.stderr)
-    print("===================================", file=sys.stderr)
 
 app.add_middleware(
     CORSMiddleware,
