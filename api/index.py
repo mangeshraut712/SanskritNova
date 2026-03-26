@@ -5,7 +5,6 @@ from pathlib import Path
 from typing import Literal
 
 import httpx
-import numpy as np
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -142,6 +141,9 @@ app = FastAPI(
     title="SanskritNova AI API",
     version="2.0.0",
     description="FastAPI backend for SanskritNova AI.",
+    docs_url=None,
+    redoc_url=None,
+    openapi_url=None,
 )
 
 # Lazy httpx client for API calls
@@ -159,11 +161,8 @@ async def health_check():
     """Health check endpoint for debugging."""
     return {
         "status": "ok",
-        "env": {
-            "OPENROUTER_API_KEY": bool(os.getenv("OPENROUTER_API_KEY")),
-            "OPENROUTER_MODEL": os.getenv("OPENROUTER_MODEL", "not set"),
-            "GOOGLE_API_KEY": bool(os.getenv("GOOGLE_API_KEY")),
-        }
+        "message": "SanskritNova API is running",
+        "version": "2.0.0"
     }
 
 app.add_middleware(
@@ -246,6 +245,8 @@ def _retrieve_grounded_results(query: str, k: int) -> list[dict[str, object]]:
     
     Returns empty list if files don't exist (for Vercel compatibility).
     """
+    import numpy as np  # Lazy import to avoid startup issues
+    
     chunks_path = Path("code/chunks.npy")
     if not chunks_path.exists():
         # Return empty results for Vercel (no local files)
