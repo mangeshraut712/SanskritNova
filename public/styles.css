@@ -199,6 +199,156 @@ body {
   gap: var(--space-md);
 }
 
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.lang-btn {
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.lang-btn.active {
+  background: var(--color-gold);
+  color: var(--color-bg-dark);
+  border-color: var(--color-gold);
+}
+
+/* Pronunciation Button */
+.pronounce-btn {
+  background: rgba(212, 168, 83, 0.1);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  color: var(--color-gold);
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.pronounce-btn:hover {
+  background: var(--color-gold);
+  color: var(--color-bg-dark);
+  transform: scale(1.05);
+}
+
+.pronounce-btn:active {
+  transform: scale(0.95);
+}
+
+/* Learning Tracks */
+.tracks-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.track-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: var(--space-lg);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.track-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-saffron));
+}
+
+.track-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(212, 168, 83, 0.2);
+  border-color: var(--color-gold);
+}
+
+.track-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.track-meta {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.track-level,
+.track-duration {
+  background: rgba(212, 168, 83, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  color: var(--color-gold);
+}
+
+.track-focus {
+  color: var(--color-text-light);
+  margin-bottom: var(--space-md);
+  line-height: 1.5;
+}
+
+.track-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.track-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--color-text-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.track-btn:hover {
+  background: var(--color-gold);
+  color: var(--color-bg-dark);
+  border-color: var(--color-gold);
+}
+
+.track-btn.primary {
+  background: var(--color-gold);
+  color: var(--color-bg-dark);
+  border-color: var(--color-gold);
+}
+
+.loading-tracks {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: var(--space-xl);
+  grid-column: 1 / -1;
+}
+
 .nav-link {
   display: flex;
   align-items: center;

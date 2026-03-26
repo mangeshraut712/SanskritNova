@@ -63,6 +63,8 @@ const modeCards = document.querySelectorAll('.mode-card');
 const translitInput = document.getElementById('translit-input');
 const translitBtn = document.getElementById('translit-btn');
 const translitResult = document.getElementById('translit-result');
+const pronounceBtn = document.getElementById('pronounce-btn');
+const tracksContainer = document.getElementById('tracks-container');
 
 // Utility Functions
 function t(key) {
@@ -73,6 +75,7 @@ function switchLanguage(lang) {
   currentLang = lang;
   localStorage.setItem('language', lang);
   updateUI();
+  loadTracks(); // Reload tracks in new language
 }
 
 function updateUI() {
@@ -211,8 +214,8 @@ async function handleChatSubmit(e) {
   try {
     const endpoint = activeMode === 'grounded' ? CONFIG.endpoints.grounded : CONFIG.endpoints.chat;
     const payload = activeMode === 'grounded'
-      ? { message, k: 3 }
-      : { message, mode: activeMode };
+      ? { message, k: 3, lang: currentLang }
+      : { message, mode: activeMode, lang: currentLang };
 
     const response = await apiCall(endpoint, payload);
     chatInput.value = '';
@@ -261,6 +264,42 @@ async function handleTranslit() {
   }
 }
 
+// Pronunciation Handler
+function handlePronounce() {
+  const text = translitResult.textContent.trim();
+  if (!text || text === 'No result' || text.startsWith('Error:')) return;
+
+  if ('speechSynthesis' in window) {
+    // Cancel any ongoing speech
+    speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US'; // IAST pronunciation
+    utterance.rate = 0.7; // Slower for learning
+    utterance.pitch = 1.0;
+
+    // Try to find a good voice
+    const voices = speechSynthesis.getVoices();
+    const preferredVoice = voices.find(voice =>
+      voice.lang.startsWith('en') && voice.name.includes('Female')
+    ) || voices.find(voice => voice.lang.startsWith('en'));
+
+    if (preferredVoice) {
+      utterance.voice = preferredVoice;
+    }
+
+    speechSynthesis.speak(utterance);
+
+    // Visual feedback
+    pronounceBtn.style.opacity = '0.7';
+    utterance.onend = () => {
+      pronounceBtn.style.opacity = '1';
+    };
+  } else {
+    alert('Speech synthesis not supported in this browser');
+  }
+}
+
 // Event Listeners
 if (chatForm) {
   chatForm.addEventListener('submit', handleChatSubmit);
@@ -283,6 +322,95 @@ if (translitInput) {
   });
 }
 
+if (pronounceBtn) {
+  pronounceBtn.addEventListener('click', handlePronounce);
+}
+
+// Learning Tracks
+async function loadTracks() {
+  if (!tracksContainer) return;
+
+  try {
+    const response = await fetch(`${CONFIG.apiBase}/api/tracks?lang=${currentLang}`);
+    if (!response.ok) throw new Error('Failed to load tracks');
+
+    const tracks = await response.json();
+    renderTracks(tracks);
+  } catch (error) {
+    tracksContainer.innerHTML = '<div class="loading-tracks">Failed to load learning tracks</div>';
+    console.error('Tracks loading error:', error);
+  }
+}
+
+function renderTracks(tracks) {
+  if (!tracksContainer) return;
+
+  const tracksHtml = tracks.map(track => `
+    <div class="track-card">
+      <h3 class="track-title">${track.title}</h3>
+      <div class="track-meta">
+        <span class="track-level">${track.level}</span>
+        <span class="track-duration">${track.duration}</span>
+      </div>
+      <p class="track-focus">${track.focus}</p>
+      <div class="track-actions">
+        <button class="track-btn primary" onclick="startTrack('${track.slug}')">
+          Start Track
+        </button>
+        <button class="track-btn" onclick="downloadTrack('${track.slug}')">
+          📥 Download
+        </button>
+      </div>
+    </div>
+  `).join('');
+
+  tracksContainer.innerHTML = tracksHtml;
+}
+
+function startTrack(slug) {
+  // Navigate to track or open modal
+  console.log('Starting track:', slug);
+  alert(`Starting ${slug} track - Feature coming soon!`);
+}
+
+async function downloadTrack(slug) {
+  try {
+    // Create offline content for the track
+    const trackData = {
+      slug,
+      downloadedAt: new Date().toISOString(),
+      lessons: [] // Would be populated from API
+    };
+
+    // Store in IndexedDB or localStorage
+    const offlineTracks = JSON.parse(localStorage.getItem('offlineTracks') || '{}');
+    offlineTracks[slug] = trackData;
+    localStorage.setItem('offlineTracks', JSON.stringify(offlineTracks));
+
+    // Show success message
+    alert(`Track "${slug}" downloaded for offline use!`);
+
+    // Update button state
+    const btn = event.target;
+    btn.textContent = '✓ Downloaded';
+    btn.disabled = true;
+  } catch (error) {
+    console.error('Download failed:', error);
+    alert('Download failed. Please try again.');
+  }
+}
+
+// Language Switcher
+const langBtns = document.querySelectorAll('.lang-btn');
+langBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const lang = e.target.dataset.lang;
+    switchLanguage(lang);
+    langBtns.forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+  });
+});
+
 // Check API health on load
 fetch(`${CONFIG.apiBase}${CONFIG.endpoints.health}`)
   .then(res => {
@@ -302,3 +430,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// Initialize language from localStorage
+document.addEventListener('DOMContentLoaded', () => {
+  const savedLang = localStorage.getItem('language') || 'en';
+  if (savedLang !== 'en') {
+    switchLanguage(savedLang);
+    const btn = document.querySelector(`.lang-btn[data-lang="${savedLang}"]`);
+    if (btn) {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  }
+
+  // Load learning tracks
+  loadTracks();
+});
+
+// Register Service Worker for PWA
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('SW registered: ', registration);
+      })
+      .catch(registrationError => {
+        console.log('SW registration failed: ', registrationError);
+      });
+  });
+}

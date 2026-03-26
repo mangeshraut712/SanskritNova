@@ -25,23 +25,35 @@ LEARNING_TRACKS = [
     {
         "slug": "sanskrit-foundations",
         "title": "Sanskrit Foundations",
+        "title_hi": "संस्कृत आधार",
         "level": "Beginner",
+        "level_hi": "शुरुआती",
         "duration": "2 weeks",
+        "duration_hi": "2 सप्ताह",
         "focus": "Script basics, pronunciation, and essential vocabulary.",
+        "focus_hi": "लिपि मूल बातें, उच्चारण, और आवश्यक शब्दावली।",
     },
     {
         "slug": "gita-guided-reading",
         "title": "Bhagavad Gita Guided Reading",
+        "title_hi": "भगवद् गीता निर्देशित पठन",
         "level": "Intermediate",
+        "level_hi": "मध्यवर्ती",
         "duration": "4 weeks",
+        "duration_hi": "4 सप्ताह",
         "focus": "Verse-by-verse study with transliteration and explanation.",
+        "focus_hi": "लिप्यंतरण और व्याख्या के साथ श्लोक-दर-श्लोक अध्ययन।",
     },
     {
         "slug": "grammar-lab",
         "title": "Grammar Lab",
+        "title_hi": "व्याकरण प्रयोगशाला",
         "level": "Advanced",
+        "level_hi": "उन्नत",
         "duration": "Ongoing",
+        "duration_hi": "निरंतर",
         "focus": "Sandhi, compounds, morphology, and syntax analysis.",
+        "focus_hi": "संधि, समास, रूपविज्ञान और वाक्य विश्लेषण।",
     },
 ]
 
@@ -146,6 +158,7 @@ _LOCAL_RETRIEVER = None
 class ChatRequest(BaseModel):
     message: str = Field(..., min_length=1, max_length=4000)
     mode: Literal["learn", "translate", "analyze"] = "learn"
+    lang: str = "en"
 
 
 class ChatResponse(BaseModel):
@@ -219,12 +232,19 @@ def _openrouter_model() -> str:
     return os.getenv("OPENROUTER_MODEL", "openai/gpt-4.1-mini")
 
 
-def _mode_instruction(mode: str) -> str:
-    if mode == "translate":
-        return "Translate the input clearly. Preserve nuance and include transliteration."
-    if mode == "analyze":
-        return "Analyze the Sanskrit grammar, meaning, and context. Keep it readable."
-    return "Teach the user as a Sanskrit tutor. Use examples."
+def _mode_instruction(mode: str, lang: str = "en") -> str:
+    if lang == "hi":
+        if mode == "translate":
+            return "इनपुट को स्पष्ट रूप से अनुवाद करें। बारीकियों को बनाए रखें और लिप्यंतरण शामिल करें।"
+        if mode == "analyze":
+            return "संस्कृत व्याकरण, अर्थ और संदर्भ का विश्लेषण करें। इसे पठनीय रखें।"
+        return "उपयोगकर्ता को संस्कृत शिक्षक के रूप में सिखाएं। उदाहरणों का उपयोग करें।"
+    else:
+        if mode == "translate":
+            return "Translate the input clearly. Preserve nuance and include transliteration."
+        if mode == "analyze":
+            return "Analyze the Sanskrit grammar, meaning, and context. Keep it readable."
+        return "Teach the user as a Sanskrit tutor. Use examples."
 
 
 def _load_local_retriever():
@@ -366,8 +386,27 @@ async def info():
 
 
 @app.get("/api/tracks", response_model=list[Track])
-async def tracks():
-    return [Track(**track) for track in LEARNING_TRACKS]
+async def tracks(lang: str = "en"):
+    tracks_data = []
+    for track in LEARNING_TRACKS:
+        if lang == "hi":
+            track_data = {
+                "slug": track["slug"],
+                "title": track.get("title_hi", track["title"]),
+                "level": track.get("level_hi", track["level"]),
+                "duration": track.get("duration_hi", track["duration"]),
+                "focus": track.get("focus_hi", track["focus"]),
+            }
+        else:
+            track_data = {
+                "slug": track["slug"],
+                "title": track["title"],
+                "level": track["level"],
+                "duration": track["duration"],
+                "focus": track["focus"],
+            }
+        tracks_data.append(Track(**track_data))
+    return tracks_data
 
 
 @app.post("/api/transliterate", response_model=TransliterationResponse)
@@ -380,11 +419,22 @@ async def transliterate_api(request: TransliterationRequest):
 
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat_api(request: ChatRequest):
+    system_prompt = SYSTEM_PROMPT
+    if request.lang == "hi":
+        system_prompt = """आप संस्कृतनोवा AI हैं, एक विशेषज्ञ संस्कृत शिक्षक।
+
+नियम:
+- स्पष्टता के साथ सिखाएं और सांस्कृतिक सम्मान बनाए रखें।
+- उपयोगकर्ता पूछे बिना गहराई से समझाएं।
+- सहायक अंग्रेजी में संस्कृत उदाहरणों का उपयोग करें।
+- लिप्यंतरण के लिए पूछे जाने पर देवनागरी और रोमन लिप्यंतरण दोनों प्रदान करें।
+- यदि कोई दावा अनिश्चित है तो सीधे कहें।"""
+
     payload = {
         "model": _openrouter_model(),
         "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "system", "content": _mode_instruction(request.mode)},
+            {"role": "system", "content": system_prompt},
+            {"role": "system", "content": _mode_instruction(request.mode, request.lang)},
             {"role": "user", "content": request.message},
         ],
     }

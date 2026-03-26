@@ -11,6 +11,8 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#d4a853">
 </head>
 
 <body>
@@ -179,9 +181,25 @@
             <label>IAST</label>
             <div class="output-display">
               <span id="translit-result">rāmo gacchati sītāṃ prati</span>
+              <button id="pronounce-btn" class="pronounce-btn" title="Pronounce">
+                <span>🔊</span>
+              </button>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Learning Tracks Section -->
+    <section id="tracks" class="section">
+      <div class="section-header">
+        <div class="section-icon">📚</div>
+        <h2 class="section-title">Learning Tracks</h2>
+        <p class="section-desc">Structured Sanskrit learning courses</p>
+      </div>
+
+      <div class="tracks-container" id="tracks-container">
+        <div class="loading-tracks">Loading learning tracks...</div>
       </div>
     </section>
 
