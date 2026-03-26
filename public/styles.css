@@ -161,6 +161,7 @@ body {
   font-weight: 800;
   letter-spacing: -0.02em;
   background: linear-gradient(to right, #fff, #94a3b8);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -220,6 +221,7 @@ body {
 .hero-title .shimmer {
   background: linear-gradient(135deg, #fff 20%, var(--accent-gold) 50%, #fff 80%);
   background-size: 200% auto;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: goldShimmer 4s infinite linear;
