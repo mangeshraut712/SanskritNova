@@ -1,139 +1,119 @@
-# 🌟 SanskritNova AI
+# SanskritNova AI
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Sanskrit-Learning_AI-FF6B35?style=for-the-badge&logo=brain" alt="Sanskrit Learning AI">
-  <img src="https://img.shields.io/badge/Python-FastAPI-009688?style=for-the-badge&logo=python" alt="FastAPI">
-  <img src="https://img.shields.io/badge/Frontend-HTML5/CSS3-1572B6?style=for-the-badge&logo=html5" alt="HTML5/CSS3">
-  <img src="https://img.shields.io/badge/Deployment-Vercel-000000?style=for-the-badge&logo=vercel" alt="Vercel">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
-</p>
+SanskritNova AI is a Sanskrit learning web app backed by a preserved local RAG prototype. The active web product lives in `api/` and `public/`; the original document retrieval pipeline and local indexing flow live in `code/`.
 
-<p align="center">
-  <strong>Next-Generation AI Portal for Sanskrit Learning & Research</strong><br>
-  Unlock ancient wisdom through modern technology
-</p>
+## Current Product Surface
 
----
+Working now:
+- AI chat through `learn`, `translate`, and `analyze` modes
+- grounded answers from the original Sanskrit corpus
+- Devanagari to IAST transliteration
+- study tracks from `GET /api/tracks`
+- a static frontend in `public/` with API-backed interactions
 
-## 📚 About SanskritNova
+## Repository Layout
 
-SanskritNova AI is a comprehensive Sanskrit learning web application powered by AI. It combines traditional learning methods with cutting-edge machine learning to provide an immersive Sanskrit education experience.
-
-### ✨ Key Features
-
-- 🤖 **AI Chat Interface** - Interactive learning through AI-powered conversations
-- 🔄 **Neural Translation** - Multi-layered translation engine
-- 📝 **Devanagari to IAST** - High-fidelity script transliteration
-- 📖 **Grounded Answers** - Context-aware responses from Sanskrit corpus
-- 📚 **Learning Pathways** - Structured curriculum for all levels
-
----
-
-## 🏗️ Project Architecture
-
-```
-SanskritNova/
-├── api/                 # FastAPI backend server
-│   └── index.py         # Main API endpoints
-├── public/              # Static frontend
-│   ├── index.html       # Main HTML page
-│   ├── app.js          # Client-side JavaScript
-│   └── styles.css       # Styling
-├── code/               # Original RAG modules
-├── docs/               # Documentation
-├── tests/              # Test suite
-└── docker/             # Container assets
+```text
+api/      FastAPI backend
+public/   Static frontend
+code/     Original Sanskrit RAG modules and local index artifacts
+docs/     Setup, roadmap, and comparison notes
+tests/    API and utility tests
+docker/   Optional container assets
+k8s/      Optional Kubernetes manifest
 ```
 
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Python 3.11+
-- pip package manager
-
-### Installation
+## Setup
 
 ```bash
-# Clone the repository
-git clone https://github.com/mangeshraut712/SanskritNova.git
-cd SanskritNova
-
-# Create virtual environment
 python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-
-# Install dependencies
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Running Locally
+Optional local RAG dependencies:
 
 ```bash
-# Start API server
+pip install -e ".[local]"
+```
+
+The lightweight web install from `requirements.txt` is enough for:
+- `chat`
+- `tracks`
+- `transliteration`
+
+The optional local RAG extras are needed to rebuild or fully use the original retrieval pipeline in `code/`.
+
+## Run Locally
+
+```bash
 make serve-api
-
-# Or using uvicorn directly
-uvicorn api.index:app --host 0.0.0.0 --port 8000
-
-# Serve static frontend (in another terminal)
 make serve-site
 ```
 
----
+Original RAG commands:
 
-## 🔑 Environment Variables
+```bash
+make rag-index
+make rag-cli
+```
 
-Create a `.env` file based on `.env.example`:
+## Grounded Answer Note
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `OPENROUTER_API_KEY` | OpenRouter API key for AI features | ✅ Yes |
-| `OPENROUTER_MODEL` | Model to use (default: openai/gpt-4o-mini) | No |
-| `GOOGLE_API_KEY` | Google Cloud API for translation/vision | ✅ Yes |
-| `OPENROUTER_APP_URL` | Your app URL for API referer | No |
+`POST /api/grounded-answer` is connected to the original retrieval corpus in `code/`.
 
----
+It currently:
+- prefers the retrieval path exposed through `sanskrit_rag.retriever`
+- falls back to scanning `code/chunks.npy` if the full local retrieval stack is unavailable
 
-## 📡 API Endpoints
+For local indexing stability, the default embedding backend is:
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/health` | GET | Health check |
-| `/api/info` | GET | API information |
-| `/api/tracks` | GET | Learning pathways |
-| `/api/chat` | POST | AI chat interface |
-| `/api/grounded-answer` | POST | RAG-powered answers |
-| `/api/transliterate` | POST | Script conversion |
+```bash
+SANSKRIT_RAG_EMBEDDING_BACKEND=tfidf
+```
 
----
+You can opt into sentence-transformers explicitly if your environment is stable:
 
-## 🛠️ Tech Stack
+```bash
+export SANSKRIT_RAG_EMBEDDING_BACKEND=sentence-transformers
+```
 
-- **Backend**: FastAPI (Python)
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **AI/ML**: OpenRouter API, sentence-transformers
-- **Database**: FAISS, NumPy
-- **Deployment**: Vercel
+## Environment Variables
 
----
+API:
+- `OPENROUTER_API_KEY`
+- `OPENROUTER_MODEL`
+- `OPENROUTER_APP_NAME`
+- `OPENROUTER_APP_URL`
 
-## 📄 License
+Original RAG:
+- `SANSKRIT_RAG_DATA_DIR`
+- `SANSKRIT_RAG_INDEX_PATH`
+- `SANSKRIT_RAG_CHUNKS_PATH`
+- `SANSKRIT_RAG_MODEL_PATH`
+- `SANSKRIT_RAG_EMBEDDING_BACKEND`
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Use [`.env.example`](.env.example) as the local template.
 
----
+## API Endpoints
 
-## 🙏 Acknowledgments
+- `GET /api/health`
+- `GET /api/info`
+- `GET /api/tracks`
+- `POST /api/chat`
+- `POST /api/grounded-answer`
+- `POST /api/transliterate`
 
-- Sanskrit scholars and educators
-- OpenRouter for AI capabilities
-- Vercel for hosting
+## Optional Deployment Assets
 
----
+- `docker/Dockerfile`
+- `docker/docker-compose.yml`
+- `docker/nginx.conf`
+- `k8s/deployment.yaml`
+- `vercel.json`
 
-<p align="center">
-  Made with ❤️ for Sanskrit Learning
-</p>
+## Docs
+
+- [project-setup-guide.md](docs/project-setup-guide.md)
+- [transformation-roadmap.md](docs/transformation-roadmap.md)
+- [original-vs-current.md](docs/original-vs-current.md)
