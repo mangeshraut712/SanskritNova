@@ -1,4 +1,5 @@
 import api.index as api_index
+import httpx
 import numpy as np
 from fastapi.testclient import TestClient
 
@@ -15,6 +16,17 @@ def test_info_endpoint():
     response = client.get("/api/info")
     assert response.status_code == 200
     assert response.json()["name"] == "SanskritNova AI"
+
+
+def test_info_grounded_answer_reflects_availability(monkeypatch, tmp_path):
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setattr(api_index, "_load_local_retriever", lambda: None)
+    monkeypatch.setattr(api_index, "LEGACY_CHUNKS_PATH", tmp_path / "missing.npy")
+
+    response = client.get("/api/info")
+
+    assert response.status_code == 200
+    assert response.json()["grounded_answer"] is False
 
 
 def test_tracks_endpoint():
@@ -106,3 +118,43 @@ def test_chat_requires_openrouter_key(monkeypatch):
     response = client.post("/api/chat", json={"message": "Explain yoga", "mode": "learn"})
     assert response.status_code == 500
     assert "OPENROUTER_API_KEY" in response.json()["detail"]
+
+
+class _FailingOpenRouterClient:
+    def __init__(self, *args, **kwargs):
+        pass
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, exc_type, exc, tb):
+        return False
+
+    async def post(self, *args, **kwargs):
+        request = httpx.Request("POST", api_index.OPENROUTER_URL)
+        raise httpx.ConnectError("upstream unavailable", request=request)
+
+
+def test_chat_maps_openrouter_failure_to_502(monkeypatch):
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setattr(api_index.httpx, "AsyncClient", _FailingOpenRouterClient)
+
+    response = client.post("/api/chat", json={"message": "Explain yoga", "mode": "learn"})
+
+    assert response.status_code == 502
+    assert response.json()["detail"] == "OpenRouter request failed."
+
+
+def test_grounded_answer_maps_openrouter_failure_to_502(monkeypatch):
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setattr(
+        api_index,
+        "_retrieve_grounded_results",
+        lambda message, k: [{"source": "SanskritCorpus", "chunk_id": 0, "text": "योगः"}],
+    )
+    monkeypatch.setattr(api_index.httpx, "AsyncClient", _FailingOpenRouterClient)
+
+    response = client.post("/api/grounded-answer", json={"message": "What is yoga?", "k": 1})
+
+    assert response.status_code == 502
+    assert response.json()["detail"] == "OpenRouter request failed."

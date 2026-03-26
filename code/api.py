@@ -19,6 +19,8 @@ app = FastAPI(
     description="Minimal API surface for Sanskrit document search and grounded answers.",
 )
 
+RAG_UNAVAILABLE_ERRORS = (FileNotFoundError, ImportError, ValueError)
+
 
 class QueryRequest(BaseModel):
     query: str = Field(..., min_length=1)
@@ -44,7 +46,7 @@ def health():
 def search(request: QueryRequest):
     try:
         results = get_rag().retriever.retrieve(request.query, k=request.k)
-    except FileNotFoundError as exc:
+    except RAG_UNAVAILABLE_ERRORS as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
     return {"query": request.query, "results": results}
 
@@ -53,7 +55,7 @@ def search(request: QueryRequest):
 def answer(request: QueryRequest):
     try:
         return get_rag().answer(request.query, k=request.k)
-    except FileNotFoundError as exc:
+    except RAG_UNAVAILABLE_ERRORS as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
 
 

@@ -307,6 +307,31 @@ def _retrieve_from_legacy_chunks(query: str, k: int) -> list[dict[str, object]]:
     ]
 
 
+def _grounded_answer_available() -> bool:
+    if not os.getenv("OPENROUTER_API_KEY"):
+        return False
+
+    if LEGACY_CHUNKS_PATH.exists():
+        return True
+
+    return _load_local_retriever() is not None
+
+
+async def _openrouter_completion(payload: dict[str, object]) -> str:
+    try:
+        async with httpx.AsyncClient(timeout=45.0) as client:
+            response = await client.post(
+                OPENROUTER_URL,
+                headers=_openrouter_headers(),
+                json=payload,
+            )
+            response.raise_for_status()
+            body = response.json()
+            return body["choices"][0]["message"]["content"].strip()
+    except (httpx.HTTPError, KeyError, ValueError) as exc:
+        raise HTTPException(status_code=502, detail="OpenRouter request failed.") from exc
+
+
 def transliterate_to_iast(text: str) -> str:
     output: list[str] = []
     index = 0
@@ -363,10 +388,7 @@ async def _grounded_openrouter_answer(message: str, sources: list[dict[str, obje
             {"role": "user", "content": message},
         ],
     }
-    async with httpx.AsyncClient(timeout=45.0) as client:
-        response = await client.post(OPENROUTER_URL, headers=_openrouter_headers(), json=payload)
-        response.raise_for_status()
-        return response.json()["choices"][0]["message"]["content"].strip()
+    return await _openrouter_completion(payload)
 
 
 @app.get("/api/health")
@@ -380,7 +402,7 @@ async def info():
         "name": "SanskritNova AI",
         "provider": "openrouter",
         "chat_modes": ["learn", "translate", "analyze"],
-        "grounded_answer": True,
+        "grounded_answer": _grounded_answer_available(),
         "transliteration": True,
     }
 
@@ -438,10 +460,7 @@ async def chat_api(request: ChatRequest):
             {"role": "user", "content": request.message},
         ],
     }
-    async with httpx.AsyncClient(timeout=45.0) as client:
-        response = await client.post(OPENROUTER_URL, headers=_openrouter_headers(), json=payload)
-        response.raise_for_status()
-        reply = response.json()["choices"][0]["message"]["content"].strip()
+    reply = await _openrouter_completion(payload)
     return ChatResponse(reply=reply, model=_openrouter_model(), mode=request.mode)
 
 
