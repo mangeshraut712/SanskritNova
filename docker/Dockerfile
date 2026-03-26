@@ -10,6 +10,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 COPY api ./api
 COPY code ./code
 COPY public ./public
+COPY sanskrit_rag ./sanskrit_rag
 
 RUN useradd --create-home --shell /bin/bash appuser && \
     chown -R appuser:appuser /app

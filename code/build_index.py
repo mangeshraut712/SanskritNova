@@ -25,22 +25,22 @@ def _sentence_transformer_embeddings(texts: list[str]) -> np.ndarray:
     # Set environment variables BEFORE importing sentence_transformers
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
     os.environ["OMP_NUM_THREADS"] = "1"
-    
+
     # Try to set multiprocessing start method if not already set
     try:
-        multiprocessing.set_start_method('spawn', force=False)
+        multiprocessing.set_start_method("spawn", force=False)
     except RuntimeError:
         pass  # Already set
-    
+
     from sentence_transformers import SentenceTransformer
-    
+
     # Use single-threaded execution to avoid fork issues
     model = SentenceTransformer(
         settings.embedding_model,
         device="cpu",  # Force CPU to avoid CUDA fork issues
     )
     embeddings = model.encode(
-        texts, 
+        texts,
         convert_to_numpy=True,
         show_progress_bar=True,
         batch_size=1,  # Single batch to reduce memory pressure

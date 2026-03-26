@@ -36,9 +36,9 @@ local = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/vidhiisaxena/Sanskrit_RagSystem"
-Repository = "https://github.com/vidhiisaxena/Sanskrit_RagSystem"
-Issues = "https://github.com/vidhiisaxena/Sanskrit_RagSystem/issues"
+Homepage = "https://github.com/mangeshraut712/SanskritNova"
+Repository = "https://github.com/mangeshraut712/SanskritNova"
+Issues = "https://github.com/mangeshraut712/SanskritNova/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["code", "sanskrit_rag"]

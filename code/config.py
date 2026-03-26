@@ -48,7 +48,10 @@ def load_settings() -> Settings:
             "SANSKRIT_RAG_LEGACY_CHUNKS_PATH", "code/chunks.npy"
         ),
         tfidf_vectorizer_path=repo_root
-        / os.getenv("SANSKRIT_RAG_TFIDF_VECTORIZER_PATH", "code/tfidf_vectorizer.joblib"),
+        / os.getenv(
+            "SANSKRIT_RAG_TFIDF_VECTORIZER_PATH",
+            "code/tfidf_vectorizer.joblib",
+        ),
         embedding_backend=os.getenv("SANSKRIT_RAG_EMBEDDING_BACKEND", "tfidf"),
         embedding_model=os.getenv(
             "SANSKRIT_RAG_EMBEDDING_MODEL",
