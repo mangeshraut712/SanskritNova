@@ -1,156 +1,188 @@
-const thread = document.getElementById("message-thread");
-const form = document.getElementById("chat-form");
-const promptInput = document.getElementById("prompt");
-const statusPill = document.getElementById("status-pill");
-const modeButtons = Array.from(document.querySelectorAll(".mode-button"));
-const sampleButtons = Array.from(document.querySelectorAll(".sample-prompt"));
-const trackList = document.getElementById("track-list");
-const transliterationForm = document.getElementById("transliteration-form");
-const transliterationInput = document.getElementById("transliteration-input");
-const transliterationResult = document.getElementById("transliteration-result");
-const transliterationStatus = document.getElementById("transliteration-status");
+/**
+ * SanskritNova AI - Luxury Indian Ancient Inspired Frontend
+ */
 
-const isLocalStaticPreview =
-  window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
-const apiBase = isLocalStaticPreview ? `http://${window.location.hostname}:8000/api` : "/api";
-const chatEndpoint = `${apiBase}/chat`;
-const groundedEndpoint = `${apiBase}/grounded-answer`;
-const tracksEndpoint = `${apiBase}/tracks`;
-const transliterationEndpoint = `${apiBase}/transliterate`;
-
-let activeMode = "learn";
-
-const setStatus = (label) => {
-  statusPill.textContent = label;
-};
-
-const appendMessage = (content, role) => {
-  const article = document.createElement("article");
-  article.className = `message ${role}`;
-  const paragraph = document.createElement("p");
-  paragraph.textContent = content;
-  article.appendChild(paragraph);
-  thread.appendChild(article);
-  thread.scrollTop = thread.scrollHeight;
-};
-
-const loadTracks = async () => {
-  if (!trackList) {
-    return;
+// Configuration
+const CONFIG = {
+  apiBase: window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
+    ? 'http://localhost:8000'
+    : '',
+  endpoints: {
+    chat: '/api/chat',
+    grounded: '/api/grounded-answer',
+    translit: '/api/transliterate',
+    health: '/api/health'
   }
+};
+
+// State
+let activeMode = 'learn';
+
+// DOM Elements
+const chatMessages = document.getElementById('chat-messages');
+const chatForm = document.getElementById('chat-form');
+const chatInput = document.getElementById('chat-input');
+const modeCards = document.querySelectorAll('.mode-card');
+const translitInput = document.getElementById('translit-input');
+const translitBtn = document.getElementById('translit-btn');
+const translitResult = document.getElementById('translit-result');
+
+// Utility Functions
+function showTyping() {
+  const typingEl = document.createElement('div');
+  typingEl.className = 'message bot typing';
+  typingEl.innerHTML = `
+    <div class="message-avatar">🕉️</div>
+    <div class="message-content">
+      <p class="typing-dots"><span>.</span><span>.</span><span>.</span></p>
+    </div>
+  `;
+  chatMessages.appendChild(typingEl);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  return typingEl;
+}
+
+function hideTyping(typingEl) {
+  if (typingEl && typingEl.parentNode) {
+    typingEl.parentNode.removeChild(typingEl);
+  }
+}
+
+function addMessage(content, role) {
+  const messageEl = document.createElement('div');
+  messageEl.className = `message ${role}`;
+
+  const avatar = role === 'bot' ? '🕉️' : '🙏';
+  messageEl.innerHTML = `
+    <div class="message-avatar">${avatar}</div>
+    <div class="message-content">
+      <p>${escapeHtml(content)}</p>
+    </div>
+  `;
+
+  chatMessages.appendChild(messageEl);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+async function apiCall(endpoint, data) {
+  const response = await fetch(`${CONFIG.apiBase}${endpoint}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.detail || 'Request failed');
+  }
+
+  return response.json();
+}
+
+// Chat Handlers
+async function handleChatSubmit(e) {
+  e.preventDefault();
+
+  const message = chatInput.value.trim();
+  if (!message) return;
+
+  chatInput.value = '';
+  addMessage(message, 'user');
+
+  const typingEl = showTyping();
 
   try {
-    const response = await fetch(tracksEndpoint);
-    const body = await response.json();
-    if (!response.ok) {
-      throw new Error(body.detail || "Failed to load tracks.");
+    const endpoint = activeMode === 'grounded' ? CONFIG.endpoints.grounded : CONFIG.endpoints.chat;
+    const payload = activeMode === 'grounded'
+      ? { message, k: 3 }
+      : { message, mode: activeMode };
+
+    const response = await apiCall(endpoint, payload);
+    hideTyping(typingEl);
+
+    addMessage(response.reply, 'bot');
+
+    if (activeMode === 'grounded' && response.sources?.length) {
+      const sources = response.sources.map(s => `${s.source}#${s.chunk_id}`).join(', ');
+      addMessage(`Sources: ${sources}`, 'bot');
     }
-
-    trackList.innerHTML = "";
-    body.forEach((track) => {
-      const item = document.createElement("article");
-      item.className = "track-item";
-      item.innerHTML = `
-        <div class="track-meta">
-          <strong>${track.title}</strong>
-          <span>${track.level} • ${track.duration}</span>
-        </div>
-        <p>${track.focus}</p>
-      `;
-      trackList.appendChild(item);
-    });
   } catch (error) {
-    trackList.innerHTML = `<p class="track-placeholder">${error.message}</p>`;
+    hideTyping(typingEl);
+    addMessage(`Error: ${error.message}`, 'bot');
   }
-};
+}
 
-modeButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    activeMode = button.dataset.mode;
-    modeButtons.forEach((item) => item.classList.toggle("active", item === button));
-  });
-});
+// Mode Selection
+function handleModeChange(e) {
+  const card = e.currentTarget;
+  const mode = card.dataset.mode;
+  if (!mode) return;
 
-sampleButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    promptInput.value = button.textContent.trim();
-    promptInput.focus();
-  });
-});
+  activeMode = mode;
+  modeCards.forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+}
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const message = promptInput.value.trim();
-  if (!message) {
-    return;
-  }
+// Transliteration Handler
+async function handleTranslit() {
+  const text = translitInput.value.trim();
+  if (!text) return;
 
-  appendMessage(message, "user");
-  promptInput.value = "";
-  setStatus("Thinking");
+  translitResult.classList.add('loading');
 
   try {
-    const endpoint = activeMode === "grounded" ? groundedEndpoint : chatEndpoint;
-    const payload =
-      activeMode === "grounded" ? { message, k: 3 } : { message, mode: activeMode };
-
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-
-    const body = await response.json();
-    if (!response.ok) {
-      throw new Error(body.detail || "Request failed.");
-    }
-
-    appendMessage(body.reply, "assistant");
-    if (activeMode === "grounded" && Array.isArray(body.sources) && body.sources.length > 0) {
-      const sourceSummary = body.sources
-        .map((source) => `${source.source}#${source.chunk_id}`)
-        .join(", ");
-      appendMessage(`Sources: ${sourceSummary}`, "assistant");
-    }
-    setStatus("Ready");
+    const response = await apiCall(CONFIG.endpoints.translit, { text });
+    translitResult.textContent = response.iast || 'No result';
   } catch (error) {
-    appendMessage(error.message, "assistant");
-    setStatus("Error");
+    translitResult.textContent = `Error: ${error.message}`;
+  } finally {
+    translitResult.classList.remove('loading');
   }
+}
+
+// Event Listeners
+if (chatForm) {
+  chatForm.addEventListener('submit', handleChatSubmit);
+}
+
+modeCards.forEach(card => {
+  card.addEventListener('click', handleModeChange);
 });
 
-if (transliterationForm) {
-  transliterationForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const text = transliterationInput.value.trim();
-    if (!text) {
-      return;
-    }
+if (translitBtn) {
+  translitBtn.addEventListener('click', handleTranslit);
+}
 
-    transliterationStatus.textContent = "Working";
-
-    try {
-      const response = await fetch(transliterationEndpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text }),
-      });
-      const body = await response.json();
-      if (!response.ok) {
-        throw new Error(body.detail || "Transliteration failed.");
-      }
-
-      transliterationResult.textContent = body.iast;
-      transliterationStatus.textContent = "Ready";
-    } catch (error) {
-      transliterationResult.textContent = error.message;
-      transliterationStatus.textContent = "Error";
+if (translitInput) {
+  translitInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      handleTranslit();
     }
   });
 }
 
-loadTracks();
+// Check API health on load
+fetch(`${CONFIG.apiBase}${CONFIG.endpoints.health}`)
+  .then(res => {
+    if (res.ok) {
+      console.log('✓ API Connected');
+    }
+  })
+  .catch(() => console.log('Running in offline mode'));
+
+// Add smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
