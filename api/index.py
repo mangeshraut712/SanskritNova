@@ -332,12 +332,15 @@ async def vision_google(request: VisionRequest):
 
 
 # Vercel serverless function handler
+handler = None
 try:
     from mangum import Mangum
 
     handler = Mangum(app, lifespan="off")
-except ImportError:  # pragma: no cover
-    handler = None
+except Exception as e:
+    # Log the error for debugging
+    import sys
+    print(f"Mangum handler creation error: {e}", file=sys.stderr)
 
 # For local development
 if __name__ == "__main__":
