@@ -29,7 +29,7 @@ If applicable, add screenshots to help explain your problem.
 - **OS**: [e.g., macOS, Windows, Linux]
 - **Browser**: [e.g., Chrome, Safari, Firefox]
 - **Version**: [e.g., 22]
-- **Python Version**: [e.g., 3.13]
+- **Python Version**: [e.g., 3.11]
 - **Deployment**: [e.g., Local, Vercel, Docker]
 
 ### Additional Context

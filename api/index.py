@@ -329,3 +329,15 @@ async def vision_google(request: VisionRequest):
             if ai_res.is_success:
                 explanation = ai_res.json()["choices"][0]["message"]["content"].strip()
         return VisionResponse(text=full_text, explanation=explanation)
+
+
+# Vercel serverless function handler
+from mangum import Mangum
+
+# Create Mangum handler for Vercel
+handler = Mangum(app, lifespan="off")
+
+# For local development
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8001)
