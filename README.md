@@ -1,8 +1,8 @@
 # SanskritNova AI
 
-SanskritNova AI is a Sanskrit learning web app backed by a preserved local RAG prototype. The active web product lives in `api/` and `public/`; the original document retrieval pipeline and local indexing flow live in `code/`.
+SanskritNova AI is a 2026-ready Sanskrit learning web app with a polished, responsive interface and a preserved local RAG prototype. The active web product lives in `api/` and `public/`; the original document retrieval pipeline and local indexing flow live in `code/`.
 
-## Current Product Surface
+## Product Snapshot
 
 Working now:
 - AI chat through `learn`, `translate`, and `analyze` modes
@@ -10,6 +10,15 @@ Working now:
 - Devanagari to IAST transliteration
 - study tracks from `GET /api/tracks`
 - a static frontend in `public/` with API-backed interactions
+
+## 2026 Design Language
+
+The current UI leans into a modern ancient-knowledge aesthetic:
+- deep indigo surfaces with saffron and gold accents
+- layered gradients, ornamental motifs, and a glassy sticky header
+- expressive Devanagari and serif typography
+- responsive layouts that hold up on desktop and mobile
+- clearer interaction states, loading feedback, and accessible controls
 
 ## Repository Layout
 
@@ -73,6 +82,7 @@ make rag-cli
 It currently:
 - prefers the retrieval path exposed through `sanskrit_rag.retriever`
 - falls back to scanning `code/chunks.npy` if the full local retrieval stack or artifacts are unavailable
+- fails closed with `503` when no grounded sources are available
 
 For local indexing stability, the default embedding backend is:
 

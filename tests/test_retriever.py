@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-import importlib
 import sys
 import types
 
 import numpy as np
+from sanskrit_rag._loader import load_code_module
 
 
 def _import_retriever_module(monkeypatch):
@@ -19,7 +19,7 @@ def _import_retriever_module(monkeypatch):
     monkeypatch.setitem(sys.modules, "faiss", faiss_module)
     monkeypatch.setitem(sys.modules, "joblib", joblib_module)
 
-    return importlib.import_module("code.retriever")
+    return load_code_module("retriever")
 
 
 def test_load_chunks_falls_back_to_legacy_when_json_is_malformed(tmp_path, monkeypatch):
