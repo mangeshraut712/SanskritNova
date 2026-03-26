@@ -1,4 +1,4 @@
-from code.config import settings
+from sanskrit_rag.config import settings
 
 
 def test_settings_repo_root_points_to_repo():

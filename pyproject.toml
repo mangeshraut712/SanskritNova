@@ -41,12 +41,12 @@ Repository = "https://github.com/vidhiisaxena/Sanskrit_RagSystem"
 Issues = "https://github.com/vidhiisaxena/Sanskrit_RagSystem/issues"
 
 [tool.hatch.build.targets.wheel]
-packages = ["code"]
+packages = ["code", "sanskrit_rag"]
 
 [tool.ruff]
 target-version = "py311"
 line-length = 100
-src = ["api", "code", "tests"]
+src = ["api", "code", "sanskrit_rag", "tests"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]

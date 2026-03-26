@@ -16,19 +16,19 @@ serve-site: ## Serve the static frontend locally
 	python -m http.server 3000 --directory public
 
 rag-index: ## Build the original local index
-	python -m code.build_index
+	python -m sanskrit_rag.build_index
 
 rag-cli: ## Run the original local CLI
-	python -m code.app
+	python -m sanskrit_rag.app
 
 test: ## Run tests
 	pytest tests
 
 lint: ## Run ruff on API, RAG modules, and tests
-	ruff check api code tests
+	ruff check api code sanskrit_rag tests
 
 format: ## Format code with ruff
-	ruff format api code tests
+	ruff format api code sanskrit_rag tests
 
 build: ## Byte-compile source for a quick build sanity check
-	python -m compileall api code
+	python -m compileall api code sanskrit_rag

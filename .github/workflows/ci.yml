@@ -27,7 +27,7 @@ jobs:
           pip install -e ".[dev]"
 
       - name: Compile source
-        run: python -m compileall api code
+        run: python -m compileall api code sanskrit_rag
 
       - name: Run tests
         run: pytest tests

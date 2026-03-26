@@ -318,7 +318,7 @@ def _fallback_grounded_results(query: str, k: int) -> list[dict[str, object]]:
 
 def _retrieve_grounded_results(query: str, k: int) -> list[dict[str, object]]:
     try:
-        from code.retriever import Retriever
+        from sanskrit_rag.retriever import Retriever
 
         return Retriever().retrieve(query, k=k)
     except Exception:

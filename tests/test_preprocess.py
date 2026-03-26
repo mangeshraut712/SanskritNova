@@ -1,4 +1,4 @@
-from code.preprocess import chunk_text, clean_text
+from sanskrit_rag.preprocess import chunk_text, clean_text
 
 
 def test_clean_text_preserves_sanskrit_markers():

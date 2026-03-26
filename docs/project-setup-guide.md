@@ -89,7 +89,7 @@ Use [`.env.example`](../.env.example) as the local template.
 `POST /api/grounded-answer` is connected to the original retrieval corpus in `code/`.
 
 It currently:
-- prefers the retrieval path in `code/retriever.py`
+- prefers the retrieval path exposed through `sanskrit_rag.retriever`
 - falls back to `code/chunks.npy` if the full local retrieval stack is unavailable
 
 ## Deployment Notes
