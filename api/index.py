@@ -172,7 +172,7 @@ def _openrouter_headers() -> dict[str, str]:
     }
 
 def _openrouter_model() -> str:
-    return os.getenv("OPENROUTER_MODEL", "openai/gpt-5-vision")
+    return os.getenv("OPENROUTER_MODEL", "openai/gpt-4o-mini")
 
 def _mode_instruction(mode: str) -> str:
     if mode == "translate":
