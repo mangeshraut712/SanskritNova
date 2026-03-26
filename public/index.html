@@ -4,167 +4,174 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SanskritNova AI | The Future of Ancient Wisdom</title>
+  <title>SanskritNova AI | Evolution 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <!-- 2026 Background Layering -->
   <div class="glow-bg"></div>
+  <div class="grid-mesh"></div>
 
   <header class="app-header">
     <div class="header-inner">
-      <div class="logo">
+      <a href="#" class="logo">
         <div class="logo-icon"></div>
         <div class="logo-text">
           <span class="logo-main">SanskritNova</span>
+          <br />
           <span class="logo-subtitle">Navonmeṣaḥ</span>
         </div>
-      </div>
+      </a>
       <nav class="main-nav">
         <a href="#vision" class="nav-item">Vision</a>
         <a href="#translate" class="nav-item">Translate</a>
-        <a href="#chat" class="nav-item">Chat</a>
+        <a href="#chat" class="nav-item">Playground</a>
         <a href="#translit" class="nav-item">IAST</a>
-        <a href="#tracks" class="nav-item">Tracks</a>
+        <a href="#tracks" class="nav-item">Pathways</a>
       </nav>
-      <div class="status-indicator">
+      <div class="status-indicator-2026">
         <div class="status-dot"></div>
-        <span id="global-status">System Ready</span>
+        <span id="global-status" class="status-label">System Ready</span>
       </div>
     </div>
   </header>
 
-  <main class="content-container">
+  <main class="content-container section-reveal">
+    <!-- Evolution Hero -->
     <section class="hero-section">
       <div class="hero-content">
-        <div class="badge">V2.0.0 Modernized</div>
-        <h1 class="hero-title">Decode the Ancient <span class="accent">with Precision.</span></h1>
+        <div class="badge-2026">Evolution 2.2 • Sanskrit Excellence</div>
+        <h1 class="hero-title">Unlock Ancient<br />Wisdom <span class="shimmer">Digitally.</span></h1>
         <p class="hero-description">
-          SanskritNova combines Google Cloud Vision OCR, neural translation, and grounded document retrieval to bring
-          unparalleled clarity to your Sanskrit study.
+          The next-generation AI portal for Sanskrit research. Experience hyper-accurate Vision OCR, unified Google
+          Translation, and grounded Vedic retrieval.
         </p>
         <div class="hero-cta">
-          <a href="#vision" class="btn btn-primary">Start with Vision OCR</a>
-          <a href="#chat" class="btn btn-secondary">Explore Chat</a>
+          <a href="#vision" class="btn btn-primary">Initialize Vision Lab</a>
+          <a href="#chat" class="btn btn-secondary">Enter Playground</a>
         </div>
       </div>
       <div class="hero-visual">
-        <div class="sanskrit-sphere">
-          <div class="sphere-text">
+        <div class="holo-container">
+          <div class="holo-ring"></div>
+          <div class="holo-ring"></div>
+          <div class="holo-ring"></div>
+          <div class="holo-core">
             विना संस्कृतं<br />न भारतम्
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Interactive Labs -->
+    <!-- Lab Ecosystem -->
     <section id="vision" class="labs-grid">
-      <!-- Vision OCR Lab -->
+      <!-- OCR Quantum Lab -->
       <article class="lab-card">
         <div class="lab-icon ic-vision"></div>
         <div class="lab-header">
-          <h3>Vision OCR Lab</h3>
-          <p>Upload handwritten or printed Sanskrit for instant decoding.</p>
+          <h3>Vision OCR</h3>
+          <p>Scan archival manuscripts or printed texts with neural accuracy.</p>
         </div>
         <div class="vision-interface">
           <div class="drop-zone" id="vision-drop-zone">
             <input type="file" id="vision-upload" hidden accept="image/*" />
             <div class="drop-prompt">
-              <p>Click to upload or drag image</p>
-              <small>JPEG, PNG supported</small>
+              <p>Drag file to decode</p>
+              <small>Optical Character Recognition active</small>
             </div>
           </div>
           <div id="vision-result-container" class="vision-result hidden">
             <div class="result-box">
-              <span class="label">Detected Text</span>
+              <span class="label">Text Output</span>
               <p id="ocr-text" class="devanagari-display"></p>
             </div>
             <div class="result-box">
-              <span class="label">AI Insight</span>
+              <span class="label">Contextual Insight</span>
               <p id="ocr-explanation" class="insight-display"></p>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- Translation Lab -->
+      <!-- Neural Translation Lab -->
       <article id="translate" class="lab-card">
         <div class="lab-icon ic-translate"></div>
         <div class="lab-header">
-          <h3>Translation Lab</h3>
-          <p>Powered by Google Cloud Neural Translation.</p>
+          <h3>Neural Translate</h3>
+          <p>Multi-layered Google Cloud Translation Engine.</p>
         </div>
         <div class="translate-interface">
-          <textarea id="translate-input" placeholder="Enter Sanskrit text..."></textarea>
+          <textarea id="translate-input" placeholder="Enter source text..."></textarea>
           <button id="btn-translate-google" class="btn-action">Translate to English</button>
           <div class="result-box">
-            <span class="label">Result</span>
+            <span class="label">Generated Output</span>
             <p id="translated-text" class="output-display">...</p>
           </div>
         </div>
       </article>
 
-      <!-- IAST Bridge -->
+      <!-- Script Bridge -->
       <article id="translit" class="lab-card">
         <div class="lab-icon ic-translit"></div>
         <div class="lab-header">
-          <h3>IAST Bridge</h3>
-          <p>Pure Devanagari to IAST Romanization.</p>
+          <h3>IAST Reactor</h3>
+          <p>High-fidelity Devanagari to Romanization bridge.</p>
         </div>
         <div class="translate-interface">
           <input type="text" id="translit-input" placeholder="e.g. रामो गच्छति" />
           <div class="translit-result">
-            <span class="label">Output</span>
+            <span class="label">IAST Stream</span>
             <p id="translit-result-text" class="iast-display">rāmo gacchati</p>
           </div>
         </div>
       </article>
     </section>
 
-    <!-- Chat Console (Main Interaction) -->
+    <!-- AI Playground Console -->
     <section id="chat" class="chat-section">
       <div class="chat-container">
         <div class="chat-sidebar">
           <div class="sidebar-header">
-            <h4>Study Modes</h4>
+            <h4>Interaction Nodes</h4>
           </div>
           <div class="mode-list">
             <button class="mode-item active" data-mode="learn">
-              <span class="mode-icon ic-learn"></span>
+              <span class="mode-icon ic-learn">🎓</span>
               <div class="mode-info">
-                <strong>Learn</strong>
-                <p>Conceptual tutorial</p>
+                <strong>Learn Node</strong>
+                <p>Guided AI Tutorial</p>
               </div>
             </button>
             <button class="mode-item" data-mode="analyze">
-              <span class="mode-icon ic-analyze"></span>
+              <span class="mode-icon ic-analyze">🔬</span>
               <div class="mode-info">
-                <strong>Analyze</strong>
-                <p>Grammar breakdown</p>
+                <strong>Analyze Node</strong>
+                <p>Deep Parsing</p>
               </div>
             </button>
             <button class="mode-item" data-mode="translate">
-              <span class="mode-icon ic-trans"></span>
+              <span class="mode-icon ic-trans">🌐</span>
               <div class="mode-info">
-                <strong>Translate</strong>
-                <p>AI Translation</p>
+                <strong>Translate Node</strong>
+                <p>Contextual AI Bridge</p>
               </div>
             </button>
             <button class="mode-item grounded" data-mode="grounded">
-              <span class="mode-icon ic-ground"></span>
+              <span class="mode-icon ic-ground">📜</span>
               <div class="mode-info">
-                <strong>Grounded</strong>
-                <p>Corpus Backed</p>
+                <strong>Grounded Node</strong>
+                <p>Corpus RAG Mode</p>
               </div>
             </button>
           </div>
           <div id="tracks" class="tracks-sidebar">
-            <p class="label">Learning Tracks</p>
+            <p class="label">Active Pathways</p>
             <div id="track-list-container" class="track-list">
               <!-- Dynamically populated -->
             </div>
@@ -175,18 +182,18 @@
           <div class="message-area" id="chat-messages">
             <div class="msg bot">
               <div class="msg-content">
-                Welcome to <span class="accent-text">SanskritNova AI</span>. How can I assist your studies today?
+                SanskritNova AI v2.2 Initialized. System stands ready for complex query node processing.
+                How may I assist your scholarship?
               </div>
             </div>
           </div>
           <div class="input-area">
             <div class="input-controls">
-              <div class="active-mode-tag" id="current-mode-display">Learn Mode</div>
-              <div class="typing-indicator hidden" id="typing">Nova is thinking...</div>
+              <div class="active-mode-tag" id="current-mode-display">LEARN ACTIVE</div>
+              <div class="typing-indicator hidden" id="typing">Processing stream...</div>
             </div>
             <form id="chat-form" class="chat-input-wrapper">
-              <textarea id="chat-prompt" placeholder="Ask about Sanskrit grammar, philosophy, or text..."
-                rows="1"></textarea>
+              <textarea id="chat-prompt" placeholder="Input query here..." rows="1"></textarea>
               <button type="submit" class="send-btn">
                 <span class="icon-send">↑</span>
               </button>
@@ -199,9 +206,22 @@
 
   <footer class="app-footer">
     <div class="content-container">
-      <p>&copy; 2026 SanskritNova AI Platform. Built with Google Cloud & OpenRouter.</p>
+      <p>&copy; 2026 SanskritNova AI Platform • Next-Generation Knowledge Architecture</p>
     </div>
   </footer>
+
+  <!-- 2026 Interaction Script -->
+  <script>
+    document.querySelectorAll('.lab-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mouse-x', `${x}%`);
+        card.style.setProperty('--mouse-y', `${y}%`);
+      });
+    });
+  </script>
 
   <script src="app.js"></script>
 </body>

@@ -1,4 +1,4 @@
-// SanskritNova AI - Logic Layer
+// SanskritNova AI - Logic Evolution 2026
 
 // --- Selectors ---
 const chatArea = document.getElementById("chat-messages");
@@ -36,40 +36,37 @@ const setStatus = (msg, isWorking = false) => {
   globalStatus.textContent = msg;
   const dot = document.querySelector(".status-dot");
   if (isWorking) {
-    dot.style.background = "#f1c40f"; // Gold
-    dot.style.boxShadow = "0 0 8px #f1c40f";
+    dot.style.background = "#f1c40f"; // Amber Gold
+    dot.style.boxShadow = "0 0 15px #f1c40f";
   } else {
-    dot.style.background = "#e67e22"; // Saffron
-    dot.style.boxShadow = "0 0 8px #e67e22";
+    dot.style.background = "#f97316"; // Saffron
+    dot.style.boxShadow = "0 0 15px #f97316";
   }
 };
 
 const appendMessage = (content, role) => {
   const msgDiv = document.createElement("div");
   msgDiv.className = `msg ${role === "user" ? "user" : "bot"}`;
-  msgDiv.innerHTML = `<div class="msg-content">${content}</div>`;
+  msgDiv.innerHTML = `<div class="msg-content" style="animation: revealStagger 0.4s ease-out;">${content}</div>`;
   chatArea.appendChild(msgDiv);
   chatArea.scrollTop = chatArea.scrollHeight;
 };
 
 // --- API Service ---
 const apiCall = async (endpoint, data, method = "POST") => {
-  setStatus("Nova is working...", true);
+  setStatus("Nova Processing...", true);
   try {
     const res = await fetch(`${API_BASE}${endpoint}`, {
       method,
       headers: { "Content-Type": "application/json" },
       body: data ? JSON.stringify(data) : undefined,
     });
-    if (!res.ok) {
-      const errorMsg = await res.text();
-      throw new Error(errorMsg || `API Error: ${res.status}`);
-    }
+    if (!res.ok) throw new Error(`API Connection Failed: ${res.status}`);
     setStatus("System Ready");
     return await res.json();
   } catch (err) {
     console.error(err);
-    setStatus("System Error");
+    setStatus("Node Error");
     throw err;
   }
 };
@@ -80,7 +77,7 @@ modeItems.forEach((item) => {
     modeItems.forEach((btn) => btn.classList.remove("active"));
     item.classList.add("active");
     activeMode = item.dataset.mode;
-    currentModeTag.textContent = `${activeMode.charAt(0).toUpperCase() + activeMode.slice(1)} Mode`;
+    currentModeTag.textContent = `${activeMode.toUpperCase()} ACTIVE`;
   });
 });
 
@@ -103,37 +100,36 @@ chatForm.addEventListener("submit", async (e) => {
     
     appendMessage(result.reply, "bot");
     if (result.sources && result.sources.length > 0) {
-      const sourcesText = result.sources.map(s => `[${s.source}#${s.chunk_id}]`).join(", ");
-      appendMessage(`<small style="opacity: 0.6">Sources: ${sourcesText}</small>`, "bot");
+      const sourcesText = result.sources.map(s => `[${s.source}]`).join(", ");
+      appendMessage(`<small style="opacity: 0.6; font-size: 0.7rem;">Verified Reference Node: ${sourcesText}</small>`, "bot");
     }
   } catch (err) {
-    appendMessage(`Sorry, something went wrong: ${err.message}`, "bot");
+    appendMessage(`Processing Interrupted: ${err.message}`, "bot");
   } finally {
     typingIndicator.classList.add("hidden");
   }
 });
 
-// --- Vision OCR Lab ---
+// --- Vision Lab ---
 const processVision = async (base64) => {
   visionResult.classList.add("hidden");
-  setStatus("Decoding image...", true);
+  setStatus("Neural Decoding...", true);
 
   try {
     const result = await apiCall("/vision-ocr", { image_base64: base64 });
-    ocrDisplayText.textContent = result.text || "No text detected.";
+    ocrDisplayText.textContent = result.text || "No detectable glyphs.";
     ocrExplanation.textContent = result.explanation || "";
     visionResult.classList.remove("hidden");
+    visionResult.style.animation = "revealStagger 0.5s ease-out";
   } catch (err) {
-    alert("OCR failed: " + err.message);
+    alert("Decryption failed: " + err.message);
   }
 };
 
 visionDropZone.addEventListener("click", () => visionUpload.click());
-
 visionUpload.addEventListener("change", (e) => {
   const file = e.target.files[0];
   if (!file) return;
-
   const reader = new FileReader();
   reader.onload = (event) => {
     const base64 = event.target.result.split(",")[1];
@@ -142,24 +138,16 @@ visionUpload.addEventListener("change", (e) => {
   reader.readAsDataURL(file);
 });
 
-visionDropZone.addEventListener("dragover", (e) => {
-  e.preventDefault();
-  visionDropZone.classList.add("dragover");
-});
-
-visionDropZone.addEventListener("dragleave", () => {
-  visionDropZone.classList.remove("dragover");
-});
-
+// --- Drag & Drop ---
+visionDropZone.addEventListener("dragover", (e) => { e.preventDefault(); visionDropZone.style.borderColor = "var(--accent)"; });
+visionDropZone.addEventListener("dragleave", (e) => { e.preventDefault(); visionDropZone.style.borderColor = "var(--line)"; });
 visionDropZone.addEventListener("drop", (e) => {
   e.preventDefault();
-  visionDropZone.classList.remove("dragover");
   const file = e.dataTransfer.files[0];
   if (file) {
     const reader = new FileReader();
     reader.onload = (event) => {
-      const base64 = event.target.result.split(",")[1];
-      processVision(base64);
+      processVision(event.target.result.split(",")[1]);
     };
     reader.readAsDataURL(file);
   }
@@ -169,12 +157,12 @@ visionDropZone.addEventListener("drop", (e) => {
 btnTranslate.addEventListener("click", async () => {
   const text = translateInput.value.trim();
   if (!text) return;
-
   try {
     const result = await apiCall("/translate-google", { text, target_language: "en" });
     translatedOutput.textContent = result.translated_text;
+    translatedOutput.style.animation = "revealStagger 0.4s ease-out";
   } catch (err) {
-    translatedOutput.textContent = "Translation failed: " + err.message;
+    translatedOutput.textContent = "Node failure: " + err.message;
   }
 });
 
@@ -185,7 +173,6 @@ translitInput.addEventListener("input", async () => {
     translitResult.textContent = "";
     return;
   }
-
   try {
     const result = await apiCall("/transliterate", { text });
     translitResult.textContent = result.iast;
@@ -199,17 +186,17 @@ const loadTracks = async () => {
   try {
     const tracks = await apiCall("/tracks", null, "GET");
     trackListContainer.innerHTML = tracks.map(track => `
-      <article class="track-item">
+      <article class="track-item" style="animation: revealStagger 0.4s ease-out;">
         <h5>${track.title}</h5>
-        <p>${track.level} • ${track.duration}</p>
+        <p>${track.level.toUpperCase()} • ${track.duration}</p>
       </article>
     `).join("");
   } catch (err) {
-    trackListContainer.innerHTML = `<p style="font-size: 0.7rem; color: var(--ink-faint)">Unable to load tracks.</p>`;
+    trackListContainer.innerHTML = `<p style="font-size: 0.7rem; color: var(--ink-soft); opacity: 0.5;">Pathways offline.</p>`;
   }
 };
 
 // Start
 loadTracks();
-setStatus("System Ready");
-console.log("SanskritNova AI Initialized.");
+setStatus("Evolution 2026 Ready");
+console.log("Evolution 2026 Logic Layer Active.");
