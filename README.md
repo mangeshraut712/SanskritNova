@@ -187,7 +187,7 @@ POST /api/chat
 ```
 
 **Get Tracks in Hindi:**
-```bash
+```http
 GET /api/tracks?lang=hi
 ```
 
