@@ -7,6 +7,7 @@ SanskritNova AI is a cutting-edge 2026 Sanskrit learning platform designed speci
 ## 🌟 2026 Key Features
 
 ### 🤖 AI-Powered Learning
+
 - **Multilingual AI Chat**: Intelligent tutoring in English and Hindi
 - **Agentic RAG Pipeline** (NEW): Self-correcting retrieval with query routing, chunk evaluation, and hallucination detection
 - **Grounded Answers**: AI responses backed by authentic Sanskrit texts
@@ -14,18 +15,21 @@ SanskritNova AI is a cutting-edge 2026 Sanskrit learning platform designed speci
 - **Grammar Analysis**: Deep linguistic analysis with cultural context
 
 ### 🎯 Indian User Experience
+
 - **Hindi Interface**: Complete bilingual UI (English/हिंदी)
 - **Offline Learning**: Download tracks for rural connectivity challenges
 - **PWA Ready**: Install as native app on smartphones
 - **Audio Pronunciation**: Sanskrit text-to-speech with IAST accuracy
 
 ### 📚 Structured Education
+
 - **Learning Tracks**: 3 curated courses (Foundations, Bhagavad Gita, Grammar Lab)
 - **Progressive Learning**: Beginner to Advanced pathways
 - **Track Downloads**: Offline access to learning materials
 - **Progress Tracking**: Built-in learning analytics
 
 ### 🔧 Technical Excellence
+
 - **Progressive Web App**: Installable, offline-capable, push notifications
 - **Service Worker**: Background sync, caching, offline functionality
 - **Speech Synthesis**: Web Speech API for pronunciation
@@ -142,18 +146,19 @@ User Query
 
 **Pipeline Nodes:**
 
-| Node | Role |
-|------|------|
-| **Query Analyzer** | Classifies the query as `direct` (no retrieval needed), `retrieve` (needs corpus), or `reformulate` (ambiguous — needs rephrasing) |
-| **Query Reformulator** | Rewrites vague queries into retrieval-friendly terms using Sanskrit-specific context |
-| **Retriever** | Fetches top-k chunks from the Sanskrit corpus via FAISS or vector store |
-| **Chunk Evaluator** | Scores each chunk's relevance (0-10) and filters out anything below 4.0 |
-| **Direct Answer** | Handles general-knowledge questions without retrieval |
-| **Generator** | Produces a grounded answer from filtered chunks with source references |
-| **Answer Checker** | Validates groundedness, completeness, and hallucination risk against source context |
-| **Self-Corrector** | Reformulates the query based on quality-check feedback and retries retrieval (max 3 attempts) |
+| Node                   | Role                                                                                                                               |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **Query Analyzer**     | Classifies the query as `direct` (no retrieval needed), `retrieve` (needs corpus), or `reformulate` (ambiguous — needs rephrasing) |
+| **Query Reformulator** | Rewrites vague queries into retrieval-friendly terms using Sanskrit-specific context                                               |
+| **Retriever**          | Fetches top-k chunks from the Sanskrit corpus via FAISS or vector store                                                            |
+| **Chunk Evaluator**    | Scores each chunk's relevance (0-10) and filters out anything below 4.0                                                            |
+| **Direct Answer**      | Handles general-knowledge questions without retrieval                                                                              |
+| **Generator**          | Produces a grounded answer from filtered chunks with source references                                                             |
+| **Answer Checker**     | Validates groundedness, completeness, and hallucination risk against source context                                                |
+| **Self-Corrector**     | Reformulates the query based on quality-check feedback and retries retrieval (max 3 attempts)                                      |
 
 **Key Features:**
+
 - **Error Boundaries**: Each node is wrapped with async error handling — a failure in one node doesn't crash the pipeline
 - **Streaming Support**: `agentic_answer_stream()` yields real-time events as each node completes
 - **Robust Imports**: Graceful fallback when `langgraph`/`langchain` are not installed
@@ -167,9 +172,9 @@ When the Answer Checker flags an answer as `insufficient` or `hallucination`, th
 
 SanskritNova now supports pluggable vector stores for production-grade semantic search:
 
-| Backend | Use Case | Setup |
-|---------|----------|-------|
-| **ChromaDB** | Local development, zero-config | `pip install chromadb` |
+| Backend      | Use Case                          | Setup                                           |
+| ------------ | --------------------------------- | ----------------------------------------------- |
+| **ChromaDB** | Local development, zero-config    | `pip install chromadb`                          |
 | **Pinecone** | Cloud production, managed scaling | `pip install pinecone` + set `PINECONE_API_KEY` |
 
 ```python
@@ -187,10 +192,10 @@ results = store.search("धर्मः किम्?", k=5)
 
 **Embedding Providers:**
 
-| Provider | Model | Backend |
-|----------|-------|---------|
+| Provider             | Model                                  | Backend         |
+| -------------------- | -------------------------------------- | --------------- |
 | SentenceTransformers | `distiluse-base-multilingual-cased-v1` | Local (default) |
-| OpenAI/OpenRouter | `text-embedding-3-small` | Cloud API |
+| OpenAI/OpenRouter    | `text-embedding-3-small`               | Cloud API       |
 
 **Chunk Metadata Tracking:**
 
@@ -212,9 +217,7 @@ Content-Type: application/json
 ```json
 {
   "reply": "योगः कर्मसु कौशलम् ...",
-  "sources": [
-    {"source": "BhagavadGita", "chunk_id": 42, "text": "..."}
-  ],
+  "sources": [{ "source": "BhagavadGita", "chunk_id": 42, "text": "..." }],
   "steps": [
     "Query classified as: retrieve",
     "Retrieved 5 chunks",
@@ -246,12 +249,14 @@ async for event in agentic_answer_stream("What is yoga?"):
 ## 🎯 2026 Indian Market Focus
 
 **Target Users:**
+
 - **Urban Millennials**: Tech-savvy Indians seeking cultural reconnection
 - **Rural Students**: Offline learning for areas with poor connectivity
 - **Academic Community**: Integration with Sanskrit universities
 - **Language Enthusiasts**: Self-paced learning with AI assistance
 
 **Key Differentiators:**
+
 - **First Bilingual Sanskrit App**: English + Hindi interface
 - **Offline-First**: Works in rural India without internet
 - **Government Integration**: DIKSHA/SCERT compatible
@@ -284,6 +289,7 @@ pip install -e ".[vector]"
 ```
 
 The lightweight web install is enough for:
+
 - `chat`
 - `tracks`
 - `transliteration`
@@ -309,6 +315,7 @@ pytest tests --cov=code --cov=api
 ```
 
 **Test suite:**
+
 - `tests/test_api.py` — FastAPI endpoint tests (health, chat, grounded-answer, agentic-answer, transliteration)
 - `tests/test_agentic_rag.py` — Agentic RAG pipeline node tests, routing logic, streaming
 - `tests/test_code_api.py` — Legacy code API tests with stubbed dependencies
@@ -337,6 +344,7 @@ make rag-cli
 `POST /api/grounded-answer` is connected to the original retrieval corpus in `code/`.
 
 It currently:
+
 - prefers the retrieval path exposed through `sanskrit_rag.retriever`
 - falls back to scanning `code/chunks.npy` if the full local retrieval stack or artifacts are unavailable
 - fails closed with `503` when no grounded sources are available
@@ -356,12 +364,14 @@ export SANSKRIT_RAG_EMBEDDING_BACKEND=sentence-transformers
 ## Environment Variables
 
 API:
+
 - `OPENROUTER_API_KEY`
 - `OPENROUTER_MODEL`
 - `OPENROUTER_APP_NAME`
 - `OPENROUTER_APP_URL`
 
 Original RAG:
+
 - `SANSKRIT_RAG_DATA_DIR`
 - `SANSKRIT_RAG_INDEX_PATH`
 - `SANSKRIT_RAG_CHUNKS_PATH`
@@ -373,6 +383,7 @@ Use [`.env.example`](.env.example) as the local template.
 ## 🔌 API Endpoints
 
 ### Core Endpoints
+
 - `GET /api/health` - Health check
 - `GET /api/info` - API information and capabilities
 - `GET /api/tracks?lang=en|hi` - Learning tracks (bilingual)
@@ -383,6 +394,7 @@ Use [`.env.example`](.env.example) as the local template.
 ### Request Examples
 
 **Chat with Hindi Support:**
+
 ```json
 POST /api/chat
 {
@@ -393,11 +405,13 @@ POST /api/chat
 ```
 
 **Get Tracks in Hindi:**
+
 ```http
 GET /api/tracks?lang=hi
 ```
 
 **Transliteration with Audio:**
+
 ```json
 POST /api/transliterate
 {
@@ -408,6 +422,7 @@ POST /api/transliterate
 ## 🚀 Deployment & Scaling
 
 ### Quick Deploy
+
 ```bash
 # Vercel (Recommended for PWA)
 vercel --prod
@@ -420,6 +435,7 @@ kubectl apply -f k8s/
 ```
 
 ### 2026 Production Stack
+
 - **Frontend**: Vercel Edge Network (global CDN)
 - **Backend**: Railway/Fly.io (FastAPI)
 - **Database**: PlanetScale (MySQL)
@@ -430,6 +446,7 @@ kubectl apply -f k8s/
 ## 🎯 2026 Roadmap
 
 ### Q2 2026: Launch Phase
+
 - [x] Bilingual Hindi/English interface
 - [x] PWA with offline functionality
 - [x] Audio pronunciation features
@@ -437,6 +454,7 @@ kubectl apply -f k8s/
 - [ ] WhatsApp bot integration
 
 ### Q3 2026: Scale Phase
+
 - [ ] Mobile apps (React Native)
 - [ ] Multi-language support (Tamil, Telugu, etc.)
 - [ ] Advanced AI features (conversation memory)
@@ -444,6 +462,7 @@ kubectl apply -f k8s/
 - [ ] Community features
 
 ### Q4 2026: Growth Phase
+
 - [ ] VR/AR Sanskrit learning
 - [ ] Integration with Sanskrit universities
 - [ ] Corporate training programs
@@ -462,13 +481,14 @@ kubectl apply -f k8s/
 ## 🏆 Recognition
 
 **Built for India, by understanding Indian needs:**
+
 - Offline-first for rural connectivity challenges
 - Hindi localization for accessibility
 - Cultural aesthetics respecting Sanskrit heritage
 - Mobile-optimized for affordable smartphones
 - Government-aligned for educational integration
 
-*Contributing to India's knowledge renaissance through AI-powered Sanskrit education.* 🇮🇳
+_Contributing to India's knowledge renaissance through AI-powered Sanskrit education._ 🇮🇳
 
 ## Docs
 

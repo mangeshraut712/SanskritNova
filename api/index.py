@@ -220,6 +220,7 @@ app.add_middleware(
 
 
 def _require_api_key() -> str:
+    """Return the OPENROUTER_API_KEY or raise 500 if unconfigured."""
     api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
         raise HTTPException(status_code=500, detail="OPENROUTER_API_KEY not configured.")
@@ -227,6 +228,7 @@ def _require_api_key() -> str:
 
 
 def _openrouter_headers() -> dict[str, str]:
+    """Build HTTP headers for OpenRouter API requests."""
     return {
         "Authorization": f"Bearer {_require_api_key()}",
         "Content-Type": "application/json",
@@ -236,10 +238,12 @@ def _openrouter_headers() -> dict[str, str]:
 
 
 def _openrouter_model() -> str:
+    """Return the configured OpenRouter model name."""
     return os.getenv("OPENROUTER_MODEL", "openai/gpt-4.1-mini")
 
 
 def _mode_instruction(mode: str, lang: str = "en") -> str:
+    """Return the system instruction for a given chat mode and language."""
     if lang == "hi":
         if mode == "translate":
             return "इनपुट को स्पष्ट रूप से अनुवाद करें। बारीकियों को बनाए रखें और लिप्यंतरण शामिल करें।"
@@ -255,6 +259,7 @@ def _mode_instruction(mode: str, lang: str = "en") -> str:
 
 
 def _load_local_retriever():
+    """Lazily load and cache the sanskrit_rag Retriever. Returns None on failure."""
     global _LOCAL_RETRIEVER
 
     if _LOCAL_RETRIEVER is not None:
@@ -275,6 +280,7 @@ def _load_local_retriever():
 
 
 def _retrieve_with_local_retriever(query: str, k: int) -> list[dict[str, object]]:
+    """Retrieve results from the local FAISS-backed retriever."""
     retriever = _load_local_retriever()
     if retriever is None:
         return []
@@ -293,6 +299,7 @@ def _retrieve_with_local_retriever(query: str, k: int) -> list[dict[str, object]
 
 
 def _retrieve_from_legacy_chunks(query: str, k: int) -> list[dict[str, object]]:
+    """Fallback retrieval using naive token-count scoring on legacy chunks.npy."""
     if not LEGACY_CHUNKS_PATH.exists():
         return []
 
@@ -315,6 +322,7 @@ def _retrieve_from_legacy_chunks(query: str, k: int) -> list[dict[str, object]]:
 
 
 def _grounded_answer_available() -> bool:
+    """Check whether grounded answers can be served (API key + retriever or chunks)."""
     if not os.getenv("OPENROUTER_API_KEY"):
         return False
 
@@ -325,6 +333,7 @@ def _grounded_answer_available() -> bool:
 
 
 async def _openrouter_completion(payload: dict[str, object]) -> str:
+    """Send a chat completion request to OpenRouter and return the assistant reply."""
     try:
         async with httpx.AsyncClient(timeout=45.0) as client:
             response = await client.post(
