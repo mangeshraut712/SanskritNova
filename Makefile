@@ -1,34 +1,78 @@
-.PHONY: help install install-local serve-api serve-site rag-index rag-cli test lint format build
+# Makefile for SanskritNova AI
 
-help: ## Show available commands
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-16s\033[0m %s\n", $$1, $$2}'
+.PHONY: help test lint format clean serve-api serve-site dev install-deps check-deps
 
-install: ## Install the web app and developer dependencies
+# Default target
+help:
+	@echo "SanskritNova AI - Development Commands"
+	@echo ""
+	@echo "🚀 Available targets:"
+	@echo "  test           - Run all tests"
+	@echo "  test-watch     - Run tests in watch mode"
+	@echo "  lint           - Run code quality checks"
+	@echo "  format         - Format code with ruff"
+	@echo "  security       - Run security scan"
+	@echo "  coverage       - Run tests with coverage"
+	@echo "  serve-api      - Start API server"
+	@echo "  serve-site     - Start web frontend"
+	@echo "  dev            - Start both API and web"
+	@echo "  clean          - Clean cache and artifacts"
+	@echo "  install-deps   - Install development dependencies"
+	@echo "  check-deps     - Check dependency versions"
+	@echo ""
+	@echo "🌐 Live URLs:"
+	@echo "  Vercel:  https://sanskrit-nova.vercel.app"
+	@echo "  Netlify: https://sanskritnova.netlify.app"
+
+# Installation
+install-deps:
+	@echo "📦 Installing Python development dependencies..."
 	pip install -e ".[dev]"
+	@echo "✅ Python dependencies installed"
 
-install-local: ## Install original local RAG dependencies
-	pip install -e ".[local]"
+install-node-deps:
+	@echo "📦 Installing Node.js dependencies..."
+	npm install
+	@echo "✅ Node.js dependencies installed"
 
-serve-api: ## Run the FastAPI backend locally (port 8000)
-	uvicorn api.index:app --reload --host 0.0.0.0 --port 8000
+# Dependency checks
+check-deps:
+	@echo "🔍 Checking dependency versions..."
+	@echo "Python: $(shell python --version)"
+	@echo "Node: $(shell node --version)"
+	@echo "Git: $(shell git --version)"
+	pip list | grep -E "(fastapi|uvicorn|pytest|ruff|bandit)"
 
-serve-site: ## Serve the static frontend locally
-	python -m http.server 3000 --directory public
+# Code quality
+lint:
+	@echo "🔍 Running code quality checks..."
+	ruff check .
+	@echo "✅ Linting complete"
 
-rag-index: ## Build the original local index
-	python -m sanskrit_rag.build_index
+format:
+	@echo "📝 Formatting code..."
+	ruff check . --fix
+	@echo "✅ Code formatted"
 
-rag-cli: ## Run the original local CLI
-	python -m sanskrit_rag.app
+security:
+	@echo "🔒 Running security scan..."
+	bandit -r .
+	@echo "✅ Security scan complete"
 
-test: ## Run tests
-	pytest tests
+# Testing
+test:
+	@echo "🧪 Running test suite..."
+	python -m pytest tests/ -v
+	@echo "✅ Tests complete"
 
-lint: ## Run ruff on API, RAG modules, and tests
-	ruff check api code sanskrit_rag tests
+test-watch:
+	@echo "🧪 Running tests in watch mode..."
+	python -m pytest tests/ -v --watch
 
-format: ## Format code with ruff
-	ruff format api code sanskrit_rag tests
+coverage:
+	@echo "📊 Running tests with coverage..."
+	python -m pytest tests/ --cov=code --cov=api --cov-report=html
+	@echo "📈 Coverage report generated in htmlcov/"
 
 build: ## Byte-compile source for a quick build sanity check
 	python -m compileall api code sanskrit_rag
