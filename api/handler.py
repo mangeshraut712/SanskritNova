@@ -1,5 +1,6 @@
 import json
 
+
 def handler(request):
     """Simple Vercel serverless handler."""
     path = request.get("path", "")

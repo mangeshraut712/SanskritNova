@@ -1,4 +1,3 @@
-import pytest
 import api.index as api_index
 from fastapi.testclient import TestClient
 
@@ -118,7 +117,14 @@ def test_chat_endpoint_hindi():
 
 
 def test_chat_endpoint_hindi_translate():
-    response = client.post("/api/chat", json={"message": "योग का अनुवाद करें", "mode": "translate", "lang": "hi"})
+    response = client.post(
+        "/api/chat", 
+        json={
+            "message": "योग का अनुवाद करें", 
+            "mode": "translate", 
+            "lang": "hi"
+        }
+    )
     assert response.status_code == 200
     body = response.json()
     assert "आपकी" in body["reply"]

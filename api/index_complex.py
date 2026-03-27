@@ -211,7 +211,7 @@ app = FastAPI(title="SanskritNova AI API", version="2.0.0")
 
 # LangGraph dependencies (optional, for agentic RAG)
 try:
-    from code.agentic_rag import agentic_answer, AgenticRAGState
+    from code.agentic_rag import agentic_answer
     AGENTIC_RAG_AVAILABLE = True
 except ImportError:
     AGENTIC_RAG_AVAILABLE = False
@@ -588,8 +588,15 @@ except ImportError:
             
             return {
                 "statusCode": response["status"],
-                "headers": {k.decode(): v.decode() for k, v in response["headers"]},
-                "body": response["body"].decode() if isinstance(response["body"], bytes) else response["body"]
+                "headers": {
+                    k.decode(): v.decode() 
+                    for k, v in response["headers"].items()
+                },
+                "body": (
+                    response["body"].decode() 
+                    if isinstance(response["body"], bytes) 
+                    else response["body"]
+                )
             }
     
     handler = SimpleHandler(app)

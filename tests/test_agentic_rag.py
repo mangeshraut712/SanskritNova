@@ -4,9 +4,8 @@ Tests for the Agentic RAG Pipeline
 Tests the agentic RAG functionality with proper mocking.
 """
 
+
 import pytest
-import sys
-import types
 
 
 def test_agentic_rag_imports():
@@ -50,7 +49,7 @@ def test_agentic_rag_dependencies_check():
 async def test_agentic_answer_with_dependencies():
     """Test agentic_answer when dependencies are available."""
     try:
-        from code.agentic_rag import agentic_answer, LANGGRAPH_AVAILABLE
+        from code.agentic_rag import LANGGRAPH_AVAILABLE, agentic_answer
         
         if not LANGGRAPH_AVAILABLE:
             pytest.skip("Agentic RAG dependencies not available")
@@ -67,7 +66,7 @@ async def test_agentic_answer_with_dependencies():
 async def test_agentic_answer_stream_with_dependencies():
     """Test agentic_answer_stream when dependencies are available."""
     try:
-        from code.agentic_rag import agentic_answer_stream, LANGGRAPH_AVAILABLE
+        from code.agentic_rag import LANGGRAPH_AVAILABLE, agentic_answer_stream
         
         if not LANGGRAPH_AVAILABLE:
             pytest.skip("Agentic RAG dependencies not available")
@@ -77,7 +76,7 @@ async def test_agentic_answer_stream_with_dependencies():
             async for event in agentic_answer_stream("test query"):
                 assert isinstance(event, dict)
                 break  # Just test first event
-        except (RuntimeError, Exception) as e:
+        except (RuntimeError, Exception):
             # Expected when API keys are missing or other runtime issues
             assert True  # Test passes as long as we get expected exceptions
                 

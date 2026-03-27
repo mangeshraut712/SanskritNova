@@ -282,7 +282,13 @@ class ChromaDBStore(VectorStore):
             return []
 
         if ids is None:
-            ids = [self._generate_id(t, (metadatas or [{}])[i].get("source", "")) for i, t in enumerate(texts)]
+            ids = [
+                self._generate_id(
+                    t, 
+                    (metadatas or [{}])[i].get("source", "")
+                ) 
+                for i, t in enumerate(texts)
+            ]
 
         embeddings = self.embedding_provider.embed(texts)
 
@@ -386,7 +392,13 @@ class PineconeStore(VectorStore):
             return []
 
         if ids is None:
-            ids = [self._generate_id(t, (metadatas or [{}])[i].get("source", "")) for i, t in enumerate(texts)]
+            ids = [
+                self._generate_id(
+                    t, 
+                    (metadatas or [{}])[i].get("source", "")
+                ) 
+                for i, t in enumerate(texts)
+            ]
 
         embeddings = self.embedding_provider.embed(texts)
 

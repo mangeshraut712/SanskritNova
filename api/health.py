@@ -1,5 +1,6 @@
 import json
 
+
 def handler(request):
     """Health check endpoint."""
     try:

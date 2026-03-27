@@ -58,7 +58,6 @@ logger = logging.getLogger("sanskritnova.agentic_rag")
 # ---------------------------------------------------------------------------
 
 try:
-    from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
     from langchain_core.output_parsers import StrOutputParser
     from langchain_core.prompts import ChatPromptTemplate
     from langchain_openai import ChatOpenAI
@@ -279,7 +278,11 @@ async def retrieve_chunks(state: AgenticRAGState) -> dict:
     try:
         results = rag.search(query, k=5)
         chunks = [
-            {"source": r.get("source", ""), "chunk_id": r.get("chunk_id", ""), "text": r.get("text", "")}
+            {
+                "source": r.get("source", ""), 
+                "chunk_id": r.get("chunk_id", ""), 
+                "text": r.get("text", "")
+            }
             for r in results
         ]
         logger.info("Retrieved %d chunks for query: %s", len(chunks), query[:60])
@@ -471,14 +474,14 @@ feedback: [brief explanation]"""),
 
     # Parse the check result
     lines = result.strip().lower().split("\n")
-    is_grounded = any("grounded: yes" in l for l in lines)
-    is_complete = any("complete: yes" in l for l in lines)
-    has_hallucination = any("hallucination: yes" in l for l in lines)
+    is_grounded = any("grounded: yes" in line for line in lines)
+    is_complete = any("complete: yes" in line for line in lines)
+    has_hallucination = any("hallucination: yes" in line for line in lines)
 
     feedback = ""
-    for l in lines:
-        if l.startswith("feedback:"):
-            feedback = l.split(":", 1)[1].strip()
+    for line in lines:
+        if line.startswith("feedback:"):
+            feedback = line.split(":", 1)[1].strip()
 
     if is_grounded and is_complete and not has_hallucination:
         quality = "good"
@@ -699,7 +702,11 @@ async def agentic_answer(query: str) -> dict[str, Any]:
     result = await agentic_rag_graph.ainvoke(initial_state)
 
     answer = result.get("final_answer") or result.get("draft_answer", "")
-    logger.info("Agentic RAG complete: quality=%s, attempts=%d", result.get("answer_quality"), result.get("attempt", 0))
+    logger.info(
+        "Agentic RAG complete: quality=%s, attempts=%d", 
+        result.get("answer_quality"), 
+        result.get("attempt", 0)
+    )
 
     return {
         "query": query,
@@ -734,20 +741,14 @@ async def agentic_answer_stream(query: str):
                 "node": node_name,
                 "data": {},
             }
-
-            # Include relevant state in the stream event
             if "step_log" in node_output:
-                step_info["data"]["steps"] = node_output["step_log"]
+                step_info["output"]["steps"] = node_output["step_log"]
             if "final_answer" in node_output and node_output["final_answer"]:
-                step_info["data"]["answer"] = node_output["final_answer"]
-            if "query_type" in node_output:
-                step_info["data"]["query_type"] = node_output["query_type"].value if hasattr(node_output["query_type"], "value") else str(node_output["query_type"])
-            if "retrieved_chunks" in node_output:
-                step_info["data"]["chunk_count"] = len(node_output["retrieved_chunks"])
+                step_info["output"]["answer"] = node_output["final_answer"]
             if "filtered_chunks" in node_output:
-                step_info["data"]["filtered_count"] = len(node_output["filtered_chunks"])
+                step_info["output"]["filtered_count"] = len(node_output["filtered_chunks"])
             if "answer_quality" in node_output:
-                step_info["data"]["quality"] = node_output["answer_quality"]
+                step_info["output"]["quality"] = node_output["answer_quality"]
 
             yield step_info
 

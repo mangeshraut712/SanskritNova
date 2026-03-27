@@ -1,9 +1,10 @@
-from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from typing import Literal
 import json
 import logging
+from typing import Literal
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

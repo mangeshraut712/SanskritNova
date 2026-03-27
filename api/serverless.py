@@ -1,5 +1,4 @@
 import json
-import re
 from urllib.parse import parse_qs
 
 # Learning tracks data
@@ -153,13 +152,12 @@ def handle_transliterate(body):
             "devanagari": text,
             "iast": transliterate_to_iast(text)
         }
-    except:
+    except json.JSONDecodeError:
         return {"error": "Invalid JSON"}
 
 def handle_chat(body):
     try:
         data = json.loads(body) if body else {}
-        message = data.get("message", "")
         mode = data.get("mode", "learn")
         lang = data.get("lang", "en")
         
@@ -174,7 +172,7 @@ def handle_chat(body):
             "model": "simplified",
             "mode": mode
         }
-    except:
+    except json.JSONDecodeError:
         return {"error": "Invalid JSON"}
 
 def handler(event, context):
@@ -184,7 +182,6 @@ def handler(event, context):
         method = event.get("httpMethod", "GET")
         path = event.get("path", "/")
         query_params = event.get("queryStringParameters", {}) or {}
-        headers = event.get("headers", {}) or {}
         body = event.get("body", "")
         
         # Parse query parameters

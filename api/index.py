@@ -1,7 +1,8 @@
-from fastapi import FastAPI, HTTPException
+from typing import Literal
+
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import Literal
 
 app = FastAPI(title="SanskritNova AI API")
 

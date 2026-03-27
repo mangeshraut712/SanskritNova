@@ -1,5 +1,6 @@
 import json
 
+
 def handler(request):
     """Chat endpoint."""
     try:
@@ -10,7 +11,6 @@ def handler(request):
         else:
             data = body
         
-        message = data.get("message", "")
         mode = data.get("mode", "learn")
         lang = data.get("lang", "en")
         

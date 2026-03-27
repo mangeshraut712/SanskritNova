@@ -1,5 +1,6 @@
 import json
 
+
 def handler(request):
     """API info endpoint."""
     try:
