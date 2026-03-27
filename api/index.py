@@ -200,9 +200,15 @@ async def chat_api(request: ChatRequest):
         mode=request.mode
     )
 
-# Vercel handler
-from mangum import Mangum
-handler = Mangum(app, lifespan="off")
+# Vercel handler - wrapped in try/except for robustness
+try:
+    from mangum import Mangum
+    handler = Mangum(app, lifespan="off")
+except Exception as e:
+    import logging
+    logging.basicConfig(level=logging.INFO)
+    logging.info(f"Mangum import failed (expected in some environments): {e}")
+    handler = None
 
 if __name__ == "__main__":
     import uvicorn
