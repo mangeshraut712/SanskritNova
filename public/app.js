@@ -1,11 +1,12 @@
 /**
- * SanskritNova AI - Luxury Indian Ancient Inspired Frontend
+ * SanskritNova AI - Royal Ancient Indian Luxury Frontend
+ * Premium interactions and scroll reveal animations
  */
 
 // Translations
 const TRANSLATIONS = {
   en: {
-    welcome: "स्वागतं भवतः। SanskritNova awaits your inquiry. How shall we explore the depths of Sanskrit wisdom together?",
+    welcome: "Welcome to SanskritNova. How may I assist you in your journey of Sanskrit wisdom today?",
     learnMode: "Learn Mode",
     analyzeMode: "Analyze Mode",
     translateMode: "Translate Mode",
@@ -32,7 +33,7 @@ const TRANSLATIONS = {
     connectingWisdom: "Connecting ancient wisdom to modern minds"
   },
   hi: {
-    welcome: "स्वागत है। संस्कृतनोवा आपके प्रश्न का इंतजार कर रहा है। आइए हम साथ मिलकर संस्कृत ज्ञान की गहराइयों का अन्वेषण करें।",
+    welcome: "संस्कृतनोवा में आपका स्वागत है। आज संस्कृत ज्ञान की यात्रा में मैं आपकी कैसे सहायता कर सकता हूँ?",
     learnMode: "सीखने की विधा",
     analyzeMode: "विश्लेषण विधा",
     translateMode: "अनुवाद विधा",
@@ -477,6 +478,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Load learning tracks
   loadTracks();
+
+  // Initialize scroll reveal animations
+  initScrollReveal();
+
+  // Initialize parallax effect for mandala
+  initParallaxEffect();
+});
+
+// Scroll Reveal Animation
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.section, .track-card, .translit-card');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal');
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  revealElements.forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
+  });
+}
+
+// Parallax Effect for Mandala
+function initParallaxEffect() {
+  const mandala = document.querySelector('.mandala');
+  if (!mandala) return;
+
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * 0.05;
+        mandala.style.transform = `translate(-50%, -50%) rotate(${rate}deg)`;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+}
+
+// Premium hover effects for interactive elements
+document.querySelectorAll('.track-card, .mode-card, .btn').forEach(el => {
+  el.addEventListener('mouseenter', function() {
+    this.style.transition = 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+  });
 });
 
 // Register Service Worker for PWA
