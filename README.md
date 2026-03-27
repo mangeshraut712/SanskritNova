@@ -1,8 +1,46 @@
-# SanskritNova AI - 2026 Edition 🚀
+<div align="center">
 
-**AI-Powered Sanskrit Learning for the Modern Indian Mind**
+# SanskritNova AI
 
-SanskritNova AI is a cutting-edge 2026 Sanskrit learning platform designed specifically for Indian users, combining ancient wisdom with modern AI technology. Built with progressive web app (PWA) capabilities, offline functionality, and bilingual support (English + Hindi), it brings Sanskrit education to rural India and urban millennials alike.
+### Bilingual Sanskrit learning with grounded AI, offline access, and modern Indian design.
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-SanskritNova-181717?style=for-the-badge&logo=github)](https://github.com/mangeshraut712/SanskritNova)
+[![FastAPI](https://img.shields.io/badge/FastAPI-backend-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Docker](https://img.shields.io/badge/Docker-ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](docker/)
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-ready-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](k8s/)
+
+</div>
+
+## Overview
+
+SanskritNova AI is a Sanskrit learning platform designed for Indian users, combining ancient wisdom with modern AI technology. It ships with PWA capabilities, offline support, bilingual English/Hindi UX, and grounded answers backed by the Sanskrit corpus.
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#2026-key-features)
+- [Design Philosophy](#2026-design-philosophy)
+- [PWA Features](#pwa-features)
+- [Repository Architecture](#repository-architecture)
+- [Indian Market Focus](#2026-indian-market-focus)
+- [Setup](#setup)
+- [Scripts](#scripts)
+- [Testing](#testing)
+- [Run Locally](#run-locally)
+- [Grounded Answer Note](#grounded-answer-note)
+- [Environment Variables](#environment-variables)
+- [API Endpoints](#api-endpoints)
+- [Deployment](#deployment--scaling)
+- [Roadmap](#2026-roadmap)
+- [Impact Metrics](#impact-metrics-2026-goals)
+- [Recognition](#recognition)
+- [Docs](#docs)
+- [License](#license)
+- [Contact](#contact)
 
 ## 🌟 2026 Key Features
 
@@ -295,6 +333,17 @@ The lightweight web install is enough for:
 - `transliteration`
 - `agentic-answer` (requires `langgraph`, `langchain-core`, `langchain-openai` — included in base deps)
 
+## Scripts
+
+| Command | Purpose |
+| --- | --- |
+| `make serve-api` | Start the FastAPI backend |
+| `make serve-site` | Start the web/PWA frontend |
+| `make test` | Run the test suite |
+| `make lint` | Run linting checks |
+| `make rag-index` | Build the original RAG index |
+| `make rag-cli` | Run the original RAG CLI |
+
 ## 🧪 Testing
 
 ```bash
@@ -495,3 +544,12 @@ _Contributing to India's knowledge renaissance through AI-powered Sanskrit educa
 - [project-setup-guide.md](docs/project-setup-guide.md)
 - [transformation-roadmap.md](docs/transformation-roadmap.md)
 - [original-vs-current.md](docs/original-vs-current.md)
+
+## License
+
+MIT. See [LICENSE](LICENSE).
+
+## Contact
+
+- GitHub issues: https://github.com/mangeshraut712/SanskritNova/issues
+- Repository: https://github.com/mangeshraut712/SanskritNova
