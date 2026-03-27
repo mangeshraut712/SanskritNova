@@ -203,6 +203,13 @@ class GroundedAnswerResponse(BaseModel):
 
 app = FastAPI(title="SanskritNova AI API", version="2.0.0")
 
+# LangGraph dependencies (optional, for agentic RAG)
+try:
+    from code.agentic_rag import agentic_answer, AgenticRAGState
+    AGENTIC_RAG_AVAILABLE = True
+except ImportError:
+    AGENTIC_RAG_AVAILABLE = False
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -396,6 +403,42 @@ async def health():
     return {"status": "ok", "service": "sanskritnova-ai-api"}
 
 
+class AgenticAnswerRequest(BaseModel):
+    message: str = Field(..., min_length=1, max_length=4000)
+
+
+class AgenticAnswerResponse(BaseModel):
+    reply: str
+    sources: list[GroundedSource]
+    steps: list[str]
+    attempts: int
+    quality: str
+
+
+@app.post("/api/agentic-answer", response_model=AgenticAnswerResponse)
+async def agentic_rag_api(request: AgenticAnswerRequest):
+    """
+    Agentic RAG endpoint — query analysis, retrieval routing,
+    chunk evaluation, self-correction loops, and answer validation.
+    """
+    if not AGENTIC_RAG_AVAILABLE:
+        raise HTTPException(
+            status_code=503,
+            detail="Agentic RAG not available. Install: pip install langgraph langchain-openai"
+        )
+    if not os.getenv("OPENROUTER_API_KEY"):
+        raise HTTPException(status_code=500, detail="OPENROUTER_API_KEY not configured.")
+
+    result = await agentic_answer(request.message)
+    return AgenticAnswerResponse(
+        reply=result["answer"],
+        sources=[GroundedSource(**s) for s in result["sources"]],
+        steps=result["steps"],
+        attempts=result["attempts"],
+        quality=result["quality"],
+    )
+
+
 @app.get("/api/info")
 async def info():
     return {
@@ -403,6 +446,7 @@ async def info():
         "provider": "openrouter",
         "chat_modes": ["learn", "translate", "analyze"],
         "grounded_answer": _grounded_answer_available(),
+        "agentic_rag": AGENTIC_RAG_AVAILABLE,
         "transliteration": True,
     }
 

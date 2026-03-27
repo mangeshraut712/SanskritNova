@@ -135,6 +135,54 @@ class _FailingOpenRouterClient:
         raise httpx.ConnectError("upstream unavailable", request=request)
 
 
+def test_agentic_answer_unavailable(monkeypatch):
+    """When agentic RAG deps are missing, endpoint returns 503."""
+    monkeypatch.setattr(api_index, "AGENTIC_RAG_AVAILABLE", False)
+    response = client.post("/api/agentic-answer", json={"message": "What is yoga?"})
+    assert response.status_code == 503
+    assert "langgraph" in response.json()["detail"].lower()
+
+
+def test_agentic_answer_requires_api_key(monkeypatch):
+    """When langgraph is available but no API key, returns 500."""
+    monkeypatch.setattr(api_index, "AGENTIC_RAG_AVAILABLE", True)
+    monkeypatch.delenv("OPENROUTER_API_KEY", raising=False)
+    response = client.post("/api/agentic-answer", json={"message": "What is yoga?"})
+    assert response.status_code == 500
+    assert "OPENROUTER_API_KEY" in response.json()["detail"]
+
+
+def test_agentic_answer_success(monkeypatch):
+    """Happy path: agentic RAG returns answer."""
+    async def fake_agentic_answer(query):
+        return {
+            "answer": "योगः चित्तवृत्तिनिरोधः",
+            "sources": [{"source": "Gita", "chunk_id": 1, "text": "yoga is..."}],
+            "steps": ["step1", "step2"],
+            "attempts": 0,
+            "quality": "good",
+        }
+
+    monkeypatch.setattr(api_index, "AGENTIC_RAG_AVAILABLE", True)
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setattr(api_index, "agentic_answer", fake_agentic_answer)
+
+    response = client.post("/api/agentic-answer", json={"message": "What is yoga?"})
+    assert response.status_code == 200
+    body = response.json()
+    assert body["reply"] == "योगः चित्तवृत्तिनिरोधः"
+    assert body["quality"] == "good"
+    assert body["attempts"] == 0
+    assert len(body["sources"]) == 1
+    assert len(body["steps"]) == 2
+
+
+def test_info_shows_agentic_rag_status():
+    response = client.get("/api/info")
+    assert response.status_code == 200
+    assert "agentic_rag" in response.json()
+
+
 def test_chat_maps_openrouter_failure_to_502(monkeypatch):
     monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
     monkeypatch.setattr(api_index.httpx, "AsyncClient", _FailingOpenRouterClient)

@@ -8,6 +8,7 @@ SanskritNova AI is a cutting-edge 2026 Sanskrit learning platform designed speci
 
 ### 🤖 AI-Powered Learning
 - **Multilingual AI Chat**: Intelligent tutoring in English and Hindi
+- **Agentic RAG Pipeline** (NEW): Self-correcting retrieval with query routing, chunk evaluation, and hallucination detection
 - **Grounded Answers**: AI responses backed by authentic Sanskrit texts
 - **Smart Translation**: Bidirectional Sanskrit-English translation
 - **Grammar Analysis**: Deep linguistic analysis with cultural context
@@ -52,7 +53,7 @@ SanskritNova AI is a cutting-edge 2026 Sanskrit learning platform designed speci
 
 ```text
 api/           FastAPI backend with Hindi/English AI support
-├── index.py   Main API with chat, tracks, transliteration endpoints
+├── index.py   Main API with chat, tracks, transliteration, agentic RAG endpoints
 ├── __init__.py Package initialization
 
 public/        Progressive Web App frontend
@@ -62,11 +63,184 @@ public/        Progressive Web App frontend
 ├── manifest.json PWA manifest for app installation
 ├── sw.js      Service worker for offline functionality
 
-code/          Original RAG pipeline (legacy)
+code/          Core RAG pipeline and vector store
+├── agentic_rag.py  Agentic RAG pipeline with LangGraph v2 (error boundaries, streaming)
+├── vector_store.py Vector store abstraction (ChromaDB + Pinecone + embedding pipeline)
+├── rag_pipeline.py SanskritRAG — combined retriever + generator
+├── retriever.py    FAISS-backed retriever (TF-IDF / sentence-transformers)
+├── generator.py    Local LLM generator (llama-cpp-python)
+├── build_index.py  FAISS index builder
+├── ingest.py       Document loader (TXT, PDF, DOCX)
+├── preprocess.py   Text cleaning and chunking
+├── config.py       Settings dataclass
+├── api.py          Sanskrit RAG API (legacy)
+├── app.py          CLI entrypoint
+
+sanskrit_rag/  Wrapper package delegating to code/ modules
+├── _loader.py      Dynamic module loader
+tests/         Comprehensive test suite
+├── test_api.py           FastAPI endpoint tests
+├── test_agentic_rag.py   Agentic RAG pipeline + streaming tests
+├── test_code_api.py      Legacy code API tests
+├── test_config.py        Config validation tests
+├── test_preprocess.py    Text processing tests
+├── test_retriever.py     Retriever fallback tests
 docs/          Setup guides and architectural docs
-tests/         Comprehensive test suite (21 tests passing)
 docker/        Container deployment assets
 k8s/          Kubernetes manifests for scaling
+```
+
+### 🧠 Agentic RAG Pipeline (NEW)
+
+SanskritNova's agentic RAG system goes beyond simple retrieve-and-generate. It uses a LangGraph StateGraph with conditional routing, quality gates, and self-correction loops to deliver grounded, validated answers from the Sanskrit corpus.
+
+```text
+User Query
+    │
+    ▼
+┌─────────────────┐
+│  Query Analyzer  │  ← classifies: direct / retrieve / reformulate
+└──┬──────┬───┬───┘
+   │      │   │
+   ▼      ▼   ▼
+ Direct  Reformulate  Retrieve
+ Answer      │          │
+   │         ▼          │
+   │    (rephrase)      │
+   │         │          ▼
+   │         └────►┌──────────┐
+   │               │ Retriever │  ← fetches chunks from Sanskrit corpus
+   │               └────┬─────┘
+   │                    ▼
+   │               ┌──────────┐
+   │               │ Chunk     │  ← scores relevance (0-10), filters < 4
+   │               │ Evaluator │
+   │               └────┬─────┘
+   │                    │
+   │              ┌─────┴──────┐
+   │              │             │
+   │          insufficient   good
+   │              │             │
+   │              ▼             ▼
+   │     ┌──────────────┐  ┌──────────┐
+   │     │ Self-Corrector│  │ Generator │  ← produces grounded answer
+   │     │ (max 3 tries) │  └────┬─────┘
+   │     └──────┬───────┘       │
+   │            │               ▼
+   │            │          ┌──────────────┐
+   │            └──────►   │ Answer Checker│  ← validates: grounded? complete?
+   │              retry    └──────┬───────┘    hallucination?
+   │                             │
+   │                       ┌─────┴──────┐
+   │                       │             │
+   │                    good          failed
+   │                       │             │
+   │                       │        (retry if < 3 attempts)
+   ▼                       ▼             │
+   └───────────────► Final Answer ◄──────┘
+```
+
+**Pipeline Nodes:**
+
+| Node | Role |
+|------|------|
+| **Query Analyzer** | Classifies the query as `direct` (no retrieval needed), `retrieve` (needs corpus), or `reformulate` (ambiguous — needs rephrasing) |
+| **Query Reformulator** | Rewrites vague queries into retrieval-friendly terms using Sanskrit-specific context |
+| **Retriever** | Fetches top-k chunks from the Sanskrit corpus via FAISS or vector store |
+| **Chunk Evaluator** | Scores each chunk's relevance (0-10) and filters out anything below 4.0 |
+| **Direct Answer** | Handles general-knowledge questions without retrieval |
+| **Generator** | Produces a grounded answer from filtered chunks with source references |
+| **Answer Checker** | Validates groundedness, completeness, and hallucination risk against source context |
+| **Self-Corrector** | Reformulates the query based on quality-check feedback and retries retrieval (max 3 attempts) |
+
+**Key Features:**
+- **Error Boundaries**: Each node is wrapped with async error handling — a failure in one node doesn't crash the pipeline
+- **Streaming Support**: `agentic_answer_stream()` yields real-time events as each node completes
+- **Robust Imports**: Graceful fallback when `langgraph`/`langchain` are not installed
+- **Structured Logging**: Full observability via Python's `logging` module
+
+**Self-Correction Loop (max 3 attempts):**
+
+When the Answer Checker flags an answer as `insufficient` or `hallucination`, the Self-Corrector node reformulates the query using the checker's feedback and loops back to the Retriever. After 3 failed attempts, the best available answer is returned with quality metadata.
+
+### 🗄️ Vector Store Integration (NEW)
+
+SanskritNova now supports pluggable vector stores for production-grade semantic search:
+
+| Backend | Use Case | Setup |
+|---------|----------|-------|
+| **ChromaDB** | Local development, zero-config | `pip install chromadb` |
+| **Pinecone** | Cloud production, managed scaling | `pip install pinecone` + set `PINECONE_API_KEY` |
+
+```python
+from code.vector_store import VectorStore, load_chunks_into_store
+
+# Local (ChromaDB)
+store = VectorStore.create("chromadb", collection="sanskrit_corpus")
+store.add_documents(texts=["योगः चित्तवृत्तिनिरोधः"], metadatas=[{"source": "YogaSutras"}])
+results = store.search("What is yoga?", k=5)
+
+# Cloud (Pinecone)
+store = VectorStore.create("pinecone", index_name="sanskrit-nova")
+results = store.search("धर्मः किम्?", k=5)
+```
+
+**Embedding Providers:**
+
+| Provider | Model | Backend |
+|----------|-------|---------|
+| SentenceTransformers | `distiluse-base-multilingual-cased-v1` | Local (default) |
+| OpenAI/OpenRouter | `text-embedding-3-small` | Cloud API |
+
+**Chunk Metadata Tracking:**
+
+Every chunk stores: `source`, `chunk_id`, `text`, `page`, `section`, `language`, `embedding_model`, `created_at`.
+
+**API Endpoint:**
+
+```http
+POST /api/agentic-answer
+Content-Type: application/json
+
+{
+  "message": "भगवद् गीता में योग का क्या अर्थ है?"
+}
+```
+
+**Response:**
+
+```json
+{
+  "reply": "योगः कर्मसु कौशलम् ...",
+  "sources": [
+    {"source": "BhagavadGita", "chunk_id": 42, "text": "..."}
+  ],
+  "steps": [
+    "Query classified as: retrieve",
+    "Retrieved 5 chunks",
+    "Evaluated 5 chunks, kept 3 (threshold: 4.0+)",
+    "Generated answer from 3 chunks",
+    "Answer check: grounded=true, complete=true, hallucination=false"
+  ],
+  "attempts": 0,
+  "quality": "good"
+}
+```
+
+**Usage in code:**
+
+```python
+from code.agentic_rag import agentic_answer, agentic_answer_stream
+
+# Synchronous
+result = await agentic_answer("What is the meaning of dharma in Sanskrit?")
+print(result["answer"])     # Grounded response
+print(result["quality"])    # "good" | "insufficient" | "hallucination"
+print(result["attempts"])   # Number of self-correction cycles used
+
+# Streaming (for real-time UI)
+async for event in agentic_answer_stream("What is yoga?"):
+    print(f"[{event['node']}] {event['data']}")
 ```
 
 ## 🎯 2026 Indian Market Focus
@@ -94,21 +268,53 @@ pip install -e ".[dev]"
 If you only want the lightweight runtime stack:
 
 ```bash
-pip install -r requirements.txt
+pip install -e ".[dev]"
 ```
 
-Optional local RAG dependencies:
+For local RAG + vector store support:
 
 ```bash
 pip install -e ".[local]"
 ```
 
-The lightweight web install from `requirements.txt` is enough for:
+For vector store backends (ChromaDB / Pinecone):
+
+```bash
+pip install -e ".[vector]"
+```
+
+The lightweight web install is enough for:
 - `chat`
 - `tracks`
 - `transliteration`
+- `agentic-answer` (requires `langgraph`, `langchain-core`, `langchain-openai` — included in base deps)
 
-The optional local RAG extras are needed to rebuild or fully use the original retrieval pipeline in `code/`.
+## 🧪 Testing
+
+```bash
+# Run all tests
+pytest tests
+
+# Run with verbose output
+pytest tests -v
+
+# Run specific test file
+pytest tests/test_agentic_rag.py
+
+# Run only API tests
+pytest tests/test_api.py
+
+# Run with coverage
+pytest tests --cov=code --cov=api
+```
+
+**Test suite:**
+- `tests/test_api.py` — FastAPI endpoint tests (health, chat, grounded-answer, agentic-answer, transliteration)
+- `tests/test_agentic_rag.py` — Agentic RAG pipeline node tests, routing logic, streaming
+- `tests/test_code_api.py` — Legacy code API tests with stubbed dependencies
+- `tests/test_config.py` — Configuration/settings validation
+- `tests/test_preprocess.py` — Text cleaning and chunking tests
+- `tests/test_retriever.py` — Retriever fallback behavior tests
 
 ## Run Locally
 
