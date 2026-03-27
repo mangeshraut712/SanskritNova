@@ -495,3 +495,21 @@ _Contributing to India's knowledge renaissance through AI-powered Sanskrit educa
 - [project-setup-guide.md](docs/project-setup-guide.md)
 - [transformation-roadmap.md](docs/transformation-roadmap.md)
 - [original-vs-current.md](docs/original-vs-current.md)
+
+---
+
+<!-- codex:project-diagram:start -->
+
+## Project Diagram
+
+```mermaid
+flowchart LR
+    A["Browser"] --> B["Frontend"]
+    B --> C["Backend / API"]
+    C --> D["Data / Services"]
+    B -. feedback .-> A
+```
+
+_Main application path from user interface through backend services._
+
+<!-- codex:project-diagram:end -->
