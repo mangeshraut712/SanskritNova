@@ -4,7 +4,7 @@ import sys
 import types
 
 import numpy as np
-from sanskrit_rag._loader import load_code_module
+from code._loader import load_code_module
 
 
 def _import_retriever_module(monkeypatch):

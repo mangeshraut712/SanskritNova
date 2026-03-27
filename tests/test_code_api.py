@@ -5,7 +5,7 @@ import types
 
 import pytest
 from fastapi.testclient import TestClient
-from sanskrit_rag._loader import load_code_module
+from code._loader import load_code_module
 
 
 def _install_optional_dependency_stubs(monkeypatch):
