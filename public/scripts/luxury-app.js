@@ -2,6 +2,13 @@
 /* Premium interactions with royal elegance and smooth animations */
 
 // ============================================
+// API CONFIGURATION
+// ============================================
+const API_BASE_URL = window.location.hostname === 'localhost' ? 
+  'http://localhost:8000' : 
+  'https://sanskrit-nova.vercel.app';
+
+// ============================================
 // LUXURY APPLICATION STATE
 // ============================================
 const LuxuryApp = {
@@ -302,7 +309,7 @@ const LuxuryApp = {
     this.addMessage(modeMessages[mode], 'ai');
   },
 
-  sendChatMessage() {
+  async sendChatMessage() {
     const message = this.elements.chatInput.value.trim();
     if (!message) return;
 
@@ -315,12 +322,18 @@ const LuxuryApp = {
     // Show typing indicator
     this.showTypingIndicator();
     
-    // Simulate AI response
-    setTimeout(() => {
+    try {
+      // Call real API
+      const response = await this.sendChatMessageApi(message, this.state.currentChatMode);
       this.hideTypingIndicator();
-      const response = this.generateAIResponse(message);
-      this.addMessage(response, 'ai');
-    }, 1000 + Math.random() * 1000);
+      this.addMessage(response.reply, 'ai');
+    } catch (error) {
+      this.hideTypingIndicator();
+      // Fallback to simulated response if API fails
+      const fallbackResponse = this.generateAIResponse(message);
+      this.addMessage(fallbackResponse, 'ai');
+      this.showToast('Using offline mode', 'warning');
+    }
   },
 
   addMessage(message, sender) {
@@ -462,23 +475,26 @@ const LuxuryApp = {
   // ============================================
   // TRANSLITERATION
   // ============================================
-  transliterate() {
+  async transliterate() {
     const input = this.elements.inputText.value.trim();
     if (!input) {
       this.showToast('Please enter text to transliterate', 'warning');
       return;
     }
 
-    this.showLoading();
-    
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Call real API
+      const response = await this.transliterateText(input);
+      this.elements.outputText.value = response.iast;
+      this.addToTransliterationHistory(input, response.iast);
+      this.showToast('Transliteration completed', 'success');
+    } catch (error) {
+      // Fallback to local transliteration if API fails
       const output = this.performTransliteration(input);
       this.elements.outputText.value = output;
       this.addToTransliterationHistory(input, output);
-      this.hideLoading();
-      this.showToast('Transliteration completed', 'success');
-    }, 500);
+      this.showToast('Using offline transliteration', 'warning');
+    }
   },
 
   performTransliteration(text) {
@@ -686,6 +702,112 @@ const LuxuryApp = {
     this.elements.tabPanes.forEach(pane => {
       pane.classList.toggle('active', pane.id === tabName);
     });
+  },
+
+  // ============================================
+  // API INTEGRATION METHODS
+  // ============================================
+  async apiCall(endpoint, options = {}) {
+    try {
+      this.showLoading();
+      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          ...options.headers
+        },
+        ...options
+      });
+      
+      if (!response.ok) {
+        throw new Error(`API Error: ${response.status} ${response.statusText}`);
+      }
+      
+      const data = await response.json();
+      this.hideLoading();
+      return data;
+    } catch (error) {
+      this.hideLoading();
+      console.error('API Error:', error);
+      this.showToast(error.message || 'API request failed', 'error');
+      throw error;
+    }
+  },
+
+  async sendChatMessageApi(message, mode = 'learn') {
+    try {
+      this.showLoading();
+      const response = await fetch(`${API_BASE_URL}/api/chat`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: message,
+          mode: mode,
+          lang: this.state.currentLanguage
+        })
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Chat API Error: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      this.hideLoading();
+      return data;
+    } catch (error) {
+      this.hideLoading();
+      console.error('Chat API Error:', error);
+      this.showToast('Failed to send message. Please try again.', 'error');
+      throw error;
+    }
+  },
+
+  async transliterateText(text) {
+    try {
+      this.showLoading();
+      const response = await fetch(`${API_BASE_URL}/api/transliterate`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          text: text
+        })
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Transliteration API Error: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      this.hideLoading();
+      return data;
+    } catch (error) {
+      this.hideLoading();
+      console.error('Transliteration API Error:', error);
+      this.showToast('Transliteration failed. Please try again.', 'error');
+      throw error;
+    }
+  },
+
+  async getLearningTracks() {
+    try {
+      return await this.apiCall('/api/tracks');
+    } catch (error) {
+      console.error('Learning tracks API Error:', error);
+      return [];
+    }
+  },
+
+  async getHealthStatus() {
+    try {
+      return await this.apiCall('/api/health');
+    } catch (error) {
+      console.error('Health API Error:', error);
+      return null;
+    }
   },
 
   // ============================================

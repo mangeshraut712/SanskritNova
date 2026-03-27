@@ -2,6 +2,27 @@
 /* Premium aesthetics with opulent Indian royal heritage */
 
 /* ============================================
+   ACCESSIBILITY - SKIP LINKS
+   ============================================ */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--luxury-gold);
+  color: var(--luxury-black);
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  z-index: 1000;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* ============================================
    LUXURY DESIGN TOKENS - ROYAL EDITION
    ============================================ */
 :root {

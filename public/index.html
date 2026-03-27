@@ -65,58 +65,64 @@
 </head>
 
 <body>
+  <!-- Skip to main content for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
   <!-- Luxury Navigation -->
-  <nav class="luxury-nav">
+  <nav class="luxury-nav" role="navigation" aria-label="Main navigation">
     <div class="luxury-nav-container">
-      <a href="/" class="luxury-nav-brand">
-        <div class="luxury-om-symbol">ॐ</div>
+      <a href="/" class="luxury-nav-brand" aria-label="SanskritNova Home">
+        <div class="luxury-om-symbol" aria-hidden="true">ॐ</div>
         <div class="luxury-brand-text">
           <div class="luxury-brand-title">SanskritNova</div>
           <div class="luxury-brand-subtitle">संस्कृत ज्ञान प्रणाली</div>
         </div>
       </a>
       
-      <ul class="luxury-nav-menu">
-        <li><a href="#chat" class="luxury-nav-link">चाट</a></li>
-        <li><a href="#translit" class="luxury-nav-link">लिप्यन्तर</a></li>
-        <li><a href="#dictionary" class="luxury-nav-link">शब्दकोश</a></li>
-        <li><a href="#grammar" class="luxury-nav-link">व्याकरण</a></li>
-        <li><a href="#tracks" class="luxury-nav-link">पाठ्यक्रम</a></li>
-        <li><a href="knowledge-base.html" class="luxury-nav-link">📚 Knowledge Base</a></li>
-        <li>
-          <div class="luxury-nav-actions">
+      <ul class="luxury-nav-menu" role="menubar">
+        <li role="none"><a href="#chat" class="luxury-nav-link" role="menuitem">चाट</a></li>
+        <li role="none"><a href="#translit" class="luxury-nav-link" role="menuitem">लिप्यन्तर</a></li>
+        <li role="none"><a href="#dictionary" class="luxury-nav-link" role="menuitem">शब्दकोश</a></li>
+        <li role="none"><a href="#grammar" class="luxury-nav-link" role="menuitem">व्याकरण</a></li>
+        <li role="none"><a href="#tracks" class="luxury-nav-link" role="menuitem">पाठ्यक्रम</a></li>
+        <li role="none"><a href="knowledge-base.html" class="luxury-nav-link" role="menuitem">📚 Knowledge Base</a></li>
+        <li role="none">
+          <div class="luxury-nav-actions" role="group" aria-label="Theme and language controls">
             <button class="luxury-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-              <span id="theme-icon">🌙</span>
+              <span id="theme-icon" aria-hidden="true">🌙</span>
             </button>
-            <div class="luxury-lang-switcher">
-              <button class="luxury-lang-btn active" data-lang="en">EN</button>
-              <button class="luxury-lang-btn" data-lang="hi">हि</button>
+            <div class="luxury-lang-switcher" role="group" aria-label="Language switcher">
+              <button class="luxury-lang-btn active" data-lang="en" aria-pressed="true" aria-label="English">EN</button>
+              <button class="luxury-lang-btn" data-lang="hi" aria-pressed="false" aria-label="हिन्दी">हि</button>
             </div>
           </div>
         </li>
       </ul>
       
-      <button class="luxury-mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="luxury-mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
     </div>
   </nav>
 
   <!-- Mobile Navigation -->
-  <nav class="luxury-mobile-nav" id="mobile-nav">
+  <nav class="luxury-mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile navigation" hidden>
     <div class="luxury-mobile-nav-content">
-      <ul class="luxury-mobile-nav-menu">
-        <li><a href="#chat" class="luxury-mobile-nav-link">चाट</a></li>
-        <li><a href="#translit" class="luxury-mobile-nav-link">लिप्यन्तर</a></li>
-        <li><a href="#dictionary" class="luxury-mobile-nav-link">शब्दकोश</a></li>
-        <li><a href="#grammar" class="luxury-mobile-nav-link">व्याकरण</a></li>
-        <li><a href="#tracks" class="luxury-mobile-nav-link">पाठ्यक्रम</a></li>
-        <li><a href="knowledge-base.html" class="luxury-mobile-nav-link">📚 Knowledge Base</a></li>
+      <ul class="luxury-mobile-nav-menu" role="menu">
+        <li role="none"><a href="#chat" class="luxury-mobile-nav-link" role="menuitem">चाट</a></li>
+        <li role="none"><a href="#translit" class="luxury-mobile-nav-link" role="menuitem">लिप्यन्तर</a></li>
+        <li role="none"><a href="#dictionary" class="luxury-mobile-nav-link" role="menuitem">शब्दकोश</a></li>
+        <li role="none"><a href="#grammar" class="luxury-mobile-nav-link" role="menuitem">व्याकरण</a></li>
+        <li role="none"><a href="#tracks" class="luxury-mobile-nav-link" role="menuitem">पाठ्यक्रम</a></li>
+        <li role="none"><a href="knowledge-base.html" class="luxury-mobile-nav-link" role="menuitem">📚 Knowledge Base</a></li>
       </ul>
     </div>
   </nav>
+
+  <!-- Main Content -->
+  <main id="main-content" role="main">
 
   <!-- Luxury Hero Section -->
   <section class="luxury-hero">
@@ -802,6 +808,65 @@
 
   <!-- Luxury Toast Container -->
   <div class="luxury-toast-container" id="toast-container"></div>
+
+  </main>
+
+  <!-- Luxury Footer -->
+  <footer class="luxury-footer" role="contentinfo">
+    <div class="luxury-footer-content">
+      <div class="luxury-footer-brand">
+        <div class="luxury-om-symbol" aria-hidden="true">ॐ</div>
+        <div class="luxury-brand-text">
+          <div class="luxury-brand-title">SanskritNova</div>
+          <div class="luxury-brand-subtitle">संस्कृत ज्ञान प्रणाली</div>
+        </div>
+      </div>
+      
+      <div class="luxury-footer-links">
+        <div class="luxury-footer-section">
+          <h4>Learning</h4>
+          <ul>
+            <li><a href="#chat">AI Tutor</a></li>
+            <li><a href="#translit">Transliteration</a></li>
+            <li><a href="#dictionary">Dictionary</a></li>
+            <li><a href="#grammar">Grammar</a></li>
+          </ul>
+        </div>
+        
+        <div class="luxury-footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#tracks">Learning Tracks</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="knowledge-base.html">Knowledge Base</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+        
+        <div class="luxury-footer-section">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#" aria-label="Twitter">𝕏</a></li>
+            <li><a href="#" aria-label="Facebook">𝕐</a></li>
+            <li><a href="#" aria-label="Instagram">📷</a></li>
+            <li><a href="#" aria-label="LinkedIn">💼</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="luxury-footer-bottom">
+      <div class="luxury-footer-copyright">
+        © 2026 SanskritNova AI. All rights reserved. Premium Sanskrit Learning Platform.
+      </div>
+      <div class="luxury-footer-social">
+        <a href="#" aria-label="Twitter">𝕏</a>
+        <a href="#" aria-label="Facebook">𝕐</a>
+        <a href="#" aria-label="Instagram">📷</a>
+        <a href="#" aria-label="LinkedIn">💼</a>
+      </div>
+    </div>
+  </footer>
 
   <!-- Scripts -->
   <script src="scripts/luxury-app.js"></script>
