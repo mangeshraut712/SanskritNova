@@ -1,14 +1,14 @@
 /**
- * SanskritNova AI - Royal Ancient Indian Luxury Frontend
- * Premium interactions and scroll reveal animations
+ * SanskritNova AI - Enhanced Frontend Application
+ * Premium interactions and comprehensive features
  */
 
-// Translations
+// Enhanced Translations
 const TRANSLATIONS = {
   en: {
     welcome: "Welcome to SanskritNova. How may I assist you in your journey of Sanskrit wisdom today?",
     learnMode: "Learn Mode",
-    analyzeMode: "Analyze Mode",
+    analyzeMode: "Analyze Mode", 
     translateMode: "Translate Mode",
     groundedMode: "Grounded Mode",
     devanagari: "Devanagari",
@@ -16,11 +16,14 @@ const TRANSLATIONS = {
     begin: "Begin",
     transliterate: "Transliterate",
     introduction: "Introduction",
-    aboutText: "SanskritNova bridges the ancient wisdom of Sanskrit with modern AI technology. Our platform provides intelligent translation, precise transliteration, and grounded answers from the vast corpus of Sanskrit literature.",
+    aboutText: "SanskritNova bridges the ancient wisdom of Sanskrit with modern AI technology. Our platform provides intelligent translation, precise transliteration, grammar analysis, and grounded answers from the vast corpus of Sanskrit literature.",
     vedicLiterature: "Vedic Literature",
     aiPowered: "AI Powered",
     scriptConversion: "Script Conversion",
-    features: ["Vedic Literature", "AI Powered", "Script Conversion"],
+    grammarAnalysis: "Grammar Analysis",
+    audioLearning: "Audio Learning",
+    mobileReady: "Mobile Ready",
+    features: ["Vedic Literature", "AI Powered", "Script Conversion", "Grammar Analysis", "Audio Learning", "Mobile Ready"],
     loadingTracks: "Loading learning tracks...",
     failedTracks: "Failed to load learning tracks",
     startTrack: "Start Track",
@@ -30,7 +33,30 @@ const TRANSLATIONS = {
     downloadFailure: "Download failed. Please try again.",
     trackComingSoon: "Starting {slug} track - Feature coming soon!",
     speechUnsupported: "Speech synthesis not supported in this browser",
-    connectingWisdom: "Connecting ancient wisdom to modern minds"
+    connectingWisdom: "Connecting ancient wisdom to modern minds",
+    searchPlaceholder: "Search Sanskrit or English...",
+    clearText: "Clear",
+    pasteText: "Paste",
+    copyText: "Copy",
+    pronounceText: "Pronounce",
+    reverseTransliteration: "Reverse Transliteration",
+    recentTransliterations: "Recent Transliterations",
+    dictionaryTitle: "Sanskrit-English Dictionary",
+    grammarTitle: "Sanskrit Grammar",
+    resourcesTitle: "Learning Resources",
+    demoTitle: "Interactive Demo",
+    watchDemo: "Watch SanskritNova AI Demo",
+    tryFeatures: "Try These Features:",
+    tryTransliteration: "Try Transliteration",
+    startAIChat: "Start AI Chat",
+    grammarAnalysis: "Grammar Analysis",
+    searchDictionary: "Search Dictionary",
+    voiceInput: "Voice Input",
+    backToTop: "Back to Top",
+    loading: "Loading...",
+    error: "Error",
+    success: "Success",
+    info: "Info"
   },
   hi: {
     welcome: "संस्कृतनोवा में आपका स्वागत है। आज संस्कृत ज्ञान की यात्रा में मैं आपकी कैसे सहायता कर सकता हूँ?",
@@ -43,11 +69,14 @@ const TRANSLATIONS = {
     begin: "शुरू करें",
     transliterate: "लिप्यंतरण करें",
     introduction: "परिचय",
-    aboutText: "संस्कृतनोवा संस्कृत की प्राचीन बुद्धिमत्ता को आधुनिक AI तकनीक से जोड़ता है। हमारा मंच बुद्धिमान अनुवाद, सटीक लिप्यंतरण और संस्कृत साहित्य के विशाल स्रोतों से आधारित उत्तर प्रदान करता है।",
+    aboutText: "संस्कृतनोवा संस्कृत की प्राचीन बुद्धिमत्ता को आधुनिक AI तकनीक से जोड़ता है। हमारा मंच बुद्धिमान अनुवाद, सटीक लिप्यंतरण, व्याकरण विश्लेषण और संस्कृत साहित्य के विशाल स्रोतों से आधारित उत्तर प्रदान करता है।",
     vedicLiterature: "वैदिक साहित्य",
     aiPowered: "AI संचालित",
     scriptConversion: "लिपि रूपांतरण",
-    features: ["वैदिक साहित्य", "AI संचालित", "लिपि रूपांतरण"],
+    grammarAnalysis: "व्याकरण विश्लेषण",
+    audioLearning: "ऑडियो लर्निंग",
+    mobileReady: "मोबाइल तैयार",
+    features: ["वैदिक साहित्य", "AI संचालित", "लिपि रूपांतरण", "व्याकरण विश्लेषण", "ऑडियो लर्निंग", "मोबाइल तैयार"],
     loadingTracks: "शिक्षण ट्रैक लोड हो रहे हैं...",
     failedTracks: "शिक्षण ट्रैक लोड नहीं हो सके",
     startTrack: "ट्रैक शुरू करें",
@@ -57,11 +86,34 @@ const TRANSLATIONS = {
     downloadFailure: "डाउनलोड असफल रहा। कृपया पुनः प्रयास करें।",
     trackComingSoon: "{slug} ट्रैक शुरू हो रहा है - यह सुविधा जल्द आएगी!",
     speechUnsupported: "इस ब्राउज़र में स्पीच सिंथेसिस समर्थित नहीं है",
-    connectingWisdom: "प्राचीन ज्ञान को आधुनिक दिमाग से जोड़ना"
+    connectingWisdom: "प्राचीन ज्ञान को आधुनिक दिमाग से जोड़ना",
+    searchPlaceholder: "संस्कृत या अंग्रेजी खोजें...",
+    clearText: "साफ़ करें",
+    pasteText: "पेस्ट करें",
+    copyText: "कॉपी करें",
+    pronounceText: "उच्चारण करें",
+    reverseTransliteration: "उलटी लिप्यंतरण",
+    recentTransliterations: "हाल की लिप्यंतरण",
+    dictionaryTitle: "संस्कृत-अंग्रेजी शब्दकोश",
+    grammarTitle: "संस्कृत व्याकरण",
+    resourcesTitle: "शिक्षण संसाधन",
+    demoTitle: "इंटरैक्टिव डेमो",
+    watchDemo: "संस्कृतनोवा AI डेमो देखें",
+    tryFeatures: "इन सुविधाओं को आज़माएं:",
+    tryTransliteration: "लिप्यंतरण आज़माएं",
+    startAIChat: "AI चैट शुरू करें",
+    grammarAnalysis: "व्याकरण विश्लेषण",
+    searchDictionary: "शब्दकोश खोजें",
+    voiceInput: "वॉइस इनपुट",
+    backToTop: "शीर्ष पर वापस",
+    loading: "लोड हो रहा है...",
+    error: "त्रुटि",
+    success: "सफलता",
+    info: "जानकारी"
   }
 };
 
-// Configuration
+// Enhanced Configuration
 const CONFIG = {
   apiBase: window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
     ? 'http://localhost:8000'
@@ -70,13 +122,259 @@ const CONFIG = {
     chat: '/api/chat',
     grounded: '/api/grounded-answer',
     translit: '/api/transliterate',
-    health: '/api/health'
+    health: '/api/health',
+    tracks: '/api/tracks',
+    info: '/api/info'
+  },
+  features: {
+    voiceInput: true,
+    darkMode: false,
+    animations: true,
+    offlineMode: true,
+    progressiveWebApp: true
+  },
+  ui: {
+    toastDuration: 3000,
+    loadingDelay: 500,
+    animationDuration: 300,
+    debounceDelay: 300
   }
 };
 
-// State
-let activeMode = 'learn';
-let currentLang = 'en';
+// Enhanced State Management
+const STATE = {
+  activeMode: 'learn',
+  currentLang: 'en',
+  isDarkMode: false,
+  isOffline: false,
+  isLoading: false,
+  voiceRecognition: null,
+  transliterationHistory: [],
+  dictionaryResults: [],
+  grammarAnalysis: null,
+  scrollPosition: 0,
+  mobileMenuOpen: false
+};
+
+// Enhanced Storage Management
+class StorageManager {
+  static set(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.warn('Failed to save to localStorage:', error);
+    }
+  }
+
+  static get(key, defaultValue = null) {
+    try {
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) : defaultValue;
+    } catch (error) {
+      console.warn('Failed to read from localStorage:', error);
+      return defaultValue;
+    }
+  }
+
+  static remove(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch (error) {
+      console.warn('Failed to remove from localStorage:', error);
+    }
+  }
+
+  static clear() {
+    try {
+      localStorage.clear();
+    } catch (error) {
+      console.warn('Failed to clear localStorage:', error);
+    }
+  }
+}
+
+// Enhanced Toast Notification System
+class ToastManager {
+  static show(message, type = 'info', duration = CONFIG.ui.toastDuration) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `
+      <div class="toast-content">
+        <span class="toast-message">${message}</span>
+        <button class="toast-close" aria-label="Close notification">×</button>
+      </div>
+    `;
+
+    container.appendChild(toast);
+
+    // Auto remove
+    const timeout = setTimeout(() => {
+      this.remove(toast);
+    }, duration);
+
+    // Manual close
+    const closeBtn = toast.querySelector('.toast-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        clearTimeout(timeout);
+        this.remove(toast);
+      });
+    }
+
+    return toast;
+  }
+
+  static remove(toast) {
+    if (toast && toast.parentNode) {
+      toast.style.animation = 'slideOut 0.3s ease';
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.parentNode.removeChild(toast);
+        }
+      }, 300);
+    }
+  }
+
+  static success(message, duration) {
+    return this.show(message, 'success', duration);
+  }
+
+  static error(message, duration) {
+    return this.show(message, 'error', duration);
+  }
+
+  static info(message, duration) {
+    return this.show(message, 'info', duration);
+  }
+}
+
+// Enhanced Loading Manager
+class LoadingManager {
+  static show(message = 'Loading...') {
+    const overlay = document.getElementById('loading-overlay');
+    if (overlay) {
+      overlay.classList.add('active');
+      const text = overlay.querySelector('p');
+      if (text) text.textContent = message;
+    }
+    STATE.isLoading = true;
+  }
+
+  static hide() {
+    const overlay = document.getElementById('loading-overlay');
+    if (overlay) {
+      overlay.classList.remove('active');
+    }
+    STATE.isLoading = false;
+  }
+
+  static async withLoading(asyncFn, message) {
+    this.show(message);
+    try {
+      const result = await asyncFn();
+      return result;
+    } finally {
+      this.hide();
+    }
+  }
+}
+
+// Voice Recognition Handler
+class VoiceRecognition {
+  constructor() {
+    this.recognition = null;
+    this.isSupported = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
+    this.isListening = false;
+    
+    if (this.isSupported) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      this.recognition = new SpeechRecognition();
+      this.setupRecognition();
+    }
+  }
+
+  setupRecognition() {
+    this.recognition.continuous = false;
+    this.recognition.interimResults = false;
+    this.recognition.lang = STATE.currentLang === 'hi' ? 'hi-IN' : 'en-US';
+
+    this.recognition.onstart = () => {
+      this.isListening = true;
+      this.updateUI(true);
+      ToastManager.info('Listening... Speak now');
+    };
+
+    this.recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      const chatInput = document.getElementById('chat-input');
+      if (chatInput) {
+        chatInput.value = transcript;
+        chatInput.focus();
+      }
+      this.stop();
+    };
+
+    this.recognition.onerror = (event) => {
+      console.error('Speech recognition error:', event.error);
+      let message = 'Voice recognition failed';
+      if (event.error === 'no-speech') {
+        message = 'No speech detected';
+      } else if (event.error === 'not-allowed') {
+        message = 'Microphone access denied';
+      }
+      ToastManager.error(message);
+      this.stop();
+    };
+
+    this.recognition.onend = () => {
+      this.isListening = false;
+      this.updateUI(false);
+    };
+  }
+
+  updateUI(isListening) {
+    const voiceBtn = document.getElementById('voice-btn');
+    if (voiceBtn) {
+      if (isListening) {
+        voiceBtn.classList.add('recording');
+        voiceBtn.innerHTML = '<span>🔴</span>';
+      } else {
+        voiceBtn.classList.remove('recording');
+        voiceBtn.innerHTML = '<span>🎤</span>';
+      }
+    }
+  }
+
+  start() {
+    if (!this.isSupported) {
+      ToastManager.error('Speech synthesis not supported in this browser');
+      return false;
+    }
+
+    if (this.isListening) {
+      this.stop();
+      return false;
+    }
+
+    try {
+      this.recognition.start();
+      return true;
+    } catch (error) {
+      console.error('Failed to start speech recognition:', error);
+      ToastManager.error('Failed to start voice recognition');
+      return false;
+    }
+  }
+
+  stop() {
+    if (this.recognition && this.isListening) {
+      this.recognition.stop();
+    }
+  }
+}
 
 // DOM Elements
 const chatMessages = document.getElementById('chat-messages');
@@ -88,317 +386,280 @@ const translitBtn = document.getElementById('translit-btn');
 const translitResult = document.getElementById('translit-result');
 const pronounceBtn = document.getElementById('pronounce-btn');
 const tracksContainer = document.getElementById('tracks-container');
+const voiceBtn = document.getElementById('voice-btn');
+
+// Initialize voice recognition
+const voiceRecognition = new VoiceRecognition();
 
 // Utility Functions
-function t(key) {
-  return TRANSLATIONS[currentLang][key] || key;
-}
-
-function tf(key, values = {}) {
+function t(key, values = {}) {
   return Object.entries(values).reduce(
     (text, [name, value]) => text.replace(`{${name}}`, value),
-    t(key)
+    TRANSLATIONS[STATE.currentLang][key] || key
   );
 }
 
-function switchLanguage(lang) {
-  currentLang = lang;
-  localStorage.setItem('language', lang);
-  updateUI();
-  loadTracks(); // Reload tracks in new language
+function tf(key, values = {}) {
+  return t(key, values);
 }
 
-function updateUI() {
-  // Update welcome message
-  const welcomeMsg = document.querySelector('.message.bot p');
-  if (welcomeMsg) {
-    welcomeMsg.textContent = t('welcome');
-  }
-
-  // Update mode cards
-  const modes = [
-    { id: 'learn', key: 'learnMode' },
-    { id: 'analyze', key: 'analyzeMode' },
-    { id: 'translate', key: 'translateMode' },
-    { id: 'grounded', key: 'groundedMode' }
-  ];
-  modes.forEach(mode => {
-    const card = document.querySelector(`.mode-card[data-mode="${mode.id}"] .mode-info h3`);
-    if (card) card.textContent = t(mode.key);
-  });
-
-  // Update transliteration labels
-  const devLabel = document.querySelector('.translit-input-group label');
-  if (devLabel) devLabel.textContent = t('devanagari');
-
-  const iastLabel = document.querySelector('.translit-output-group label');
-  if (iastLabel) iastLabel.textContent = t('iast');
-
-  // Update buttons
-  const beginBtn = document.querySelector('.btn-primary span:first-child');
-  if (beginBtn) beginBtn.textContent = t('begin');
-
-  const translitBtnText = document.querySelector('.translit-btn span:first-child');
-  if (translitBtnText) translitBtnText.textContent = t('transliterate');
-
-  // Update about section
-  const aboutTitle = document.querySelector('.about-title');
-  if (aboutTitle) aboutTitle.textContent = t('introduction');
-
-  const aboutText = document.querySelector('.about-text');
-  if (aboutText) {
-    aboutText.textContent = t('aboutText');
-  }
-
-  const features = document.querySelectorAll('.feature-text');
-  features.forEach((feature, index) => {
-    feature.textContent = t('features')[index] || feature.textContent;
-  });
-
-  const footerSub = document.querySelector('.footer-sub');
-  if (footerSub) footerSub.textContent = t('connectingWisdom');
-
-  const loadingTracks = tracksContainer?.querySelector('.loading-tracks');
-  if (loadingTracks) {
-    loadingTracks.textContent = t('loadingTracks');
-  }
-}
-
-// Utility Functions
-function showTyping() {
-  const typingEl = document.createElement('div');
-  typingEl.className = 'message bot typing';
-  typingEl.innerHTML = `
-    <div class="message-avatar">🕉️</div>
-    <div class="message-content">
-      <p class="typing-dots"><span>.</span><span>.</span><span>.</span></p>
-    </div>
-  `;
-  chatMessages.appendChild(typingEl);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-  return typingEl;
-}
-
-function hideTyping(typingEl) {
-  if (typingEl && typingEl.parentNode) {
-    typingEl.parentNode.removeChild(typingEl);
-  }
-}
-
-function addMessage(content, role) {
-  const messageEl = document.createElement('div');
-  messageEl.className = `message ${role}`;
-
-  const avatar = role === 'bot' ? '🕉️' : '🙏';
-  messageEl.innerHTML = `
-    <div class="message-avatar">${avatar}</div>
-    <div class="message-content">
-      <p>${escapeHtml(content)}</p>
-    </div>
-  `;
-
-  chatMessages.appendChild(messageEl);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-function escapeHtml(text) {
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
-}
-
-async function apiCall(endpoint, data) {
-  const response = await fetch(`${CONFIG.apiBase}${endpoint}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-
-  if (!response.ok) {
-    const body = await response.text();
-    let errorMessage = 'Request failed';
-    if (body) {
-      try {
-        const error = JSON.parse(body);
-        errorMessage = error.detail || error.message || errorMessage;
-      } catch {
-        errorMessage = body;
-      }
-    }
-    throw new Error(errorMessage);
-  }
-
-  return response.json();
-}
-
-// Chat Handlers
+// Enhanced Chat Functionality
 async function handleChatSubmit(e) {
   e.preventDefault();
-
+  
   const message = chatInput.value.trim();
   if (!message) return;
 
+  // Add user message
   addMessage(message, 'user');
+  chatInput.value = '';
 
-  const typingEl = showTyping();
+  // Show typing indicator
+  addTypingIndicator();
 
   try {
-    const endpoint = activeMode === 'grounded' ? CONFIG.endpoints.grounded : CONFIG.endpoints.chat;
-    const payload = activeMode === 'grounded'
-      ? { message, k: 3, lang: currentLang }
-      : { message, mode: activeMode, lang: currentLang };
+    const response = await fetch(CONFIG.apiBase + CONFIG.endpoints.chat, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message,
+        mode: STATE.activeMode,
+        lang: STATE.currentLang
+      })
+    });
 
-    const response = await apiCall(endpoint, payload);
-    chatInput.value = '';
-    hideTyping(typingEl);
-
-    addMessage(response.reply, 'bot');
-
-    if (activeMode === 'grounded' && response.sources?.length) {
-      const sources = response.sources.map(s => `${s.source}#${s.chunk_id}`).join(', ');
-      addMessage(`Sources: ${sources}`, 'bot');
+    if (!response.ok) {
+      throw new Error('Chat request failed');
     }
+
+    const data = await response.json();
+    
+    // Remove typing indicator
+    removeTypingIndicator();
+    
+    // Add bot response
+    addMessage(data.reply || 'I apologize, but I could not process your request.', 'bot');
+    
   } catch (error) {
-    hideTyping(typingEl);
-    addMessage(`Error: ${error.message}`, 'bot');
+    console.error('Chat error:', error);
+    removeTypingIndicator();
+    addMessage('I apologize, but I encountered an error. Please try again.', 'bot');
+    ToastManager.error('Failed to send message');
   }
 }
 
-// Mode Selection
-function handleModeChange(e) {
-  const card = e.currentTarget;
-  const mode = card.dataset.mode;
-  if (!mode) return;
+function addMessage(text, sender) {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${sender}`;
+  messageDiv.innerHTML = `
+    <div class="message-avatar">${sender === 'user' ? '👤' : '🕉️'}</div>
+    <div class="message-content">
+      <p>${text}</p>
+      <div class="message-time">${new Date().toLocaleTimeString()}</div>
+    </div>
+  `;
+  
+  chatMessages.appendChild(messageDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 
-  activeMode = mode;
-  modeCards.forEach((modeCard) => {
-    const isActive = modeCard === card;
-    modeCard.classList.toggle('active', isActive);
-    modeCard.setAttribute('aria-pressed', String(isActive));
-  });
+  // Add animation
+  messageDiv.style.animation = 'fadeIn 0.3s ease';
 }
 
-// Transliteration Handler
-async function handleTranslit() {
-  const text = translitInput.value.trim();
-  if (!text) return;
+function addTypingIndicator() {
+  const typingDiv = document.createElement('div');
+  typingDiv.className = 'message bot typing';
+  typingDiv.innerHTML = `
+    <div class="message-avatar">🕉️</div>
+    <div class="message-content">
+      <div class="typing-indicator">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  `;
+  typingDiv.id = 'typing-indicator';
+  
+  chatMessages.appendChild(typingDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 
-  translitResult.classList.add('loading');
+function removeTypingIndicator() {
+  const typingIndicator = document.getElementById('typing-indicator');
+  if (typingIndicator) {
+    typingIndicator.remove();
+  }
+}
+
+// Enhanced Mode Selection
+function handleModeSelection(e) {
+  const selectedMode = e.currentTarget.dataset.mode;
+  
+  // Update active state
+  modeCards.forEach(card => {
+    card.classList.toggle('active', card.dataset.mode === selectedMode);
+    card.setAttribute('aria-pressed', card.dataset.mode === selectedMode);
+  });
+  
+  STATE.activeMode = selectedMode;
+  
+  // Add mode-specific welcome message
+  const modeMessages = {
+    learn: "I'm ready to help you learn Sanskrit! What would you like to explore?",
+    analyze: "I'll help you analyze Sanskrit texts and concepts. What would you like to analyze?",
+    translate: "I can help you translate between Sanskrit and other languages. What needs translation?",
+    grounded: "I'll provide answers grounded in authentic Sanskrit texts. What is your question?"
+  };
+  
+  addMessage(modeMessages[selectedMode], 'bot');
+}
+
+// Enhanced Transliteration Functionality
+async function handleTransliteration() {
+  const text = translitInput.value.trim();
+  if (!text) {
+    ToastManager.error('Please enter text to transliterate');
+    return;
+  }
 
   try {
-    const response = await apiCall(CONFIG.endpoints.translit, { text });
-    translitResult.textContent = response.iast || 'No result';
+    LoadingManager.show('Transliterating...');
+    
+    const response = await fetch(CONFIG.apiBase + CONFIG.endpoints.translit, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text })
+    });
+
+    if (!response.ok) {
+      throw new Error('Transliteration failed');
+    }
+
+    const data = await response.json();
+    translitResult.value = data.iast || text;
+    
+    // Add to history
+    addToTransliterationHistory(text, data.iast);
+    
+    ToastManager.success('Transliteration completed');
   } catch (error) {
-    translitResult.textContent = `Error: ${error.message}`;
+    console.error('Transliteration error:', error);
+    ToastManager.error('Transliteration failed. Please try again.');
   } finally {
-    translitResult.classList.remove('loading');
+    LoadingManager.hide();
   }
 }
 
-// Pronunciation Handler
-function handlePronounce() {
-  const text = translitResult.textContent.trim();
-  if (!text || text === 'No result' || text.startsWith('Error:')) return;
+function addToTransliterationHistory(devanagari, iast) {
+  const item = { devanagari, iast, timestamp: Date.now() };
+  
+  // Get existing history
+  let history = StorageManager.get('transliterationHistory', []);
+  
+  // Remove duplicates
+  history = history.filter(h => h.devanagari !== devanagari);
+  
+  // Add to beginning
+  history.unshift(item);
+  
+  // Limit history size
+  if (history.length > 10) {
+    history = history.slice(0, 10);
+  }
+  
+  // Save to storage
+  StorageManager.set('transliterationHistory', history);
+}
+
+function handlePronunciation() {
+  const text = translitResult.value.trim();
+  if (!text) {
+    ToastManager.error('No text to pronounce');
+    return;
+  }
 
   if ('speechSynthesis' in window) {
-    // Cancel any ongoing speech
-    speechSynthesis.cancel();
-
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US'; // IAST pronunciation
-    utterance.rate = 0.7; // Slower for learning
-    utterance.pitch = 1.0;
-
-    // Try to find a good voice
-    const voices = speechSynthesis.getVoices();
-    const preferredVoice = voices.find(voice =>
-      voice.lang.startsWith('en') && voice.name.includes('Female')
-    ) || voices.find(voice => voice.lang.startsWith('en'));
-
-    if (preferredVoice) {
-      utterance.voice = preferredVoice;
-    }
-
+    utterance.lang = 'en-US';
+    utterance.rate = 0.8;
+    
     speechSynthesis.speak(utterance);
-
-    // Visual feedback
-    pronounceBtn.style.opacity = '0.7';
-    utterance.onend = () => {
-      pronounceBtn.style.opacity = '1';
-    };
+    ToastManager.info('Pronouncing...');
   } else {
-    alert(t('speechUnsupported'));
+    ToastManager.error('Speech synthesis not supported in this browser');
   }
 }
 
-// Event Listeners
-if (chatForm) {
-  chatForm.addEventListener('submit', handleChatSubmit);
-}
-
-modeCards.forEach(card => {
-  card.addEventListener('click', handleModeChange);
-});
-
-if (translitBtn) {
-  translitBtn.addEventListener('click', handleTranslit);
-}
-
-if (translitInput) {
-  translitInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      handleTranslit();
-    }
-  });
-}
-
-if (pronounceBtn) {
-  pronounceBtn.addEventListener('click', handlePronounce);
-}
-
-// Learning Tracks
-async function loadTracks() {
-  if (!tracksContainer) return;
-
+// Enhanced Learning Tracks
+async function loadLearningTracks() {
   try {
-    const response = await fetch(`${CONFIG.apiBase}/api/tracks?lang=${currentLang}`);
-    if (!response.ok) throw new Error('Failed to load tracks');
+    LoadingManager.show('Loading learning tracks...');
+    
+    const response = await fetch(CONFIG.apiBase + CONFIG.endpoints.tracks);
+    
+    if (!response.ok) {
+      throw new Error('Failed to load tracks');
+    }
 
     const tracks = await response.json();
-    renderTracks(tracks);
+    displayTracks(tracks);
+    
   } catch (error) {
-    tracksContainer.innerHTML = `<div class="loading-tracks">${t('failedTracks')}</div>`;
-    console.error('Tracks loading error:', error);
+    console.error('Error loading tracks:', error);
+    tracksContainer.innerHTML = `
+      <div class="error-message">
+        <p>Failed to load learning tracks</p>
+        <button onclick="loadLearningTracks()" class="retry-btn">Retry</button>
+      </div>
+    `;
+  } finally {
+    LoadingManager.hide();
   }
 }
 
-function renderTracks(tracks) {
-  if (!tracksContainer) return;
+function displayTracks(tracks) {
+  if (!tracks || tracks.length === 0) {
+    tracksContainer.innerHTML = '<p>No learning tracks available at the moment.</p>';
+    return;
+  }
 
-  const tracksHtml = tracks.map(track => `
+  tracksContainer.innerHTML = tracks.map(track => `
     <div class="track-card">
-      <h3 class="track-title">${track.title}</h3>
-      <div class="track-meta">
+      <div class="track-header">
+        <h3>${track.name}</h3>
         <span class="track-level">${track.level}</span>
-        <span class="track-duration">${track.duration}</span>
       </div>
-      <p class="track-focus">${track.focus}</p>
+      <div class="track-content">
+        <p>${track.description}</p>
+        <div class="track-stats">
+          <span class="stat">📚 ${track.lessons || 0} lessons</span>
+          <span class="stat">⏱️ ${track.duration || 'Unknown'}</span>
+          <span class="stat">👥 ${track.students || 0} students</span>
+        </div>
+      </div>
       <div class="track-actions">
         <button class="track-btn primary" onclick="startTrack('${track.slug}')">
           ${t('startTrack')}
         </button>
-        <button class="track-btn" onclick="downloadTrack('${track.slug}', event)">
-          📥 ${t('downloadTrack')}
+        <button class="track-btn secondary" onclick="downloadTrack('${track.slug}')">
+          ${isTrackDownloaded(track.slug) ? t('downloadedTrack') : t('downloadTrack')}
         </button>
       </div>
     </div>
   `).join('');
-
-  tracksContainer.innerHTML = tracksHtml;
 }
 
 function startTrack(slug) {
+  // Check if track is available
+  if (slug === 'sanskrit-foundations' || slug === 'bhagavad-gita' || slug === 'grammar-lab') {
+    ToastManager.info(tf('trackComingSoon', { slug }), 5000);
+  } else {
+    ToastManager.info('Track not available yet', 3000);
   // Navigate to track or open modal
   console.log('Starting track:', slug);
   alert(tf('trackComingSoon', { slug }));
@@ -453,39 +714,6 @@ fetch(`${CONFIG.apiBase}${CONFIG.endpoints.health}`)
   })
   .catch(() => console.log('Running in offline mode'));
 
-// Add smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-
-// Initialize language from localStorage
-document.addEventListener('DOMContentLoaded', () => {
-  const savedLang = localStorage.getItem('language') || 'en';
-  if (savedLang !== 'en') {
-    switchLanguage(savedLang);
-    const btn = document.querySelector(`.lang-btn[data-lang="${savedLang}"]`);
-    if (btn) {
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    }
-  }
-
-  // Load learning tracks
-  loadTracks();
-
-  // Initialize scroll reveal animations
-  initScrollReveal();
-
-  // Initialize parallax effect for mandala
-  initParallaxEffect();
-});
-
 // Scroll Reveal Animation
 function initScrollReveal() {
   const revealElements = document.querySelectorAll('.section, .track-card, .translit-card');
@@ -529,22 +757,68 @@ function initParallaxEffect() {
   });
 }
 
-// Premium hover effects for interactive elements
-document.querySelectorAll('.track-card, .mode-card, .btn').forEach(el => {
-  el.addEventListener('mouseenter', function() {
-    this.style.transition = 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+// Language switching function
+function switchLanguage(lang) {
+  STATE.currentLang = lang;
+  localStorage.setItem('language', lang);
+  document.documentElement.lang = lang;
+  
+  // Update all translatable text
+  document.querySelectorAll('[data-translate]').forEach(element => {
+    const key = element.dataset.translate;
+    element.textContent = t(key);
+  });
+}
+
+// Add smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
 });
 
-// Register Service Worker for PWA
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => {
-        console.log('SW registered: ', registration);
-      })
-      .catch(registrationError => {
-        console.log('SW registration failed: ', registrationError);
-      });
-  });
+// Initialize language from localStorage
+document.addEventListener('DOMContentLoaded', () => {
+  const savedLang = localStorage.getItem('language') || 'en';
+  if (savedLang !== 'en') {
+    switchLanguage(savedLang);
+    const btn = document.querySelector(`.lang-btn[data-lang="${savedLang}"]`);
+    if (btn) {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  }
+
+  // Load learning tracks
+  loadLearningTracks();
+
+  // Initialize scroll reveal animations
+  initScrollReveal();
+
+  // Initialize parallax effect for mandala
+  initParallaxEffect();
+});
+
+// Export for use in other scripts
+window.SanskritNova = {
+  STATE,
+  CONFIG,
+  TRANSLATIONS,
+  StorageManager,
+  ToastManager,
+  LoadingManager,
+  VoiceRecognition,
+  t,
+  tf,
+  loadLearningTracks,
+  startTrack,
+  downloadTrack,
+  handleChatSubmit,
+  handleTransliteration,
+  handlePronunciation
+};
 }

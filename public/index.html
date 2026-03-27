@@ -10,8 +10,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="icon-192.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="components.css">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#c9a227">
+  <meta name="description" content="AI-powered Sanskrit learning platform with transliteration, translation, and Vedic knowledge">
+  <meta name="keywords" content="Sanskrit, AI, transliteration, translation, Vedic, learning, Devanagari, IAST">
+  <meta name="author" content="SanskritNova AI">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="SanskritNova AI - वैदिक ज्ञान प्रणाली">
+  <meta property="og:description" content="AI-powered Sanskrit learning platform with transliteration, translation, and Vedic knowledge">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sanskrit-nova.vercel.app">
+  <meta property="og:image" content="https://sanskrit-nova.vercel.app/og-image.png">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SanskritNova AI - वैदिक ज्ञान प्रणाली">
+  <meta name="twitter:description" content="AI-powered Sanskrit learning platform with transliteration, translation, and Vedic knowledge">
+  <meta name="twitter:image" content="https://sanskrit-nova.vercel.app/og-image.png">
 </head>
 
 <body>
@@ -19,6 +36,21 @@
   <div class="bg-pattern"></div>
   <div class="bg-gradient"></div>
   <div class="bg-ornate"></div>
+  <div class="floating-mantras">
+    <span class="mantra mantra-1">ॐ</span>
+    <span class="mantra mantra-2">स्वागतं</span>
+    <span class="mantra mantra-3">धर्मः</span>
+    <span class="mantra mantra-4">विद्या</span>
+    <span class="mantra mantra-5">शान्तिः</span>
+  </div>
+
+  <!-- Progress Indicator -->
+  <div class="progress-indicator" id="progress-indicator"></div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <span>↑</span>
+  </button>
 
   <!-- Header with Sanskrit Motif -->
   <header class="header">
@@ -36,47 +68,115 @@
       <nav class="nav">
         <a href="#chat" class="nav-link">
           <span class="nav-icon">💬</span>
-          संवाद
+          <span class="nav-text">संवाद</span>
         </a>
         <a href="#translit" class="nav-link">
           <span class="nav-icon">🔤</span>
-          लिप्यन्तर
+          <span class="nav-text">लिप्यन्तर</span>
         </a>
-        <a href="#about" class="nav-link">
+        <a href="#dictionary" class="nav-link">
+          <span class="nav-icon">📖</span>
+          <span class="nav-text">शब्दकोश</span>
+        </a>
+        <a href="#grammar" class="nav-link">
+          <span class="nav-icon">📝</span>
+          <span class="nav-text">व्याकरण</span>
+        </a>
+        <a href="#tracks" class="nav-link">
+          <span class="nav-icon">📚</span>
+          <span class="nav-text">पाठ्यक्रम</span>
+        </a>
+        <a href="#resources" class="nav-link">
           <span class="nav-icon">📜</span>
-          परिचय
+          <span class="nav-text">संसाधन</span>
         </a>
-        <div class="lang-switcher">
-          <button class="lang-btn active" data-lang="en">EN</button>
-          <button class="lang-btn" data-lang="hi">हि</button>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <span class="theme-icon">🌙</span>
+          </button>
+          <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="hi">हि</button>
+          </div>
         </div>
       </nav>
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav-content">
+      <a href="#chat" class="mobile-nav-link">
+        <span class="nav-icon">💬</span>
+        <span class="nav-text">संवाद</span>
+      </a>
+      <a href="#translit" class="mobile-nav-link">
+        <span class="nav-icon">🔤</span>
+        <span class="nav-text">लिप्यन्तर</span>
+      </a>
+      <a href="#dictionary" class="mobile-nav-link">
+        <span class="nav-icon">📖</span>
+        <span class="nav-text">शब्दकोश</span>
+      </a>
+      <a href="#grammar" class="mobile-nav-link">
+        <span class="nav-icon">📝</span>
+        <span class="nav-text">व्याकरण</span>
+      </a>
+      <a href="#tracks" class="mobile-nav-link">
+        <span class="nav-icon">📚</span>
+        <span class="nav-text">पाठ्यक्रम</span>
+      </a>
+      <a href="#resources" class="mobile-nav-link">
+        <span class="nav-icon">📜</span>
+        <span class="nav-text">संसाधन</span>
+      </a>
+    </div>
+  </nav>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-decoration">
       <div class="mandala"></div>
+      <div class="sacred-geometry"></div>
     </div>
     <div class="hero-content">
       <div class="hero-badge">आधुनिक ज्ञान • प्राचीन शास्त्र</div>
       <h1 class="hero-title">
         <span class="title-line">Unlock Ancient</span>
         <span class="title-sanskrit">विद्यामृतं आनय</span>
+        <span class="title-line">Wisdom</span>
       </h1>
       <p class="hero-subtitle">
         Experience the wisdom of Sanskrit through AI-powered translation,
-        transliteration, and grounded answers from ancient texts.
+        transliteration, grammar analysis, and grounded answers from ancient texts.
       </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">5000+</span>
+          <span class="stat-label">Years of Wisdom</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">1000+</span>
+          <span class="stat-label">Texts Analyzed</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Grammar Rules</span>
+        </div>
+      </div>
       <div class="hero-actions">
         <a href="#chat" class="btn btn-primary">
           <span>आरभामः</span>
-          <span class="btn-sub">Begin</span>
+          <span class="btn-sub">Begin Journey</span>
         </a>
-        <a href="#translit" class="btn btn-secondary">
-          <span>लिप्यन्तरं</span>
-          <span class="btn-sub">Transliterate</span>
+        <a href="#demo" class="btn btn-secondary">
+          <span>दर्शनं</span>
+          <span class="btn-sub">View Demo</span>
         </a>
       </div>
     </div>
@@ -85,6 +185,47 @@
         <div class="glyph-inner">
           <span class="glyph-text">विना संस्कृतं<br>न भारतम्</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Overview -->
+  <section class="features-overview">
+    <div class="section-header">
+      <div class="section-icon">✨</div>
+      <h2 class="section-title">Features</h2>
+      <p class="section-desc">Comprehensive Sanskrit learning tools</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Chat</h3>
+        <p>Intelligent conversations about Sanskrit concepts</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔤</div>
+        <h3>Transliteration</h3>
+        <p>Perfect Devanagari to IAST conversion</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📖</div>
+        <h3>Dictionary</h3>
+        <p>Comprehensive Sanskrit-English dictionary</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>Grammar</h3>
+        <p>Interactive grammar analysis and lessons</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>Learning Tracks</h3>
+        <p>Structured courses for all levels</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔊</div>
+        <h3>Pronunciation</h3>
+        <p>Audio pronunciation with phonetic guidance</p>
       </div>
     </div>
   </section>
@@ -147,12 +288,22 @@
               <span class="input-decor">❧</span>
               <input type="text" id="chat-input" placeholder="Type your query..." autocomplete="off"
                 aria-label="Chat question">
+              <button type="button" class="voice-btn" id="voice-btn" aria-label="Voice input">
+                <span>🎤</span>
+              </button>
               <button type="submit" class="send-btn">
                 <span>प्रेषय</span>
                 <span class="btn-icon">↗</span>
               </button>
             </div>
           </form>
+          
+          <div class="chat-suggestions">
+            <button class="suggestion-btn" data-query="What is dharma?">What is dharma?</button>
+            <button class="suggestion-btn" data-query="Explain yoga sutras">Explain yoga sutras</button>
+            <button class="suggestion-btn" data-query="Translate 'रामो गच्छति'">Translate 'रामो गच्छति'</button>
+            <button class="suggestion-btn" data-query="Grammar of Sanskrit verbs">Grammar of Sanskrit verbs</button>
+          </div>
         </div>
       </div>
     </section>
@@ -162,7 +313,7 @@
       <div class="section-header">
         <div class="section-icon">🔱</div>
         <h2 class="section-title">लिप्यन्तर प्रकार</h2>
-        <p class="section-desc">Devanagari to IAST transliteration</p>
+        <p class="section-desc">Devanagari to IAST transliteration with pronunciation</p>
       </div>
 
       <div class="translit-container">
@@ -170,21 +321,185 @@
           <div class="card-pattern"></div>
           <div class="translit-input-group">
             <label>देवनागरी</label>
-            <input type="text" id="translit-input" placeholder="रामो गच्छति सीतां प्रति"
-              aria-label="Devanagari text to transliterate">
+            <textarea id="translit-input" placeholder="रामो गच्छति सीतां प्रति"
+              aria-label="Devanagari text to transliterate" rows="3"></textarea>
+            <div class="input-actions">
+              <button class="clear-btn" id="clear-translit" aria-label="Clear text">Clear</button>
+              <button class="paste-btn" id="paste-translit" aria-label="Paste text">Paste</button>
+            </div>
           </div>
-          <button id="translit-btn" class="translit-btn">
-            <span>परिवर्तय</span>
-            <span class="btn-glyph">☸</span>
-          </button>
+          <div class="translit-controls">
+            <button id="translit-btn" class="translit-btn">
+              <span>परिवर्तय</span>
+              <span class="btn-glyph">☸</span>
+            </button>
+            <button id="reverse-translit-btn" class="reverse-btn" title="Reverse transliteration">
+              <span>⇄</span>
+            </button>
+          </div>
           <div class="translit-output-group">
             <label>IAST</label>
             <div class="output-display">
-              <span id="translit-result">rāmo gacchati sītāṃ prati</span>
-              <button id="pronounce-btn" class="pronounce-btn" title="Pronounce">
-                <span>🔊</span>
-              </button>
+              <textarea id="translit-result" readonly rows="3">rāmo gacchati sītāṃ prati</textarea>
+              <div class="output-actions">
+                <button id="pronounce-btn" class="pronounce-btn" title="Pronounce">
+                  <span>🔊</span>
+                </button>
+                <button id="copy-translit-btn" class="copy-btn" title="Copy">
+                  <span>📋</span>
+                </button>
+              </div>
             </div>
+          </div>
+          <div class="translit-history" id="translit-history">
+            <h4>Recent Transliterations</h4>
+            <div class="history-list" id="history-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dictionary Section -->
+    <section id="dictionary" class="section">
+      <div class="section-header">
+        <div class="section-icon">📖</div>
+        <h2 class="section-title">संस्कृत शब्दकोश</h2>
+        <p class="section-desc">Comprehensive Sanskrit-English dictionary</p>
+      </div>
+
+      <div class="dictionary-container">
+        <div class="dictionary-search">
+          <input type="text" id="dict-input" placeholder="Search Sanskrit or English..." 
+            aria-label="Dictionary search">
+          <button id="dict-search-btn" class="search-btn">
+            <span>🔍</span>
+          </button>
+        </div>
+        
+        <div class="dictionary-results" id="dictionary-results">
+          <div class="result-card">
+            <div class="result-sanskrit">धर्मः</div>
+            <div class="result-phonetic">dharmáḥ</div>
+            <div class="result-meanings">
+              <span class="meaning">righteousness, duty, moral law</span>
+              <span class="meaning">virtue, justice, ethics</span>
+            </div>
+            <div class="result-examples">
+              <div class="example">धर्मो रक्षति रक्षितः - Dharma protects the protected</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grammar Section -->
+    <section id="grammar" class="section">
+      <div class="section-header">
+        <div class="section-icon">📝</div>
+        <h2 class="section-title">संस्कृत व्याकरण</h2>
+        <p class="section-desc">Interactive grammar lessons and analysis</p>
+      </div>
+
+      <div class="grammar-container">
+        <div class="grammar-tabs">
+          <button class="tab-btn active" data-tab="basics">Basics</button>
+          <button class="tab-btn" data-tab="verbs">Verbs</button>
+          <button class="tab-btn" data-tab="nouns">Nouns</button>
+          <button class="tab-btn" data-tab="sandhi">Sandhi</button>
+          <button class="tab-btn" data-tab="analysis">Analysis</button>
+        </div>
+
+        <div class="grammar-content">
+          <div class="tab-content active" id="basics">
+            <h3>Sanskrit Basics</h3>
+            <div class="lesson-grid">
+              <div class="lesson-card">
+                <h4>Alphabet</h4>
+                <p>Learn the Devanagari script and pronunciation</p>
+                <button class="lesson-btn">Start Lesson</button>
+              </div>
+              <div class="lesson-card">
+                <h4>Vowels</h4>
+                <p>Master short and long vowels with examples</p>
+                <button class="lesson-btn">Start Lesson</button>
+              </div>
+              <div class="lesson-card">
+                <h4>Consonants</h4>
+                <p>Understand consonant classification and sounds</p>
+                <button class="lesson-btn">Start Lesson</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="verbs">
+            <h3>Verb Conjugations</h3>
+            <div class="verb-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Person</th>
+                    <th>Singular</th>
+                    <th>Dual</th>
+                    <th>Plural</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>3rd</td>
+                    <td>ति (ti)</td>
+                    <td>तः (taḥ)</td>
+                    <td>न्ति (nti)</td>
+                  </tr>
+                  <tr>
+                    <td>2nd</td>
+                    <td>सि (si)</td>
+                    <td>थः (thaḥ)</td>
+                    <td>थ (tha)</td>
+                  </tr>
+                  <tr>
+                    <td>1st</td>
+                    <td>मि (mi)</td>
+                    <td>वः (vaḥ)</td>
+                    <td>मः (maḥ)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tab-content" id="nouns">
+            <h3>Noun Declensions</h3>
+            <div class="declension-examples">
+              <div class="declension-card">
+                <h4>देव (deva) - God</h4>
+                <div class="declension-table">
+                  <table>
+                    <tr><td>Singular</td><td>Dual</td><td>Plural</td></tr>
+                    <tr><td>देवः</td><td>देवौ</td><td>देवाः</td></tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="sandhi">
+            <h3>Sandhi Rules</h3>
+            <div class="sandhi-rules">
+              <div class="rule-card">
+                <h4>गुण सन्धि (Guṇa Sandhi)</h4>
+                <p>When अ/आ + इ/ई → ए</p>
+                <div class="example">राम + इच्छा → रामेच्छा</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="analysis">
+            <h3>Grammar Analysis</h3>
+            <div class="analysis-input">
+              <textarea id="grammar-analysis-input" placeholder="Enter Sanskrit text for grammatical analysis..." rows="3"></textarea>
+              <button id="analyze-grammar-btn" class="analyze-btn">Analyze Grammar</button>
+            </div>
+            <div class="analysis-results" id="grammar-analysis-results"></div>
           </div>
         </div>
       </div>
@@ -203,6 +518,109 @@
       </div>
     </section>
 
+    <!-- Resources Section -->
+    <section id="resources" class="section">
+      <div class="section-header">
+        <div class="section-icon">📜</div>
+        <h2 class="section-title">संसाधन</h2>
+        <p class="section-desc">Learning resources and references</p>
+      </div>
+
+      <div class="resources-container">
+        <div class="resource-categories">
+          <div class="resource-category">
+            <h3>Texts</h3>
+            <div class="resource-list">
+              <div class="resource-item">
+                <h4>Bhagavad Gita</h4>
+                <p>Complete translation and commentary</p>
+                <a href="#" class="resource-link">Study Now</a>
+              </div>
+              <div class="resource-item">
+                <h4>Yoga Sutras</h4>
+                <p>Patanjali's yoga philosophy</p>
+                <a href="#" class="resource-link">Study Now</a>
+              </div>
+              <div class="resource-item">
+                <h4>Rig Veda</h4>
+                <p>Ancient Vedic hymns</p>
+                <a href="#" class="resource-link">Study Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="resource-category">
+            <h3>Tools</h3>
+            <div class="resource-list">
+              <div class="resource-item">
+                <h4>Sanskrit Editor</h4>
+                <p>Advanced text editor with Devanagari input</p>
+                <a href="#" class="resource-link">Open Editor</a>
+              </div>
+              <div class="resource-item">
+                <h4>Flashcards</h4>
+                <p>Interactive vocabulary learning</p>
+                <a href="#" class="resource-link">Practice</a>
+              </div>
+              <div class="resource-item">
+                <h4>Quiz Generator</h4>
+                <p>Custom quizzes for practice</p>
+                <a href="#" class="resource-link">Create Quiz</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="resource-category">
+            <h3>References</h3>
+            <div class="resource-list">
+              <div class="resource-item">
+                <h4>Grammar Guide</h4>
+                <p>Comprehensive grammar reference</p>
+                <a href="#" class="resource-link">View Guide</a>
+              </div>
+              <div class="resource-item">
+                <h4>Verb Conjugator</h4>
+                <p>Complete verb conjugation tables</p>
+                <a href="#" class="resource-link">Conjugate</a>
+              </div>
+              <div class="resource-item">
+                <h4>Dictionary API</h4>
+                <p>Developer resources and API access</p>
+                <a href="#" class="resource-link">API Docs</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="section">
+      <div class="section-header">
+        <div class="section-icon">🎬</div>
+        <h2 class="section-title">Interactive Demo</h2>
+        <p class="section-desc">Experience SanskritNova AI in action</p>
+      </div>
+
+      <div class="demo-container">
+        <div class="demo-video">
+          <div class="video-placeholder">
+            <div class="play-button">▶</div>
+            <p>Watch SanskritNova AI Demo</p>
+          </div>
+        </div>
+        <div class="demo-features">
+          <h3>Try These Features:</h3>
+          <div class="demo-actions">
+            <button class="demo-btn" data-demo="transliterate">Try Transliteration</button>
+            <button class="demo-btn" data-demo="chat">Start AI Chat</button>
+            <button class="demo-btn" data-demo="grammar">Grammar Analysis</button>
+            <button class="demo-btn" data-demo="dictionary">Search Dictionary</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- About Section -->
     <section id="about" class="section about-section">
       <div class="about-pattern"></div>
@@ -210,8 +628,8 @@
         <h2 class="about-title">परिचय</h2>
         <p class="about-text">
           SanskritNova bridges the ancient wisdom of Sanskrit with modern AI technology.
-          Our platform provides intelligent translation, precise transliteration, and
-          grounded answers from the vast corpus of Sanskrit literature.
+          Our platform provides intelligent translation, precise transliteration, grammar analysis,
+          and grounded answers from the vast corpus of Sanskrit literature.
         </p>
         <div class="features">
           <div class="feature">
@@ -226,6 +644,18 @@
             <span class="feature-icon">🔄</span>
             <span class="feature-text">Script Conversion</span>
           </div>
+          <div class="feature">
+            <span class="feature-icon">📝</span>
+            <span class="feature-text">Grammar Analysis</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">🔊</span>
+            <span class="feature-text">Audio Learning</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">📱</span>
+            <span class="feature-text">Mobile Ready</span>
+          </div>
         </div>
       </div>
     </section>
@@ -238,10 +668,28 @@
       <div class="footer-glyph">ॐ</div>
       <p class="footer-text">संस्कृतनोव • SanskritNova AI</p>
       <p class="footer-sub">Connecting ancient wisdom to modern minds</p>
+      <div class="footer-links">
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/mangeshraut712/SanskritNova" target="_blank">GitHub</a>
+      </div>
     </div>
   </footer>
 
+  <!-- Toast Notifications -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+  </div>
+
   <script src="app.js"></script>
+  <script src="components.js"></script>
 </body>
 
 </html>
