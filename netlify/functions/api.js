@@ -180,7 +180,7 @@ exports.handler = async (event, context) => {
       
       let reply;
       if (lang === 'hi') {
-        reply = `मैं आपकी '${mode}' मोड में सहायता कर रहा हूँ। कृपया OpenRouter API कॉन्फ़िगर करें।`;
+        reply = `\u092E\u0948\u0902 \u0906\u092A\u0915\u0940 '${mode}' \u092E\u094B\u0926 \u092E\u0947\u0902 \u0938\u0939\u093e\u092f\u0924\u093e \u0915\u0930 \u0930\u0939\u093e \u0939\u0942\u0902। \u0915\u094D\u0930\u093F\u092A\u092F\u093E OpenRouter API \u0915\u0949\u0902\u092b\u093F\u0917\u094D\u0930 \u0915\u0930\u0947\u0902।`;
       } else {
         reply = `I'm helping you in '${mode}' mode. Please configure OpenRouter API key.`;
       }
