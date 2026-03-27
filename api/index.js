@@ -107,7 +107,7 @@ function transliterateToIAST(text) {
 }
 
 export default function handler(req, res) {
-  const { url, method } = req;
+  const { url, method, query } = req;
   
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -135,7 +135,7 @@ export default function handler(req, res) {
   }
   
   if (url === '/api/tracks' && method === 'GET') {
-    const lang = req.query.lang || 'en';
+    const lang = query.lang || 'en';
     const tracksData = tracks.map(track => ({
       slug: track.slug,
       title: lang === 'hi' ? track.title_hi : track.title,
