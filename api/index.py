@@ -5,7 +5,6 @@ from pathlib import Path
 from typing import Literal
 
 import httpx
-import numpy as np
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -14,6 +13,12 @@ try:
     from mangum import Mangum
 except ImportError:  # pragma: no cover
     Mangum = None
+
+# Optional numpy for legacy chunk loading
+try:
+    import numpy as np
+except ImportError:
+    np = None
 
 
 OPENROUTER_URL = os.getenv(
@@ -301,6 +306,8 @@ def _retrieve_with_local_retriever(query: str, k: int) -> list[dict[str, object]
 
 def _retrieve_from_legacy_chunks(query: str, k: int) -> list[dict[str, object]]:
     """Fallback retrieval using naive token-count scoring on legacy chunks.npy."""
+    if np is None:
+        return []
     if not LEGACY_CHUNKS_PATH.exists():
         return []
 
@@ -545,7 +552,47 @@ async def grounded_api(request: GroundedAnswerRequest):
     )
 
 
-handler = Mangum(app) if Mangum is not None else None
+# Create handler for serverless (Vercel/AWS Lambda)
+try:
+    from mangum import Mangum
+    handler = Mangum(app, lifespan="off")
+except ImportError:
+    # Fallback for when mangum is not available - create a simple ASGI wrapper
+    class SimpleHandler:
+        def __init__(self, app):
+            self.app = app
+        
+        async def __call__(self, event, context):
+            # Minimal ASGI-to-HTTP translation for Vercel
+            scope = {
+                "type": "http",
+                "method": event.get("httpMethod", "GET"),
+                "path": event.get("path", "/"),
+                "headers": [[k.encode(), v.encode()] for k, v in event.get("headers", {}).items()],
+                "query_string": event.get("queryStringParameters", {}),
+            }
+            
+            async def receive():
+                return {"type": "http.request", "body": event.get("body", "").encode()}
+            
+            response = {"status": 200, "headers": [], "body": b""}
+            
+            async def send(message):
+                if message["type"] == "http.response.start":
+                    response["status"] = message["status"]
+                    response["headers"] = message["headers"]
+                elif message["type"] == "http.response.body":
+                    response["body"] = message.get("body", b"")
+            
+            await self.app(scope, receive, send)
+            
+            return {
+                "statusCode": response["status"],
+                "headers": {k.decode(): v.decode() for k, v in response["headers"]},
+                "body": response["body"].decode() if isinstance(response["body"], bytes) else response["body"]
+            }
+    
+    handler = SimpleHandler(app)
 
 
 if __name__ == "__main__":
