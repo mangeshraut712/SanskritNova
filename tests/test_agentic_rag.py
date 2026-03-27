@@ -244,6 +244,7 @@ def test_build_graph():
     assert graph is not None
 
 
+@pytest.mark.skip(reason="Skipping slow LLM-dependent tests in CI")
 @pytest.mark.asyncio
 async def test_agentic_answer():
     from code.agentic_rag import agentic_answer
@@ -254,6 +255,7 @@ async def test_agentic_answer():
     assert result["pipeline"] == "agentic_rag"
 
 
+@pytest.mark.skip(reason="Skipping slow LLM-dependent tests in CI")
 @pytest.mark.asyncio
 async def test_agentic_answer_stream():
     from code.agentic_rag import agentic_answer_stream
