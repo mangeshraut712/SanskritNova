@@ -68,3 +68,8 @@ select = ["E", "F", "I"]
 testpaths = ["tests"]
 addopts = "-q"
 asyncio_mode = "auto"
+filterwarnings = [
+    "ignore::DeprecationWarning:mangum.*:",
+    "ignore::UserWarning:torch.*:",
+    "ignore::UserWarning:.*_ARRAY_API.*:",
+]
