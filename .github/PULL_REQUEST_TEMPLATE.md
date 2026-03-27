@@ -1,7 +1,9 @@
 ## Description
+
 <!--- Describe your changes in detail -->
 
 ## Type of Change
+
 - [ ] 🐛 Bug fix (non-breaking change which fixes an issue)
 - [ ] ✨ New feature (non-breaking change which adds functionality)
 - [ ] 💥 Breaking change (fix or feature that would cause existing functionality to not work as expected)
@@ -13,27 +15,32 @@
 - [ ] 🔒 Security enhancement
 
 ## Changes Made
+
 <!--- List the changes made in this PR -->
 
 ### Backend Changes
+
 - [ ] API endpoints
 - [ ] Database models
 - [ ] Business logic
 - [ ] Configuration
 
 ### Frontend Changes
+
 - [ ] UI components
 - [ ] Styling
 - [ ] JavaScript functionality
 - [ ] Responsive design
 
 ### Infrastructure Changes
+
 - [ ] Docker configuration
 - [ ] Kubernetes manifests
 - [ ] CI/CD pipelines
 - [ ] Deployment scripts
 
 ## Testing
+
 <!--- Please describe the tests that you ran to verify your changes -->
 
 - [ ] Unit tests pass
@@ -43,9 +50,11 @@
 - [ ] Mobile responsiveness tested
 
 ## Screenshots (if applicable)
+
 <!--- Add screenshots to show visual changes -->
 
 ## Checklist
+
 - [ ] My code follows the project's style guidelines
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
@@ -56,15 +65,20 @@
 - [ ] Any dependent changes have been merged and published
 
 ## Additional Notes
+
 <!--- Any additional information or context about this PR -->
 
 ## Related Issues
+
 <!--- Link to related issues or PRs -->
+
 Fixes # (issue)
 Related to # (issue)
 
 ## Deployment Notes
+
 <!--- Any special deployment considerations -->
+
 - [ ] Database migrations required
 - [ ] Environment variables to update
 - [ ] Breaking changes for API consumers

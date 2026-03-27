@@ -7,138 +7,155 @@
 const TRANSLATIONS = {
   en: {
     welcome: "Namaste! 🙏 I'm your Sanskrit learning assistant. How can I help you today?",
-    learnMode: "Learn",
-    analyzeMode: "Analyze", 
-    translateMode: "Translate",
-    groundedMode: "Grounded",
-    devanagari: "Devanagari",
-    iast: "IAST",
-    begin: "Begin",
-    transliterate: "Transliterate",
-    introduction: "Introduction",
-    aboutText: "SanskritNova bridges ancient Sanskrit wisdom with modern AI technology, featuring Apple-inspired design and Indian cultural heritage.",
-    vedicLiterature: "Vedic Literature",
-    aiPowered: "AI Powered",
-    scriptConversion: "Script Conversion",
-    grammarAnalysis: "Grammar Analysis",
-    audioLearning: "Audio Learning",
-    mobileReady: "Mobile Ready",
-    features: ["Vedic Literature", "AI Powered", "Script Conversion", "Grammar Analysis", "Audio Learning", "Mobile Ready"],
-    loadingTracks: "Loading learning tracks...",
-    failedTracks: "Failed to load learning tracks",
-    startTrack: "Start Track",
-    downloadTrack: "Download",
-    downloadedTrack: "Downloaded",
-    downloadSuccess: "Track \"{slug}\" downloaded for offline use!",
-    downloadFailure: "Download failed. Please try again.",
-    trackComingSoon: "Starting {slug} track - Feature coming soon!",
-    speechUnsupported: "Speech synthesis not supported in this browser",
-    connectingWisdom: "Connecting ancient wisdom to modern minds",
-    searchPlaceholder: "Search Sanskrit or English...",
-    clearText: "Clear",
-    pasteText: "Paste",
-    copyText: "Copy",
-    pronounceText: "Pronounce",
-    reverseTransliteration: "Reverse Transliteration",
-    recentTransliterations: "Recent Transliterations",
-    dictionaryTitle: "Sanskrit-English Dictionary",
-    grammarTitle: "Sanskrit Grammar",
-    resourcesTitle: "Learning Resources",
-    demoTitle: "Interactive Demo",
-    watchDemo: "Watch SanskritNova AI Demo",
-    tryFeatures: "Try These Features:",
-    tryTransliteration: "Try Transliteration",
-    startAIChat: "Start AI Chat",
-    grammarAnalysis: "Grammar Analysis",
-    searchDictionary: "Search Dictionary",
-    voiceInput: "Voice Input",
-    backToTop: "Back to Top",
-    loading: "Loading...",
-    error: "Error",
-    success: "Success",
-    info: "Info"
+    learnMode: 'Learn',
+    analyzeMode: 'Analyze',
+    translateMode: 'Translate',
+    groundedMode: 'Grounded',
+    devanagari: 'Devanagari',
+    iast: 'IAST',
+    begin: 'Begin',
+    transliterate: 'Transliterate',
+    introduction: 'Introduction',
+    aboutText:
+      'SanskritNova bridges ancient Sanskrit wisdom with modern AI technology, featuring Apple-inspired design and Indian cultural heritage.',
+    vedicLiterature: 'Vedic Literature',
+    aiPowered: 'AI Powered',
+    scriptConversion: 'Script Conversion',
+    grammarAnalysis: 'Grammar Analysis',
+    audioLearning: 'Audio Learning',
+    mobileReady: 'Mobile Ready',
+    features: [
+      'Vedic Literature',
+      'AI Powered',
+      'Script Conversion',
+      'Grammar Analysis',
+      'Audio Learning',
+      'Mobile Ready',
+    ],
+    loadingTracks: 'Loading learning tracks...',
+    failedTracks: 'Failed to load learning tracks',
+    startTrack: 'Start Track',
+    downloadTrack: 'Download',
+    downloadedTrack: 'Downloaded',
+    downloadSuccess: 'Track "{slug}" downloaded for offline use!',
+    downloadFailure: 'Download failed. Please try again.',
+    trackComingSoon: 'Starting {slug} track - Feature coming soon!',
+    speechUnsupported: 'Speech synthesis not supported in this browser',
+    connectingWisdom: 'Connecting ancient wisdom to modern minds',
+    searchPlaceholder: 'Search Sanskrit or English...',
+    clearText: 'Clear',
+    pasteText: 'Paste',
+    copyText: 'Copy',
+    pronounceText: 'Pronounce',
+    reverseTransliteration: 'Reverse Transliteration',
+    recentTransliterations: 'Recent Transliterations',
+    dictionaryTitle: 'Sanskrit-English Dictionary',
+    grammarTitle: 'Sanskrit Grammar',
+    resourcesTitle: 'Learning Resources',
+    demoTitle: 'Interactive Demo',
+    watchDemo: 'Watch SanskritNova AI Demo',
+    tryFeatures: 'Try These Features:',
+    tryTransliteration: 'Try Transliteration',
+    startAIChat: 'Start AI Chat',
+    grammarAnalysis: 'Grammar Analysis',
+    searchDictionary: 'Search Dictionary',
+    voiceInput: 'Voice Input',
+    backToTop: 'Back to Top',
+    loading: 'Loading...',
+    error: 'Error',
+    success: 'Success',
+    info: 'Info',
   },
   hi: {
-    welcome: "नमस्ते! 🙏 मैं आपका संस्कृत शिक्षण सहायक हूँ। मैं आपकी आज कैसे सहायता कर सकता हूँ?",
-    learnMode: "सीखें",
-    analyzeMode: "विश्लेषण",
-    translateMode: "अनुवाद",
-    groundedMode: "आधारित",
-    devanagari: "देवनागरी",
-    iast: "IAST",
-    begin: "शुरू करें",
-    transliterate: "लिप्यन्तरण",
-    introduction: "परिचय",
-    aboutText: "संस्कृतनोवा प्राचीन संस्कृत ज्ञान को आधुनिक AI तकनीक से जोड़ता है, जिसमें Apple-प्रेरित डिज़ाइन और भारतीय सांस्कृतिक विरासत है।",
-    vedicLiterature: "वैदिक साहित्य",
-    aiPowered: "AI संचालित",
-    scriptConversion: "लिपि रूपांतरण",
-    grammarAnalysis: "व्याकरण विश्लेषण",
-    audioLearning: "ऑडियो लर्निंग",
-    mobileReady: "मोबाइल तैयार",
-    features: ["वैदिक साहित्य", "AI संचालित", "लिपि रूपांतरण", "व्याकरण विश्लेषण", "ऑडियो लर्निंग", "मोबाइल तैयार"],
-    loadingTracks: "शिक्षण ट्रैक लोड हो रहे हैं...",
-    failedTracks: "शिक्षण ट्रैक लोड नहीं हो सके",
-    startTrack: "ट्रैक शुरू करें",
-    downloadTrack: "डाउनलोड",
-    downloadedTrack: "डाउनलोड हो गया",
-    downloadSuccess: "ट्रैक \"{slug}\" ऑफलाइन उपयोग के लिए डाउनलोड हो गया!",
-    downloadFailure: "डाउनलोड असफल रहा। कृपया पुनः प्रयास करें।",
-    trackComingSoon: "{slug} ट्रैक शुरू हो रहा है - यह सुविधा जल्द आएगी!",
-    speechUnsupported: "इस ब्राउज़र में स्पीच सिंथेसिस समर्थित नहीं है",
-    connectingWisdom: "प्राचीन ज्ञान को आधुनिक दिमाग से जोड़ना",
-    searchPlaceholder: "संस्कृत या अंग्रेजी खोजें...",
-    clearText: "साफ़ करें",
-    pasteText: "पेस्ट करें",
-    copyText: "कॉपी करें",
-    pronounceText: "उच्चारण करें",
-    reverseTransliteration: "उलटी लिप्यन्तरण",
-    recentTransliterations: "हाल की लिप्यन्तरण",
-    dictionaryTitle: "संस्कृत-अंग्रेजी शब्दकोश",
-    grammarTitle: "संस्कृत व्याकरण",
-    resourcesTitle: "शिक्षण संसाधन",
-    demoTitle: "इंटरैक्टिव डेमो",
-    watchDemo: "संस्कृतनोवा AI डेमो देखें",
-    tryFeatures: "इन सुविधाओं को आज़माएं:",
-    tryTransliteration: "लिप्यन्तरण आज़माएं",
-    startAIChat: "AI चैट शुरू करें",
-    grammarAnalysis: "व्याकरण विश्लेषण",
-    searchDictionary: "शब्दकोश खोजें",
-    voiceInput: "वॉइस इनपुट",
-    backToTop: "शीर्ष पर वापस",
-    loading: "लोड हो रहा है...",
-    error: "त्रुटि",
-    success: "सफलता",
-    info: "जानकारी"
-  }
+    welcome: 'नमस्ते! 🙏 मैं आपका संस्कृत शिक्षण सहायक हूँ। मैं आपकी आज कैसे सहायता कर सकता हूँ?',
+    learnMode: 'सीखें',
+    analyzeMode: 'विश्लेषण',
+    translateMode: 'अनुवाद',
+    groundedMode: 'आधारित',
+    devanagari: 'देवनागरी',
+    iast: 'IAST',
+    begin: 'शुरू करें',
+    transliterate: 'लिप्यन्तरण',
+    introduction: 'परिचय',
+    aboutText:
+      'संस्कृतनोवा प्राचीन संस्कृत ज्ञान को आधुनिक AI तकनीक से जोड़ता है, जिसमें Apple-प्रेरित डिज़ाइन और भारतीय सांस्कृतिक विरासत है।',
+    vedicLiterature: 'वैदिक साहित्य',
+    aiPowered: 'AI संचालित',
+    scriptConversion: 'लिपि रूपांतरण',
+    grammarAnalysis: 'व्याकरण विश्लेषण',
+    audioLearning: 'ऑडियो लर्निंग',
+    mobileReady: 'मोबाइल तैयार',
+    features: [
+      'वैदिक साहित्य',
+      'AI संचालित',
+      'लिपि रूपांतरण',
+      'व्याकरण विश्लेषण',
+      'ऑडियो लर्निंग',
+      'मोबाइल तैयार',
+    ],
+    loadingTracks: 'शिक्षण ट्रैक लोड हो रहे हैं...',
+    failedTracks: 'शिक्षण ट्रैक लोड नहीं हो सके',
+    startTrack: 'ट्रैक शुरू करें',
+    downloadTrack: 'डाउनलोड',
+    downloadedTrack: 'डाउनलोड हो गया',
+    downloadSuccess: 'ट्रैक "{slug}" ऑफलाइन उपयोग के लिए डाउनलोड हो गया!',
+    downloadFailure: 'डाउनलोड असफल रहा। कृपया पुनः प्रयास करें।',
+    trackComingSoon: '{slug} ट्रैक शुरू हो रहा है - यह सुविधा जल्द आएगी!',
+    speechUnsupported: 'इस ब्राउज़र में स्पीच सिंथेसिस समर्थित नहीं है',
+    connectingWisdom: 'प्राचीन ज्ञान को आधुनिक दिमाग से जोड़ना',
+    searchPlaceholder: 'संस्कृत या अंग्रेजी खोजें...',
+    clearText: 'साफ़ करें',
+    pasteText: 'पेस्ट करें',
+    copyText: 'कॉपी करें',
+    pronounceText: 'उच्चारण करें',
+    reverseTransliteration: 'उलटी लिप्यन्तरण',
+    recentTransliterations: 'हाल की लिप्यन्तरण',
+    dictionaryTitle: 'संस्कृत-अंग्रेजी शब्दकोश',
+    grammarTitle: 'संस्कृत व्याकरण',
+    resourcesTitle: 'शिक्षण संसाधन',
+    demoTitle: 'इंटरैक्टिव डेमो',
+    watchDemo: 'संस्कृतनोवा AI डेमो देखें',
+    tryFeatures: 'इन सुविधाओं को आज़माएं:',
+    tryTransliteration: 'लिप्यन्तरण आज़माएं',
+    startAIChat: 'AI चैट शुरू करें',
+    grammarAnalysis: 'व्याकरण विश्लेषण',
+    searchDictionary: 'शब्दकोश खोजें',
+    voiceInput: 'वॉइस इनपुट',
+    backToTop: 'शीर्ष पर वापस',
+    loading: 'लोड हो रहा है...',
+    error: 'त्रुटि',
+    success: 'सफलता',
+    info: 'जानकारी',
+  },
 };
 
 // Apple-inspired Configuration
 const CONFIG = {
-  apiBase: window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
-    ? 'http://localhost:8000'
-    : '',
+  apiBase:
+    window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
+      ? 'http://localhost:8000'
+      : '',
   endpoints: {
     chat: '/api/chat',
     grounded: '/api/grounded-answer',
     translit: '/api/transliterate',
     health: '/api/health',
     tracks: '/api/tracks',
-    info: '/api/info'
+    info: '/api/info',
   },
   features: {
     voiceInput: true,
     darkMode: false,
     animations: true,
     offlineMode: true,
-    progressiveWebApp: true
+    progressiveWebApp: true,
   },
   ui: {
     toastDuration: 3000,
     loadingDelay: 500,
     animationDuration: 300,
-    debounceDelay: 300
-  }
+    debounceDelay: 300,
+  },
 };
 
 // Enhanced State Management
@@ -153,7 +170,7 @@ const STATE = {
   dictionaryResults: [],
   grammarAnalysis: null,
   scrollPosition: 0,
-  mobileMenuOpen: false
+  mobileMenuOpen: false,
 };
 
 // Apple-style Storage Management
@@ -290,7 +307,7 @@ class VoiceRecognition {
     this.recognition = null;
     this.isSupported = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
     this.isListening = false;
-    
+
     if (this.isSupported) {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       this.recognition = new SpeechRecognition();
@@ -408,7 +425,7 @@ function tf(key, values = {}) {
 // Enhanced Chat Functionality with Apple-style animations
 async function handleChatSubmit(e) {
   e.preventDefault();
-  
+
   const message = chatInput.value.trim();
   if (!message) return;
 
@@ -428,8 +445,8 @@ async function handleChatSubmit(e) {
       body: JSON.stringify({
         message,
         mode: STATE.activeMode,
-        lang: STATE.currentLang
-      })
+        lang: STATE.currentLang,
+      }),
     });
 
     if (!response.ok) {
@@ -437,13 +454,12 @@ async function handleChatSubmit(e) {
     }
 
     const data = await response.json();
-    
+
     // Remove typing indicator
     removeTypingIndicator();
-    
+
     // Add bot response with animation
     addMessage(data.reply || 'I apologize, but I could not process your request.', 'bot');
-    
   } catch (error) {
     console.error('Chat error:', error);
     removeTypingIndicator();
@@ -459,10 +475,10 @@ function addMessage(text, sender) {
     <div class="message-avatar">${sender === 'user' ? '👤' : '🤖'}</div>
     <div class="message-content">
       <p>${text}</p>
-      <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+      <div class="message-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
     </div>
   `;
-  
+
   chatMessages.appendChild(messageDiv);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 
@@ -470,7 +486,7 @@ function addMessage(text, sender) {
   messageDiv.style.opacity = '0';
   messageDiv.style.transform = 'translateY(20px)';
   messageDiv.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-  
+
   requestAnimationFrame(() => {
     messageDiv.style.opacity = '1';
     messageDiv.style.transform = 'translateY(0)';
@@ -491,7 +507,7 @@ function addTypingIndicator() {
     </div>
   `;
   typingDiv.id = 'typing-indicator';
-  
+
   chatMessages.appendChild(typingDiv);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
@@ -506,30 +522,31 @@ function removeTypingIndicator() {
 // Enhanced Mode Selection with Apple-style transitions
 function handleModeSelection(e) {
   const selectedMode = e.currentTarget.dataset.mode;
-  
+
   // Update button states with smooth transition
-  modeBtns.forEach(btn => {
+  modeBtns.forEach((btn) => {
     const isActive = btn.dataset.mode === selectedMode;
     btn.classList.toggle('active', isActive);
     btn.setAttribute('aria-pressed', isActive);
-    
+
     // Apple-style transition
     btn.style.transform = isActive ? 'scale(0.95)' : 'scale(1)';
     setTimeout(() => {
       btn.style.transform = 'scale(1)';
     }, 100);
   });
-  
+
   STATE.activeMode = selectedMode;
-  
+
   // Add mode-specific welcome message
   const modeMessages = {
     learn: "I'm ready to help you learn Sanskrit! What would you like to explore?",
     analyze: "I'll help you analyze Sanskrit texts and concepts. What would you like to analyze?",
-    translate: "I can help you translate between Sanskrit and other languages. What needs translation?",
-    grounded: "I'll provide answers grounded in authentic Sanskrit texts. What is your question?"
+    translate:
+      'I can help you translate between Sanskrit and other languages. What needs translation?',
+    grounded: "I'll provide answers grounded in authentic Sanskrit texts. What is your question?",
   };
-  
+
   addMessage(modeMessages[selectedMode], 'bot');
 }
 
@@ -543,13 +560,13 @@ async function handleTransliteration() {
 
   try {
     LoadingManager.show('Transliterating...');
-    
+
     const response = await fetch(CONFIG.apiBase + CONFIG.endpoints.translit, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ text })
+      body: JSON.stringify({ text }),
     });
 
     if (!response.ok) {
@@ -558,10 +575,10 @@ async function handleTransliteration() {
 
     const data = await response.json();
     translitResult.value = data.iast || text;
-    
+
     // Add to history
     addToTransliterationHistory(text, data.iast);
-    
+
     ToastManager.success('Transliteration completed');
   } catch (error) {
     console.error('Transliteration error:', error);
@@ -573,24 +590,24 @@ async function handleTransliteration() {
 
 function addToTransliterationHistory(devanagari, iast) {
   const item = { devanagari, iast, timestamp: Date.now() };
-  
+
   // Get existing history
   let history = StorageManager.get('transliterationHistory', []);
-  
+
   // Remove duplicates
-  history = history.filter(h => h.devanagari !== devanagari);
-  
+  history = history.filter((h) => h.devanagari !== devanagari);
+
   // Add to beginning
   history.unshift(item);
-  
+
   // Limit history size
   if (history.length > 10) {
     history = history.slice(0, 10);
   }
-  
+
   // Save to storage
   StorageManager.set('transliterationHistory', history);
-  
+
   // Update UI
   updateTransliterationHistory();
 }
@@ -600,13 +617,17 @@ function updateTransliterationHistory() {
   if (!historyList) return;
 
   const history = StorageManager.get('transliterationHistory', []);
-  
-  historyList.innerHTML = history.map(item => `
+
+  historyList.innerHTML = history
+    .map(
+      (item) => `
     <div class="history-item">
       <div class="history-devanagari">${item.devanagari}</div>
       <div class="history-iast">${item.iast}</div>
     </div>
-  `).join('');
+  `
+    )
+    .join('');
 }
 
 function handlePronunciation() {
@@ -620,7 +641,7 @@ function handlePronunciation() {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-US';
     utterance.rate = 0.8;
-    
+
     speechSynthesis.speak(utterance);
     ToastManager.info('Pronouncing...');
   } else {
@@ -632,16 +653,15 @@ function handlePronunciation() {
 async function loadLearningTracks() {
   try {
     LoadingManager.show('Loading learning tracks...');
-    
+
     const response = await fetch(CONFIG.apiBase + CONFIG.endpoints.tracks);
-    
+
     if (!response.ok) {
       throw new Error('Failed to load tracks');
     }
 
     const tracks = await response.json();
     displayTracks(tracks);
-    
   } catch (error) {
     console.error('Error loading tracks:', error);
     tracksContainer.innerHTML = `
@@ -661,7 +681,9 @@ function displayTracks(tracks) {
     return;
   }
 
-  tracksContainer.innerHTML = tracks.map(track => `
+  tracksContainer.innerHTML = tracks
+    .map(
+      (track) => `
     <div class="card track-card">
       <div class="card-body">
         <div class="track-header">
@@ -686,7 +708,9 @@ function displayTracks(tracks) {
         </div>
       </div>
     </div>
-  `).join('');
+  `
+    )
+    .join('');
 }
 
 function startTrack(slug) {
@@ -701,7 +725,7 @@ function startTrack(slug) {
 function downloadTrack(slug) {
   // Simulate download
   ToastManager.info('Downloading track...');
-  
+
   setTimeout(() => {
     // Mark as downloaded
     const downloadedTracks = StorageManager.get('downloadedTracks', []);
@@ -709,10 +733,10 @@ function downloadTrack(slug) {
       downloadedTracks.push(slug);
       StorageManager.set('downloadedTracks', downloadedTracks);
     }
-    
+
     // Update UI
     displayTracks(window.currentTracks || []);
-    
+
     ToastManager.success(tf('downloadSuccess', { slug }));
   }, 2000);
 }
@@ -725,31 +749,31 @@ function isTrackDownloaded(slug) {
 // Language Switching with Apple-style transitions
 function handleLanguageSwitch(e) {
   const lang = e.target.dataset.lang;
-  
+
   // Update button states with smooth transition
-  document.querySelectorAll('.lang-btn').forEach(btn => {
+  document.querySelectorAll('.lang-btn').forEach((btn) => {
     const isActive = btn.dataset.lang === lang;
     btn.classList.toggle('active', isActive);
-    
+
     // Apple-style transition
     btn.style.transform = isActive ? 'scale(0.95)' : 'scale(1)';
     setTimeout(() => {
       btn.style.transform = 'scale(1)';
     }, 100);
   });
-  
+
   STATE.currentLang = lang;
   StorageManager.set('preferredLanguage', lang);
-  
+
   // Update UI text
   updateUIText();
-  
+
   ToastManager.info(`Language switched to ${lang === 'en' ? 'English' : 'हिन्दी'}`);
 }
 
 function updateUIText() {
   // Update all translatable text elements
-  document.querySelectorAll('[data-translate]').forEach(element => {
+  document.querySelectorAll('[data-translate]').forEach((element) => {
     const key = element.dataset.translate;
     element.textContent = t(key);
   });
@@ -758,22 +782,22 @@ function updateUIText() {
 // Theme Toggle with Apple-style animation
 function toggleTheme() {
   STATE.isDarkMode = !STATE.isDarkMode;
-  
+
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = document.getElementById('theme-icon');
-  
+
   if (themeToggle && themeIcon) {
     themeIcon.textContent = STATE.isDarkMode ? '☀️' : '🌙';
-    
+
     // Apple-style rotation animation
     themeToggle.style.transform = 'rotate(360deg)';
     themeToggle.style.transition = 'transform 0.3s ease';
-    
+
     setTimeout(() => {
       themeToggle.style.transform = 'rotate(0deg)';
     }, 300);
   }
-  
+
   document.body.classList.toggle('dark-theme', STATE.isDarkMode);
   StorageManager.set('theme', STATE.isDarkMode ? 'dark' : 'light');
 }
@@ -782,13 +806,13 @@ function toggleTheme() {
 function toggleMobileMenu() {
   const mobileNav = document.getElementById('mobile-nav');
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-  
+
   if (!mobileNav || !mobileMenuToggle) return;
-  
+
   const isOpen = mobileNav.classList.toggle('active');
   mobileMenuToggle.classList.toggle('active', isOpen);
   STATE.mobileMenuOpen = isOpen;
-  
+
   // Apple-style animation
   if (isOpen) {
     mobileNav.style.transform = 'translateX(0)';
@@ -805,7 +829,7 @@ function setupEventListeners() {
   }
 
   // Mode selection
-  modeBtns.forEach(btn => {
+  modeBtns.forEach((btn) => {
     btn.addEventListener('click', handleModeSelection);
   });
 
@@ -824,7 +848,7 @@ function setupEventListeners() {
   }
 
   // Language switcher
-  document.querySelectorAll('.lang-btn').forEach(btn => {
+  document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.addEventListener('click', handleLanguageSwitch);
   });
 
@@ -856,7 +880,7 @@ function setupEventListeners() {
       e.preventDefault();
       if (chatInput) chatInput.focus();
     }
-    
+
     // Escape to close mobile menu
     if (e.key === 'Escape') {
       const mobileNav = document.getElementById('mobile-nav');
@@ -867,7 +891,7 @@ function setupEventListeners() {
   });
 
   // Smooth scroll for navigation links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
@@ -878,19 +902,19 @@ function setupEventListeners() {
   });
 
   // Tab switching for grammar section
-  document.querySelectorAll('.tab-btn').forEach(btn => {
+  document.querySelectorAll('.tab-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const tabName = btn.dataset.tab;
-      
+
       // Update button states
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
-      
+
       // Update content
-      document.querySelectorAll('.tab-pane').forEach(pane => {
+      document.querySelectorAll('.tab-pane').forEach((pane) => {
         pane.classList.remove('active');
       });
-      
+
       const targetPane = document.getElementById(tabName);
       if (targetPane) {
         targetPane.classList.add('active');
@@ -899,7 +923,7 @@ function setupEventListeners() {
   });
 
   // Suggestion chips
-  document.querySelectorAll('.suggestion-chip').forEach(chip => {
+  document.querySelectorAll('.suggestion-chip').forEach((chip) => {
     chip.addEventListener('click', () => {
       const query = chip.dataset.query;
       if (chatInput) {
@@ -910,7 +934,7 @@ function setupEventListeners() {
   });
 
   // Demo buttons
-  document.querySelectorAll('[data-demo]').forEach(btn => {
+  document.querySelectorAll('[data-demo]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const demo = btn.dataset.demo;
       const targetSection = document.getElementById(demo);
@@ -926,22 +950,22 @@ function initializeApp() {
   // Load saved preferences
   const savedLang = StorageManager.get('preferredLanguage', 'en');
   const savedTheme = StorageManager.get('theme', 'light');
-  
+
   STATE.currentLang = savedLang;
   STATE.isDarkMode = savedTheme === 'dark';
-  
+
   // Update language buttons
-  document.querySelectorAll('.lang-btn').forEach(btn => {
+  document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.classList.toggle('active', btn.dataset.lang === savedLang);
   });
-  
+
   // Update theme
   if (STATE.isDarkMode) {
     document.body.classList.add('dark-theme');
     const themeIcon = document.getElementById('theme-icon');
     if (themeIcon) themeIcon.textContent = '☀️';
   }
-  
+
   // Setup event listeners
   setupEventListeners();
 
@@ -969,11 +993,12 @@ function initializeApp() {
 
   // Initialize service worker for PWA
   if ('serviceWorker' in navigator && CONFIG.features.progressiveWebApp) {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => {
+    navigator.serviceWorker
+      .register('/sw.js')
+      .then((registration) => {
         console.log('Service Worker registered:', registration);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('Service Worker registration failed:', error);
       });
   }
@@ -1006,5 +1031,5 @@ window.SanskritNova = {
   handleTransliteration,
   handlePronunciation,
   toggleTheme,
-  toggleMobileMenu
+  toggleMobileMenu,
 };

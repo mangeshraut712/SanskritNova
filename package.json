@@ -7,9 +7,22 @@
   "scripts": {
     "start": "node api/index.js",
     "dev": "node api/index.js",
-    "build": "echo 'No build needed - serverless functions'"
+    "build": "echo 'No build needed - serverless functions'",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "format:web": "prettier --write public/**/*.{js,css,html,json}",
+    "format:api": "prettier --write api/**/*.js || true",
+    "lint:prettier": "prettier --check ."
   },
-  "keywords": ["sanskrit", "api", "ai", "transliteration"],
+  "keywords": [
+    "sanskrit",
+    "api",
+    "ai",
+    "transliteration"
+  ],
   "author": "SanskritNova Team",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
 }

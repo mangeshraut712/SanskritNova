@@ -544,47 +544,49 @@ SanskritNova AI is a comprehensive Sanskrit learning platform that combines anci
 ## 🏗️ Project Structure
 
 ```
+
 sanskritnova/
-├── 📁 api/                    # FastAPI backend
-│   ├── index.py              # Main API with all endpoints
-│   ├── index.js              # Node.js for Vercel deployment
-│   ├── handler.py            # Simple Vercel function
-│   ├── serverless.py          # Alternative serverless implementation
-│   └── chat.py              # Chat endpoint handler
-├── 📁 code/                   # Core AI/ML components
-│   ├── agentic_rag.py       # Advanced RAG pipeline with LangGraph
-│   ├── vector_store.py       # Vector store abstraction
-│   ├── rag_pipeline.py       # RAG pipeline implementation
-│   ├── retriever.py          # Document retrieval system
-│   ├── generator.py          # LLM response generation
-│   ├── preprocess.py         # Text preprocessing
-│   └── config.py            # Configuration management
-├── 📁 public/                 # Progressive Web App
-│   ├── index.html           # PWA-enabled main page
-│   ├── app.js              # Bilingual UI with offline features
-│   ├── styles.css          # Modern Indian aesthetic design
-│   ├── manifest.json        # PWA manifest
-│   └── sw.js              # Service worker for offline functionality
-├── 📁 tests/                  # Comprehensive test suite
-│   ├── test_api.py          # API endpoint tests
-│   ├── test_agentic_rag.py  # RAG pipeline tests
-│   ├── test_code_api.py     # Legacy API tests
-│   ├── test_config.py       # Configuration tests
-│   ├── test_preprocess.py   # Text processing tests
-│   └── test_retriever.py    # Retriever tests
-├── 📁 netlify/               # Netlify deployment
-│   └── functions/
-│       └── api.js          # Netlify serverless functions
-├── 📁 docs/                  # Documentation
-├── 📁 k8s/                   # Kubernetes manifests
-├── 📁 docker/                # Container configurations
-├── 📄 package.json           # Node.js project configuration
-├── 📄 pyproject.toml        # Python project configuration
-├── 📄 requirements.txt       # Python dependencies
-├── 📄 vercel.json          # Vercel deployment config
-├── 📄 netlify.toml         # Netlify deployment config
-└── 📄 README.md             # This file
-```
+├── 📁 api/ # FastAPI backend
+│ ├── index.py # Main API with all endpoints
+│ ├── index.js # Node.js for Vercel deployment
+│ ├── handler.py # Simple Vercel function
+│ ├── serverless.py # Alternative serverless implementation
+│ └── chat.py # Chat endpoint handler
+├── 📁 code/ # Core AI/ML components
+│ ├── agentic_rag.py # Advanced RAG pipeline with LangGraph
+│ ├── vector_store.py # Vector store abstraction
+│ ├── rag_pipeline.py # RAG pipeline implementation
+│ ├── retriever.py # Document retrieval system
+│ ├── generator.py # LLM response generation
+│ ├── preprocess.py # Text preprocessing
+│ └── config.py # Configuration management
+├── 📁 public/ # Progressive Web App
+│ ├── index.html # PWA-enabled main page
+│ ├── app.js # Bilingual UI with offline features
+│ ├── styles.css # Modern Indian aesthetic design
+│ ├── manifest.json # PWA manifest
+│ └── sw.js # Service worker for offline functionality
+├── 📁 tests/ # Comprehensive test suite
+│ ├── test_api.py # API endpoint tests
+│ ├── test_agentic_rag.py # RAG pipeline tests
+│ ├── test_code_api.py # Legacy API tests
+│ ├── test_config.py # Configuration tests
+│ ├── test_preprocess.py # Text processing tests
+│ └── test_retriever.py # Retriever tests
+├── 📁 netlify/ # Netlify deployment
+│ └── functions/
+│ └── api.js # Netlify serverless functions
+├── 📁 docs/ # Documentation
+├── 📁 k8s/ # Kubernetes manifests
+├── 📁 docker/ # Container configurations
+├── 📄 package.json # Node.js project configuration
+├── 📄 pyproject.toml # Python project configuration
+├── 📄 requirements.txt # Python dependencies
+├── 📄 vercel.json # Vercel deployment config
+├── 📄 netlify.toml # Netlify deployment config
+└── 📄 README.md # This file
+
+````
 
 ## 🚀 Quick Start
 
@@ -607,7 +609,7 @@ pip install -e ".[dev]"
 
 # Or Node.js setup (for deployment)
 npm install
-```
+````
 
 ### Local Development
 
@@ -632,22 +634,24 @@ python -m http.server 3000 -d public
 
 ### Core Endpoints
 
-| Endpoint | Method | Description | Response |
-|----------|---------|-------------|----------|
-| `/api/health` | GET | Health check - `{"status": "ok", "service": "sanskritnova-ai-api"}` |
-| `/api/info` | GET | API information and capabilities |
-| `/api/tracks` | GET | Learning tracks (supports `?lang=en|hi`) |
-| `/api/transliterate` | POST | Devanagari ↔ IAST conversion |
-| `/api/chat` | POST | AI chat with language support |
+| Endpoint             | Method | Description                                                         | Response |
+| -------------------- | ------ | ------------------------------------------------------------------- | -------- |
+| `/api/health`        | GET    | Health check - `{"status": "ok", "service": "sanskritnova-ai-api"}` |
+| `/api/info`          | GET    | API information and capabilities                                    |
+| `/api/tracks`        | GET    | Learning tracks (supports `?lang=en                                 | hi`)     |
+| `/api/transliterate` | POST   | Devanagari ↔ IAST conversion                                        |
+| `/api/chat`          | POST   | AI chat with language support                                       |
 
 ### Request Examples
 
 #### Health Check
+
 ```bash
 curl https://sanskrit-nova.vercel.app/api/health
 ```
 
 #### Get Learning Tracks
+
 ```bash
 # English tracks
 curl https://sanskrit-nova.vercel.app/api/tracks
@@ -657,6 +661,7 @@ curl https://sanskrit-nova.vercel.app/api/tracks?lang=hi
 ```
 
 #### Transliteration
+
 ```bash
 curl -X POST https://sanskrit-nova.vercel.app/api/transliterate \
   -H "Content-Type: application/json" \
@@ -664,6 +669,7 @@ curl -X POST https://sanskrit-nova.vercel.app/api/transliterate \
 ```
 
 #### AI Chat
+
 ```bash
 # English chat
 curl -X POST https://sanskrit-nova.vercel.app/api/chat \
@@ -679,6 +685,7 @@ curl -X POST https://sanskrit-nova.vercel.app/api/chat \
 ## 🧪 Testing
 
 ### Run All Tests
+
 ```bash
 # Full test suite
 pytest tests/ -v
@@ -692,6 +699,7 @@ pytest tests/test_agentic_rag.py
 ```
 
 ### Test Categories
+
 - **API Tests**: All endpoints, error handling, validation
 - **RAG Pipeline Tests**: Agentic workflow, streaming, error boundaries
 - **Integration Tests**: End-to-end functionality
@@ -700,6 +708,7 @@ pytest tests/test_agentic_rag.py
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
+
 ```bash
 # Deploy to Vercel
 vercel --prod
@@ -708,6 +717,7 @@ vercel --prod
 ```
 
 ### Netlify
+
 ```bash
 # Deploy to Netlify
 npx netlify-cli deploy --prod
@@ -716,6 +726,7 @@ npx netlify-cli deploy --prod
 ```
 
 ### Docker
+
 ```bash
 # Build and run container
 docker-compose up -d
@@ -728,6 +739,7 @@ docker-compose up -d
 ### Environment Variables
 
 #### API Configuration
+
 ```bash
 # OpenRouter (for AI chat)
 OPENROUTER_API_KEY=your_api_key_here
@@ -737,6 +749,7 @@ OPENROUTER_APP_URL=https://sanskrit-nova.vercel.app
 ```
 
 #### Vector Store (Optional)
+
 ```bash
 # ChromaDB (local)
 CHROMADB_PATH=./data/chroma
@@ -747,6 +760,7 @@ PINECONE_INDEX=sanskrit-nova
 ```
 
 ### Development Settings
+
 ```bash
 # Logging level
 LOG_LEVEL=INFO
@@ -759,12 +773,14 @@ API_PORT=8000
 ## 📊 Features in Detail
 
 ### Transliteration Engine
+
 - **Devanagari to IAST**: Accurate Sanskrit transliteration
 - **Bidirectional**: Support for both directions
 - **Comprehensive**: Handles all Sanskrit characters and diacritics
 - **Performance**: Optimized for real-time conversion
 
 ### Learning Tracks
+
 1. **Sanskrit Foundations** (Beginner - 2 weeks)
    - Script basics, pronunciation, essential vocabulary
 2. **Bhagavad Gita Guided Reading** (Intermediate - 4 weeks)
@@ -773,18 +789,20 @@ API_PORT=8000
    - Sandhi, compounds, morphology, syntax analysis
 
 ### AI Chat Modes
+
 - **Learn**: Educational explanations and concepts
 - **Translate**: Sanskrit-English translation assistance
 - **Analyze**: Deep grammatical and linguistic analysis
 
 ## 🌍 Live Deployments
 
-| Platform | URL | Features |
-|----------|------|----------|
-| **Vercel** | https://sanskrit-nova.vercel.app | Global CDN, Edge Functions |
-| **Netlify** | https://sanskritnova.netlify.app | Static hosting, Functions |
+| Platform    | URL                              | Features                   |
+| ----------- | -------------------------------- | -------------------------- |
+| **Vercel**  | https://sanskrit-nova.vercel.app | Global CDN, Edge Functions |
+| **Netlify** | https://sanskritnova.netlify.app | Static hosting, Functions  |
 
 Both deployments offer:
+
 - ✅ **Full API functionality**
 - ✅ **Bilingual support** (English/Hindi)
 - ✅ **Mobile-responsive design**
@@ -794,6 +812,7 @@ Both deployments offer:
 ## 🛠️ Development Tools
 
 ### Code Quality
+
 ```bash
 # Linting
 ruff check .          # Fast Python linter
@@ -807,6 +826,7 @@ mypy api/           # Static type analysis
 ```
 
 ### Git Workflow
+
 ```bash
 # Pre-commit hooks
 pre-commit run        # Run linting and tests
@@ -823,6 +843,7 @@ git push origin feature/new-feature
 We welcome contributions! Please see our contributing guidelines:
 
 ### How to Contribute
+
 1. **Fork** the repository
 2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
 3. **Commit** your changes (`git commit -m 'feat: add amazing feature'`)
@@ -830,6 +851,7 @@ We welcome contributions! Please see our contributing guidelines:
 5. **Open** a Pull Request
 
 ### Contribution Areas
+
 - 🐛 **Bug fixes**: Help us squash bugs
 - ✨ **Features**: Add new learning capabilities
 - 📝 **Documentation**: Improve guides and explanations
@@ -838,6 +860,7 @@ We welcome contributions! Please see our contributing guidelines:
 - 🎨 **Design**: Improve UI/UX for Indian users
 
 ### Code Standards
+
 - Follow PEP 8 for Python code
 - Use semantic commit messages
 - Add tests for new features
@@ -846,6 +869,7 @@ We welcome contributions! Please see our contributing guidelines:
 ## 📈 Project Status
 
 ### ✅ Completed
+
 - [x] **Core API**: All endpoints implemented and tested
 - [x] **Transliteration**: Devanagari ↔ IAST conversion
 - [x] **Bilingual UI**: English + Hindi interface
@@ -856,12 +880,14 @@ We welcome contributions! Please see our contributing guidelines:
 - [x] **Documentation**: Comprehensive README and guides
 
 ### 🚧 In Progress
+
 - [ ] **Advanced AI**: Integration with OpenRouter for full chat functionality
 - [ ] **Audio Features**: Sanskrit text-to-speech
 - [ ] **Offline Sync**: Background synchronization
 - [ ] **Progress Tracking**: User learning analytics
 
 ### 📋 Planned
+
 - [ ] **Mobile Apps**: React Native applications
 - [ ] **Multi-language**: Support for Tamil, Telugu, etc.
 - [ ] **Government Integration**: DIKSHA/SCERT compatibility
@@ -871,6 +897,7 @@ We welcome contributions! Please see our contributing guidelines:
 ## 📊 Metrics & Impact
 
 ### Technical Metrics
+
 - ✅ **29 tests passing** with comprehensive coverage
 - ✅ **0 security vulnerabilities** (Bandit scan)
 - ✅ **0 code quality issues** (Ruff linting)
@@ -878,6 +905,7 @@ We welcome contributions! Please see our contributing guidelines:
 - ✅ **99.9% uptime** on production deployments
 
 ### User Impact Goals
+
 - 🎯 **1M+ Users**: Active Sanskrit learners across India
 - 📱 **500K+ Downloads**: PWA installations
 - 💬 **10M+ Interactions**: AI chat conversations
@@ -887,12 +915,14 @@ We welcome contributions! Please see our contributing guidelines:
 ## 🏆 Recognition
 
 ### Built for India
+
 - 🇮🇳 **Cultural Authenticity**: Respect for Sanskrit heritage
 - 📱 **Mobile-First**: Optimized for Indian smartphone usage
 - 🌐 **Offline-Ready**: Addresses rural connectivity challenges
 - 🎓 **Educational Focus**: Aligned with Indian learning standards
 
 ### Technical Excellence
+
 - 🏗️ **Modern Architecture**: Clean, maintainable codebase
 - 🧪 **Comprehensive Testing**: Full test coverage with CI/CD
 - 🔒 **Security-First**: Regular vulnerability scanning
@@ -901,11 +931,13 @@ We welcome contributions! Please see our contributing guidelines:
 ## 📞 Support & Community
 
 ### Get Help
+
 - 📧 **Issues**: [GitHub Issues](https://github.com/mangeshraut712/SanskritNova/issues)
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/mangeshraut712/SanskritNova/discussions)
 - 📧 **Email**: support@sanskritnova.ai
 
 ### Community
+
 - 🌟 **Star us** on GitHub if you find this useful
 - 🍴 **Share** with Sanskrit learners and educators
 - 📝 **Contribute** to make Sanskrit learning accessible to all
@@ -920,4 +952,4 @@ SanskritNova AI is built with love for India's Sanskrit learning community. We b
 
 ---
 
-*Last updated: March 2026*
+_Last updated: March 2026_

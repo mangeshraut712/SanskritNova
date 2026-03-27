@@ -41,18 +41,21 @@
 ## 🚀 **Why SanskritNova AI is Trending**
 
 ### 🇮🇳 **Made for India, by India**
+
 - **🎯 Indian Cultural Context**: Learn Sanskrit with Diwali, Holi, Ramayana, and Yoga
 - **📱 WhatsApp Integration**: Share progress with family and friends
 - **🗣️ Indian Accent Support**: AI trained for Indian pronunciation patterns
 - **🎭 Festival Themes**: Special content for Indian festivals
 
 ### 🤖 **Cutting-Edge AI Technology**
+
 - **🧠 AI Sanskrit Tutor**: GPT-4 powered with cultural knowledge
 - **✍️ Handwriting Recognition**: Draw Devanagari, AI recognizes it instantly
 - **🎤 Voice Analysis**: Perfect your Sanskrit pronunciation
 - **🎮 Gamified Learning**: Earn badges, compete with Indians nationwide
 
 ### 📈 **Viral Growth Engine**
+
 - **🔥 Social Sharing**: WhatsApp, Instagram, Twitter integration
 - **🏆 Leaderboards**: Compete region-wise (Mumbai, Delhi, Bangalore, etc.)
 - **📊 Viral Metrics**: Track your impact on Sanskrit revival
@@ -63,6 +66,7 @@
 ## ✨ **Key Features**
 
 ### 🤖 **AI Sanskrit Tutor**
+
 ```
 🧠 Cultural Context: Learn Sanskrit through Indian culture
 📚 Mythology Integration: Ramayana, Mahabharata, Vedas
@@ -72,6 +76,7 @@
 ```
 
 ### ✍️ **Handwriting Recognition**
+
 ```
 📝 Draw Sanskrit: Write Devanagari with finger/mouse
 🔍 AI Recognition: Instant character recognition
@@ -81,6 +86,7 @@
 ```
 
 ### 🎤 **Voice Learning**
+
 ```
 🎤 Speak Sanskrit: Practice pronunciation with AI
 📊 Accuracy Score: Detailed pronunciation analysis
@@ -90,6 +96,7 @@
 ```
 
 ### 🎮 **Gamification**
+
 ```
 🏆 Cultural Badges: Diwali Explorer, Ramayana Scholar
 🇮🇳 Regional Leaderboards: Compete city-wise
@@ -99,6 +106,7 @@
 ```
 
 ### 📱 **Social Features**
+
 ```
 📱 WhatsApp Sharing: Share progress with 5 friends at once
 📸 Instagram Stories: Beautiful Sanskrit quote stories
@@ -112,6 +120,7 @@
 ## 🎮 **Interactive Demo**
 
 ### 🚀 **Try It Now!**
+
 1. **🤖 AI Tutor**: Ask about Sanskrit, festivals, or culture
 2. **✍️ Write Sanskrit**: Draw "नमस्ते" and see AI recognize it
 3. **🎤 Speak Sanskrit**: Practice "धर्म" with voice analysis
@@ -125,6 +134,7 @@
 ## 🛠️ **Tech Stack**
 
 ### 🎨 **Frontend**
+
 - **⚛️ React**: Modern, component-based architecture
 - **🎨 TailwindCSS**: Beautiful, responsive design
 - **📱 PWA**: Install on any device
@@ -132,24 +142,27 @@
 - **🔥 Firebase**: Real-time updates and analytics
 
 ### 🤖 **AI/ML**
+
 - **🧠 GPT-4**: Advanced language understanding
 - **📝 TensorFlow**: Handwriting recognition
 - **🎤 Web Speech API**: Voice analysis
-- **🔊 Speech Synthesis: Natural Sanskrit pronunciation
+- \*\*🔊 Speech Synthesis: Natural Sanskrit pronunciation
 - **📊 Analytics**: Learning progress tracking
 
 ### 🚀 **Backend**
+
 - **⚡ FastAPI**: High-performance Python backend
-- **🗄️ PostgreSQL: Robust data storage
-- **🔍 Redis: Fast caching for AI responses
-- **📊 Analytics: Comprehensive user tracking
-- **🔐 Security: User data protection
+- \*\*🗄️ PostgreSQL: Robust data storage
+- \*\*🔍 Redis: Fast caching for AI responses
+- \*\*📊 Analytics: Comprehensive user tracking
+- \*\*🔐 Security: User data protection
 
 ---
 
 ## 🚀 **Quick Start**
 
 ### 📦 **Installation**
+
 ```bash
 # Clone the repository
 git clone https://github.com/mangeshraut712/SanskritNova.git
@@ -166,6 +179,7 @@ open http://localhost:3000
 ```
 
 ### 🎯 **Quick Setup**
+
 ```bash
 # Set up environment variables
 cp .env.example .env
@@ -179,6 +193,7 @@ npm start
 ```
 
 ### 📱 **Mobile Installation**
+
 ```bash
 # Install PWA on mobile
 1. Open https://sanskrit-nova.vercel.app in mobile browser
@@ -191,23 +206,26 @@ npm start
 ## 📱 **Mobile App**
 
 ### 📲 **Available on**
+
 - **📱 iOS App Store**: Coming Soon
 - **🤖 Google Play**: Coming Soon
 - **🌐 PWA**: Available Now
 - **💻 Desktop**: Available Now
 
 ### 🎯 **Mobile Features**
+
 - **📱 Offline Mode**: Learn without internet
-- **🔔 Push Notifications: Daily Sanskrit tips
-- **📊 Sync Progress: Seamless cross-device experience
-- **🎨 Indian Themes: Festival-specific designs
-- **🔒 Privacy First: Your data stays private
+- \*\*🔔 Push Notifications: Daily Sanskrit tips
+- \*\*📊 Sync Progress: Seamless cross-device experience
+- \*\*🎨 Indian Themes: Festival-specific designs
+- \*\*🔒 Privacy First: Your data stays private
 
 ---
 
 ## 🤝 **Contributing**
 
 ### 🌟 **Why Contribute?**
+
 - **🚀 Go Viral**: Be part of India's trending Sanskrit platform
 - **🏆 Recognition**: Featured in our contributor hall of fame
 - **📚 Impact**: Help millions learn Sanskrit
@@ -215,6 +233,7 @@ npm start
 - **🎯 Portfolio**: Work on cutting-edge AI project
 
 ### 🛠️ **How to Contribute**
+
 ```bash
 # 1. Fork the repository
 git clone https://github.com/yourusername/SanskritNova.git
@@ -236,6 +255,7 @@ git push origin feature/amazing-feature
 ```
 
 ### 🎯 **Contribution Areas**
+
 - **🤖 AI Models**: Improve Sanskrit understanding
 - **📝 Content**: Add more cultural context
 - **🎨 Design**: Create beautiful Indian themes
@@ -244,17 +264,19 @@ git push origin feature/amazing-feature
 - **🔧 Bug Fixes**: Help us improve
 
 ### 🏆 **Contributor Recognition**
+
 - **🌟 GitHub Stars**: Top contributors get featured
 - **📱 Social Media**: Shoutouts on our platforms
 - **🏆 Badges**: Special contributor badges
-- **📝 Blog: Featured in our blog
-- **🎯 Opportunities: Job referrals and recommendations
+- \*\*📝 Blog: Featured in our blog
+- \*\*🎯 Opportunities: Job referrals and recommendations
 
 ---
 
 ## 📊 **Roadmap**
 
 ### 🚀 **Q1 2026**
+
 - [x] **🤖 AI Sanskrit Tutor**: Cultural context learning
 - [x] **✍️ Handwriting Recognition**: Devanagari AI recognition
 - [x] **🎤 Voice Analysis**: Pronunciation improvement
@@ -262,6 +284,7 @@ git push origin feature/amazing-feature
 - [x] **📱 Social Sharing**: WhatsApp, Instagram, Twitter
 
 ### 🎯 **Q2 2026**
+
 - [ ] **📚 Content Expansion**: 10,000+ Sanskrit words
 - [ ] **🎭 Festival Content**: All major Indian festivals
 - [ ] **📱 Mobile Apps**: iOS and Android apps
@@ -269,16 +292,18 @@ git push origin feature/amazing-feature
 - [ ] **🏫 School Integration**: Educational partnerships
 
 ### 🚀 **Q3 2026**
+
 - [ ] **🧠 Advanced AI**: Sanskrit grammar analysis
 - [ ] **📚 Ancient Texts**: Vedas, Upanishads integration
 - [ ] **🎯 Personal Learning**: Custom learning paths
-- [ ] **👥 Community Features: Study groups and challenges
-- [ ] **🔊 Audio Library: 1000+ Sanskrit shlokas
+- [ ] \*\*👥 Community Features: Study groups and challenges
+- [ ] \*\*🔊 Audio Library: 1000+ Sanskrit shlokas
 
 ### 🎯 **Q4 2026**
+
 - [ ] **🌍 Global Launch**: International Sanskrit learning
 - [ ] **🎓 Certification**: Sanskrit proficiency certificates
-- [ ] **🏛️ Museum Partnerships: Cultural institution tie-ups
+- [ ] \*\*🏛️ Museum Partnerships: Cultural institution tie-ups
 - [ ] **📚 Research Platform**: Academic collaboration
 - [ ] **🚀 IPO Preparation**: Scaling for global impact
 
@@ -287,6 +312,7 @@ git push origin feature/amazing-feature
 ## 📈 **Impact Metrics**
 
 ### 🇮🇳 **Indian Impact**
+
 - **👥 50,000+ Users**: Growing rapidly
 - **📚 1M+ Words**: Comprehensive vocabulary
 - **🏆 95% Accuracy**: AI-powered learning
@@ -294,6 +320,7 @@ git push origin feature/amazing-feature
 - **🌟 4.9 Rating**: User satisfaction score
 
 ### 🚀 **Growth Metrics**
+
 - **📈 200% MoM Growth**: Exponential user growth
 - **🔥 10K+ GitHub Stars**: Developer community
 - **📱 5K+ Mobile Installs**: PWA adoption
@@ -305,6 +332,7 @@ git push origin feature/amazing-feature
 ## 🙏 **Acknowledgments**
 
 ### 🇮🇳 **Indian Heritage**
+
 - **📚 Ancient Sages**: For preserving Sanskrit wisdom
 - **🏛️ Educational Institutions**: For Sanskrit research
 - **🎭 Cultural Organizations**: For festival content
@@ -312,6 +340,7 @@ git push origin feature/amazing-feature
 - **👨‍🏫 Sanskrit Scholars**: For academic guidance
 
 ### 🤖 **Technology Partners**
+
 - **🧠 OpenAI**: For advanced AI capabilities
 - **🔥 Google Firebase**: For real-time features
 - **📱 Vercel**: For hosting and deployment
@@ -319,6 +348,7 @@ git push origin feature/amazing-feature
 - **🌐 Indian Tech Community**: For support and feedback
 
 ### 👥 **Contributors**
+
 - **🌟 500+ Developers**: Indian tech community
 - **📚 100+ Sanskrit Experts**: Cultural knowledge
 - **🎨 50+ Designers**: Beautiful UI/UX
@@ -330,6 +360,7 @@ git push origin feature/amazing-feature
 ## 📞 **Contact & Support**
 
 ### 🤝 **Get in Touch**
+
 - **📧 Email**: hello@sanskritnova.ai
 - **📱 WhatsApp**: +91-XXXXXXXXXX
 - **🐦 Twitter**: [@SanskritNova](https://twitter.com/SanskritNova)
@@ -337,6 +368,7 @@ git push origin feature/amazing-feature
 - **💼 LinkedIn**: [SanskritNova AI](https://linkedin.com/company/sanskritnova)
 
 ### 🆘 **Support**
+
 - **📚 Documentation**: [docs.sanskritnova.ai](https://docs.sanskritnova.ai)
 - **🐛 Bug Reports**: [GitHub Issues](https://github.com/mangeshraut712/SanskritNova/issues)
 - **💡 Feature Requests**: [GitHub Discussions](https://github.com/mangeshraut712/SanskritNova/discussions)
@@ -360,6 +392,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🚀 **Ready to Join the Sanskrit Revolution?**
 
 ### 🎯 **Get Started Now**
+
 1. **⭐ Star this repository**: Show your support!
 2. **🍴 Fork and contribute**: Help us grow!
 3. **📱 Try the demo**: Experience AI-powered Sanskrit learning

@@ -26,18 +26,18 @@ spec:
                   name: sanskritnova-secrets
                   key: openrouter-api-key
             - name: OPENROUTER_MODEL
-              value: "openai/gpt-4.1-mini"
+              value: 'openai/gpt-4.1-mini'
             - name: OPENROUTER_APP_NAME
-              value: "SanskritNova AI"
+              value: 'SanskritNova AI'
             - name: OPENROUTER_APP_URL
-              value: "https://your-domain.example"
+              value: 'https://your-domain.example'
           resources:
             requests:
-              memory: "256Mi"
-              cpu: "250m"
+              memory: '256Mi'
+              cpu: '250m'
             limits:
-              memory: "512Mi"
-              cpu: "500m"
+              memory: '512Mi'
+              cpu: '500m'
           livenessProbe:
             httpGet:
               path: /api/health

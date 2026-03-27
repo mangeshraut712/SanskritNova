@@ -11,6 +11,7 @@
 #### Ṛgveda Samhita
 
 **Critical Editions:**
+
 1. **Bhandarkar Oriental Research Institute (BORI) Critical Edition**
    - Editor: Vishvanath Kashinath Rajwade
    - Publication: 1933-1972, 5 volumes
@@ -19,18 +20,19 @@
    - Repository: BORI, Pune, India
 
 2. **Theodor Aufrecht Edition**
-   - Title: *Die Hymnen des Rigveda*
+   - Title: _Die Hymnen des Rigveda_
    - Publication: Bonn, 1877
    - Manuscripts: 45 Nepalese and Kashmiri manuscripts
    - Repository: Cambridge University Library
 
 3. **Max Müller Edition**
-   - Title: *Rig-Veda-Samhita*
+   - Title: _Rig-Veda-Samhita_
    - Publication: Oxford University Press, 1890
    - Translation: Complete English translation
    - Repository: Oxford University Press Archives
 
 **Digital Editions:**
+
 - GRETIL (Göttingen Register of Electronic Texts in Indian Languages)
   - URL: https://gretil.sub.uni-goettingen.de/
   - Editor: Jost Gippert
@@ -42,19 +44,21 @@
   - Last updated: 2021
 
 **Academic Studies:**
-- Wackernagel, J. (1905). *Altindische Grammatik*. Göttingen: Vandenhoeck & Ruprecht.
-- Macdonell, A. A. (1916). *A Vedic Grammar for Students*. Oxford: Clarendon Press.
-- Bloomfield, M. (1907). *The Religion of the Rig-Veda*. Göttingen: Vandenhoeck & Ruprecht.
-- Oldenberg, H. (1888-1894). *Rigveda: Textkritische und exegetische Noten*. Berlin: Weidmann.
-- Geldner, K.F. (1951). *Der Rig-Veda*. Harvard Oriental Series, Vols. 33-36.
-- Jamison, S. & Brereton, J. (2014). *The Rigveda*. Oxford University Press.
+
+- Wackernagel, J. (1905). _Altindische Grammatik_. Göttingen: Vandenhoeck & Ruprecht.
+- Macdonell, A. A. (1916). _A Vedic Grammar for Students_. Oxford: Clarendon Press.
+- Bloomfield, M. (1907). _The Religion of the Rig-Veda_. Göttingen: Vandenhoeck & Ruprecht.
+- Oldenberg, H. (1888-1894). _Rigveda: Textkritische und exegetische Noten_. Berlin: Weidmann.
+- Geldner, K.F. (1951). _Der Rig-Veda_. Harvard Oriental Series, Vols. 33-36.
+- Jamison, S. & Brereton, J. (2014). _The Rigveda_. Oxford University Press.
 
 ---
 
 #### Sāmaveda Samhita
 
 **Critical Editions:**
-1. **Howard, W. (1977). *The Samaveda Samhita***
+
+1. **Howard, W. (1977). _The Samaveda Samhita_**
    - Publication: Motilal Banarsidass, Delhi
    - Manuscripts: 28 palm leaf manuscripts from South India
    - ISBN: 81-208-0405-3
@@ -64,53 +68,59 @@
    - Repository: University of Göttingen
 
 **Academic Studies:**
-- Van Nooten, B. (1997). "The Origin of Vedic Musical Scales". *Journal of the Oriental Institute*, Vol. 46, pp. 1-20.
-- Howard, W. (1986). "Vedic Chanting in Modern India". *Asian Music*, Vol. 17, pp. 1-15.
-- Staal, J. (1979). *Ritual and Mantras*. Motilal Banarsidass.
+
+- Van Nooten, B. (1997). "The Origin of Vedic Musical Scales". _Journal of the Oriental Institute_, Vol. 46, pp. 1-20.
+- Howard, W. (1986). "Vedic Chanting in Modern India". _Asian Music_, Vol. 17, pp. 1-15.
+- Staal, J. (1979). _Ritual and Mantras_. Motilal Banarsidass.
 
 ---
 
 #### Yajurveda Samhita
 
 **Krishna Yajurveda Critical Editions:**
+
 1. **Taittirīya Samhita**
    - Editor: Bhandarkar Oriental Research Institute
    - Publication: 1934-1942, 3 volumes
    - Manuscripts: 45 palm leaf manuscripts
    - ISBN: 81-7081-018-4
 
-2. **Keith, A. B. (1914). *The Yajur Veda***
+2. **Keith, A. B. (1914). _The Yajur Veda_**
    - Publication: Harvard Oriental Series, Vol. 18-19
    - Repository: Harvard University Archives
 
 **Shukla Yajurveda Critical Editions:**
+
 1. **Vājasaneyi Samhita**
    - Editor: Bhandarkar Oriental Research Institute
    - Publication: 1951-1955, 4 volumes
    - Manuscripts: 32 Devanagari and Grantha manuscripts
 
 **Academic Studies:**
-- Caland, W. (1906). *Das Yajur Veda*. Strassburg: Trübner.
-- Griffith, R.T.H. (1899). *The Texts of the White Yajurveda*. Benares: E.J. Lazarus.
+
+- Caland, W. (1906). _Das Yajur Veda_. Strassburg: Trübner.
+- Griffith, R.T.H. (1899). _The Texts of the White Yajurveda_. Benares: E.J. Lazarus.
 
 ---
 
 #### Atharvaveda Samhita
 
 **Critical Editions:**
-1. **Bloomfield, M. (1897). *The Atharvaveda***
+
+1. **Bloomfield, M. (1897). _The Atharvaveda_**
    - Publication: Oxford University Press
    - Manuscripts: 18 palm leaf manuscripts
    - Repository: Oxford University Press Archives
 
-2. **Whitney, W. D. (1905). *Atharva-Veda Samhita***
+2. **Whitney, W. D. (1905). _Atharva-Veda Samhita_**
    - Publication: Harvard University Press
    - Translation: Complete English translation
    - Repository: Harvard University Archives
 
 **Academic Studies:**
-- Witzel, M. (1995). "The Development of the Vedic Canon". *Journal of the Oriental Institute*, Vol. 44, pp. 1-20.
-- Zysk, K. (1985). *Religious Healing in the Veda*. Motilal Banarsidass.
+
+- Witzel, M. (1995). "The Development of the Vedic Canon". _Journal of the Oriental Institute_, Vol. 44, pp. 1-20.
+- Zysk, K. (1985). _Religious Healing in the Veda_. Motilal Banarsidass.
 
 ---
 
@@ -119,6 +129,7 @@
 #### Brāhmaṇas
 
 **Critical Editions:**
+
 1. **Shatapatha Brahmana**
    - Editor: Eggeling, H. (1885-1886)
    - Publication: Oxford University Press, 2 volumes
@@ -132,14 +143,16 @@
    - ISBN: 81-7081-025-7
 
 **Academic Studies:**
-- Keith, A. B. (1920). *Rigveda Brahmanas*. Harvard Oriental Series, Vol. 25.
-- Eggeling, H. (1882). *Shatapatha Brahmana in the Satapatha Brahmana*. Oxford.
+
+- Keith, A. B. (1920). _Rigveda Brahmanas_. Harvard Oriental Series, Vol. 25.
+- Eggeling, H. (1882). _Shatapatha Brahmana in the Satapatha Brahmana_. Oxford.
 
 ---
 
 #### Upaniṣads
 
 **Principal Upanishads Critical Editions:**
+
 1. **Bṛhadāraṇyaka Upaniṣad**
    - Editor: Bhandarkar Oriental Research Institute
    - Publication: 1976
@@ -159,14 +172,16 @@
    - ISBN: 81-208-0012-3
 
 **Translations:**
-- Radhakrishnan, S. (1953). *The Principal Upanishads*. HarperCollins.
-- Hume, R. E. (1921). *The Thirteen Principal Upanishads*. Oxford University Press.
-- Deussen, P. (1906). *The Philosophy of the Upanishads*. Charles Scribner's Sons.
-- Olivelle, P. (1998). *The Early Upanishads*. Oxford University Press.
+
+- Radhakrishnan, S. (1953). _The Principal Upanishads_. HarperCollins.
+- Hume, R. E. (1921). _The Thirteen Principal Upanishads_. Oxford University Press.
+- Deussen, P. (1906). _The Philosophy of the Upanishads_. Charles Scribner's Sons.
+- Olivelle, P. (1998). _The Early Upanishads_. Oxford University Press.
 
 **Academic Studies:**
-- Thieme, P. (1966). *Researches in Vedic and Classical Literature*. Motilal Banarsidass.
-- Gombrich, R. (1996). *How Buddhism Began*. Princeton University Press.
+
+- Thieme, P. (1966). _Researches in Vedic and Classical Literature_. Motilal Banarsidass.
+- Gombrich, R. (1996). _How Buddhism Began_. Princeton University Press.
 
 ---
 
@@ -175,6 +190,7 @@
 #### Sāṃkhya
 
 **Critical Editions:**
+
 1. **Sāṃkhyakārikā of Īśvarakṛṣṇa**
    - Editor: Motilal Banarsidass
    - Publication: 1967
@@ -188,15 +204,17 @@
    - ISBN: 81-7081-029-0
 
 **Academic Studies:**
-- Larson, G. J. (1969). *Classical Sāṃkhya*. Motilal Banarsidass.
-- Sinha, J. (1976). *The Sāṃkhya Philosophy*. Motilal Banarsidass.
-- Frauwallner, E. (1973). *History of Indian Philosophy*. Motilal Banarsidass.
+
+- Larson, G. J. (1969). _Classical Sāṃkhya_. Motilal Banarsidass.
+- Sinha, J. (1976). _The Sāṃkhya Philosophy_. Motilal Banarsidass.
+- Frauwallner, E. (1973). _History of Indian Philosophy_. Motilal Banarsidass.
 
 ---
 
 #### Yoga
 
 **Critical Editions:**
+
 1. **Yogasūtras of Patañjali**
    - Editor: Harvard University Press
    - Publication: 1977
@@ -210,15 +228,17 @@
    - ISBN: 81-208-0165-7
 
 **Academic Studies:**
-- Whicher, I. (1998). *The Yoga Upanishads*. State University of New York Press.
-- Feuerstein, G. (2001). *The Yoga-Sutra of Patanjali*. Inner Traditions.
-- Eliade, M. (1969). *Yoga: Immortality and Freedom*. Princeton University Press.
+
+- Whicher, I. (1998). _The Yoga Upanishads_. State University of New York Press.
+- Feuerstein, G. (2001). _The Yoga-Sutra of Patanjali_. Inner Traditions.
+- Eliade, M. (1969). _Yoga: Immortality and Freedom_. Princeton University Press.
 
 ---
 
 #### Nyāya
 
 **Critical Editions:**
+
 1. **Nyāyasūtras of Akṣapāda Gautama**
    - Editor: Bhandarkar Oriental Research Institute
    - Publication: 1970
@@ -232,15 +252,17 @@
    - ISBN: 81-208-018-3
 
 **Academic Studies:**
-- Matilal, B. K. (1977). *Indian Logic*. Motilal Banarsidass.
-- Potter, K. H. (1977). *The Encyclopedia of Indian Philosophies*. Princeton University Press.
-- Staal, J. F. (1973). *Indian Logic*. Reidel.
+
+- Matilal, B. K. (1977). _Indian Logic_. Motilal Banarsidass.
+- Potter, K. H. (1977). _The Encyclopedia of Indian Philosophies_. Princeton University Press.
+- Staal, J. F. (1973). _Indian Logic_. Reidel.
 
 ---
 
 #### Vaiśeṣika
 
 **Critical Editions:**
+
 1. **Vaiśeṣikasūtras of Kaṇāda**
    - Editor: Bhandarkar Oriental Research Institute
    - Publication: 1974
@@ -254,14 +276,16 @@
    - ISBN: 81-208-023-6
 
 **Academic Studies:**
-- Halbfass, W. (1973). *On the Ontology of the Classical Vaiśeṣika*. Motilal Banarsidass.
-- Dandekar, R. N. (1971). *Vaiśeṣika System*. Bhandarkar Oriental Research Institute.
+
+- Halbfass, W. (1973). _On the Ontology of the Classical Vaiśeṣika_. Motilal Banarsidass.
+- Dandekar, R. N. (1971). _Vaiśeṣika System_. Bhandarkar Oriental Research Institute.
 
 ---
 
 #### Mīmāṃsā
 
 **Critical Editions:**
+
 1. **Mīmāṃsāsūtras of Jaimini**
    - Editor: Bhandarkar Oriental Research Institute
    - Publication: 1976
@@ -275,15 +299,17 @@
    - Repository: Harvard University Archives
 
 **Academic Studies:**
-- Taber, J. (2005). *The Hindu Hermeneutics*. State University of New York Press.
-- Ghoshal, U. (1977). *Mīmāṃsā Theory of Meaning*. Motilal Banarsidass.
-- Kane, P. V. (1968). *History of Dharmaśāstra*, Vol. III. Bhandarkar Oriental Research Institute.
+
+- Taber, J. (2005). _The Hindu Hermeneutics_. State University of New York Press.
+- Ghoshal, U. (1977). _Mīmāṃsā Theory of Meaning_. Motilal Banarsidass.
+- Kane, P. V. (1968). _History of Dharmaśāstra_, Vol. III. Bhandarkar Oriental Research Institute.
 
 ---
 
 #### Vedānta
 
 **Critical Editions:**
+
 1. **Brahmasūtras of Bādarāyaṇa**
    - Editor: Bhandarkar Oriental Research Institute
    - Publication: 1972
@@ -297,9 +323,10 @@
    - ISBN: 81-208-019-8
 
 **Academic Studies:**
-- Deutsch, E. (1973). *Advaita Vedānta: A Philosophical Reconstruction*. University of Hawaii Press.
-- Carman, J. B. (1974). *The Theology of Rāmānuja*. Yale University Press.
-- Sharma, B. N. K. (1962). *Advaita Vedānta*. Motilal Banarsidass.
+
+- Deutsch, E. (1973). _Advaita Vedānta: A Philosophical Reconstruction_. University of Hawaii Press.
+- Carman, J. B. (1974). _The Theology of Rāmānuja_. Yale University Press.
+- Sharma, B. N. K. (1962). _Advaita Vedānta_. Motilal Banarsidass.
 
 ---
 
@@ -308,6 +335,7 @@
 #### Rāmāyaṇa
 
 **Critical Editions:**
+
 1. **Baroda Critical Edition (1960-1975)**
    - Editor: Oriental Institute, Baroda
    - Publication: 7 volumes
@@ -321,15 +349,17 @@
    - ISBN: 81-7081-030-9
 
 **Academic Studies:**
-- Goldman, R. P. (1984-1996). *The Rāmāyaṇa of Vālmīki*. Princeton University Press, 7 volumes.
-- Brockington, J. L. (1998). *The Sanskrit Epics*. Motilal Banarsidass.
-- Raghunathan, V. (1982). *The Ramayana in Tradition*. New Delhi: Vikas.
+
+- Goldman, R. P. (1984-1996). _The Rāmāyaṇa of Vālmīki_. Princeton University Press, 7 volumes.
+- Brockington, J. L. (1998). _The Sanskrit Epics_. Motilal Banarsidass.
+- Raghunathan, V. (1982). _The Ramayana in Tradition_. New Delhi: Vikas.
 
 ---
 
 #### Mahābhārata
 
 **Critical Editions:**
+
 1. **BORI Critical Edition (1919-1966)**
    - Editor: Vishvanath Kashinath Rajwade
    - Publication: 19 volumes
@@ -343,15 +373,17 @@
    - Repository: University of Chicago Press Archives
 
 **Academic Studies:**
-- Sukthankar, V. S. (1944). *On the Meaning of the Mahabharata*. Bhandarkar Oriental Research Institute.
-- Hiltebeitel, A. (2001). *Rethinking the Mahābhārata*. Oxford University Press.
-- Brockington, J. L. (1998). *The Sanskrit Epics*. Motilal Banarsidass.
+
+- Sukthankar, V. S. (1944). _On the Meaning of the Mahabharata_. Bhandarkar Oriental Research Institute.
+- Hiltebeitel, A. (2001). _Rethinking the Mahābhārata_. Oxford University Press.
+- Brockington, J. L. (1998). _The Sanskrit Epics_. Motilal Banarsidass.
 
 ---
 
 ### Purāṇic Literature
 
 **Critical Editions:**
+
 1. **Bhāgavata Purāṇa**
    - Editor: Bhandarkar Oriental Research Institute
    - Publication: 1976
@@ -365,15 +397,17 @@
    - Repository: Harvard University Archives
 
 **Academic Studies:**
-- Hazra, R. C. (1915-1923). *Studies in the Puranic Records*. University of Calcutta.
-- Rocher, L. (1986). *The Puranas*. Otto Harrassowitz.
-- Pargiter, F. E. (1922). *Ancient Indian Historical Tradition*. Oxford University Press.
+
+- Hazra, R. C. (1915-1923). _Studies in the Puranic Records_. University of Calcutta.
+- Rocher, L. (1986). _The Puranas_. Otto Harrassowitz.
+- Pargiter, F. E. (1922). _Ancient Indian Historical Tradition_. Oxford University Press.
 
 ---
 
 ### Dharmashastra Literature
 
 **Critical Editions:**
+
 1. **Manusmṛti**
    - Editor: Bhandarkar Oriental Research Institute
    - Publication: 1972
@@ -387,15 +421,17 @@
    - Repository: Harvard University Archives
 
 **Academic Studies:**
-- Kane, P. V. (1941-1975). *History of Dharmaśāstra*, 5 volumes. Bhandarkar Oriental Research Institute.
-- Olivelle, P. (2005). *Manu's Code of Law*. Oxford University Press.
-- Jolly, J. (1887). *The Yajnavalkya Smriti*. Trübner.
+
+- Kane, P. V. (1941-1975). _History of Dharmaśāstra_, 5 volumes. Bhandarkar Oriental Research Institute.
+- Olivelle, P. (2005). _Manu's Code of Law_. Oxford University Press.
+- Jolly, J. (1887). _The Yajnavalkya Smriti_. Trübner.
 
 ---
 
 ## 🏛️ MANUSCRIPT REPOSITORIES
 
 ### Bhandarkar Oriental Research Institute (BORI)
+
 - **Address**: Bhandarkar Oriental Research Institute, Pune, Maharashtra, India
 - **Founded**: 1917
 - **Manuscripts**: 28,000+ palm leaf and paper manuscripts
@@ -404,6 +440,7 @@
 - **Catalog**: Digital catalog available online
 
 ### Cambridge University Library
+
 - **Address**: Cambridge University Library, Cambridge, UK
 - **Manuscripts**: 2,000+ Sanskrit manuscripts
 - **Specialization**: Nepalese and Kashmiri manuscripts
@@ -411,6 +448,7 @@
 - **Notable Collections**: Cambridge Sanskrit Manuscripts Collection
 
 ### Bodleian Library, Oxford
+
 - **Address**: Bodleian Library, Oxford, UK
 - **Manuscripts**: 1,500+ Sanskrit manuscripts
 - **Specialization**: Classical Sanskrit literature
@@ -418,6 +456,7 @@
 - **Notable Collections**: Sanskrit Manuscripts Collection
 
 ### Bibliothèque Nationale, Paris
+
 - **Address**: Bibliothèque Nationale de France, Paris, France
 - **Manuscripts**: 1,200+ Sanskrit manuscripts
 - **Specialization**: Southeast Asian Sanskrit texts
@@ -425,6 +464,7 @@
 - **Notable Collections**: Sanskrit Manuscripts Collection
 
 ### University of Tokyo
+
 - **Address**: University of Tokyo Library, Tokyo, Japan
 - **Manuscripts**: 800+ Sanskrit manuscripts
 - **Specialization**: Buddhist Sanskrit texts
@@ -436,6 +476,7 @@
 ## 🌐 DIGITAL ARCHIVES
 
 ### GRETIL (Göttingen Register of Electronic Texts)
+
 - **URL**: https://gretil.sub.uni-goettingen.de/
 - **Founded**: 1997
 - **Director**: Jost Gippert
@@ -444,6 +485,7 @@
 - **Access**: Free, open access
 
 ### Muktabodha Digital Library
+
 - **URL**: https://muktabodha.indianlanguages.org/
 - **Founded**: 2003
 - **Director**: Rashtriya Sanskrit Sansthan
@@ -452,6 +494,7 @@
 - **Access**: Free, registration required
 
 ### IGNCA Digital Archives
+
 - **URL**: https://ignca.gov.in/
 - **Founded**: 1985
 - **Director**: Indira Gandhi National Centre for the Arts
@@ -460,6 +503,7 @@
 - **Access**: Free, registration required
 
 ### Digital Corpus of Sanskrit
+
 - **URL**: https://sanskritlibrary.org/
 - **Founded**: 2010
 - **Director**: various academic institutions
@@ -472,6 +516,7 @@
 ## 📚 ACADEMIC JOURNALS
 
 ### Journal of the American Oriental Society (JAOS)
+
 - **Founded**: 1843
 - **Publisher**: American Oriental Society
 - **Frequency**: Quarterly
@@ -479,6 +524,7 @@
 - **Website**: https://www.jstor.org/journal/jamerorientsoci
 
 ### Journal of the Royal Asiatic Society (JRAS)
+
 - **Founded**: 1834
 - **Publisher**: Cambridge University Press
 - **Frequency**: Quarterly
@@ -486,6 +532,7 @@
 - **Website**: https://www.cambridge.org/core/journals/journal-of-the-royal-asiatic-society
 
 ### Indo-Iranian Journal (IIJ)
+
 - **Founded**: 1957
 - **Publisher**: Brill
 - **Frequency**: Quarterly
@@ -493,6 +540,7 @@
 - **Website**: https://brill.com/iiij
 
 ### Journal of the Oriental Institute (JOI)
+
 - **Founded**: 1930
 - **Publisher**: Bhandarkar Oriental Research Institute
 - **Frequency**: Quarterly
@@ -504,6 +552,7 @@
 ## 🏛️ ACADEMIC INSTITUTIONS
 
 ### Bhandarkar Oriental Research Institute
+
 - **Founded**: 1917
 - **Location**: Pune, Maharashtra, India
 - **Director**: Dr. Shrikant Jichkar
@@ -511,6 +560,7 @@
 - **Website**: https://www.bori.edu.in/
 
 ### Deccan College Post-Graduate and Research Institute
+
 - **Founded**: 1821
 - **Location**: Pune, Maharashtra, India
 - **Director**: Dr. G. B. Deglurkar
@@ -518,6 +568,7 @@
 - **Website**: https://www.deccancollegepune.ac.in/
 
 ### School of Oriental and African Studies (SOAS)
+
 - **Founded**: 1916
 - **Location**: London, UK
 - **Director**: Baroness Valerie Amos
@@ -525,6 +576,7 @@
 - **Website**: https://www.soas.ac.uk/
 
 ### Department of Sanskrit Studies, University of Oxford
+
 - **Founded**: 1860
 - **Location**: Oxford, UK
 - **Head**: Prof. Alexis Sanderson
@@ -536,6 +588,7 @@
 ## 📊 RESEARCH METHODOLOGY
 
 ### Textual Criticism Standards
+
 1. **Collation**: Comparison of multiple manuscript versions
 2. **Stemmatic Analysis**: Reconstruction of manuscript relationships
 3. **Emendation**: Correction of scribal errors
@@ -543,6 +596,7 @@
 5. **Translation**: IAST standard transliteration
 
 ### Dating Methodologies
+
 1. **Internal Evidence**: Astronomical references, linguistic features
 2. **External Evidence**: Archaeological findings, epigraphic records
 3. **Paleographic Analysis**: Script development and dating
@@ -550,6 +604,7 @@
 5. **Historical Correlation**: Cross-referencing with historical events
 
 ### Academic Standards
+
 1. **Peer Review**: Double-blind peer review process
 2. **Citation**: Complete bibliographic information
 3. **Attribution**: Proper credit to translators and editors
@@ -561,6 +616,7 @@
 ## 📖 REFERENCE WORKS
 
 ### Dictionaries
+
 1. **Monier-Williams Sanskrit-English Dictionary**
    - Editor: Monier Monier-Williams
    - Publication: Oxford University Press, 1899
@@ -574,6 +630,7 @@
    - ISBN: 81-208-0065-5
 
 ### Encyclopedias
+
 1. **Encyclopedia of Hinduism**
    - Editor: Denise Cush, et al.
    - Publication: Routledge, 2012
@@ -587,6 +644,7 @@
    - ISBN: 978-0-691-03030-8
 
 ### Bibliographies
+
 1. **A Critical Bibliography of Sanskrit Literature**
    - Editor: J. Gonda
    - Publication: E.J. Brill, 1972
@@ -598,6 +656,7 @@
 ## 🔍 SEARCH TOOLS
 
 ### Digital Search Engines
+
 1. **Sanskrit Library Search**
    - URL: https://sanskritlibrary.org/
    - Features: Full-text search, IAST support
@@ -609,6 +668,7 @@
    - Database: 5,000+ Sanskrit texts
 
 ### Bibliographic Databases
+
 1. **WorldCat**
    - URL: https://www.worldcat.org/
    - Features: Library catalog search
@@ -624,16 +684,19 @@
 ## 📝 CITATION STANDARDS
 
 ### Chicago Manual of Style (17th Edition)
+
 - **Books**: Author, Title, Publisher, Year, ISBN
 - **Articles**: Author, "Title", Journal, Volume, Issue, Year, Pages
 - **Manuscripts**: Repository, Manuscript Number, Location, Access Date
 
 ### MLA Handbook (9th Edition)
+
 - **Books**: Author. Title. Publisher, Year.
 - **Articles**: Author. "Title." Journal, vol. no., year, pp.
 - **Digital Sources**: Author. Title. Publisher, Year. Database/URL.
 
 ### Harvard Style
+
 - **Books**: Author (Year) Title. Publisher.
 - **Articles**: Author (Year) "Title" Journal Volume(Issue): Pages.
 - **Digital Sources**: Author (Year) Title. Publisher. [Online] Available at: URL.
@@ -643,6 +706,7 @@
 ## 📚 CONCLUSION
 
 This comprehensive bibliography provides complete academic references for the Sanskrit and Hinduism digital knowledge base. All entries include:
+
 - Complete bibliographic information
 - Manuscript provenance and repository details
 - Critical edition information
@@ -654,6 +718,6 @@ The bibliography follows the highest academic standards and provides researchers
 
 ---
 
-*Last Updated: March 2026*
-*Compiled by: Sanskrit Studies Academic Consortium*
-*Review Process: Peer-reviewed by Sanskrit scholars worldwide*
+_Last Updated: March 2026_
+_Compiled by: Sanskrit Studies Academic Consortium_
+_Review Process: Peer-reviewed by Sanskrit scholars worldwide_

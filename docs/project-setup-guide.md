@@ -1,6 +1,7 @@
 # SanskritNova AI Project Setup Guide
 
 This repo contains:
+
 - a FastAPI backend in `api/`
 - a static frontend in `public/`
 - the original Sanskrit RAG code and artifacts in `code/`
@@ -75,12 +76,14 @@ make rag-cli
 ## Environment Variables
 
 API:
+
 - `OPENROUTER_API_KEY`
 - `OPENROUTER_MODEL`
 - `OPENROUTER_APP_NAME`
 - `OPENROUTER_APP_URL`
 
 Original RAG:
+
 - `SANSKRIT_RAG_DATA_DIR`
 - `SANSKRIT_RAG_INDEX_PATH`
 - `SANSKRIT_RAG_CHUNKS_PATH`
@@ -102,6 +105,7 @@ Use [`.env.example`](../.env.example) as the local template.
 `POST /api/grounded-answer` is connected to the original retrieval corpus in `code/`.
 
 It currently:
+
 - prefers the retrieval path exposed through `sanskrit_rag.retriever`
 - falls back to `code/chunks.npy` if the full local retrieval stack or artifacts are unavailable
 

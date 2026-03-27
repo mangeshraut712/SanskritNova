@@ -32,6 +32,7 @@ pre-commit install
 ## 📝 Code Standards
 
 ### Python Code
+
 - Follow PEP 8 style guide
 - Use type hints where appropriate
 - Write descriptive docstrings
@@ -39,6 +40,7 @@ pre-commit install
 - Use meaningful variable names
 
 ### Git Commits
+
 - Use semantic commit messages:
   - `feat:` for new features
   - `fix:` for bug fixes
@@ -48,6 +50,7 @@ pre-commit install
   - `chore:` for maintenance tasks
 
 ### Testing
+
 - Write tests for all new features
 - Ensure all tests pass before submitting
 - Aim for high test coverage
@@ -67,26 +70,32 @@ When reporting bugs, please include:
 
 ```markdown
 ## Bug Description
+
 Brief description of the bug.
 
 ## Steps to Reproduce
+
 1. Go to '...'
 2. Click on '....'
 3. Scroll to '....'
 4. See error
 
 ## Expected Behavior
+
 What you expected to happen.
 
 ## Actual Behavior
+
 What actually happened.
 
 ## Environment
+
 - OS: [e.g., macOS 14.0, Ubuntu 22.04]
 - Python version: [e.g., 3.11.5]
 - Browser: [e.g., Chrome 120.0]
 
 ## Additional Context
+
 Any other relevant information.
 ```
 
@@ -103,30 +112,37 @@ We welcome feature suggestions! Please:
 
 ```markdown
 ## Feature Description
+
 Clear description of the proposed feature.
 
 ## Problem Statement
+
 What problem does this solve for Sanskrit learners?
 
 ## Proposed Solution
+
 How should this work?
 
 ## Alternatives Considered
+
 What other approaches did you consider?
 
 ## Impact
+
 Who would benefit from this feature?
 ```
 
 ## 🌍 Contribution Areas
 
 ### 🐛 Bug Fixes
+
 - Fix API endpoint issues
 - Resolve transliteration errors
 - Improve error handling
 - Fix UI/UX problems
 
 ### ✨ New Features
+
 - Add new learning tracks
 - Enhance AI chat capabilities
 - Improve offline functionality
@@ -134,24 +150,28 @@ Who would benefit from this feature?
 - Support more Indian languages
 
 ### 📝 Documentation
+
 - Improve README and guides
 - Add code comments
 - Create tutorials
 - Translate documentation to Hindi
 
 ### 🧪 Testing
+
 - Add more test cases
 - Improve test coverage
 - Add integration tests
 - Performance testing
 
 ### 🎨 Design & UX
+
 - Improve mobile experience
 - Enhance accessibility
 - Better Hindi typography
 - Cultural design improvements
 
 ### 🌐 Localization
+
 - Add Tamil language support
 - Add Telugu language support
 - Add Bengali language support
@@ -180,11 +200,13 @@ mypy api/
 ## 📧 Getting Help
 
 ### Questions?
+
 - Check existing [Issues](https://github.com/mangeshraut712/SanskritNova/issues)
 - Look at [Discussions](https://github.com/mangeshraut712/SanskritNova/discussions)
 - Read the documentation
 
 ### Need Support?
+
 - Create an issue with the `question` label
 - Tag maintainers for help
 - Join our Discord community (link coming soon)
@@ -192,6 +214,7 @@ mypy api/
 ## 🏆 Recognition
 
 Contributors will be:
+
 - Listed in our README
 - Mentioned in release notes
 - Invited to contribute to future decisions
@@ -205,4 +228,4 @@ By contributing, you agree that your contributions will be licensed under the sa
 
 **Thank you for contributing to Sanskrit education in India!** 🇮🇳
 
-*Every contribution helps make Sanskrit learning more accessible and effective for learners across the country.*
+_Every contribution helps make Sanskrit learning more accessible and effective for learners across the country._

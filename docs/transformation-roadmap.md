@@ -28,16 +28,19 @@
 ## Near-Term Order
 
 ### P0
+
 - keep the web app and grounded-answer path stable
 - keep the original RAG workflow usable from `code/`
 - improve retrieval output and citation quality
 
 ### P1
+
 - add learner accounts and saved state
 - add lessons, quizzes, and progress tracking
 - improve transliteration and Sanskrit-specific language handling
 
 ### P2
+
 - add analytics, moderation, and classroom workflows if the product needs them
 - harden deployment only when usage justifies it
 

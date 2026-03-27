@@ -1,719 +1,752 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SanskritNova Knowledge Base | संस्कृत ज्ञान प्रणाली - Research-Grade Digital Library</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" href="icon-192.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles/luxury-styles.css">
-  <link rel="stylesheet" href="styles/knowledge-base-styles.css">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#D4AF37">
-  <meta name="description" content="Research-grade digital knowledge base for Hinduism and Sanskrit with verified academic sources, critical editions, and peer-reviewed scholarship.">
-  <meta name="keywords" content="Sanskrit, Hinduism, knowledge base, research, academic, critical editions, manuscripts, BORI, GRETIL">
-  <meta name="author" content="SanskritNova AI">
-  
-  <!-- Apple-style meta tags -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="SanskritNova KB">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="SanskritNova KB">
-  
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="SanskritNova Knowledge Base - Research-Grade Digital Library">
-  <meta property="og:description" content="Comprehensive, research-grade digital knowledge base for Hinduism and Sanskrit with verified academic sources">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sanskrit-nova.vercel.app/knowledge-base">
-  <meta property="og:image" content="https://sanskrit-nova.vercel.app/og-image-kb.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:site_name" content="SanskritNova AI">
-  
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SanskritNova Knowledge Base - Research-Grade Digital Library">
-  <meta name="twitter:description" content="Comprehensive, research-grade digital knowledge base for Hinduism and Sanskrit">
-  <meta name="twitter:image" content="https://sanskrit-nova.vercel.app/og-image-kb.png">
-  <meta name="twitter:creator" content="@SanskritNova">
-  
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "DigitalDocument",
-    "name": "SanskritNova Knowledge Base",
-    "description": "Research-grade digital knowledge base for Hinduism and Sanskrit with verified academic sources",
-    "url": "https://sanskrit-nova.vercel.app/knowledge-base",
-    "author": {
-      "@type": "Organization",
-      "name": "SanskritNova AI"
-    },
-    "about": [
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      SanskritNova Knowledge Base | संस्कृत ज्ञान प्रणाली - Research-Grade Digital Library
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="icon-192.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles/luxury-styles.css" />
+    <link rel="stylesheet" href="styles/knowledge-base-styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#D4AF37" />
+    <meta
+      name="description"
+      content="Research-grade digital knowledge base for Hinduism and Sanskrit with verified academic sources, critical editions, and peer-reviewed scholarship."
+    />
+    <meta
+      name="keywords"
+      content="Sanskrit, Hinduism, knowledge base, research, academic, critical editions, manuscripts, BORI, GRETIL"
+    />
+    <meta name="author" content="SanskritNova AI" />
+
+    <!-- Apple-style meta tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="SanskritNova KB" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="SanskritNova KB" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="SanskritNova Knowledge Base - Research-Grade Digital Library"
+    />
+    <meta
+      property="og:description"
+      content="Comprehensive, research-grade digital knowledge base for Hinduism and Sanskrit with verified academic sources"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sanskrit-nova.vercel.app/knowledge-base" />
+    <meta property="og:image" content="https://sanskrit-nova.vercel.app/og-image-kb.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="SanskritNova AI" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="SanskritNova Knowledge Base - Research-Grade Digital Library"
+    />
+    <meta
+      name="twitter:description"
+      content="Comprehensive, research-grade digital knowledge base for Hinduism and Sanskrit"
+    />
+    <meta name="twitter:image" content="https://sanskrit-nova.vercel.app/og-image-kb.png" />
+    <meta name="twitter:creator" content="@SanskritNova" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
       {
-        "@type": "Thing",
-        "name": "Sanskrit"
-      },
-      {
-        "@type": "Thing", 
-        "name": "Hinduism"
+        "@context": "https://schema.org",
+        "@type": "DigitalDocument",
+        "name": "SanskritNova Knowledge Base",
+        "description": "Research-grade digital knowledge base for Hinduism and Sanskrit with verified academic sources",
+        "url": "https://sanskrit-nova.vercel.app/knowledge-base",
+        "author": {
+          "@type": "Organization",
+          "name": "SanskritNova AI"
+        },
+        "about": [
+          {
+            "@type": "Thing",
+            "name": "Sanskrit"
+          },
+          {
+            "@type": "Thing",
+            "name": "Hinduism"
+          }
+        ]
       }
-    ]
-  }
-  </script>
-</head>
+    </script>
+  </head>
 
-<body>
-  <!-- Luxury Navigation -->
-  <nav class="luxury-nav">
-    <div class="luxury-nav-container">
-      <a href="/" class="luxury-nav-brand">
-        <div class="luxury-om-symbol">ॐ</div>
-        <div class="luxury-brand-text">
-          <div class="luxury-brand-title">SanskritNova</div>
-          <div class="luxury-brand-subtitle">संस्कृत ज्ञान प्रणाली</div>
-        </div>
-      </a>
-      
-      <ul class="luxury-nav-menu">
-        <li><a href="#home" class="luxury-nav-link">Home</a></li>
-        <li><a href="#search" class="luxury-nav-link">Search</a></li>
-        <li><a href="#vedic" class="luxury-nav-link">Vedic</a></li>
-        <li><a href="#philosophy" class="luxury-nav-link">Philosophy</a></li>
-        <li><a href="#manuscripts" class="luxury-nav-link">Manuscripts</a></li>
-        <li><a href="#bibliography" class="luxury-nav-link">Bibliography</a></li>
-        <li>
-          <div class="luxury-nav-actions">
-            <button class="luxury-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-              <span id="theme-icon">🌙</span>
-            </button>
-            <div class="luxury-lang-switcher">
-              <button class="luxury-lang-btn active" data-lang="en">EN</button>
-              <button class="luxury-lang-btn" data-lang="hi">हि</button>
-            </div>
+  <body>
+    <!-- Luxury Navigation -->
+    <nav class="luxury-nav">
+      <div class="luxury-nav-container">
+        <a href="/" class="luxury-nav-brand">
+          <div class="luxury-om-symbol">ॐ</div>
+          <div class="luxury-brand-text">
+            <div class="luxury-brand-title">SanskritNova</div>
+            <div class="luxury-brand-subtitle">संस्कृत ज्ञान प्रणाली</div>
           </div>
-        </li>
-      </ul>
-      
-      <button class="luxury-mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </nav>
+        </a>
 
-  <!-- Mobile Navigation -->
-  <nav class="luxury-mobile-nav" id="mobile-nav">
-    <div class="luxury-mobile-nav-content">
-      <ul class="luxury-mobile-nav-menu">
-        <li><a href="#home" class="luxury-mobile-nav-link">Home</a></li>
-        <li><a href="#search" class="luxury-mobile-nav-link">Search</a></li>
-        <li><a href="#vedic" class="luxury-mobile-nav-link">Vedic</a></li>
-        <li><a href="#philosophy" class="luxury-mobile-nav-link">Philosophy</a></li>
-        <li><a href="#manuscripts" class="luxury-mobile-nav-link">Manuscripts</a></li>
-        <li><a href="#bibliography" class="luxury-mobile-nav-link">Bibliography</a></li>
-      </ul>
-    </div>
-  </nav>
+        <ul class="luxury-nav-menu">
+          <li><a href="#home" class="luxury-nav-link">Home</a></li>
+          <li><a href="#search" class="luxury-nav-link">Search</a></li>
+          <li><a href="#vedic" class="luxury-nav-link">Vedic</a></li>
+          <li><a href="#philosophy" class="luxury-nav-link">Philosophy</a></li>
+          <li><a href="#manuscripts" class="luxury-nav-link">Manuscripts</a></li>
+          <li><a href="#bibliography" class="luxury-nav-link">Bibliography</a></li>
+          <li>
+            <div class="luxury-nav-actions">
+              <button class="luxury-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <span id="theme-icon">🌙</span>
+              </button>
+              <div class="luxury-lang-switcher">
+                <button class="luxury-lang-btn active" data-lang="en">EN</button>
+                <button class="luxury-lang-btn" data-lang="hi">हि</button>
+              </div>
+            </div>
+          </li>
+        </ul>
 
-  <!-- Knowledge Base Hero Section -->
-  <section class="kb-hero" id="home">
-    <div class="kb-hero-content">
-      <div class="kb-hero-badge">
-        <span>🏛️</span>
-        <span>Research-Grade Digital Library</span>
-      </div>
-      
-      <h1 class="kb-hero-title">
-        <span class="kb-title-line">Sanskrit & Hinduism</span>
-        <span class="kb-sanskrit-text">संस्कृतम् हिन्दुधर्मश्च</span>
-        <span class="kb-title-line">Digital Knowledge Base</span>
-      </h1>
-      
-      <p class="kb-hero-subtitle">
-        A comprehensive, research-grade digital knowledge base dedicated to Hinduism and Sanskrit, 
-        built exclusively on verified, historically authenticated, and academically substantiated information.
-      </p>
-      
-      <div class="kb-hero-stats">
-        <div class="kb-stat">
-          <div class="kb-stat-number">10,000+</div>
-          <div class="kb-stat-label">Sanskrit Texts</div>
-        </div>
-        <div class="kb-stat">
-          <div class="kb-stat-number">50,000+</div>
-          <div class="kb-stat-label">Academic References</div>
-        </div>
-        <div class="kb-stat">
-          <div class="kb-stat-number">5,000+</div>
-          <div class="kb-stat-label">Manuscripts</div>
-        </div>
-        <div class="kb-stat">
-          <div class="kb-stat-number">100%</div>
-          <div class="kb-stat-label">Peer-Reviewed</div>
-        </div>
-      </div>
-      
-      <div class="luxury-hero-actions">
-        <button class="luxury-btn luxury-btn-primary luxury-btn-lg" onclick="scrollToSection('search')">
-          <span>🔍</span>
-          <span>Explore Knowledge Base</span>
-        </button>
-        <button class="luxury-btn luxury-btn-secondary luxury-btn-lg" onclick="scrollToSection('about')">
-          <span>📚</span>
-          <span>Learn More</span>
+        <button class="luxury-mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- Search Section -->
-  <section class="kb-search-section" id="search">
-    <div class="kb-search-container">
-      <div class="kb-search-header">
-        <h2 class="kb-search-title">Search Academic Knowledge Base</h2>
-        <p class="kb-search-subtitle">
-          Search through verified primary sources, critical editions, and peer-reviewed scholarship
+    <!-- Mobile Navigation -->
+    <nav class="luxury-mobile-nav" id="mobile-nav">
+      <div class="luxury-mobile-nav-content">
+        <ul class="luxury-mobile-nav-menu">
+          <li><a href="#home" class="luxury-mobile-nav-link">Home</a></li>
+          <li><a href="#search" class="luxury-mobile-nav-link">Search</a></li>
+          <li><a href="#vedic" class="luxury-mobile-nav-link">Vedic</a></li>
+          <li><a href="#philosophy" class="luxury-mobile-nav-link">Philosophy</a></li>
+          <li><a href="#manuscripts" class="luxury-mobile-nav-link">Manuscripts</a></li>
+          <li><a href="#bibliography" class="luxury-mobile-nav-link">Bibliography</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Knowledge Base Hero Section -->
+    <section class="kb-hero" id="home">
+      <div class="kb-hero-content">
+        <div class="kb-hero-badge">
+          <span>🏛️</span>
+          <span>Research-Grade Digital Library</span>
+        </div>
+
+        <h1 class="kb-hero-title">
+          <span class="kb-title-line">Sanskrit & Hinduism</span>
+          <span class="kb-sanskrit-text">संस्कृतम् हिन्दुधर्मश्च</span>
+          <span class="kb-title-line">Digital Knowledge Base</span>
+        </h1>
+
+        <p class="kb-hero-subtitle">
+          A comprehensive, research-grade digital knowledge base dedicated to Hinduism and Sanskrit,
+          built exclusively on verified, historically authenticated, and academically substantiated
+          information.
         </p>
-      </div>
-      
-      <div class="kb-search-form">
-        <div class="kb-search-input-group">
-          <input type="text" class="kb-search-input" id="kb-search-input" placeholder="Search Sanskrit texts, concepts, authors, or manuscripts...">
-          <button class="kb-search-btn" id="kb-search-btn">
+
+        <div class="kb-hero-stats">
+          <div class="kb-stat">
+            <div class="kb-stat-number">10,000+</div>
+            <div class="kb-stat-label">Sanskrit Texts</div>
+          </div>
+          <div class="kb-stat">
+            <div class="kb-stat-number">50,000+</div>
+            <div class="kb-stat-label">Academic References</div>
+          </div>
+          <div class="kb-stat">
+            <div class="kb-stat-number">5,000+</div>
+            <div class="kb-stat-label">Manuscripts</div>
+          </div>
+          <div class="kb-stat">
+            <div class="kb-stat-number">100%</div>
+            <div class="kb-stat-label">Peer-Reviewed</div>
+          </div>
+        </div>
+
+        <div class="luxury-hero-actions">
+          <button
+            class="luxury-btn luxury-btn-primary luxury-btn-lg"
+            onclick="scrollToSection('search')"
+          >
             <span>🔍</span>
-            <span>Search</span>
+            <span>Explore Knowledge Base</span>
+          </button>
+          <button
+            class="luxury-btn luxury-btn-secondary luxury-btn-lg"
+            onclick="scrollToSection('about')"
+          >
+            <span>📚</span>
+            <span>Learn More</span>
           </button>
         </div>
-        
-        <div class="kb-filters">
-          <div class="kb-filter-group">
-            <label class="kb-filter-label">Category</label>
-            <select class="kb-filter-select" id="category-filter">
-              <option value="">All Categories</option>
-              <option value="veda">Vedas</option>
-              <option value="upanishad">Upanishads</option>
-              <option value="philosophy">Philosophy</option>
-              <option value="epic">Epics</option>
-              <option value="purana">Puranas</option>
-              <option value="dharma">Dharmashastra</option>
-              <option value="grammar">Grammar</option>
-            </select>
-          </div>
-          
-          <div class="kb-filter-group">
-            <label class="kb-filter-label">Period</label>
-            <select class="kb-filter-select" id="period-filter">
-              <option value="">All Periods</option>
-              <option value="vedic">Vedic (1500-500 BCE)</option>
-              <option value="classical">Classical (500 BCE-1000 CE)</option>
-              <option value="medieval">Medieval (1000-1800 CE)</option>
-              <option value="modern">Modern (1800 CE-present)</option>
-            </select>
-          </div>
-          
-          <div class="kb-filter-group">
-            <label class="kb-filter-label">Repository</label>
-            <select class="kb-filter-select" id="repository-filter">
-              <option value="">All Repositories</option>
-              <option value="bori">BORI Pune</option>
-              <option value="cambridge">Cambridge University</option>
-              <option value="oxford">Oxford University</option>
-              <option value="gretil">GRETIL Database</option>
-              <option value="muktabodha">Muktabodha Digital</option>
-              <option value="ignca">IGNCA Archives</option>
-            </select>
-          </div>
-          
-          <div class="kb-filter-group">
-            <label class="kb-filter-label">Language</label>
-            <select class="kb-filter-select" id="language-filter">
-              <option value="">All Languages</option>
-              <option value="sanskrit">Sanskrit</option>
-              <option value="iast">IAST</option>
-              <option value="english">English</option>
-              <option value="hindi">Hindi</option>
-            </select>
-          </div>
-        </div>
       </div>
-      
-      <!-- Search Results -->
-      <div id="kb-search-results" class="kb-cards-grid">
-        <!-- Results will be dynamically loaded here -->
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Vedic Corpus Section -->
-  <section class="luxury-section" id="vedic">
-    <div class="luxury-section-header">
-      <h2 class="luxury-section-title">Vedic Corpus</h2>
-      <p class="luxury-section-subtitle">
-        Complete collection of Vedic texts with critical editions and manuscript provenance
-      </p>
-    </div>
-    
-    <div class="kb-cards-grid">
-      <div class="kb-card">
-        <div class="kb-card-header">
-          <h3 class="kb-card-title">Ṛgveda Saṁhitā</h3>
-          <div class="kb-card-subtitle">ऋग्वेद संहिता</div>
-        </div>
-        <div class="kb-card-body">
-          <p class="kb-card-description">
-            The oldest of the four Vedas, containing 1,028 hymns organized into 10 mandalas. 
-            Critical edition from Bhandarkar Oriental Research Institute (1933-1972).
+    <!-- Search Section -->
+    <section class="kb-search-section" id="search">
+      <div class="kb-search-container">
+        <div class="kb-search-header">
+          <h2 class="kb-search-title">Search Academic Knowledge Base</h2>
+          <p class="kb-search-subtitle">
+            Search through verified primary sources, critical editions, and peer-reviewed
+            scholarship
           </p>
-          <div class="kb-card-meta">
-            <span class="kb-card-category">Veda</span>
-            <span class="kb-card-period">1500-1200 BCE</span>
-          </div>
-          <div class="kb-card-actions">
-            <button class="kb-btn kb-btn-primary">View Text</button>
-            <button class="kb-btn kb-btn-secondary">Manuscripts</button>
-          </div>
         </div>
-      </div>
-      
-      <div class="kb-card">
-        <div class="kb-card-header">
-          <h3 class="kb-card-title">Sāmaveda Saṁhitā</h3>
-          <div class="kb-card-subtitle">सामवेद संहिता</div>
-        </div>
-        <div class="kb-card-body">
-          <p class="kb-card-description">
-            The Veda of melodies and chants, consisting of 1,875 verses primarily drawn from the Rigveda 
-            but arranged for liturgical purposes.
-          </p>
-          <div class="kb-card-meta">
-            <span class="kb-card-category">Veda</span>
-            <span class="kb-card-period">1200-1000 BCE</span>
-          </div>
-          <div class="kb-card-actions">
-            <button class="kb-btn kb-btn-primary">View Text</button>
-            <button class="kb-btn kb-btn-secondary">Manuscripts</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="kb-card">
-        <div class="kb-card-header">
-          <h3 class="kb-card-title">Yajurveda Saṁhitā</h3>
-          <div class="kb-card-subtitle">यजुर्वेद संहिता</div>
-        </div>
-        <div class="kb-card-body">
-          <p class="kb-card-description">
-            The Veda of ritual formulas, existing in two main recensions: Shukla Yajurveda (White) 
-            and Krishna Yajurveda (Black).
-          </p>
-          <div class="kb-card-meta">
-            <span class="kb-card-category">Veda</span>
-            <span class="kb-card-period">1200-1000 BCE</span>
-          </div>
-          <div class="kb-card-actions">
-            <button class="kb-btn kb-btn-primary">View Text</button>
-            <button class="kb-btn kb-btn-secondary">Manuscripts</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="kb-card">
-        <div class="kb-card-header">
-          <h3 class="kb-card-title">Atharvaveda Saṁhitā</h3>
-          <div class="kb-card-subtitle">अथर्ववेद संहिता</div>
-        </div>
-        <div class="kb-card-body">
-          <p class="kb-card-description">
-            The Veda of magical formulas and daily rituals, containing 731 hymns covering 
-            practical aspects of daily life and healing.
-          </p>
-          <div class="kb-card-meta">
-            <span class="kb-card-category">Veda</span>
-            <span class="kb-card-period">1000-800 BCE</span>
-          </div>
-          <div class="kb-card-actions">
-            <button class="kb-btn kb-btn-primary">View Text</button>
-            <button class="kb-btn kb-btn-secondary">Manuscripts</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Philosophical Systems Section -->
-  <section class="luxury-section" id="philosophy">
-    <div class="luxury-section-header">
-      <h2 class="luxury-section-title">Philosophical Systems</h2>
-      <p class="luxury-section-subtitle">
-        Six orthodox schools of Indian philosophy with complete texts and commentaries
-      </p>
-    </div>
-    
-    <div class="kb-cards-grid">
-      <div class="kb-card">
-        <div class="kb-card-header">
-          <h3 class="kb-card-title">Sāṃkhya</h3>
-          <div class="kb-card-subtitle">सांख्य</div>
-        </div>
-        <div class="kb-card-body">
-          <p class="kb-card-description">
-            One of the six orthodox philosophical systems, founded by Kapila, emphasizing 
-            dualism between consciousness (purusha) and matter (prakriti).
-          </p>
-          <div class="kb-card-meta">
-            <span class="kb-card-category">Darshana</span>
-            <span class="kb-card-period">Classical</span>
+        <div class="kb-search-form">
+          <div class="kb-search-input-group">
+            <input
+              type="text"
+              class="kb-search-input"
+              id="kb-search-input"
+              placeholder="Search Sanskrit texts, concepts, authors, or manuscripts..."
+            />
+            <button class="kb-search-btn" id="kb-search-btn">
+              <span>🔍</span>
+              <span>Search</span>
+            </button>
           </div>
-          <div class="kb-card-actions">
-            <button class="kb-btn kb-btn-primary">View Text</button>
-            <button class="kb-btn kb-btn-secondary">Commentaries</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="kb-card">
-        <div class="kb-card-header">
-          <h3 class="kb-card-title">Yoga</h3>
-          <div class="kb-card-subtitle">योग</div>
-        </div>
-        <div class="kb-card-body">
-          <p class="kb-card-description">
-            The philosophical system based on Patanjali's Yoga Sutras, emphasizing 
-            the practice of meditation and spiritual discipline for liberation.
-          </p>
-          <div class="kb-card-meta">
-            <span class="kb-card-category">Darshana</span>
-            <span class="kb-card-period">Classical</span>
-          </div>
-          <div class="kb-card-actions">
-            <button class="kb-btn kb-btn-primary">View Text</button>
-            <button class="kb-btn kb-btn-secondary">Commentaries</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="kb-card">
-        <div class="kb-card-header">
-          <h3 class="kb-card-title">Vedānta</h3>
-          <div class="kb-card-subtitle">वेदान्त</div>
-        </div>
-        <div class="kb-card-body">
-          <p class="kb-card-description">
-            The philosophical system based on the Upanishads and Brahma Sutras, 
-            encompassing Advaita, Vishishtadvaita, and Dvaita sub-schools.
-          </p>
-          <div class="kb-card-meta">
-            <span class="kb-card-category">Darshana</span>
-            <span class="kb-card-period">Classical</span>
-          </div>
-          <div class="kb-card-actions">
-            <button class="kb-btn kb-btn-primary">View Text</button>
-            <button class="kb-btn kb-btn-secondary">Commentaries</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="kb-card">
-        <div class="kb-card-header">
-          <h3 class="kb-card-title">Mīmāṃsā</h3>
-          <div class="kb-card-subtitle">मीमांसा</div>
-        </div>
-        <div class="kb-card-body">
-          <p class="kb-card-description">
-            The philosophical system focused on interpretation of Vedic rituals, 
-            founded by Jaimini with emphasis on dharma and ritual performance.
-          </p>
-          <div class="kb-card-meta">
-            <span class="kb-card-category">Darshana</span>
-            <span class="kb-card-period">Classical</span>
-          </div>
-          <div class="kb-card-actions">
-            <button class="kb-btn kb-btn-primary">View Text</button>
-            <button class="kb-btn kb-btn-secondary">Commentaries</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Manuscript Repository Section -->
-  <section class="luxury-section" id="manuscripts">
-    <div class="luxury-section-header">
-      <h2 class="luxury-section-title">Manuscript Repositories</h2>
-      <p class="luxury-section-subtitle">
-        Access to verified manuscript collections from premier research institutions
-      </p>
-    </div>
-    
-    <div class="kb-cards-grid">
-      <div class="kb-card">
-        <div class="kb-card-header">
-          <h3 class="kb-card-title">Bhandarkar Oriental Research Institute</h3>
-          <div class="kb-card-subtitle">BORI, Pune</div>
-        </div>
-        <div class="kb-card-body">
-          <p class="kb-card-description">
-            Premier research institute with 28,000+ Sanskrit manuscripts, including 
-            palm leaf and birch bark manuscripts from across India.
-          </p>
-          <div class="kb-card-meta">
-            <span class="kb-card-category">Repository</span>
-            <span class="kb-card-period">Founded 1917</span>
-          </div>
-          <div class="kb-card-actions">
-            <button class="kb-btn kb-btn-primary">Browse Collection</button>
-            <button class="kb-btn kb-btn-secondary">Digital Access</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="kb-card">
-        <div class="kb-card-header">
-          <h3 class="kb-card-title">Cambridge University Library</h3>
-          <div class="kb-card-subtitle">Cambridge, UK</div>
-        </div>
-        <div class="kb-card-body">
-          <p class="kb-card-description">
-            Extensive collection of 2,000+ Sanskrit manuscripts, particularly strong 
-            in Nepalese and Kashmiri palm leaf manuscripts.
-          </p>
-          <div class="kb-card-meta">
-            <span class="kb-card-category">Repository</span>
-            <span class="kb-card-period">Founded 1415</span>
-          </div>
-          <div class="kb-card-actions">
-            <button class="kb-btn kb-btn-primary">Browse Collection</button>
-            <button class="kb-btn kb-btn-secondary">Digital Access</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="kb-card">
-        <div class="kb-card-header">
-          <h3 class="kb-card-title">Bodleian Library</h3>
-          <div class="kb-card-subtitle">Oxford, UK</div>
-        </div>
-        <div class="kb-card-body">
-          <p class="kb-card-description">
-            Collection of 1,500+ Sanskrit manuscripts, including rare classical 
-            Sanskrit literary texts and philosophical works.
-          </p>
-          <div class="kb-card-meta">
-            <span class="kb-card-category">Repository</span>
-            <span class="kb-card-period">Founded 1602</span>
-          </div>
-          <div class="kb-card-actions">
-            <button class="kb-btn kb-btn-primary">Browse Collection</button>
-            <button class="kb-btn kb-btn-secondary">Digital Access</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="kb-card">
-        <div class="kb-card-header">
-          <h3 class="kb-card-title">GRETIL Database</h3>
-          <div class="kb-card-subtitle">Göttingen, Germany</div>
-        </div>
-        <div class="kb-card-body">
-          <p class="kb-card-description">
-            Digital archive of 5,000+ Sanskrit texts with Unicode encoding, 
-            providing open access to critical editions and scholarly texts.
-          </p>
-          <div class="kb-card-meta">
-            <span class="kb-card-category">Digital Archive</span>
-            <span class="kb-card-period">Founded 1997</span>
-          </div>
-          <div class="kb-card-actions">
-            <button class="kb-btn kb-btn-primary">Browse Collection</button>
-            <button class="kb-btn kb-btn-secondary">Download Texts</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+          <div class="kb-filters">
+            <div class="kb-filter-group">
+              <label class="kb-filter-label">Category</label>
+              <select class="kb-filter-select" id="category-filter">
+                <option value="">All Categories</option>
+                <option value="veda">Vedas</option>
+                <option value="upanishad">Upanishads</option>
+                <option value="philosophy">Philosophy</option>
+                <option value="epic">Epics</option>
+                <option value="purana">Puranas</option>
+                <option value="dharma">Dharmashastra</option>
+                <option value="grammar">Grammar</option>
+              </select>
+            </div>
 
-  <!-- Bibliography Section -->
-  <section class="luxury-section" id="bibliography">
-    <div class="luxury-section-header">
-      <h2 class="luxury-section-title">Academic Bibliography</h2>
-      <p class="luxury-section-subtitle">
-        Complete reference system with 500+ peer-reviewed academic sources
-      </p>
-    </div>
-    
-    <div class="kb-table-container">
-      <table class="kb-table">
-        <thead>
-          <tr>
-            <th>Author</th>
-            <th>Title</th>
-            <th>Publisher</th>
-            <th>Year</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Vishvanath Kashinath Rajwade</td>
-            <td>Ṛgveda Critical Edition</td>
-            <td>Bhandarkar Oriental Research Institute</td>
-            <td>1933-1972</td>
-            <td>Critical Edition</td>
-          </tr>
-          <tr>
-            <td>Max Müller</td>
-            <td>Rig-Veda-Samhita</td>
-            <td>Oxford University Press</td>
-            <td>1890</td>
-            <td>Translation</td>
-          </tr>
-          <tr>
-            <td>S. Radhakrishnan</td>
-            <td>The Principal Upanishads</td>
-            <td>HarperCollins</td>
-            <td>1953</td>
-            <td>Translation</td>
-          </tr>
-          <tr>
-            <td>P. V. Kane</td>
-            <td>History of Dharmaśāstra</td>
-            <td>Bhandarkar Oriental Research Institute</td>
-            <td>1941-1975</td>
-            <td>Reference Work</td>
-          </tr>
-          <tr>
-            <td>J. A. B. van Buitenen</td>
-            <td>The Mahābhārata</td>
-            <td>University of Chicago Press</td>
-            <td>1973-1978</td>
-            <td>Translation</td>
-          </tr>
-          <tr>
-            <td>R. P. Goldman</td>
-            <td>The Rāmāyaṇa of Vālmīki</td>
-            <td>Princeton University Press</td>
-            <td>1984-1996</td>
-            <td>Translation</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+            <div class="kb-filter-group">
+              <label class="kb-filter-label">Period</label>
+              <select class="kb-filter-select" id="period-filter">
+                <option value="">All Periods</option>
+                <option value="vedic">Vedic (1500-500 BCE)</option>
+                <option value="classical">Classical (500 BCE-1000 CE)</option>
+                <option value="medieval">Medieval (1000-1800 CE)</option>
+                <option value="modern">Modern (1800 CE-present)</option>
+              </select>
+            </div>
 
-  <!-- Sample Text Display Section -->
-  <section class="luxury-section" id="sample-texts">
-    <div class="luxury-section-header">
-      <h2 class="luxury-section-title">Sample Texts</h2>
-      <p class="luxury-section-subtitle">
-        Examples of Sanskrit texts with proper IAST transliteration and translation
-      </p>
-    </div>
-    
-    <div class="kb-text-display">
-      <div class="kb-sanskrit-text">ॐ पूर्णमदः पूर्णमिदं पूर्णात् पूर्णमुदच्यते</div>
-      <div class="kb-iast-text">oṁ pūrṇamadaḥ pūrṇamidaṁ pūrṇāt pūrṇamudacyate</div>
-      <div class="kb-translation">
-        "That is whole, this is whole; from the whole, the whole becomes whole. 
-        When the whole is taken away from the whole, the whole still remains."
-        - Isha Upanishad, Verse 1
-      </div>
-    </div>
-    
-    <div class="kb-text-display">
-      <div class="kb-sanskrit-text">असतो मा सद्गमय तमसो मा ज्योतिर्गमय</div>
-      <div class="kb-iast-text">asto mā sadgamaya tamaso mā jyotirgamaya</div>
-      <div class="kb-translation">
-        "Lead me from the unreal to the real, from darkness to light, 
-        from death to immortality."
-        - Brihadaranyaka Upanishad, 1.3.28
-      </div>
-    </div>
-    
-    <div class="kb-text-display">
-      <div class="kb-sanskrit-text">धर्मो रक्षति रक्षितः</div>
-      <div class="kb-iast-text">dharmaḥ rakṣati rakṣitaḥ</div>
-      <div class="kb-translation">
-        "Dharma protects those who protect dharma."
-        - Mahabharata, Vana Parva
-      </div>
-    </div>
-  </section>
+            <div class="kb-filter-group">
+              <label class="kb-filter-label">Repository</label>
+              <select class="kb-filter-select" id="repository-filter">
+                <option value="">All Repositories</option>
+                <option value="bori">BORI Pune</option>
+                <option value="cambridge">Cambridge University</option>
+                <option value="oxford">Oxford University</option>
+                <option value="gretil">GRETIL Database</option>
+                <option value="muktabodha">Muktabodha Digital</option>
+                <option value="ignca">IGNCA Archives</option>
+              </select>
+            </div>
 
-  <!-- Luxury Footer -->
-  <footer class="luxury-footer">
-    <div class="luxury-footer-content">
-      <div class="luxury-footer-brand">
-        <div class="luxury-om-symbol">ॐ</div>
-        <div class="luxury-brand-text">
-          <div class="luxury-brand-title">SanskritNova</div>
-          <div class="luxury-brand-subtitle">संस्कृत ज्ञान प्रणाली</div>
+            <div class="kb-filter-group">
+              <label class="kb-filter-label">Language</label>
+              <select class="kb-filter-select" id="language-filter">
+                <option value="">All Languages</option>
+                <option value="sanskrit">Sanskrit</option>
+                <option value="iast">IAST</option>
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search Results -->
+        <div id="kb-search-results" class="kb-cards-grid">
+          <!-- Results will be dynamically loaded here -->
         </div>
       </div>
-      
-      <div class="luxury-footer-links">
-        <div class="luxury-footer-section">
-          <h4>Knowledge Base</h4>
-          <ul>
-            <li><a href="#search">Search</a></li>
-            <li><a href="#vedic">Vedic Corpus</a></li>
-            <li><a href="#philosophy">Philosophy</a></li>
-            <li><a href="#manuscripts">Manuscripts</a></li>
-          </ul>
+    </section>
+
+    <!-- Vedic Corpus Section -->
+    <section class="luxury-section" id="vedic">
+      <div class="luxury-section-header">
+        <h2 class="luxury-section-title">Vedic Corpus</h2>
+        <p class="luxury-section-subtitle">
+          Complete collection of Vedic texts with critical editions and manuscript provenance
+        </p>
+      </div>
+
+      <div class="kb-cards-grid">
+        <div class="kb-card">
+          <div class="kb-card-header">
+            <h3 class="kb-card-title">Ṛgveda Saṁhitā</h3>
+            <div class="kb-card-subtitle">ऋग्वेद संहिता</div>
+          </div>
+          <div class="kb-card-body">
+            <p class="kb-card-description">
+              The oldest of the four Vedas, containing 1,028 hymns organized into 10 mandalas.
+              Critical edition from Bhandarkar Oriental Research Institute (1933-1972).
+            </p>
+            <div class="kb-card-meta">
+              <span class="kb-card-category">Veda</span>
+              <span class="kb-card-period">1500-1200 BCE</span>
+            </div>
+            <div class="kb-card-actions">
+              <button class="kb-btn kb-btn-primary">View Text</button>
+              <button class="kb-btn kb-btn-secondary">Manuscripts</button>
+            </div>
+          </div>
         </div>
-        
-        <div class="luxury-footer-section">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="#bibliography">Bibliography</a></li>
-            <li><a href="#sample-texts">Sample Texts</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+
+        <div class="kb-card">
+          <div class="kb-card-header">
+            <h3 class="kb-card-title">Sāmaveda Saṁhitā</h3>
+            <div class="kb-card-subtitle">सामवेद संहिता</div>
+          </div>
+          <div class="kb-card-body">
+            <p class="kb-card-description">
+              The Veda of melodies and chants, consisting of 1,875 verses primarily drawn from the
+              Rigveda but arranged for liturgical purposes.
+            </p>
+            <div class="kb-card-meta">
+              <span class="kb-card-category">Veda</span>
+              <span class="kb-card-period">1200-1000 BCE</span>
+            </div>
+            <div class="kb-card-actions">
+              <button class="kb-btn kb-btn-primary">View Text</button>
+              <button class="kb-btn kb-btn-secondary">Manuscripts</button>
+            </div>
+          </div>
         </div>
-        
-        <div class="luxury-footer-section">
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">LinkedIn</a></li>
-          </ul>
+
+        <div class="kb-card">
+          <div class="kb-card-header">
+            <h3 class="kb-card-title">Yajurveda Saṁhitā</h3>
+            <div class="kb-card-subtitle">यजुर्वेद संहिता</div>
+          </div>
+          <div class="kb-card-body">
+            <p class="kb-card-description">
+              The Veda of ritual formulas, existing in two main recensions: Shukla Yajurveda (White)
+              and Krishna Yajurveda (Black).
+            </p>
+            <div class="kb-card-meta">
+              <span class="kb-card-category">Veda</span>
+              <span class="kb-card-period">1200-1000 BCE</span>
+            </div>
+            <div class="kb-card-actions">
+              <button class="kb-btn kb-btn-primary">View Text</button>
+              <button class="kb-btn kb-btn-secondary">Manuscripts</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="kb-card">
+          <div class="kb-card-header">
+            <h3 class="kb-card-title">Atharvaveda Saṁhitā</h3>
+            <div class="kb-card-subtitle">अथर्ववेद संहिता</div>
+          </div>
+          <div class="kb-card-body">
+            <p class="kb-card-description">
+              The Veda of magical formulas and daily rituals, containing 731 hymns covering
+              practical aspects of daily life and healing.
+            </p>
+            <div class="kb-card-meta">
+              <span class="kb-card-category">Veda</span>
+              <span class="kb-card-period">1000-800 BCE</span>
+            </div>
+            <div class="kb-card-actions">
+              <button class="kb-btn kb-btn-primary">View Text</button>
+              <button class="kb-btn kb-btn-secondary">Manuscripts</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    
-    <div class="luxury-footer-bottom">
-      <div class="luxury-footer-copyright">
-        © 2026 SanskritNova AI. All rights reserved. Research-Grade Digital Knowledge Base.
+    </section>
+
+    <!-- Philosophical Systems Section -->
+    <section class="luxury-section" id="philosophy">
+      <div class="luxury-section-header">
+        <h2 class="luxury-section-title">Philosophical Systems</h2>
+        <p class="luxury-section-subtitle">
+          Six orthodox schools of Indian philosophy with complete texts and commentaries
+        </p>
       </div>
-      <div class="luxury-footer-social">
-        <a href="#" aria-label="Twitter">𝕏</a>
-        <a href="#" aria-label="Facebook">𝕐</a>
-        <a href="#" aria-label="Instagram">📷</a>
-        <a href="#" aria-label="LinkedIn">💼</a>
+
+      <div class="kb-cards-grid">
+        <div class="kb-card">
+          <div class="kb-card-header">
+            <h3 class="kb-card-title">Sāṃkhya</h3>
+            <div class="kb-card-subtitle">सांख्य</div>
+          </div>
+          <div class="kb-card-body">
+            <p class="kb-card-description">
+              One of the six orthodox philosophical systems, founded by Kapila, emphasizing dualism
+              between consciousness (purusha) and matter (prakriti).
+            </p>
+            <div class="kb-card-meta">
+              <span class="kb-card-category">Darshana</span>
+              <span class="kb-card-period">Classical</span>
+            </div>
+            <div class="kb-card-actions">
+              <button class="kb-btn kb-btn-primary">View Text</button>
+              <button class="kb-btn kb-btn-secondary">Commentaries</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="kb-card">
+          <div class="kb-card-header">
+            <h3 class="kb-card-title">Yoga</h3>
+            <div class="kb-card-subtitle">योग</div>
+          </div>
+          <div class="kb-card-body">
+            <p class="kb-card-description">
+              The philosophical system based on Patanjali's Yoga Sutras, emphasizing the practice of
+              meditation and spiritual discipline for liberation.
+            </p>
+            <div class="kb-card-meta">
+              <span class="kb-card-category">Darshana</span>
+              <span class="kb-card-period">Classical</span>
+            </div>
+            <div class="kb-card-actions">
+              <button class="kb-btn kb-btn-primary">View Text</button>
+              <button class="kb-btn kb-btn-secondary">Commentaries</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="kb-card">
+          <div class="kb-card-header">
+            <h3 class="kb-card-title">Vedānta</h3>
+            <div class="kb-card-subtitle">वेदान्त</div>
+          </div>
+          <div class="kb-card-body">
+            <p class="kb-card-description">
+              The philosophical system based on the Upanishads and Brahma Sutras, encompassing
+              Advaita, Vishishtadvaita, and Dvaita sub-schools.
+            </p>
+            <div class="kb-card-meta">
+              <span class="kb-card-category">Darshana</span>
+              <span class="kb-card-period">Classical</span>
+            </div>
+            <div class="kb-card-actions">
+              <button class="kb-btn kb-btn-primary">View Text</button>
+              <button class="kb-btn kb-btn-secondary">Commentaries</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="kb-card">
+          <div class="kb-card-header">
+            <h3 class="kb-card-title">Mīmāṃsā</h3>
+            <div class="kb-card-subtitle">मीमांसा</div>
+          </div>
+          <div class="kb-card-body">
+            <p class="kb-card-description">
+              The philosophical system focused on interpretation of Vedic rituals, founded by
+              Jaimini with emphasis on dharma and ritual performance.
+            </p>
+            <div class="kb-card-meta">
+              <span class="kb-card-category">Darshana</span>
+              <span class="kb-card-period">Classical</span>
+            </div>
+            <div class="kb-card-actions">
+              <button class="kb-btn kb-btn-primary">View Text</button>
+              <button class="kb-btn kb-btn-secondary">Commentaries</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manuscript Repository Section -->
+    <section class="luxury-section" id="manuscripts">
+      <div class="luxury-section-header">
+        <h2 class="luxury-section-title">Manuscript Repositories</h2>
+        <p class="luxury-section-subtitle">
+          Access to verified manuscript collections from premier research institutions
+        </p>
+      </div>
+
+      <div class="kb-cards-grid">
+        <div class="kb-card">
+          <div class="kb-card-header">
+            <h3 class="kb-card-title">Bhandarkar Oriental Research Institute</h3>
+            <div class="kb-card-subtitle">BORI, Pune</div>
+          </div>
+          <div class="kb-card-body">
+            <p class="kb-card-description">
+              Premier research institute with 28,000+ Sanskrit manuscripts, including palm leaf and
+              birch bark manuscripts from across India.
+            </p>
+            <div class="kb-card-meta">
+              <span class="kb-card-category">Repository</span>
+              <span class="kb-card-period">Founded 1917</span>
+            </div>
+            <div class="kb-card-actions">
+              <button class="kb-btn kb-btn-primary">Browse Collection</button>
+              <button class="kb-btn kb-btn-secondary">Digital Access</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="kb-card">
+          <div class="kb-card-header">
+            <h3 class="kb-card-title">Cambridge University Library</h3>
+            <div class="kb-card-subtitle">Cambridge, UK</div>
+          </div>
+          <div class="kb-card-body">
+            <p class="kb-card-description">
+              Extensive collection of 2,000+ Sanskrit manuscripts, particularly strong in Nepalese
+              and Kashmiri palm leaf manuscripts.
+            </p>
+            <div class="kb-card-meta">
+              <span class="kb-card-category">Repository</span>
+              <span class="kb-card-period">Founded 1415</span>
+            </div>
+            <div class="kb-card-actions">
+              <button class="kb-btn kb-btn-primary">Browse Collection</button>
+              <button class="kb-btn kb-btn-secondary">Digital Access</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="kb-card">
+          <div class="kb-card-header">
+            <h3 class="kb-card-title">Bodleian Library</h3>
+            <div class="kb-card-subtitle">Oxford, UK</div>
+          </div>
+          <div class="kb-card-body">
+            <p class="kb-card-description">
+              Collection of 1,500+ Sanskrit manuscripts, including rare classical Sanskrit literary
+              texts and philosophical works.
+            </p>
+            <div class="kb-card-meta">
+              <span class="kb-card-category">Repository</span>
+              <span class="kb-card-period">Founded 1602</span>
+            </div>
+            <div class="kb-card-actions">
+              <button class="kb-btn kb-btn-primary">Browse Collection</button>
+              <button class="kb-btn kb-btn-secondary">Digital Access</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="kb-card">
+          <div class="kb-card-header">
+            <h3 class="kb-card-title">GRETIL Database</h3>
+            <div class="kb-card-subtitle">Göttingen, Germany</div>
+          </div>
+          <div class="kb-card-body">
+            <p class="kb-card-description">
+              Digital archive of 5,000+ Sanskrit texts with Unicode encoding, providing open access
+              to critical editions and scholarly texts.
+            </p>
+            <div class="kb-card-meta">
+              <span class="kb-card-category">Digital Archive</span>
+              <span class="kb-card-period">Founded 1997</span>
+            </div>
+            <div class="kb-card-actions">
+              <button class="kb-btn kb-btn-primary">Browse Collection</button>
+              <button class="kb-btn kb-btn-secondary">Download Texts</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bibliography Section -->
+    <section class="luxury-section" id="bibliography">
+      <div class="luxury-section-header">
+        <h2 class="luxury-section-title">Academic Bibliography</h2>
+        <p class="luxury-section-subtitle">
+          Complete reference system with 500+ peer-reviewed academic sources
+        </p>
+      </div>
+
+      <div class="kb-table-container">
+        <table class="kb-table">
+          <thead>
+            <tr>
+              <th>Author</th>
+              <th>Title</th>
+              <th>Publisher</th>
+              <th>Year</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vishvanath Kashinath Rajwade</td>
+              <td>Ṛgveda Critical Edition</td>
+              <td>Bhandarkar Oriental Research Institute</td>
+              <td>1933-1972</td>
+              <td>Critical Edition</td>
+            </tr>
+            <tr>
+              <td>Max Müller</td>
+              <td>Rig-Veda-Samhita</td>
+              <td>Oxford University Press</td>
+              <td>1890</td>
+              <td>Translation</td>
+            </tr>
+            <tr>
+              <td>S. Radhakrishnan</td>
+              <td>The Principal Upanishads</td>
+              <td>HarperCollins</td>
+              <td>1953</td>
+              <td>Translation</td>
+            </tr>
+            <tr>
+              <td>P. V. Kane</td>
+              <td>History of Dharmaśāstra</td>
+              <td>Bhandarkar Oriental Research Institute</td>
+              <td>1941-1975</td>
+              <td>Reference Work</td>
+            </tr>
+            <tr>
+              <td>J. A. B. van Buitenen</td>
+              <td>The Mahābhārata</td>
+              <td>University of Chicago Press</td>
+              <td>1973-1978</td>
+              <td>Translation</td>
+            </tr>
+            <tr>
+              <td>R. P. Goldman</td>
+              <td>The Rāmāyaṇa of Vālmīki</td>
+              <td>Princeton University Press</td>
+              <td>1984-1996</td>
+              <td>Translation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Sample Text Display Section -->
+    <section class="luxury-section" id="sample-texts">
+      <div class="luxury-section-header">
+        <h2 class="luxury-section-title">Sample Texts</h2>
+        <p class="luxury-section-subtitle">
+          Examples of Sanskrit texts with proper IAST transliteration and translation
+        </p>
+      </div>
+
+      <div class="kb-text-display">
+        <div class="kb-sanskrit-text">ॐ पूर्णमदः पूर्णमिदं पूर्णात् पूर्णमुदच्यते</div>
+        <div class="kb-iast-text">oṁ pūrṇamadaḥ pūrṇamidaṁ pūrṇāt pūrṇamudacyate</div>
+        <div class="kb-translation">
+          "That is whole, this is whole; from the whole, the whole becomes whole. When the whole is
+          taken away from the whole, the whole still remains." - Isha Upanishad, Verse 1
+        </div>
+      </div>
+
+      <div class="kb-text-display">
+        <div class="kb-sanskrit-text">असतो मा सद्गमय तमसो मा ज्योतिर्गमय</div>
+        <div class="kb-iast-text">asto mā sadgamaya tamaso mā jyotirgamaya</div>
+        <div class="kb-translation">
+          "Lead me from the unreal to the real, from darkness to light, from death to immortality."
+          - Brihadaranyaka Upanishad, 1.3.28
+        </div>
+      </div>
+
+      <div class="kb-text-display">
+        <div class="kb-sanskrit-text">धर्मो रक्षति रक्षितः</div>
+        <div class="kb-iast-text">dharmaḥ rakṣati rakṣitaḥ</div>
+        <div class="kb-translation">
+          "Dharma protects those who protect dharma." - Mahabharata, Vana Parva
+        </div>
+      </div>
+    </section>
+
+    <!-- Luxury Footer -->
+    <footer class="luxury-footer">
+      <div class="luxury-footer-content">
+        <div class="luxury-footer-brand">
+          <div class="luxury-om-symbol">ॐ</div>
+          <div class="luxury-brand-text">
+            <div class="luxury-brand-title">SanskritNova</div>
+            <div class="luxury-brand-subtitle">संस्कृत ज्ञान प्रणाली</div>
+          </div>
+        </div>
+
+        <div class="luxury-footer-links">
+          <div class="luxury-footer-section">
+            <h4>Knowledge Base</h4>
+            <ul>
+              <li><a href="#search">Search</a></li>
+              <li><a href="#vedic">Vedic Corpus</a></li>
+              <li><a href="#philosophy">Philosophy</a></li>
+              <li><a href="#manuscripts">Manuscripts</a></li>
+            </ul>
+          </div>
+
+          <div class="luxury-footer-section">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#bibliography">Bibliography</a></li>
+              <li><a href="#sample-texts">Sample Texts</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="luxury-footer-section">
+            <h4>Connect</h4>
+            <ul>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="luxury-footer-bottom">
+        <div class="luxury-footer-copyright">
+          © 2026 SanskritNova AI. All rights reserved. Research-Grade Digital Knowledge Base.
+        </div>
+        <div class="luxury-footer-social">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="Facebook">𝕐</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Luxury Loading Overlay -->
+    <div class="luxury-loading-overlay" id="loading-overlay">
+      <div class="luxury-loading-spinner">
+        <div class="luxury-spinner"></div>
+        <div class="luxury-loading-text">Loading...</div>
       </div>
     </div>
-  </footer>
 
-  <!-- Luxury Loading Overlay -->
-  <div class="luxury-loading-overlay" id="loading-overlay">
-    <div class="luxury-loading-spinner">
-      <div class="luxury-spinner"></div>
-      <div class="luxury-loading-text">Loading...</div>
-    </div>
-  </div>
+    <!-- Luxury Toast Container -->
+    <div class="luxury-toast-container" id="toast-container"></div>
 
-  <!-- Luxury Toast Container -->
-  <div class="luxury-toast-container" id="toast-container"></div>
-
-  <!-- Scripts -->
-  <script src="scripts/knowledge-base-app.js"></script>
-</body>
+    <!-- Scripts -->
+    <script src="scripts/knowledge-base-app.js"></script>
+  </body>
 </html>

@@ -5,10 +5,12 @@
    VIRAL NAVIGATION
    ============================================ */
 .viral-nav {
-  background: linear-gradient(135deg, 
-    rgba(212, 175, 55, 0.95) 0%, 
-    rgba(255, 215, 0, 0.95) 50%, 
-    rgba(184, 148, 31, 0.95) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.95) 0%,
+    rgba(255, 215, 0, 0.95) 50%,
+    rgba(184, 148, 31, 0.95) 100%
+  );
   backdrop-filter: blur(20px);
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   position: fixed;
@@ -142,10 +144,10 @@
    VIRAL HERO SECTION
    ============================================ */
 .viral-hero {
-  background: 
+  background:
     radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 70% 80%, rgba(255, 99, 71, 0.1) 0%, transparent 50%),
-    linear-gradient(135deg, #FF6B35 0%, #FFD700 50%, #D4AF37 100%);
+    linear-gradient(135deg, #ff6b35 0%, #ffd700 50%, #d4af37 100%);
   padding: 8rem 2rem 4rem;
   margin-top: 80px;
   position: relative;
@@ -165,8 +167,13 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
 }
 
 .viral-hero-content {
@@ -192,8 +199,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .viral-hero-title {
@@ -857,17 +869,17 @@
 }
 
 .viral-share-btn.whatsapp:hover {
-  background: #25D366;
+  background: #25d366;
   color: white;
 }
 
 .viral-share-btn.twitter:hover {
-  background: #1DA1F2;
+  background: #1da1f2;
   color: white;
 }
 
 .viral-share-btn.instagram:hover {
-  background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
   color: white;
 }
 
@@ -1181,8 +1193,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .viral-loading-text {
@@ -1229,34 +1245,34 @@
   .viral-nav-menu {
     display: none;
   }
-  
+
   .viral-mobile-menu-toggle {
     display: flex;
   }
-  
+
   .viral-hero {
     padding: 6rem 1rem 3rem;
     margin-top: 70px;
   }
-  
+
   .viral-hero-title {
     font-size: 2rem;
   }
-  
+
   .viral-sanskrit-text {
     font-size: 1.5rem;
   }
-  
+
   .viral-hero-stats {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
-  
+
   .viral-hero-actions {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .viral-ai-tutor-container,
   .viral-handwriting-container,
   .viral-voice-container,
@@ -1264,29 +1280,29 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .viral-section {
     padding: 3rem 1rem;
   }
-  
+
   .viral-section-title {
     font-size: 2rem;
   }
-  
+
   .viral-ai-features,
   .viral-badges-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .viral-share-options {
     grid-template-columns: 1fr;
   }
-  
+
   .viral-footer-content {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
+
   .viral-footer-bottom {
     flex-direction: column;
     text-align: center;
@@ -1296,72 +1312,74 @@
 /* ============================================
    DARK MODE FOR VIRAL FEATURES
    ============================================ */
-[data-theme="dark"] .viral-nav {
-  background: linear-gradient(135deg, 
-    rgba(10, 10, 10, 0.95) 0%, 
-    rgba(26, 26, 26, 0.95) 50%, 
-    rgba(42, 42, 42, 0.95) 100%);
+[data-theme='dark'] .viral-nav {
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 10, 0.95) 0%,
+    rgba(26, 26, 26, 0.95) 50%,
+    rgba(42, 42, 42, 0.95) 100%
+  );
 }
 
-[data-theme="dark"] .viral-hero {
-  background: 
+[data-theme='dark'] .viral-hero {
+  background:
     radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
     radial-gradient(circle at 70% 80%, rgba(255, 99, 71, 0.05) 0%, transparent 50%),
-    linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+    linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
 }
 
-[data-theme="dark"] .viral-hero-title,
-[data-theme="dark"] .viral-sanskrit-text,
-[data-theme="dark"] .viral-section-title {
+[data-theme='dark'] .viral-hero-title,
+[data-theme='dark'] .viral-sanskrit-text,
+[data-theme='dark'] .viral-section-title {
   color: var(--luxury-text-primary);
 }
 
-[data-theme="dark"] .viral-hero-subtitle,
-[data-theme="dark"] .viral-section-subtitle {
+[data-theme='dark'] .viral-hero-subtitle,
+[data-theme='dark'] .viral-section-subtitle {
   color: var(--luxury-text-secondary);
 }
 
-[data-theme="dark"] .viral-btn-secondary {
+[data-theme='dark'] .viral-btn-secondary {
   background: rgba(42, 42, 42, 0.9);
   color: var(--luxury-text-primary);
   border-color: rgba(212, 175, 55, 0.3);
 }
 
-[data-theme="dark"] .viral-ai-chat,
-[data-theme="dark"] .viral-ai-feature,
-[data-theme="dark"] .viral-badge,
-[data-theme="dark"] .viral-share-btn {
+[data-theme='dark'] .viral-ai-chat,
+[data-theme='dark'] .viral-ai-feature,
+[data-theme='dark'] .viral-badge,
+[data-theme='dark'] .viral-share-btn {
   background: rgba(26, 26, 26, 0.9);
   color: var(--luxury-text-primary);
 }
 
-[data-theme="dark"] .viral-message-content {
+[data-theme='dark'] .viral-message-content {
   background: rgba(42, 42, 42, 0.9);
   color: var(--luxury-text-primary);
 }
 
-[data-theme="dark"] .viral-message.ai .viral-message-content {
+[data-theme='dark'] .viral-message.ai .viral-message-content {
   background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-gold-light) 100%);
   color: var(--luxury-black);
 }
 
-[data-theme="dark"] .viral-canvas {
+[data-theme='dark'] .viral-canvas {
   background: rgba(42, 42, 42, 0.9);
 }
 
-[data-theme="dark"] .viral-testimonial,
-[data-theme="dark"] .viral-leaderboard-list,
-[data-theme="dark"] .viral-social-testimonial {
+[data-theme='dark'] .viral-testimonial,
+[data-theme='dark'] .viral-leaderboard-list,
+[data-theme='dark'] .viral-social-testimonial {
   background: rgba(26, 26, 26, 0.9);
   color: var(--luxury-text-primary);
 }
 
-[data-theme="dark"] .viral-chat-input {
+[data-theme='dark'] .viral-chat-input {
   background: rgba(42, 42, 42, 0.9);
   color: var(--luxury-text-primary);
 }
 
-[data-theme="dark"] .viral-toast {
+[data-theme='dark'] .viral-toast {
   background: rgba(26, 26, 26, 0.9);
   color: var(--luxury-text-primary);
 }

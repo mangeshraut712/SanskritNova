@@ -55,7 +55,8 @@
 }
 
 @keyframes float-mantra {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotate(0deg);
     opacity: 0.3;
   }
@@ -330,7 +331,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
@@ -1008,8 +1010,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-spinner p {
@@ -1024,61 +1030,61 @@
   .mobile-menu-toggle {
     display: flex;
   }
-  
+
   .nav-actions {
     display: none;
   }
-  
+
   .nav-link .nav-text {
     display: none;
   }
-  
+
   .hero-stats {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .demo-container {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .demo-actions {
     grid-template-columns: 1fr;
   }
-  
+
   .resource-categories {
     grid-template-columns: 1fr;
   }
-  
+
   .grammar-tabs {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .chat-suggestions {
     flex-direction: column;
   }
-  
+
   .translit-controls {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .dictionary-search {
     flex-direction: column;
   }
-  
+
   .toast-container {
     left: 1rem;
     right: 1rem;
   }
-  
+
   .toast {
     min-width: auto;
   }
@@ -1088,25 +1094,25 @@
   .hero-content {
     padding: 0 1rem;
   }
-  
+
   .hero-title {
     font-size: 2rem;
   }
-  
+
   .section-header {
     padding: 0 1rem;
   }
-  
+
   .grammar-container,
   .dictionary-container,
   .resources-container {
     padding: 0 1rem;
   }
-  
+
   .lesson-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .result-meanings {
     flex-direction: column;
   }

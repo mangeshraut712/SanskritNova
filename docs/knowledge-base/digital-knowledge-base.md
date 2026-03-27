@@ -1,4 +1,5 @@
 # Sanskrit & Hinduism Digital Knowledge Base
+
 ## Research-Grade Virtual Library of Primary Sources and Scholarly Research
 
 ---
@@ -12,6 +13,7 @@ This digital knowledge base is dedicated to providing academically substantiated
 ## 🗿 Methodology & Sources
 
 ### Primary Source Repositories
+
 - **GRETIL** (Göttingen Register of Electronic Texts in Indian Languages)
 - **Muktabodha Digital Library** (Digital Corpus of Sanskrit Texts)
 - **IGNCA Archives** (Indira Gandhi National Centre for the Arts)
@@ -20,6 +22,7 @@ This digital knowledge base is dedicated to providing academically substantiated
 - **Archaeological Survey of India** Epigraphic Records
 
 ### Academic Standards
+
 - Peer-reviewed scholarly publications only
 - Critical editions of Sanskrit texts (BORI, Baroda editions)
 - Recognized Oriental studies departments worldwide
@@ -99,11 +102,13 @@ This digital knowledge base is dedicated to providing academically substantiated
 ### 1.1 Vedic Sanskrit (c. 1500-500 BCE)
 
 **Primary Sources:**
+
 - Ṛgveda Saṁhitā (c. 1500-1200 BCE)
 - Oldest manuscript evidence: 11th century CE Nepalese birch bark manuscripts
 - Critical edition: Bhandarkar Oriental Research Institute (BORI)
 
 **Linguistic Characteristics:**
+
 ```
 Original Vedic (IAST): "agním īḷe puróhitam"
 Translation: "I praise Agni, the chief priest"
@@ -111,36 +116,42 @@ Source: Ṛgveda 1.1.1, BORI Critical Edition
 ```
 
 **Academic References:**
-- Wackernagel, J. (1905). *Altindische Grammatik*. Göttingen.
-- Macdonell, A. A. (1916). *A Vedic Grammar for Students*. Oxford University Press.
-- Bloomfield, M. (1907). *The Religion of the Rig-Veda*. Göttingen.
+
+- Wackernagel, J. (1905). _Altindische Grammatik_. Göttingen.
+- Macdonell, A. A. (1916). _A Vedic Grammar for Students_. Oxford University Press.
+- Bloomfield, M. (1907). _The Religion of the Rig-Veda_. Göttingen.
 
 ### 1.2 Classical Sanskrit (c. 500 BCE-1000 CE)
 
 **Primary Sources:**
+
 - Pāṇini's Aṣṭādhyāyī (c. 4th century BCE)
 - Kālidāsa's works (c. 4th-5th century CE)
 - Manuscript traditions: Palm leaf, birch bark, copper plates
 
 **Standardization Evidence:**
+
 ```
 Pāṇini 1.4.14: "na vibhajitaś ca" (no separation of sounds)
 Source: Aṣṭādhyāyī, Bhandarkar Oriental Research Institute
 ```
 
 **Academic References:**
-- Cardona, G. (1976). *Pāṇini: His Work and Its Traditions*. Motilal Banarsidass.
-- Sharma, R. N. (1968). *A Critical History of Sanskrit Literature*. Motilal Banarsidass.
+
+- Cardona, G. (1976). _Pāṇini: His Work and Its Traditions_. Motilal Banarsidass.
+- Sharma, R. N. (1968). _A Critical History of Sanskrit Literature_. Motilal Banarsidass.
 
 ### 1.3 Medieval Sanskrit (c. 1000-1800 CE)
 
 **Primary Sources:**
+
 - Bhakti movement literature
 - Philosophical treatises
 - Temple inscriptions
 
 **Academic References:**
-- Pollock, S. (2006). *The Language of the Gods in the World of Men*. University of California Press.
+
+- Pollock, S. (2006). _The Language of the Gods in the World of Men_. University of California Press.
 
 ---
 
@@ -149,6 +160,7 @@ Source: Aṣṭādhyāyī, Bhandarkar Oriental Research Institute
 ### 2.1 Phonetics and Phonology
 
 **Vedic Phonemic Inventory** (based on Ṛgvedic evidence):
+
 ```
 Vowels (स्वर): a, ā, i, ī, u, ū, ṛ, ṝ, ḷ, ḹ, e, ai, o, au
 Consonants (व्यञ्जन):
@@ -161,16 +173,18 @@ Consonants (व्यञ्जन):
   - Sibilants (उष्म): ś, ṣ, s, h
 ```
 
-**Source:** Ṛgveda phonetic analysis, *Journal of the American Oriental Society*, Vol. 30, No. 2 (1950).
+**Source:** Ṛgveda phonetic analysis, _Journal of the American Oriental Society_, Vol. 30, No. 2 (1950).
 
 ### 2.2 Pāṇini's Aṣṭādhyāyī
 
 **Complete Grammar System:**
+
 - 3,959 sūtras (rules)
 - 8 chapters (adhyāyas)
 - 4,000+ aphorisms
 
 **Key Sūtras with Academic Commentary:**
+
 ```
 1.1.1: "vṛddhir ādaiḥ" (ā is long in the beginning)
 1.1.2: "atonekḥ savarṇe dhātuprasavane" (in the same word, in the formation of a dhātu from a root)
@@ -179,24 +193,28 @@ Consonants (व्यञ्जन):
 **Critical Edition:** Bhandarkar Oriental Research Institute, Pune (1962-1972)
 
 **Scholarly Analysis:**
-- Kiparsky, P. (1995). *Pāṇini and His Work*. Oxford University Press.
-- Joshi, S. D., & Roodbergen, J. A. F. (1979). *Pāṇini's Aṣṭādhyāyī*. Motilal Banarsidass.
+
+- Kiparsky, P. (1995). _Pāṇini and His Work_. Oxford University Press.
+- Joshi, S. D., & Roodbergen, J. A. F. (1979). _Pāṇini's Aṣṭādhyāyī_. Motilal Banarsidass.
 
 ### 2.3 Mahābhāṣya of Patañjali
 
 **Historical Context:**
+
 - Commentary on Pāṇini's grammar
 - c. 2nd century BCE
 - Provides linguistic evidence of Sanskrit usage
 
 **Key Passages:**
+
 ```
 "pāṇinīyam dharmapātram" (Pāṇini's work is the repository of dharma)
 Source: Mahābhāṣya 1.1.1
 ```
 
 **Academic References:**
-- Bronkhorst, J. (1996). *Patañjali and the Yogasūtras*. Oxford University Press.
+
+- Bronkhorst, J. (1996). _Patañjali and the Yogasūtras_. Oxford University Press.
 
 ---
 
@@ -205,11 +223,13 @@ Source: Mahābhāṣya 1.1.1
 ### 3.1 Ṛgveda (Rigveda)
 
 **Manuscript Evidence:**
+
 - **Oldest extant manuscript**: 11th century CE Nepalese birch bark (Cambridge University Library MS Add. 1529)
 - **Critical edition**: BORI Pune (1933-1972), 5 volumes
 - **Digital corpus**: GRETIL (Göttingen Register of Electronic Texts)
 
 **Textual Structure:**
+
 ```
 Total Mandalas: 10
 Total Suktas: 1,028
@@ -218,6 +238,7 @@ Dating: c. 1500-1200 BCE (based on astronomical references)
 ```
 
 **Key Astronomical Dating Evidence:**
+
 ```
 RV 1.164.11: "kālāḥ paśyati yo na sahasraṁ sahasrāṇi yugaṁ"
 (He who sees beyond a thousand thousand ages)
@@ -225,18 +246,21 @@ Source: Achar, B. N. (2000). "Origin of the Prehistoric Astronomy of India." Jou
 ```
 
 **Scholarly Editions:**
-- Theodor Aufrecht (1877). *Die Hymnen des Rigveda*. Bonn.
-- Max Müller (1890). *Rig-Veda-Samhita*. Oxford University Press.
+
+- Theodor Aufrecht (1877). _Die Hymnen des Rigveda_. Bonn.
+- Max Müller (1890). _Rig-Veda-Samhita_. Oxford University Press.
 - BORI Critical Edition (1933-1972)
 
 ### 3.2 Sāmaveda (Samaveda)
 
 **Primary Sources:**
+
 - Kauthuma recension (most common)
 - Jaiminiya recension
 - Ranayaniya recension
 
 **Musical Notation Evidence:**
+
 ```
 Sāmaveda 1.1.1: "agne agnīḥ soma īhuhavāma"
 Musical notation: Three tones (grāma, svara, mādhya)
@@ -244,37 +268,44 @@ Source: *The Samaveda Samhita of the Kauthuma School*, Motilal Banarsidass
 ```
 
 **Academic References:**
-- Howard, W. (1977). *The Samaveda Samhita*. Motilal Banarsidass.
-- Van Nooten, B. (1997). *The Origin of Vedic Musical Scales*. Journal of the Oriental Institute.
+
+- Howard, W. (1977). _The Samaveda Samhita_. Motilal Banarsidass.
+- Van Nooten, B. (1997). _The Origin of Vedic Musical Scales_. Journal of the Oriental Institute.
 
 ### 3.3 Yajurveda (Yajurveda)
 
 **Two Major Traditions:**
+
 - **Krishna Yajurveda** (Black Yajurveda): Taittirīya Samhita
 - **Shukla Yajurveda** (White Yajurveda): Vājasaneyi Samhita
 
 **Manuscript Evidence:**
+
 - **Taittirīya Samhita**: 19th century palm leaf manuscripts (Bhandarkar Institute)
 - **Vājasaneyi Samhita**: 15th century Nepalese manuscripts
 
 **Academic References:**
-- Keith, A. B. (1914). *The Yajur Veda*. Harvard Oriental Series.
-- Caland, W. (1906). *Das Yajur Veda*. Strassburg.
+
+- Keith, A. B. (1914). _The Yajur Veda_. Harvard Oriental Series.
+- Caland, W. (1906). _Das Yajur Veda_. Strassburg.
 
 ### 3.4 Atharvaveda (Atharvaveda)
 
 **Distinctive Features:**
+
 - Magical and healing formulas
 - Social customs and rituals
 - Later addition to Vedic corpus (c. 1000 BCE)
 
 **Manuscript Traditions:**
+
 - Shaunaka recension (most common)
 - Paippalada recension (Kashmir tradition)
 
 **Academic References:**
-- Bloomfield, M. (1897). *The Atharvaveda*. Oxford University Press.
-- Whitney, W. D. (1905). *Atharva-Veda Samhita*. Harvard University Press.
+
+- Bloomfield, M. (1897). _The Atharvaveda_. Oxford University Press.
+- Whitney, W. D. (1905). _Atharva-Veda Samhita_. Harvard University Press.
 
 ---
 
@@ -283,6 +314,7 @@ Source: *The Samaveda Samhita of the Kauthuma School*, Motilal Banarsidass
 ### 4.1 Brāhmaṇas (Brahmanas)
 
 **Primary Brāhmaṇas with Dating:**
+
 ```
 Aitareya Brahmana (Ṛgvedic): c. 800-600 BCE
 Taittiriya Brahmana (Krishna Yajurvedic): c. 700-500 BCE
@@ -290,27 +322,32 @@ Shatapatha Brahmana (Shukla Yajurvedic): c. 700-600 BCE
 ```
 
 **Critical Editions:**
-- *Shatapatha Brahmana*, Bhandarkar Oriental Research Institute
-- *Aitareya Brahmana*, Motilal Banarsidass
+
+- _Shatapatha Brahmana_, Bhandarkar Oriental Research Institute
+- _Aitareya Brahmana_, Motilal Banarsidass
 
 **Academic References:**
-- Eggeling, H. (1885-1886). *Shatapatha-Brāhmana*. Oxford University Press.
-- Keith, A. B. (1920). *Rigveda Brahmanas*. Harvard Oriental Series.
+
+- Eggeling, H. (1885-1886). _Shatapatha-Brāhmana_. Oxford University Press.
+- Keith, A. B. (1920). _Rigveda Brahmanas_. Harvard Oriental Series.
 
 ### 4.2 Āraṇyakas (Aranyakas)
 
 **Textual Evidence:**
+
 ```
 Aitareya Aranyaka: Forest treatises on philosophical concepts
 Taittiriya Aranyaka: Meditative practices and rituals
 ```
 
 **Academic References:**
-- Thieme, P. (1966). *Researches in Vedic and Classical Literature*. Motilal Banarsidass.
+
+- Thieme, P. (1966). _Researches in Vedic and Classical Literature_. Motilal Banarsidass.
 
 ### 4.3 Upaniṣads (Upanishads)
 
 **Major Upaniṣads with Dating:**
+
 ```
 Bṛhadāraṇyaka Upaniṣad: c. 700-600 BCE
 Chāndogya Upaniṣad: c. 700-600 BCE
@@ -320,16 +357,19 @@ Mundaka Upaniṣad: c. 300-200 BCE
 ```
 
 **Critical Editions:**
-- *The Principal Upanishads*, Oxford University Press (1948)
-- *Brihadaranyaka Upanishad*, Bhandarkar Oriental Research Institute
+
+- _The Principal Upanishads_, Oxford University Press (1948)
+- _Brihadaranyaka Upanishad_, Bhandarkar Oriental Research Institute
 
 **Academic References:**
-- Radhakrishnan, S. (1953). *The Principal Upanishads*. HarperCollins.
-- Deussen, P. (1906). *The Philosophy of the Upanishads*. Charles Scribner's Sons.
+
+- Radhakrishnan, S. (1953). _The Principal Upanishads_. HarperCollins.
+- Deussen, P. (1906). _The Philosophy of the Upanishads_. Charles Scribner's Sons.
 
 ### 4.4 Vedāṅgas (Vedangas)
 
 **Six Auxiliary Sciences:**
+
 ```
 1. Śikṣā (Phonetics): Prātiśākhya texts
 2. Kalpa (Ritual): Śrauta and Gṛhya Sūtras
@@ -340,7 +380,8 @@ Mundaka Upaniṣad: c. 300-200 BCE
 ```
 
 **Academic References:**
-- Kane, P. V. (1941). *History of Dharmaśāstra*, Vol. I. Bhandarkar Oriental Research Institute.
+
+- Kane, P. V. (1941). _History of Dharmaśāstra_, Vol. I. Bhandarkar Oriental Research Institute.
 
 ---
 
@@ -351,10 +392,12 @@ Mundaka Upaniṣad: c. 300-200 BCE
 #### 5.1.1 Sāṃkhya (Kapila's System)
 
 **Primary Texts:**
-- *Sāṃkhyakārikā* of Īśvarakṛṣṇa (c. 4th century CE)
-- *Sāṃkhyasūtra* of Kapila (reconstructed)
+
+- _Sāṃkhyakārikā_ of Īśvarakṛṣṇa (c. 4th century CE)
+- _Sāṃkhyasūtra_ of Kapila (reconstructed)
 
 **Key Concepts:**
+
 ```
 Puruṣa (Consciousness) and Prakṛti (Nature)
 25 Tattvas (principles)
@@ -362,15 +405,18 @@ Three Guṇas (qualities): sattva, rajas, tamas
 ```
 
 **Academic References:**
-- Larson, G. J. (1969). *Classical Sāṃkhya*. Motilal Banarsidass.
-- Sinha, J. (1976). *The Sāṃkhya Philosophy*. Motilal Banarsidass.
+
+- Larson, G. J. (1969). _Classical Sāṃkhya_. Motilal Banarsidass.
+- Sinha, J. (1976). _The Sāṃkhya Philosophy_. Motilal Banarsidass.
 
 #### 5.1.2 Yoga (Patañjali's System)
 
 **Primary Text:**
-- *Yogasūtras* of Patañjali (c. 2nd century BCE)
+
+- _Yogasūtras_ of Patañjali (c. 2nd century BCE)
 
 **Eight Limbs (Aṣṭāṅga):**
+
 ```
 1. Yama (Ethical disciplines)
 2. Niyama (Observances)
@@ -382,33 +428,39 @@ Three Guṇas (qualities): sattva, rajas, tamas
 8. Samādhi (Absorption)
 ```
 
-**Critical Edition:** *Yogasūtras of Patañjali*, Harvard University Press (1977)
+**Critical Edition:** _Yogasūtras of Patañjali_, Harvard University Press (1977)
 
 **Academic References:**
-- Whicher, I. (1998). *The Yoga Upanishads*. State University of New York Press.
-- Feuerstein, G. (2001). *The Yoga-Sutra of Patanjali*. Inner Traditions.
+
+- Whicher, I. (1998). _The Yoga Upanishads_. State University of New York Press.
+- Feuerstein, G. (2001). _The Yoga-Sutra of Patanjali_. Inner Traditions.
 
 #### 5.1.3 Nyāya (Logic School)
 
 **Primary Text:**
-- *Nyāyasūtra* of Akṣapāda Gautama (c. 2nd century CE)
+
+- _Nyāyasūtra_ of Akṣapāda Gautama (c. 2nd century CE)
 
 **Sixteen Categories (Padārthas):**
+
 ```
 Pramāṇa (valid knowledge): Pratyakṣa, Anumāna, Upamāna, Śabda
 Prameya (objects of knowledge): Dravya, Guṇa, Karma, Sāmānya, Viśeṣa, Saṃsarga, Vināśa, Abhāva, Ativikāri
 ```
 
 **Academic References:**
-- Matilal, B. K. (1977). *Indian Logic*. Motilal Banarsidass.
-- Potter, K. H. (1977). *The Encyclopedia of Indian Philosophies*. Princeton University Press.
+
+- Matilal, B. K. (1977). _Indian Logic_. Motilal Banarsidass.
+- Potter, K. H. (1977). _The Encyclopedia of Indian Philosophies_. Princeton University Press.
 
 #### 5.1.4 Vaiśeṣika (Atomic School)
 
 **Primary Text:**
-- *Vaiśeṣikasūtra* of Kaṇāda (c. 2nd century BCE)
+
+- _Vaiśeṣikasūtra_ of Kaṇāda (c. 2nd century BCE)
 
 **Seven Categories (Padārthas):**
+
 ```
 1. Dravya (substance): nine types including ākāśa, kāla, dik, manas
 2. Guṇa (quality): 24 types
@@ -420,16 +472,19 @@ Prameya (objects of knowledge): Dravya, Guṇa, Karma, Sāmānya, Viśeṣa, Sa�
 ```
 
 **Academic References:**
-- Halbfass, W. (1973). *On the Ontology of the Classical Vaiśeṣika*. Motilal Banarsidass.
-- Dandekar, R. N. (1971). *Vaiśeṣika System*. Bhandarkar Oriental Research Institute.
+
+- Halbfass, W. (1973). _On the Ontology of the Classical Vaiśeṣika_. Motilal Banarsidass.
+- Dandekar, R. N. (1971). _Vaiśeṣika System_. Bhandarkar Oriental Research Institute.
 
 #### 5.1.5 Mīmāṃsā (Interpretive School)
 
 **Primary Texts:**
-- *Mīmāṃsāsūtra* of Jaimini (c. 300-200 BCE)
-- *Ślokavārttika* of Kumārila Bhaṭṭa (c. 7th century CE)
+
+- _Mīmāṃsāsūtra_ of Jaimini (c. 300-200 BCE)
+- _Ślokavārttika_ of Kumārila Bhaṭṭa (c. 7th century CE)
 
 **Core Concepts:**
+
 ```
 Dharma as eternal duty
 Vedic injunctions as authoritative
@@ -437,16 +492,19 @@ Six means of valid knowledge
 ```
 
 **Academic References:**
-- Ghoshal, U. (1977). *Mīmāṃsā Theory of Meaning*. Motilal Banarsidass.
-- Taber, J. (2005). *The Hindu Hermeneutics*. State University of New York Press.
+
+- Ghoshal, U. (1977). _Mīmāṃsā Theory of Meaning_. Motilal Banarsidass.
+- Taber, J. (2005). _The Hindu Hermeneutics_. State University of New York Press.
 
 #### 5.1.6 Vedānta (Uttara Mīmāṃsā)
 
 **Primary Texts:**
-- *Brahmasūtra* of Bādarāyaṇa (c. 2nd century BCE)
-- *Śaṅkara's Commentary* (c. 8th century CE)
+
+- _Brahmasūtra_ of Bādarāyaṇa (c. 2nd century BCE)
+- _Śaṅkara's Commentary_ (c. 8th century CE)
 
 **Three Fundamental Commentaries:**
+
 ```
 1. Advaita Vedānta: Ādi Śaṅkara (c. 788-820 CE)
 2. Viśiṣṭādvaita: Rāmānuja (c. 1017-1137 CE)
@@ -454,8 +512,9 @@ Six means of valid knowledge
 ```
 
 **Academic References:**
-- Deutsch, E. (1973). *Advaita Vedānta: A Philosophical Reconstruction*. University of Hawaii Press.
-- Sharma, B. N. K. (1962). *Advaita Vedānta*. Motilal Banarsidass.
+
+- Deutsch, E. (1973). _Advaita Vedānta: A Philosophical Reconstruction_. University of Hawaii Press.
+- Sharma, B. N. K. (1962). _Advaita Vedānta_. Motilal Banarsidass.
 
 ---
 
@@ -464,16 +523,19 @@ Six means of valid knowledge
 ### 6.1 Rāmāyaṇa
 
 **Critical Editions:**
+
 - **Baroda Critical Edition** (1960-1975): Oriental Institute, Baroda
 - **Southern Recension**: 7 Kāṇḍas (books)
 - **Northern Recension**: 6 Kāṇḍas + Uttarakāṇḍa
 
 **Manuscript Evidence:**
+
 - Oldest palm leaf manuscripts: 11th century CE
 - Nepalese manuscripts: 12th century CE
 - Southeast Asian versions: 14th-15th centuries
 
 **Dating Evidence:**
+
 ```
 Astronomical references: "nakṣatrāṇām sapta caiva" (seven constellations)
 Linguistic analysis: Middle Sanskrit features
@@ -481,22 +543,26 @@ Archaeological correlations: Ayodhya, Lanka
 ```
 
 **Academic References:**
-- Goldman, R. P. (1984-1996). *The Rāmāyaṇa of Vālmīki*. Princeton University Press.
-- Brockington, J. L. (1998). *The Sanskrit Epics*. Motilal Banarsidass.
+
+- Goldman, R. P. (1984-1996). _The Rāmāyaṇa of Vālmīki_. Princeton University Press.
+- Brockington, J. L. (1998). _The Sanskrit Epics_. Motilal Banarsidass.
 
 ### 6.2 Mahābhārata
 
 **Critical Edition:**
+
 - **BORI Critical Edition** (1919-1966): Bhandarkar Oriental Research Institute, Pune
 - **18 Parvans** (books)
 - **99,000+ ślokas** (verses)
 
 **Manuscript Traditions:**
+
 - Northern recension (Devanagari scripts)
 - Southern recision (Grantha scripts)
 - Eastern recession (Bengali scripts)
 
 **Historical Evidence:**
+
 ```
 Internal dating: "yugānām sahasram" (thousand ages)
 External evidence: Greek accounts of "Sandrokottos"
@@ -504,8 +570,9 @@ Archaeological: Hastinapura, Dwarka excavations
 ```
 
 **Academic References:**
-- Sukthankar, V. S. (1933-1966). *The Mahābhārata*, BORI Critical Edition
-- van Buitenen, J. A. B. (1973-1978). *The Mahābhārata*. University of Chicago Press.
+
+- Sukthankar, V. S. (1933-1966). _The Mahābhārata_, BORI Critical Edition
+- van Buitenen, J. A. B. (1973-1978). _The Mahābhārata_. University of Chicago Press.
 
 ---
 
@@ -514,6 +581,7 @@ Archaeological: Hastinapura, Dwarka excavations
 ### 7.1 Classification and Dating
 
 **Mahāpurāṇas (Major Puranas):**
+
 ```
 1. Brahma Purāṇa: c. 10th century CE
 2. Padma Purāṇa: c. 9th century CE
@@ -536,11 +604,13 @@ Archaeological: Hastinapura, Dwarka excavations
 ```
 
 **Upapurāṇas (Minor Puranas):**
+
 - Additional 18 Puranas with varying dates (7th-15th centuries CE)
 
 **Academic References:**
-- Hazra, R. C. (1915-1923). *Studies in the Puranic Records*. University of Calcutta.
-- Rocher, L. (1986). *The Puranas*. Otto Harrassowitz.
+
+- Hazra, R. C. (1915-1923). _Studies in the Puranic Records_. University of Calcutta.
+- Rocher, L. (1986). _The Puranas_. Otto Harrassowitz.
 
 ---
 
@@ -549,6 +619,7 @@ Archaeological: Hastinapura, Dwarka excavations
 ### 8.1 Smṛtis (Traditional Laws)
 
 **Major Smṛtis with Dating:**
+
 ```
 Manusmṛti (Manu): c. 200 BCE - 200 CE (scholarly consensus)
 Yājñavalkya Smṛti: c. 3rd-4th century CE
@@ -558,16 +629,19 @@ Vasiṣṭha Smṛti: c. 8th-9th century CE
 ```
 
 **Critical Editions:**
-- *Manusmṛti with the Manubhāṣya of Medhātithi*, Motilal Banarsidass
-- *Yājñavalkya Smṛti*, Harvard Oriental Series
+
+- _Manusmṛti with the Manubhāṣya of Medhātithi_, Motilal Banarsidass
+- _Yājñavalkya Smṛti_, Harvard Oriental Series
 
 **Academic References:**
-- Kane, P. V. (1941-1975). *History of Dharmaśāstra*, 5 volumes. BORI.
-- Olivelle, P. (2005). *Manu's Code of Law*. Oxford University Press.
+
+- Kane, P. V. (1941-1975). _History of Dharmaśāstra_, 5 volumes. BORI.
+- Olivelle, P. (2005). _Manu's Code of Law_. Oxford University Press.
 
 ### 8.2 Sūtras (Aphoristic Texts)
 
 **Dharmasūtras:**
+
 ```
 Āpastamba Dharmasūtra: c. 500-300 BCE
 Gautama Dharmasūtra: c. 600-400 BCE
@@ -576,7 +650,8 @@ Vasiṣṭha Dharmasūtra: c. 300-100 BCE
 ```
 
 **Academic References:**
-- Kane, P. V. (1968). *History of Dharmaśāstra*, Vol. III. BORI.
+
+- Kane, P. V. (1968). _History of Dharmaśāstra_, Vol. III. BORI.
 
 ---
 
@@ -585,6 +660,7 @@ Vasiṣṭha Dharmasūtra: c. 300-100 BCE
 ### 9.1 Temple Inscriptions
 
 **Early Inscriptions:**
+
 ```
 Junagadh Rock Inscription (Rudradaman I): 150 CE
 Sanchi Inscriptions: 1st century BCE - 1st century CE
@@ -592,12 +668,14 @@ Ajanta Cave Inscriptions: 5th-6th century CE
 ```
 
 **Academic References:**
-- Sircar, D. C. (1965). *Indian Epigraphy*. Motilal Banarsidass.
-- Salomon, R. (1998). *Indian Epigraphy*. Oxford University Press.
+
+- Sircar, D. C. (1965). _Indian Epigraphy_. Motilal Banarsidass.
+- Salomon, R. (1998). _Indian Epigraphy_. Oxford University Press.
 
 ### 9.2 Copper Plate Grants
 
 **Major Grant Records:**
+
 ```
 Gupta Period Grants: 4th-6th centuries CE
 Chola Period Grants: 9th-13th centuries CE
@@ -605,7 +683,8 @@ Vijayanagara Grants: 14th-16th centuries CE
 ```
 
 **Academic References:**
-- Mehta, R. N. (1976). *Indian Epigraphy*. S. R. Publications.
+
+- Mehta, R. N. (1976). _Indian Epigraphy_. S. R. Publications.
 
 ---
 
@@ -616,6 +695,7 @@ Vijayanagara Grants: 14th-16th centuries CE
 #### 10.1.1 Ādi Śaṅkara (c. 788-820 CE)
 
 **Biographical Evidence:**
+
 ```
 Birthplace: Kaladi, Kerala
 Teacher: Govinda Bhagavatpada
@@ -624,16 +704,19 @@ Mathas: Four main monasteries (Sringeri, Puri, Dwarka, Badrinath)
 ```
 
 **Primary Sources:**
-- *Śaṅkaravijaya* of Mādhava (c. 14th century)
-- *Śaṅkaradigvijaya* of Vidyāraṇya (c. 17th century)
+
+- _Śaṅkaravijaya_ of Mādhava (c. 14th century)
+- _Śaṅkaradigvijaya_ of Vidyāraṇya (c. 17th century)
 
 **Academic References:**
-- Mayeda, S. (1992). *A Thousand Teachings of Advaita Vedānta*. State University of New York Press.
-- Hacker, P. (1995). *Philology and Confrontation*. Motilal Banarsidass.
+
+- Mayeda, S. (1992). _A Thousand Teachings of Advaita Vedānta_. State University of New York Press.
+- Hacker, P. (1995). _Philology and Confrontation_. Motilal Banarsidass.
 
 #### 10.1.2 Rāmānuja (c. 1017-1137 CE)
 
 **Biographical Evidence:**
+
 ```
 Birthplace: Sriperumbudur, Tamil Nadu
 Teacher: Yāmunācārya
@@ -642,12 +725,14 @@ Temple: Sri Ranganathaswamy Temple, Srirangam
 ```
 
 **Academic References:**
-- Carman, J. B. (1974). *The Theology of Rāmānuja*. Yale University Press.
-- van Buitenen, J. A. B. (1953). *Rāmānuja's Vedānta*. University of Chicago Press.
+
+- Carman, J. B. (1974). _The Theology of Rāmānuja_. Yale University Press.
+- van Buitenen, J. A. B. (1953). _Rāmānuja's Vedānta_. University of Chicago Press.
 
 #### 10.1.3 Madhva (c. 1238-1317 CE)
 
 **Biographical Evidence:**
+
 ```
 Birthplace: Pajaka, Karnataka
 Works: Commentary on Brahma Sūtras, ten Upanishads
@@ -655,7 +740,8 @@ Tradition: Dvaita Vedānta
 ```
 
 **Academic References:**
-- Sharma, B. N. K. (1961). *History of Dvaita Vedānta*. Motilal Banarsidass.
+
+- Sharma, B. N. K. (1961). _History of Dvaita Vedānta_. Motilal Banarsidass.
 
 ---
 
@@ -664,6 +750,7 @@ Tradition: Dvaita Vedānta
 ### 11.1 Prakrit Languages
 
 **Pāli Canon Evidence:**
+
 ```
 Pāli Tipiṭaka: 1st century BCE - 1st century CE
 Linguistic relationship: Middle Indo-Aryan languages
@@ -671,11 +758,13 @@ Sanskrit influence: Shared vocabulary and grammatical structures
 ```
 
 **Academic References:**
-- von Hinüber, J. (1995). *A Handbook of Pāli Literature*. Walter de Gruyter.
+
+- von Hinüber, J. (1995). _A Handbook of Pāli Literature_. Walter de Gruyter.
 
 ### 11.2 Tamil Sangam Literature
 
 **Chronological Correlation:**
+
 ```
 Sangam Period: c. 300 BCE - 300 CE
 Sanskrit loanwords in Tamil: Evidence of cultural exchange
@@ -683,11 +772,13 @@ Shared poetic conventions and meters
 ```
 
 **Academic References:**
-- Zvelebil, K. (1973). *Tamil Literature*. E.J. Brill.
+
+- Zvelebil, K. (1973). _Tamil Literature_. E.J. Brill.
 
 ### 11.3 Southeast Asian Sanskrit Inscriptions
 
 **Major Inscription Sites:**
+
 ```
 Indonesia: Prambanan temple inscriptions (9th century CE)
 Cambodia: Angkor Wat inscriptions (12th century CE)
@@ -696,7 +787,8 @@ Vietnam: Champa inscriptions (4th-15th centuries CE)
 ```
 
 **Academic References:**
-- Coedès, G. (1968). *The Indianized States of Southeast Asia*. University of Hawaii Press.
+
+- Coedès, G. (1968). _The Indianized States of Southeast Asia_. University of Hawaii Press.
 
 ---
 
@@ -705,6 +797,7 @@ Vietnam: Champa inscriptions (4th-15th centuries CE)
 ### 12.1 Mathematical Texts
 
 **Aryabhaṭīya of Aryabhaṭa (c. 499 CE):**
+
 ```
 Āryabhaṭīya: Mathematical and astronomical treatise
 Key concepts: Place value system, zero, trigonometry
@@ -712,23 +805,27 @@ Manuscript evidence: 7th century Bhakshali manuscript
 ```
 
 **Academic References:**
-- Shukla, K. S. (1976). *Aryabhaṭīya of Aryabhaṭa*. Indian National Science Academy.
+
+- Shukla, K. S. (1976). _Aryabhaṭīya of Aryabhaṭa_. Indian National Science Academy.
 
 ### 12.2 Astronomical Works
 
 **Sūrya Siddhānta (c. 4th century CE):**
+
 ```
 Trigonometric functions: Sine, cosine, tangent
 Planetary calculations: Mean heliocentric distances
 Time units: Kalpa (4.32 billion years), Yuga (4.32 million years)
 ```
 
-**Academic References:>
-- Burgess, E. (1860). *Translation of the Surya-Siddhanta*. Journal of the American Oriental Society.
+\*\*Academic References:>
+
+- Burgess, E. (1860). _Translation of the Surya-Siddhanta_. Journal of the American Oriental Society.
 
 ### 12.3 Medical Literature
 
 **Charaka Samhita (c. 1st-2nd century CE):**
+
 ```
 120 chapters, 8 sections
 Medical concepts: Tridoṣa theory, pharmacology
@@ -736,7 +833,8 @@ Manuscript traditions: Nepalese, Kashmiri, South Indian
 ```
 
 **Academic References:**
-- Sharma, R. K. (2001). *Caraka-Samhita*. Chaukhamba Sanskrit Pratishthan.
+
+- Sharma, R. K. (2001). _Caraka-Samhita_. Chaukhamba Sanskrit Pratishthan.
 
 ---
 
@@ -745,6 +843,7 @@ Manuscript traditions: Nepalese, Kashmiri, South Indian
 ### 13.1 Nāṭya Śāstra (Dramaturgy)
 
 **Bharata's Nāṭya Śāstra (c. 200 BCE - 200 CE):**
+
 ```
 36 chapters, 6,000 verses
 Rasa theory: Eight aesthetic emotions
@@ -752,11 +851,13 @@ Stagecraft: Theater architecture, acting techniques
 ```
 
 **Academic References:**
-- Ghosh, M. (1951). *Bharata on Drama*. Motilal Banarsidass.
+
+- Ghosh, M. (1951). _Bharata on Drama_. Motilal Banarsidass.
 
 ### 13.2 Śilpa Śāstras (Architecture)
 
 **Major Texts:**
+
 ```
 Mānasāra Śilpa Śāstra: South Indian temple architecture
 Mayamata: North Indian architectural principles
@@ -764,7 +865,8 @@ Vāstu Śāstra: Town planning and spatial organization
 ```
 
 **Academic References:**
-- Acharya, P. K. (1998). *Architecture of Mānasāra*. New Delhi: Aryan Books International.
+
+- Acharya, P. K. (1998). _Architecture of Mānasāra_. New Delhi: Aryan Books International.
 
 ---
 
@@ -773,12 +875,14 @@ Vāstu Śāstra: Town planning and spatial organization
 ### Metadata Tagging System
 
 **Period Classification:**
+
 - Vedic Period (1500-500 BCE)
 - Classical Period (500 BCE-1000 CE)
 - Medieval Period (1000-1800 CE)
 - Modern Period (1800 CE-present)
 
 **Text Type Classification:**
+
 - Primary Texts (Vedas, Upanishads, Sutras)
 - Exegetical Texts (Brahmanas, Commentaries)
 - Philosophical Texts (Darshanas)
@@ -786,6 +890,7 @@ Vāstu Śāstra: Town planning and spatial organization
 - Practical Texts (Dharmashastra, Technical)
 
 **Geographical Origin:**
+
 - Northern India (Kashmir, Punjab, Delhi)
 - Eastern India (Bengal, Odisha, Assam)
 - Southern India (Tamil Nadu, Kerala, Karnataka)
@@ -793,6 +898,7 @@ Vāstu Śāstra: Town planning and spatial organization
 - International (Southeast Asia, Tibet, Nepal)
 
 **School of Thought:**
+
 - Vedantic Schools (Advaita, Vishishtadvaita, Dvaita)
 - Yoga Traditions (Classical, Hatha, Tantra)
 - Philosophical Schools (Samkhya, Nyaya, Vaisheshika)
@@ -803,18 +909,21 @@ Vāstu Śāstra: Town planning and spatial organization
 ## 📚 Bibliography and References
 
 ### Primary Text Editions
+
 - Bhandarkar Oriental Research Institute (BORI) Critical Editions
 - Harvard Oriental Series Publications
 - Motilal Banarsidass Classical Texts
 - Oxford University Press Sanskrit Texts
 
 ### Academic Journals
+
 - Journal of the American Oriental Society (JAOS)
 - Journal of the Oriental Institute (JOI)
 - Journal of the Royal Asiatic Society (JRAS)
 - Indo-Iranian Journal (IIJ)
 
 ### Scholarly Institutions
+
 - Bhandarkar Oriental Research Institute, Pune
 - Deccan College Post-Graduate and Research Institute, Pune
 - School of Oriental and African Studies, London
@@ -825,12 +934,14 @@ Vāstu Śāstra: Town planning and spatial organization
 ## 🏛️ Digital Archives and Repositories
 
 ### Online Databases
+
 - GRETIL (Göttingen Register of Electronic Texts in Indian Languages)
 - Muktabodha Digital Library
 - IGNCA Digital Archives
 - Digital Corpus of Sanskrit
 
 ### Manuscript Collections
+
 - Cambridge University Library Sanskrit Manuscripts
 - Bodleian Library Sanskrit Collections
 - Bibliothèque Nationale Sanskrit Manuscripts
@@ -841,18 +952,21 @@ Vāstu Śāstra: Town planning and spatial organization
 ## ⚖️ Academic Standards and Methodology
 
 ### Source Verification
+
 - Primary source verification through manuscript provenance
 - Cross-referencing multiple critical editions
 - Scholarly consensus on dating and attribution
 - Archaeological and epigraphic corroboration
 
 ### Translation Standards
+
 - IAST (International Alphabet of Sanskrit Transliteration) standard
 - Attribution to recognized translators and scholars
 - Publication source and edition information
 - Distinction between literal and interpretive translations
 
 ### Academic Integrity
+
 - Clear distinction between textual evidence and scholarly interpretation
 - Identification of debated or uncertain attributions
 - Recognition of colonial-era biases in historical accounts
@@ -863,12 +977,14 @@ Vāstu Śāstra: Town planning and spatial organization
 ## 📞 Contact and Contributions
 
 ### Academic Contributions
+
 - Scholars are invited to contribute verified primary source information
 - All submissions must include manuscript provenance and scholarly references
 - Peer review process for all additions and modifications
 - Attribution standards for all contributed materials
 
 ### Technical Support
+
 - Digital text encoding and verification
 - Manuscript digitization and preservation
 - Database management and search functionality
@@ -882,6 +998,6 @@ This digital knowledge base is maintained as an academic resource for scholarly 
 
 ---
 
-*Last Updated: March 2026*
-*Academic Advisory Board: Sanskrit Studies Departments worldwide*
-*Digital Preservation: Partnership with major manuscript libraries*
+_Last Updated: March 2026_
+_Academic Advisory Board: Sanskrit Studies Departments worldwide_
+_Digital Preservation: Partnership with major manuscript libraries_

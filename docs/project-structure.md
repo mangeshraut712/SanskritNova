@@ -96,18 +96,21 @@ SanskritNova/
 ## 🎯 Current Active Files
 
 ### Frontend (Luxury Design)
+
 - **Main Page**: `public/index.html` - Luxury Sanskrit learning platform
 - **Knowledge Base**: `public/knowledge-base.html` - Research-grade digital library
 - **Styles**: `public/styles/luxury-styles.css`, `public/styles/luxury-components.css`
 - **Scripts**: `public/scripts/luxury-app.js`, `public/scripts/knowledge-base-app.js`
 
 ### Backend (FastAPI)
+
 - **Main API**: `api/index.py` - Core API endpoints
 - **Chat**: `api/chat.py` - AI chat functionality
 - **Transliteration**: `api/transliterate.py` - Sanskrit transliteration
 - **Tracks**: `api/tracks.py` - Learning tracks data
 
 ### Documentation
+
 - **Main Docs**: `docs/` - Comprehensive project documentation
 - **Knowledge Base**: `docs/knowledge-base/` - Academic documentation
 - **Legacy**: `docs/legacy/` - Old documentation
@@ -115,32 +118,38 @@ SanskritNova/
 ## 🗑️ Legacy Files (Archived)
 
 ### Legacy Styles
+
 - `public/styles/apple-india/` - Apple India design (not used)
 - `public/legacy/` - Old CSS and JS files (not used)
 
 ### Legacy Documentation
+
 - `docs/legacy/README-old.md` - Old README file
 
 ## 🚀 Deployment
 
 ### Production URLs
+
 - **Main Site**: https://sanskrit-nova.vercel.app
 - **Knowledge Base**: https://sanskrit-nova.vercel.app/knowledge-base.html
 - **API**: https://sanskrit-nova.vercel.app/api
 
 ### Local Development
+
 - **Frontend**: `python -m http.server 9000` (port 9000)
 - **Backend**: `python -m uvicorn api.index:app --reload` (port 8000)
 
 ## 📋 File Organization Rules
 
 ### ✅ Keep in Root
+
 - Configuration files (pyproject.toml, package.json, vercel.json)
 - Documentation (README.md, LICENSE, CONTRIBUTING.md)
 - Build files (Makefile)
 - Environment templates (.env.example)
 
 ### ✅ Organize in Folders
+
 - All code in appropriate subdirectories
 - Documentation in `docs/`
 - Assets in `public/`
@@ -148,6 +157,7 @@ SanskritNova/
 - Tests in `tests/`
 
 ### ✅ Archive Legacy Files
+
 - Move unused files to `legacy/` folders
 - Keep for reference but don't use in production
 - Update imports/paths accordingly
@@ -155,18 +165,21 @@ SanskritNova/
 ## 🔄 Maintenance
 
 ### Regular Cleanup
+
 - Remove unused files and folders
 - Update documentation
 - Archive old versions
 - Clean up test artifacts
 
 ### File Naming
+
 - Use kebab-case for files and folders
 - Be descriptive and consistent
 - Include version numbers for legacy files
 - Use proper file extensions
 
 ### Documentation Updates
+
 - Keep README.md current
 - Update structure documentation
 - Document changes in CHANGELOG

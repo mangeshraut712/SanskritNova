@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3.9'
 
 services:
   sanskritnova-api:
@@ -6,7 +6,7 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
     ports:
-      - "8000:8000"
+      - '8000:8000'
     environment:
       - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
       - OPENROUTER_MODEL=openai/gpt-4.1-mini
@@ -16,7 +16,13 @@ services:
       - ../data:/app/data:ro
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://localhost:8000/api/health').read()"]
+      test:
+        [
+          'CMD',
+          'python',
+          '-c',
+          "from urllib.request import urlopen; urlopen('http://localhost:8000/api/health').read()",
+        ]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -25,7 +31,7 @@ services:
   frontend:
     image: nginx:alpine
     ports:
-      - "80:80"
+      - '80:80'
     volumes:
       - ../public:/usr/share/nginx/html:ro
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro

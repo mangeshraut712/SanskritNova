@@ -52,10 +52,12 @@
   left: -100%;
   width: 80%;
   height: 100vh;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.98) 0%, 
-    rgba(248, 248, 248, 0.98) 50%, 
-    rgba(240, 240, 240, 0.98) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(248, 248, 248, 0.98) 50%,
+    rgba(240, 240, 240, 0.98) 100%
+  );
   backdrop-filter: blur(var(--luxury-blur-xl));
   box-shadow: var(--luxury-shadow-4xl);
   z-index: var(--luxury-z-royal);
@@ -1136,8 +1138,12 @@
    LUXURY ANIMATIONS
    ============================================ */
 @keyframes luxurySpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes luxurySlideIn {
@@ -1174,81 +1180,81 @@
     margin: var(--luxury-space-4);
     padding: var(--luxury-space-8);
   }
-  
+
   .luxury-chat-modes {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .luxury-mode-btn {
     justify-content: center;
   }
-  
+
   .luxury-chat-input-area {
     flex-direction: column;
     gap: var(--luxury-space-4);
   }
-  
+
   .luxury-input-group {
     flex-direction: column;
     gap: var(--luxury-space-4);
   }
-  
+
   .luxury-search-box {
     flex-direction: column;
     gap: var(--luxury-space-4);
   }
-  
+
   .luxury-search-btn {
     width: 100%;
     height: 56px;
   }
-  
+
   .luxury-tab-navigation {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .luxury-tab-btn {
     flex-shrink: 0;
   }
-  
+
   .luxury-lesson-grid,
   .luxury-tracks-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .luxury-grammar-table {
     font-size: var(--luxury-text-sm);
   }
-  
+
   .luxury-grammar-table th,
   .luxury-grammar-table td {
     padding: var(--luxury-space-2);
   }
-  
+
   .luxury-result-meanings {
     flex-direction: column;
   }
-  
+
   .luxury-translit-controls {
     flex-direction: column;
     gap: var(--luxury-space-4);
   }
-  
+
   .luxury-chat-suggestions {
     flex-direction: column;
   }
-  
+
   .luxury-suggestion-chip {
     text-align: center;
   }
-  
+
   .luxury-hero-actions {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .luxury-btn {
     width: 100%;
     max-width: 300px;
@@ -1261,37 +1267,37 @@
     min-height: 100px;
     font-size: var(--luxury-text-lg);
   }
-  
+
   .luxury-chat-messages {
     max-height: 300px;
   }
-  
+
   .luxury-toast {
     min-width: auto;
     left: var(--luxury-space-4);
     right: var(--luxury-space-4);
   }
-  
+
   .luxury-loading-spinner {
     padding: var(--luxury-space-8);
     min-width: 150px;
   }
-  
+
   .luxury-spinner {
     width: 48px;
     height: 48px;
   }
-  
+
   .luxury-om-symbol {
     width: 48px;
     height: 48px;
     font-size: var(--luxury-text-xl);
   }
-  
+
   .luxury-brand-title {
     font-size: var(--luxury-text-xl);
   }
-  
+
   .luxury-voice-btn,
   .luxury-send-btn {
     width: 48px;
@@ -1311,7 +1317,7 @@
     background: rgba(26, 26, 26, 0.95);
     border-color: rgba(212, 175, 55, 0.2);
   }
-  
+
   .luxury-chat-input,
   .luxury-translit-input,
   .luxury-translit-output,
@@ -1320,125 +1326,125 @@
     border-color: rgba(212, 175, 55, 0.3);
     color: var(--luxury-text-primary);
   }
-  
+
   .luxury-chat-input:focus,
   .luxury-translit-input:focus,
   .luxury-translit-output:focus,
   .luxury-search-input:focus {
     background: rgba(42, 42, 42, 0.95);
   }
-  
+
   .luxury-translit-output {
     background: rgba(26, 26, 26, 0.9);
     color: var(--luxury-text-secondary);
   }
-  
+
   .luxury-message.ai {
     background: rgba(42, 42, 42, 0.9);
     border-color: rgba(212, 175, 55, 0.3);
   }
-  
+
   .luxury-chat-messages {
     background: rgba(26, 26, 26, 0.5);
   }
-  
+
   .luxury-chat-input-area {
     background: rgba(26, 26, 26, 0.8);
     border-top-color: rgba(212, 175, 55, 0.2);
   }
-  
+
   .luxury-mode-btn {
     background: rgba(42, 42, 42, 0.8);
     border-color: rgba(212, 175, 55, 0.3);
     color: var(--luxury-text-secondary);
   }
-  
+
   .luxury-voice-btn {
     background: rgba(42, 42, 42, 0.8);
     border-color: rgba(212, 175, 55, 0.3);
     color: var(--luxury-text-secondary);
   }
-  
+
   .luxury-action-btn {
     background: rgba(42, 42, 42, 0.8);
     border-color: rgba(212, 175, 55, 0.3);
     color: var(--luxury-text-secondary);
   }
-  
+
   .luxury-suggestion-chip {
     background: rgba(42, 42, 42, 0.8);
     border-color: rgba(212, 175, 55, 0.3);
     color: var(--luxury-text-secondary);
   }
-  
+
   .luxury-dictionary-entry {
     background: rgba(42, 42, 42, 0.8);
     border-color: rgba(212, 175, 55, 0.2);
   }
-  
+
   .luxury-dictionary-entry:hover {
     background: rgba(42, 42, 42, 0.95);
     border-color: var(--luxury-gold);
   }
-  
+
   .luxury-example {
     background: rgba(26, 26, 26, 0.8);
   }
-  
+
   .luxury-lesson-card {
     background: rgba(42, 42, 42, 0.8);
     border-color: rgba(212, 175, 55, 0.2);
   }
-  
+
   .luxury-lesson-card:hover {
     background: rgba(42, 42, 42, 0.95);
     border-color: var(--luxury-gold);
   }
-  
+
   .luxury-track-card {
     background: rgba(42, 42, 42, 0.8);
     border-color: rgba(212, 175, 55, 0.2);
   }
-  
+
   .luxury-track-card:hover {
     background: rgba(42, 42, 42, 0.95);
     border-color: var(--luxury-gold);
   }
-  
+
   .luxury-grammar-table {
     background: rgba(42, 42, 42, 0.8);
     border-color: rgba(212, 175, 55, 0.2);
   }
-  
+
   .luxury-grammar-table tr:hover {
     background: rgba(212, 175, 55, 0.1);
   }
-  
+
   .luxury-history-item {
     background: rgba(42, 42, 42, 0.8);
     border-color: rgba(212, 175, 55, 0.2);
   }
-  
+
   .luxury-history-item:hover {
     background: rgba(212, 175, 55, 0.1);
     border-color: var(--luxury-gold);
   }
-  
+
   .luxury-meaning-tag {
     background: rgba(212, 175, 55, 0.2);
     border-color: rgba(212, 175, 55, 0.4);
   }
-  
+
   .luxury-track-level {
     background: rgba(212, 175, 55, 0.2);
     border-color: rgba(212, 175, 55, 0.4);
   }
-  
+
   .luxury-toast {
     background: rgba(42, 42, 42, 0.95);
     border-color: rgba(212, 175, 55, 0.3);
   }
-  
+
   .luxury-loading-spinner {
     background: rgba(42, 42, 42, 0.95);
   }

@@ -16,7 +16,7 @@ const KnowledgeBase = {
       category: '',
       period: '',
       repository: '',
-      language: ''
+      language: '',
     },
     knowledgeBaseData: {
       vedic: [
@@ -26,12 +26,13 @@ const KnowledgeBase = {
           titleSanskrit: 'ऋग्वेद संहिता',
           category: 'Veda',
           period: '1500-1200 BCE',
-          description: 'The oldest of the four Vedas, containing 1,028 hymns organized into 10 mandalas.',
+          description:
+            'The oldest of the four Vedas, containing 1,028 hymns organized into 10 mandalas.',
           manuscripts: 1200,
           verses: 10552,
           repository: 'BORI',
           criticalEdition: true,
-          digitalAvailable: true
+          digitalAvailable: true,
         },
         {
           id: 'samaveda',
@@ -39,12 +40,13 @@ const KnowledgeBase = {
           titleSanskrit: 'सामवेद संहिता',
           category: 'Veda',
           period: '1200-1000 BCE',
-          description: 'The Veda of melodies and chants, consisting of 1,875 verses primarily drawn from the Rigveda.',
+          description:
+            'The Veda of melodies and chants, consisting of 1,875 verses primarily drawn from the Rigveda.',
           manuscripts: 800,
           verses: 1875,
           repository: 'BORI',
           criticalEdition: true,
-          digitalAvailable: true
+          digitalAvailable: true,
         },
         {
           id: 'yajurveda',
@@ -52,12 +54,13 @@ const KnowledgeBase = {
           titleSanskrit: 'यजुर्वेद संहिता',
           category: 'Veda',
           period: '1200-1000 BCE',
-          description: 'The Veda of ritual formulas, existing in two main recensions: Shukla and Krishna.',
+          description:
+            'The Veda of ritual formulas, existing in two main recensions: Shukla and Krishna.',
           manuscripts: 600,
           verses: 2000,
           repository: 'BORI',
           criticalEdition: true,
-          digitalAvailable: true
+          digitalAvailable: true,
         },
         {
           id: 'atharvaveda',
@@ -70,8 +73,8 @@ const KnowledgeBase = {
           verses: 7310,
           repository: 'BORI',
           criticalEdition: true,
-          digitalAvailable: true
-        }
+          digitalAvailable: true,
+        },
       ],
       philosophy: [
         {
@@ -80,12 +83,13 @@ const KnowledgeBase = {
           titleSanskrit: 'सांख्य',
           category: 'Darshana',
           period: 'Classical',
-          description: 'One of the six orthodox philosophical systems, founded by Kapila, emphasizing dualism.',
+          description:
+            'One of the six orthodox philosophical systems, founded by Kapila, emphasizing dualism.',
           manuscripts: 200,
           verses: 1000,
           repository: 'BORI',
           criticalEdition: true,
-          digitalAvailable: true
+          digitalAvailable: true,
         },
         {
           id: 'yoga',
@@ -93,12 +97,13 @@ const KnowledgeBase = {
           titleSanskrit: 'योग',
           category: 'Darshana',
           period: 'Classical',
-          description: 'The philosophical system based on Patanjali\'s Yoga Sutras, emphasizing meditation.',
+          description:
+            "The philosophical system based on Patanjali's Yoga Sutras, emphasizing meditation.",
           manuscripts: 300,
           verses: 196,
           repository: 'BORI',
           criticalEdition: true,
-          digitalAvailable: true
+          digitalAvailable: true,
         },
         {
           id: 'vedanta',
@@ -111,7 +116,7 @@ const KnowledgeBase = {
           verses: 555,
           repository: 'BORI',
           criticalEdition: true,
-          digitalAvailable: true
+          digitalAvailable: true,
         },
         {
           id: 'mimamsa',
@@ -124,8 +129,8 @@ const KnowledgeBase = {
           verses: 1000,
           repository: 'BORI',
           criticalEdition: true,
-          digitalAvailable: true
-        }
+          digitalAvailable: true,
+        },
       ],
       repositories: [
         {
@@ -135,7 +140,7 @@ const KnowledgeBase = {
           founded: '1917',
           manuscripts: 28000,
           description: 'Premier research institute with 28,000+ Sanskrit manuscripts.',
-          type: 'Repository'
+          type: 'Repository',
         },
         {
           id: 'cambridge',
@@ -144,7 +149,7 @@ const KnowledgeBase = {
           founded: '1415',
           manuscripts: 2000,
           description: 'Extensive collection of 2,000+ Sanskrit manuscripts.',
-          type: 'Repository'
+          type: 'Repository',
         },
         {
           id: 'oxford',
@@ -153,7 +158,7 @@ const KnowledgeBase = {
           founded: '1602',
           manuscripts: 1500,
           description: 'Collection of 1,500+ Sanskrit manuscripts.',
-          type: 'Repository'
+          type: 'Repository',
         },
         {
           id: 'gretil',
@@ -162,10 +167,10 @@ const KnowledgeBase = {
           founded: '1997',
           manuscripts: 5000,
           description: 'Digital archive of 5,000+ Sanskrit texts.',
-          type: 'Digital Archive'
-        }
-      ]
-    }
+          type: 'Digital Archive',
+        },
+      ],
+    },
   },
 
   // DOM element references
@@ -204,7 +209,7 @@ const KnowledgeBase = {
 
       // Loading and Toasts
       loadingOverlay: document.getElementById('loading-overlay'),
-      toastContainer: document.getElementById('toast-container')
+      toastContainer: document.getElementById('toast-container'),
     };
   },
 
@@ -214,17 +219,17 @@ const KnowledgeBase = {
   initializeEventListeners() {
     // Mobile menu
     this.elements.mobileMenuToggle?.addEventListener('click', () => this.toggleMobileMenu());
-    
+
     // Theme toggle
     this.elements.themeToggle?.addEventListener('click', () => this.toggleTheme());
-    
+
     // Language switcher
-    this.elements.langButtons.forEach(btn => {
+    this.elements.langButtons.forEach((btn) => {
       btn.addEventListener('click', (e) => this.switchLanguage(e.target.dataset.lang));
     });
 
     // Navigation smooth scroll
-    this.elements.navLinks.forEach(link => {
+    this.elements.navLinks.forEach((link) => {
       link.addEventListener('click', (e) => this.handleNavigation(e));
     });
 
@@ -241,11 +246,14 @@ const KnowledgeBase = {
     this.elements.languageFilter?.addEventListener('change', () => this.applyFilters());
 
     // Auto-search on input
-    this.elements.searchInput?.addEventListener('input', this.debounce(() => {
-      if (this.elements.searchInput.value.length >= 3) {
-        this.performSearch();
-      }
-    }, 500));
+    this.elements.searchInput?.addEventListener(
+      'input',
+      this.debounce(() => {
+        if (this.elements.searchInput.value.length >= 3) {
+          this.performSearch();
+        }
+      }, 500)
+    );
 
     // Intersection Observer for animations
     this.initializeIntersectionObserver();
@@ -258,7 +266,7 @@ const KnowledgeBase = {
     this.state.isMobileMenuOpen = !this.state.isMobileMenuOpen;
     this.elements.mobileNav.classList.toggle('active');
     this.elements.mobileMenuToggle.classList.toggle('active');
-    
+
     // Animate menu items
     if (this.state.isMobileMenuOpen) {
       this.animateMenuItems();
@@ -282,13 +290,13 @@ const KnowledgeBase = {
     e.preventDefault();
     const targetId = e.target.getAttribute('href').substring(1);
     const targetElement = document.getElementById(targetId);
-    
+
     if (targetElement) {
       targetElement.scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'start',
       });
-      
+
       // Close mobile menu if open
       if (this.state.isMobileMenuOpen) {
         this.toggleMobileMenu();
@@ -310,7 +318,7 @@ const KnowledgeBase = {
     this.state.currentTheme = newTheme;
     this.applyTheme(newTheme);
     localStorage.setItem('theme', newTheme);
-    
+
     // Animate theme toggle
     this.elements.themeToggle.style.transform = 'scale(1.2) rotate(180deg)';
     setTimeout(() => {
@@ -333,22 +341,22 @@ const KnowledgeBase = {
   // ============================================
   switchLanguage(lang) {
     this.state.currentLanguage = lang;
-    
+
     // Update active button
-    this.elements.langButtons.forEach(btn => {
+    this.elements.langButtons.forEach((btn) => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
-    
+
     // Update content
     this.updateContentLanguage(lang);
-    
+
     // Show toast
     this.showToast(`Language switched to ${lang === 'en' ? 'English' : 'हिन्दी'}`, 'success');
   },
 
   updateContentLanguage(lang) {
     // Update all translatable elements
-    document.querySelectorAll('[data-translate]').forEach(element => {
+    document.querySelectorAll('[data-translate]').forEach((element) => {
       const key = element.getAttribute('data-translate');
       // Implementation for language switching
     });
@@ -365,7 +373,7 @@ const KnowledgeBase = {
     }
 
     this.showLoading();
-    
+
     // Simulate search with filtering
     setTimeout(() => {
       this.state.searchResults = this.searchKnowledgeBase(query);
@@ -379,23 +387,29 @@ const KnowledgeBase = {
     const allData = [
       ...this.state.knowledgeBaseData.vedic,
       ...this.state.knowledgeBaseData.philosophy,
-      ...this.state.knowledgeBaseData.repositories
+      ...this.state.knowledgeBaseData.repositories,
     ];
-    
+
     const lowerQuery = query.toLowerCase();
-    
-    return allData.filter(item => {
+
+    return allData.filter((item) => {
       // Apply filters
-      if (this.state.currentFilters.category && item.category !== this.state.currentFilters.category) {
+      if (
+        this.state.currentFilters.category &&
+        item.category !== this.state.currentFilters.category
+      ) {
         return false;
       }
       if (this.state.currentFilters.period && item.period !== this.state.currentFilters.period) {
         return false;
       }
-      if (this.state.currentFilters.repository && item.repository !== this.state.currentFilters.repository) {
+      if (
+        this.state.currentFilters.repository &&
+        item.repository !== this.state.currentFilters.repository
+      ) {
         return false;
       }
-      
+
       // Search in title, description, and Sanskrit title
       return (
         item.title.toLowerCase().includes(lowerQuery) ||
@@ -418,7 +432,9 @@ const KnowledgeBase = {
       return;
     }
 
-    const resultsHTML = this.state.searchResults.map(item => `
+    const resultsHTML = this.state.searchResults
+      .map(
+        (item) => `
       <div class="kb-card">
         <div class="kb-card-header">
           <h3 class="kb-card-title">${item.title}</h3>
@@ -436,7 +452,9 @@ const KnowledgeBase = {
           </div>
         </div>
       </div>
-    `).join('');
+    `
+      )
+      .join('');
 
     this.elements.searchResults.innerHTML = resultsHTML;
   },
@@ -447,7 +465,7 @@ const KnowledgeBase = {
       category: this.elements.categoryFilter.value,
       period: this.elements.periodFilter.value,
       repository: this.elements.repositoryFilter.value,
-      language: this.elements.languageFilter.value
+      language: this.elements.languageFilter.value,
     };
 
     // Re-run search if there's a query
@@ -461,10 +479,10 @@ const KnowledgeBase = {
     const allData = [
       ...this.state.knowledgeBaseData.vedic,
       ...this.state.knowledgeBaseData.philosophy,
-      ...this.state.knowledgeBaseData.repositories
+      ...this.state.knowledgeBaseData.repositories,
     ];
-    
-    const item = allData.find(item => item.id === id);
+
+    const item = allData.find((item) => item.id === id);
     if (item) {
       this.showItemDetails(item);
     }
@@ -492,7 +510,9 @@ const KnowledgeBase = {
   displayInitialData() {
     // Display some initial data in the search results
     const initialData = this.state.knowledgeBaseData.vedic.slice(0, 4);
-    const resultsHTML = initialData.map(item => `
+    const resultsHTML = initialData
+      .map(
+        (item) => `
       <div class="kb-card">
         <div class="kb-card-header">
           <h3 class="kb-card-title">${item.title}</h3>
@@ -510,7 +530,9 @@ const KnowledgeBase = {
           </div>
         </div>
       </div>
-    `).join('');
+    `
+      )
+      .join('');
 
     if (this.elements.searchResults) {
       this.elements.searchResults.innerHTML = resultsHTML;
@@ -533,12 +555,12 @@ const KnowledgeBase = {
   showToast(message, type = 'info') {
     const toast = document.createElement('div');
     toast.className = `luxury-toast ${type}`;
-    
+
     const icon = {
       success: '✅',
       error: '❌',
       warning: '⚠️',
-      info: 'ℹ️'
+      info: 'ℹ️',
     }[type];
 
     toast.innerHTML = `
@@ -581,7 +603,7 @@ const KnowledgeBase = {
   startAnimations() {
     // Animate hero elements on load
     this.animateHeroElements();
-    
+
     // Initialize scroll animations
     this.initializeScrollAnimations();
   },
@@ -592,7 +614,7 @@ const KnowledgeBase = {
       '.kb-hero-title',
       '.kb-hero-subtitle',
       '.kb-hero-stats',
-      '.luxury-hero-actions'
+      '.luxury-hero-actions',
     ];
 
     elements.forEach((selector, index) => {
@@ -600,7 +622,7 @@ const KnowledgeBase = {
       if (element) {
         element.style.opacity = '0';
         element.style.transform = 'translateY(30px)';
-        
+
         setTimeout(() => {
           element.style.transition = 'all 0.8s ease';
           element.style.opacity = '1';
@@ -613,11 +635,11 @@ const KnowledgeBase = {
   initializeScrollAnimations() {
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: '0px 0px -50px 0px',
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.style.animation = 'kbFadeIn 0.8s ease forwards';
         }
@@ -625,7 +647,7 @@ const KnowledgeBase = {
     }, observerOptions);
 
     // Observe elements
-    document.querySelectorAll('.kb-card, .kb-text-display, .kb-table-container').forEach(el => {
+    document.querySelectorAll('.kb-card, .kb-text-display, .kb-table-container').forEach((el) => {
       observer.observe(el);
     });
   },
@@ -640,7 +662,7 @@ const KnowledgeBase = {
         hero.style.transform = `translateY(${parallax}px)`;
       });
     }
-  }
+  },
 };
 
 // ============================================
@@ -651,7 +673,7 @@ function scrollToSection(sectionId) {
   if (section) {
     section.scrollIntoView({
       behavior: 'smooth',
-      block: 'start'
+      block: 'start',
     });
   }
 }

@@ -10,11 +10,13 @@
 
 **Critical Edition:** Bhandarkar Oriental Research Institute, Pune (1933-1972)
 **Manuscript Evidence:**
+
 - Cambridge University Library MS Add. 1529 (11th century CE Nepalese birch bark)
 - Kathmandu National Archives MS 1-1 (12th century CE palm leaf)
 - Bhandarkar Institute MS 15/187 (15th century Devanagari)
 
 **Complete Textual Structure:**
+
 ```
 Mandala 1: 191 Suktas (1.1.1 - 1.191.9)
 Mandala 2: 43 Suktas (2.1.1 - 2.43.7)
@@ -31,6 +33,7 @@ Total: 1,028 Suktas, 10,552 Mantras, 153,826 words
 ```
 
 **Key Astronomical Dating Evidence:**
+
 ```
 RV 1.164.11: "kālāḥ paśyati yo na sahasraṁ sahasrāṇi yugaṁ"
 (He who sees beyond a thousand thousand ages)
@@ -43,30 +46,35 @@ RV 5.40.5-9: Nakshatra positions indicating 4000-3000 BCE
 ```
 
 **Scholarly Editions:**
-1. Theodor Aufrecht (1877): *Die Hymnen des Rigveda*, Bonn
-2. Max Müller (1890): *Rig-Veda-Samhita*, Oxford University Press
+
+1. Theodor Aufrecht (1877): _Die Hymnen des Rigveda_, Bonn
+2. Max Müller (1890): _Rig-Veda-Samhita_, Oxford University Press
 3. BORI Critical Edition (1933-1972): 5 volumes, Pune
 4. GRETIL Digital Edition (2005): University of Göttingen
 
 **Academic Commentary:**
-- Oldenberg, H. (1888-1894): *Rigveda: Textkritische und exegetische Noten*
-- Geldner, K.F. (1951): *Der Rig-Veda*, Harvard Oriental Series
-- Jamison, S. & Brereton, J. (2014): *The Rigveda*, Oxford University Press
+
+- Oldenberg, H. (1888-1894): _Rigveda: Textkritische und exegetische Noten_
+- Geldner, K.F. (1951): _Der Rig-Veda_, Harvard Oriental Series
+- Jamison, S. & Brereton, J. (2014): _The Rigveda_, Oxford University Press
 
 ---
 
 ### 1.2 Sāmaveda Samhita
 
 **Primary Recensions:**
+
 1. Kauthuma Recension (Most prevalent)
 2. Jaiminiya Recension (Oral tradition, Karnataka)
 3. Ranayaniya Recension (Maharashtra tradition)
 
 **Critical Editions:**
-- Howard, W. (1977): *The Samaveda Samhita*, Motilal Banarsidass
+
+- Howard, W. (1977): _The Samaveda Samhita_, Motilal Banarsidass
 - GRETIL Digital Edition (2003)
 
 **Musical Notation Evidence:**
+
 ```
 Sāmaveda 1.1.1: "agne agnīḥ soma īhuhavāma"
 Musical scale: Three tones (grāma, svara, mādhya)
@@ -74,6 +82,7 @@ Pitch analysis: Van Nooten, B. (1997): "Origin of Vedic Musical Scales"
 ```
 
 **Academic Studies:**
+
 - Van Nooten, B. (1997): "The Origin of Vedic Musical Scales"
 - Howard, W. (1986): "Vedic Chanting in Modern India"
 - Staal, J. (1979): "Ritual and Mantras", Motilal Banarsidass
@@ -83,6 +92,7 @@ Pitch analysis: Van Nooten, B. (1997): "Origin of Vedic Musical Scales"
 ### 1.3 Yajurveda Samhita
 
 **Krishna Yajurveda (Black Yajurveda):**
+
 ```
 Taittirīya Samhita: 7 Kāṇḍas, 2,189 verses
 Maitrayani Samhita: 4 Kāṇḍas, 1,050 verses
@@ -91,6 +101,7 @@ Kapishthala Samhita: 15 Kāṇḍas, 800 verses
 ```
 
 **Shukla Yajurveda (White Yajurveda):**
+
 ```
 Vājasaneyi Samhita: 40 Kāṇḍas, 2,086 verses
 Kanva Recension: 40 Kāṇḍas
@@ -98,32 +109,37 @@ Madhyandina Recension: 40 Kāṇḍas
 ```
 
 **Critical Editions:**
-- Keith, A.B. (1914): *The Yajur Veda*, Harvard Oriental Series
-- Caland, W. (1906): *Das Yajur Veda*, Strassburg
+
+- Keith, A.B. (1914): _The Yajur Veda_, Harvard Oriental Series
+- Caland, W. (1906): _Das Yajur Veda_, Strassburg
 - BORI Taittirīya Edition (1934-1942)
 
 **Academic Research:**
-- Griffith, R.T.H. (1899): *The Texts of the White Yajurveda*
-- Weber, A. (1859): *Die Yajur Veda*, Berlin
+
+- Griffith, R.T.H. (1899): _The Texts of the White Yajurveda_
+- Weber, A. (1859): _Die Yajur Veda_, Berlin
 
 ---
 
 ### 1.4 Atharvaveda Samhita
 
 **Primary Recensions:**
+
 ```
 Shaunaka Recension: 20 Kāṇḍas, 731 hymns, 6,000 verses
 Paippalada Recension: 20 Kāṇḍas, 760 hymns (Kashmir tradition)
 ```
 
 **Critical Editions:**
-- Bloomfield, M. (1897): *The Atharvaveda*, Oxford University Press
-- Whitney, W.D. (1905): *Atharva-Veda Samhita*, Harvard University Press
+
+- Bloomfield, M. (1897): _The Atharvaveda_, Oxford University Press
+- Whitney, W.D. (1905): _Atharva-Veda Samhita_, Harvard University Press
 - GRETIL Digital Edition (2001)
 
 **Academic Studies:**
+
 - Witzel, M. (1995): "The Development of the Vedic Canon"
-- Zysk, K. (1985): *Religious Healing in the Veda*
+- Zysk, K. (1985): _Religious Healing in the Veda_
 
 ---
 
@@ -134,24 +150,28 @@ Paippalada Recension: 20 Kāṇḍas, 760 hymns (Kashmir tradition)
 **Major Brāhmaṇas with Critical Editions:**
 
 **Aitareya Brahmana (Ṛgvedic):**
+
 - Dating: c. 800-600 BCE
 - Critical Edition: Bhandarkar Oriental Research Institute (1965)
 - Structure: 5 Pañcikās, 40 Adhyāyas
-- Academic Study: Keith, A.B. (1920): *Rigveda Brahmanas*
+- Academic Study: Keith, A.B. (1920): _Rigveda Brahmanas_
 
 **Taittirīya Brahmana (Krishna Yajurvedic):**
+
 - Dating: c. 700-500 BCE
 - Critical Edition: Motilal Banarsidass (1978)
 - Structure: 3 Kāṇḍas
-- Academic Study: Caland, W. (1919): *Das Taittirīya-Brāhmaṇa*
+- Academic Study: Caland, W. (1919): _Das Taittirīya-Brāhmaṇa_
 
 **Shatapatha Brahmana (Shukla Yajurvedic):**
+
 - Dating: c. 700-600 BCE
-- Critical Edition: Eggeling, H. (1885-1886): *Shatapatha-Brāhmana*, Oxford
+- Critical Edition: Eggeling, H. (1885-1886): _Shatapatha-Brāhmana_, Oxford
 - Structure: 14 Kāṇḍas, 100 Adhyāyas, 438 Brahmanas
-- Academic Study: Eggeling, H. (1882): *Shatapatha Brahmana in the Satapatha Brahmana*
+- Academic Study: Eggeling, H. (1882): _Shatapatha Brahmana in the Satapatha Brahmana_
 
 **Other Major Brāhmaṇas:**
+
 ```
 Kaushitaki Brahmana (Ṛgvedic): 30 Adhyāyas
 Tandya Mahabrahmana (Sāmavedic): 25 Prapathakas
@@ -163,6 +183,7 @@ Gopatha Brahmana (Atharvavedic): 2 Kāṇḍas
 ### 2.2 Āraṇyakas (Aranyakas)
 
 **Complete Collection:**
+
 ```
 Aitareya Aranyaka: 5 Adhyāyas
 Taittiriya Aranyaka: 10 Prapathakas
@@ -171,12 +192,14 @@ Katha Aranyaka: 3 Upanishadic sections
 ```
 
 **Critical Editions:**
-- Thieme, P. (1966): *Researches in Vedic and Classical Literature*
-- Bhandarkar Institute (1972): *Aranyaka Texts*
+
+- Thieme, P. (1966): _Researches in Vedic and Classical Literature_
+- Bhandarkar Institute (1972): _Aranyaka Texts_
 
 **Academic Studies:**
-- Bodewitz, H.W. (1976): *The Aranyakas of the Vedas*
-- Gombrich, R. (1996): *How Buddhism Began*
+
+- Bodewitz, H.W. (1976): _The Aranyakas of the Vedas_
+- Gombrich, R. (1996): _How Buddhism Began_
 
 ---
 
@@ -185,33 +208,39 @@ Katha Aranyaka: 3 Upanishadic sections
 **Principal Upaniṣads with Critical Editions:**
 
 **Bṛhadāraṇyaka Upaniṣad:**
+
 - Dating: c. 700-600 BCE
 - Critical Edition: Bhandarkar Oriental Research Institute (1976)
 - Structure: 6 Kāṇḍas, 3 sections (Madhu, Yajnavalkya, Khila)
-- Translation: Radhakrishnan, S. (1953): *The Principal Upanishads*
+- Translation: Radhakrishnan, S. (1953): _The Principal Upanishads_
 
 **Chāndogya Upaniṣad:**
+
 - Dating: c. 700-600 BCE
 - Critical Edition: Oxford University Press (1948)
 - Structure: 8 Prapathakas, 154 Khaṇḍas
-- Translation: Hume, R.E. (1921): *The Thirteen Principal Upanishads*
+- Translation: Hume, R.E. (1921): _The Thirteen Principal Upanishads_
 
 **Taittirīya Upaniṣad:**
+
 - Dating: c. 600-500 BCE
 - Critical Edition: Motilal Banarsidass (1968)
 - Structure: 3 Vallīs (Shiksha, Brahmananda, Bhrigu)
 
 **Katha Upaniṣad:**
+
 - Dating: c. 300-200 BCE
 - Critical Edition: Harvard University Press (1977)
 - Structure: 2 Vallīs (Adhyāya 1-2)
 
 **Mundaka Upaniṣad:**
+
 - Dating: c. 300-200 BCE
 - Critical Edition: Oxford University Press (1948)
 - Structure: 3 Mundakas, 2 Khaṇḍas each
 
 **Complete Upaniṣad Corpus (108 Upaniṣads):**
+
 ```
 Mukhya Upaniṣads (10): Principal Upanishads
 Vaishnava Upaniṣads (14): Vishnu-related texts
@@ -223,10 +252,11 @@ General Upaniṣads (25): Miscellaneous texts
 ```
 
 **Academic References:**
-- Radhakrishnan, S. (1953): *The Principal Upanishads*
-- Deussen, P. (1906): *The Philosophy of the Upanishads*
-- Olivelle, P. (1998): *The Early Upanishads*
-- Hume, R.E. (1921): *The Thirteen Principal Upanishads*
+
+- Radhakrishnan, S. (1953): _The Principal Upanishads_
+- Deussen, P. (1906): _The Philosophy of the Upanishads_
+- Olivelle, P. (1998): _The Early Upanishads_
+- Hume, R.E. (1921): _The Thirteen Principal Upanishads_
 
 ---
 
@@ -235,6 +265,7 @@ General Upaniṣads (25): Miscellaneous texts
 **Six Auxiliary Sciences with Complete Texts:**
 
 **1. Śikṣā (Phonetics):**
+
 ```
 Prātiśākhya Texts:
 Rigveda Prātiśākhya: 60 rules
@@ -244,6 +275,7 @@ Atharvaveda Prātiśākhya: 70 rules
 ```
 
 **2. Kalpa (Ritual):**
+
 ```
 Śrauta Sūtras:
 Ashvalayana Shrauta Sutra (Rigvedic): 12 Kāṇḍas
@@ -262,6 +294,7 @@ Vasistha Dharma Sutra: 30 Patalas
 ```
 
 **3. Vyākaraṇa (Grammar):**
+
 ```
 Pāṇini's Aṣṭādhyāyī: 8 Adhyāyas, 4,000 Sūtras
 Kātyāyana's Vārttikas: 1,500 commentaries
@@ -269,23 +302,27 @@ Patañjali's Mahābhāṣya: 85 Adhyāyas
 ```
 
 **4. Nirukta (Etymology):**
+
 ```
 Yāska's Nirukta: 12 Adhyāyas, 5 Nighantu sections
 ```
 
 **5. Chandas (Metrics):**
+
 ```
 Piṅgala's Chandaḥśāstra: 8 Adhyāyas
 ```
 
 **6. Jyotiṣa (Astronomy):**
+
 ```
 Lagadha's Vedāṅga Jyotiṣa: 36 verses
 ```
 
 **Critical Editions:**
-- Kane, P.V. (1941-1975): *History of Dharmaśāstra*, 5 volumes
-- Bhandarkar Institute (1962-1972): *Vedāṅga Texts*
+
+- Kane, P.V. (1941-1975): _History of Dharmaśāstra_, 5 volumes
+- Bhandarkar Institute (1962-1972): _Vedāṅga Texts_
 
 ---
 
@@ -294,6 +331,7 @@ Lagadha's Vedāṅga Jyotiṣa: 36 verses
 ### 3.1 Sāṃkhya System
 
 **Primary Texts:**
+
 ```
 Sāṃkhyakārikā of Īśvarakṛṣṇa (c. 4th century CE)
 - 72 verses, systematic exposition
@@ -310,15 +348,17 @@ Sāṃkhyatattvakaumudi of Vijnanabhiksu (16th century)
 ```
 
 **Academic Studies:**
-- Larson, G.J. (1969): *Classical Sāṃkhya*
-- Sinha, J. (1976): *The Sāṃkhya Philosophy*
-- Frauwallner, E. (1973): *History of Indian Philosophy*
+
+- Larson, G.J. (1969): _Classical Sāṃkhya_
+- Sinha, J. (1976): _The Sāṃkhya Philosophy_
+- Frauwallner, E. (1973): _History of Indian Philosophy_
 
 ---
 
 ### 3.2 Yoga System
 
 **Primary Texts:**
+
 ```
 Yogasūtras of Patañjali (c. 2nd century BCE)
 - 4 Pādas, 196 Sūtras
@@ -335,15 +375,17 @@ Yogavārttikābhāvya of Vācaspati Miśra (9th century)
 ```
 
 **Academic Studies:**
-- Feuerstein, G. (2001): *The Yoga-Sutra of Patanjali*
-- Whicher, I. (1998): *The Yoga Upanishads*
-- Eliade, M. (1969): *Yoga: Immortality and Freedom*
+
+- Feuerstein, G. (2001): _The Yoga-Sutra of Patanjali_
+- Whicher, I. (1998): _The Yoga Upanishads_
+- Eliade, M. (1969): _Yoga: Immortality and Freedom_
 
 ---
 
 ### 3.3 Nyāya System
 
 **Primary Texts:**
+
 ```
 Nyāyasūtras of Akṣapāda Gautama (c. 2nd century CE)
 - 5 Adhyāyas, 528 Sūtras
@@ -360,15 +402,17 @@ Nyāyavārttika of Uddyotakara (6th century CE)
 ```
 
 **Academic Studies:**
-- Matilal, B.K. (1977): *Indian Logic*
-- Potter, K.H. (1977): *The Encyclopedia of Indian Philosophies*
-- Staal, J.F. (1973): *Indian Logic*
+
+- Matilal, B.K. (1977): _Indian Logic_
+- Potter, K.H. (1977): _The Encyclopedia of Indian Philosophies_
+- Staal, J.F. (1973): _Indian Logic_
 
 ---
 
 ### 3.4 Vaiśeṣika System
 
 **Primary Texts:**
+
 ```
 Vaiśeṣikasūtras of Kaṇāda (c. 2nd century BCE)
 - 10 Adhyāyas, 370 Sūtras
@@ -385,15 +429,17 @@ Kirāvalī of Udayana (10th century CE)
 ```
 
 **Academic Studies:**
-- Halbfass, W. (1973): *On the Ontology of the Classical Vaiśeṣika*
-- Dandekar, R.N. (1971): *Vaiśeṣika System*
-- Radhakrishnan, S. (1956): *Indian Philosophy*
+
+- Halbfass, W. (1973): _On the Ontology of the Classical Vaiśeṣika_
+- Dandekar, R.N. (1971): _Vaiśeṣika System_
+- Radhakrishnan, S. (1956): _Indian Philosophy_
 
 ---
 
 ### 3.5 Mīmāṃsā System
 
 **Primary Texts:**
+
 ```
 Mīmāṃsāsūtras of Jaimini (c. 300-200 BCE)
 - 12 Adhyāyas, 1,000+ Sūtras
@@ -414,15 +460,17 @@ Tantravārttika of Prabhākara (c. 8th century CE)
 ```
 
 **Academic Studies:**
-- Taber, J. (2005): *The Hindu Hermeneutics*
-- Ghoshal, U. (1977): *Mīmāṃsā Theory of Meaning*
-- Kane, P.V. (1968): *History of Dharmaśāstra*, Vol. III
+
+- Taber, J. (2005): _The Hindu Hermeneutics_
+- Ghoshal, U. (1977): _Mīmāṃsā Theory of Meaning_
+- Kane, P.V. (1968): _History of Dharmaśāstra_, Vol. III
 
 ---
 
 ### 3.6 Vedānta System
 
 **Primary Texts:**
+
 ```
 Brahmasūtras of Bādarāyaṇa (c. 2nd century BCE)
 - 4 Adhyāyas, 555 Sūtras
@@ -444,9 +492,10 @@ Dvaita Vedānta:
 ```
 
 **Academic Studies:**
-- Deutsch, E. (1973): *Advaita Vedānta: A Philosophical Reconstruction*
-- Carman, J.B. (1974): *The Theology of Rāmānuja*
-- Sharma, B.N.K. (1962): *Advaita Vedānta*
+
+- Deutsch, E. (1973): _Advaita Vedānta: A Philosophical Reconstruction_
+- Carman, J.B. (1974): _The Theology of Rāmānuja_
+- Sharma, B.N.K. (1962): _Advaita Vedānta_
 
 ---
 
@@ -455,6 +504,7 @@ Dvaita Vedānta:
 ### 4.1 Rāmāyaṇa
 
 **Baroda Critical Edition (1960-1975):**
+
 ```
 Oriental Institute, Baroda
 7 Kāṇḍas, 24,000+ ślokas
@@ -462,6 +512,7 @@ Critical apparatus with 2,000+ manuscript variants
 ```
 
 **Complete Textual Structure:**
+
 ```
 Bāla Kāṇḍa: 77 Sargas
 Ayodhyā Kāṇḍa: 119 Sargas
@@ -473,6 +524,7 @@ Uttara Kāṇḍa: 111 Sargas
 ```
 
 **Manuscript Evidence:**
+
 ```
 Devanagari manuscripts: 45 versions (11th-18th centuries)
 Grantha manuscripts: 23 versions (12th-17th centuries)
@@ -481,20 +533,23 @@ Telugu manuscripts: 12 versions (14th-17th centuries)
 ```
 
 **Critical Editions:**
-- Goldman, R.P. (1984-1996): *The Rāmāyaṇa of Vālmīki*, Princeton University Press
-- Shah, U.P. (1960-1975): *Critical Edition of the Ramayana*, Baroda
-- Bhandarkar Institute (1973): *Ramayana Manuscripts*
+
+- Goldman, R.P. (1984-1996): _The Rāmāyaṇa of Vālmīki_, Princeton University Press
+- Shah, U.P. (1960-1975): _Critical Edition of the Ramayana_, Baroda
+- Bhandarkar Institute (1973): _Ramayana Manuscripts_
 
 **Academic Studies:**
-- Brockington, J.L. (1998): *The Sanskrit Epics*
-- Goldman, R.P. (1984): *The Rāmāyaṇa of Vālmīki*
-- Raghunathan, V. (1982): *The Ramayana in Tradition*
+
+- Brockington, J.L. (1998): _The Sanskrit Epics_
+- Goldman, R.P. (1984): _The Rāmāyaṇa of Vālmīki_
+- Raghunathan, V. (1982): _The Ramayana in Tradition_
 
 ---
 
 ### 4.2 Mahābhārata
 
 **BORI Critical Edition (1919-1966):**
+
 ```
 Bhandarkar Oriental Research Institute, Pune
 18 Parvans, 99,000+ ślokas
@@ -502,6 +557,7 @@ Bhandarkar Oriental Research Institute, Pune
 ```
 
 **Complete Textual Structure:**
+
 ```
 Adi Parva: 234 Sub-parvans, 8,874 ślokas
 Sabha Parva: 78 Sub-parvans, 4,310 ślokas
@@ -524,6 +580,7 @@ Svargarohanika Parva: 5 Sub-parvans, 111 ślokas
 ```
 
 **Manuscript Evidence:**
+
 ```
 Northern recension: 1,200+ manuscripts (Devanagari, Sharada)
 Southern recension: 800+ manuscripts (Grantha, Telugu, Kannada)
@@ -532,14 +589,16 @@ Western recension: 300+ manuscripts (Gujarati, Marathi)
 ```
 
 **Critical Editions:**
-- Sukthankar, V.S. (1933-1966): *The Mahābhārata*, BORI Critical Edition
-- van Buitenen, J.A.B. (1973-1978): *The Mahābhārata*, University of Chicago Press
-- Ganguli, K.M. (1883-1896): *The Mahabharata*, Calcutta
+
+- Sukthankar, V.S. (1933-1966): _The Mahābhārata_, BORI Critical Edition
+- van Buitenen, J.A.B. (1973-1978): _The Mahābhārata_, University of Chicago Press
+- Ganguli, K.M. (1883-1896): _The Mahabharata_, Calcutta
 
 **Academic Studies:**
-- Sukthankar, V.S. (1944): *On the Meaning of the Mahabharata*
-- Hiltebeitel, A. (2001): *Rethinking the Mahābhārata*
-- Brockington, J.L. (1998): *The Sanskrit Epics*
+
+- Sukthankar, V.S. (1944): _On the Meaning of the Mahabharata_
+- Hiltebeitel, A. (2001): _Rethinking the Mahābhārata_
+- Brockington, J.L. (1998): _The Sanskrit Epics_
 
 ---
 
@@ -550,96 +609,114 @@ Western recension: 300+ manuscripts (Gujarati, Marathi)
 **Complete List with Critical Information:**
 
 **1. Brahma Purāṇa:**
+
 - Dating: c. 10th century CE
 - Structure: 246 Adhyāyas
 - Critical Edition: Motilal Banarsidass (1978)
 - Manuscripts: 45 versions (Devanagari, Bengali, Telugu)
 
 **2. Padma Purāṇa:**
+
 - Dating: c. 9th century CE
 - Structure: 55,000 verses, 5 Khaṇḍas
 - Critical Edition: Bhandarkar Institute (1979)
 - Manuscripts: 38 versions (Devanagari, Tamil, Telugu)
 
 **3. Viṣṇu Purāṇa:**
+
 - Dating: c. 7th century CE
 - Structure: 23,000 verses, 6 Aṃśas
 - Critical Edition: Harvard University Press (1973)
 - Manuscripts: 52 versions (Devanagari, Grantha, Telugu)
 
 **4. Śiva Purāṇa:**
+
 - Dating: c. 8th century CE
 - Structure: 24,000 verses, 7 Samhitās
 - Critical Edition: Motilal Banarsidass (1980)
 - Manuscripts: 41 versions (Devanagari, Tamil, Malayalam)
 
 **5. Bhāgavata Purāṇa:**
+
 - Dating: c. 9th-10th century CE
 - Structure: 18,000 verses, 12 Skandhas
 - Critical Edition: Bhandarkar Institute (1976)
 - Manuscripts: 67 versions (Devanagari, Bengali, Oriya)
 
 **6. Nārada Purāṇa:**
+
 - Dating: c. 10th century CE
 - Structure: 22,000 verses, 5 Khaṇḍas
 - Critical Edition: Harvard University Press (1975)
 
 **7. Mārkaṇḍeya Purāṇa:**
+
 - Dating: c. 7th century CE
 - Structure: 9,000 verses, 137 Adhyāyas
 - Critical Edition: Motilal Banarsidass (1977)
 
 **8. Agni Purāṇa:**
+
 - Dating: c. 8th century CE
 - Structure: 15,400 verses, 383 Adhyāyas
 - Critical Edition: Bhandarkar Institute (1978)
 
 **9. Bhaviṣya Purāṇa:**
+
 - Dating: c. 10th century CE
 - Structure: 14,500 verses, 4 Parvans
 - Critical Edition: Harvard University Press (1976)
 
 **10. Brahmavaivarta Purāṇa:**
+
 - Dating: c. 11th century CE
 - Structure: 18,000 verses, 4 Khaṇḍas
 - Critical Edition: Motilal Banarsidass (1979)
 
 **11. Liṅga Purāṇa:**
+
 - Dating: c. 10th century CE
 - Structure: 11,000 verses, 288 Adhyāyas
 - Critical Edition: Bhandarkar Institute (1977)
 
 **12. Vāyu Purāṇa:**
+
 - Dating: c. 10th century CE
 - Structure: 24,000 verses, 24 Khaṇḍas
 - Critical Edition: Harvard University Press (1974)
 
 **13. Vāmana Purāṇa:**
+
 - Dating: c. 10th century CE
 - Structure: 10,000 verses, 10 Khaṇḍas
 - Critical Edition: Motilal Banarsidass (1978)
 
 **14. Kūrma Purāṇa:**
+
 - Dating: c. 10th century CE
 - Structure: 17,000 verses, 18 Khaṇḍas
 - Critical Edition: Bhandarkar Institute (1976)
 
 **15. Matsya Purāṇa:**
+
 - Dating: c. 10th century CE
 - Structure: 14,000 verses, 291 Adhyāyas
 - Critical Edition: Harvard University Press (1975)
 
 **16. Garuda Purāṇa:**
+
 - Dating: c. 10th century CE
 - Structure: 19,000 verses, 16 Khaṇḍas
 - Critical Edition: Motilal Banarsidass (1977)
 
 **17. Brahmāṇḍa Purāṇa:**
+
 - Dating: c. 13th century CE
 - Structure: 12,000 verses, 12 Khaṇḍas
 - Critical Edition: Bhandarkar Institute (1979)
 
 **18. Skanda Purāṇa:**
+
 - Dating: c. 7th century CE
 - Structure: 81,100 verses, 7 Khaṇḍas
 - Critical Edition: Harvard University Press (1978)
@@ -649,6 +726,7 @@ Western recension: 300+ manuscripts (Gujarati, Marathi)
 ### 5.2 Upapurāṇas (Minor Puranas)
 
 **Complete Collection:**
+
 ```
 Aditya Purāṇa, Brahma Vaivarta Purāṇa, Devi Bhagavata Purāṇa,
 Ganesha Purāṇa, Kalika Purāṇa, Kalki Purāṇa, Kapila Purāṇa,
@@ -659,9 +737,10 @@ Vishnu Dharmottara Purāṇa, Vishnu Purāṇa, Yama Purāṇa
 ```
 
 **Academic References:**
-- Hazra, R.C. (1915-1923): *Studies in the Puranic Records*
-- Rocher, L. (1986): *The Puranas*
-- Pargiter, F.E. (1922): *Ancient Indian Historical Tradition*
+
+- Hazra, R.C. (1915-1923): _Studies in the Puranic Records_
+- Rocher, L. (1986): _The Puranas_
+- Pargiter, F.E. (1922): _Ancient Indian Historical Tradition_
 
 ---
 
@@ -672,31 +751,36 @@ Vishnu Dharmottara Purāṇa, Vishnu Purāṇa, Yama Purāṇa
 **Complete Collection with Critical Editions:**
 
 **Manusmṛti (Laws of Manu):**
+
 - Dating: c. 200 BCE - 200 CE (scholarly consensus)
 - Structure: 12 Adhyāyas, 2,685 verses
 - Critical Edition: Bhandarkar Oriental Research Institute (1972)
 - Manuscripts: 200+ versions (Devanagari, Grantha, Bengali)
-- Translation: Olivelle, P. (2005): *Manu's Code of Law*
-- Academic Studies: Kane, P.V. (1941-1975): *History of Dharmaśāstra*
+- Translation: Olivelle, P. (2005): _Manu's Code of Law_
+- Academic Studies: Kane, P.V. (1941-1975): _History of Dharmaśāstra_
 
 **Yājñavalkya Smṛti:**
+
 - Dating: c. 3rd-4th century CE
 - Structure: 3 Prakarnas, 1,003 verses
 - Critical Edition: Harvard Oriental Series (1938)
-- Translation: Jolly, J. (1887): *The Yajnavalkya Smriti*
+- Translation: Jolly, J. (1887): _The Yajnavalkya Smriti_
 
 **Nārada Smṛti:**
+
 - Dating: c. 5th-6th century CE
 - Structure: 20 Prakarnas, 1,500 verses
 - Critical Edition: Motilal Banarsidass (1975)
-- Translation: Kane, P.V. (1968): *History of Dharmaśāstra*, Vol. III
+- Translation: Kane, P.V. (1968): _History of Dharmaśāstra_, Vol. III
 
 **Parāśara Smṛti:**
+
 - Dating: c. 7th-8th century CE
 - Structure: 12 Prakarnas, 800 verses
 - Critical Edition: Bhandarkar Institute (1976)
 
 **Vasiṣṭha Smṛti:**
+
 - Dating: c. 8th-9th century CE
 - Structure: 30 Prakarnas, 1,200 verses
 - Critical Edition: Harvard University Press (1939)
@@ -706,6 +790,7 @@ Vishnu Dharmottara Purāṇa, Vishnu Purāṇa, Yama Purāṇa
 ### 6.2 Dharmasūtras
 
 **Complete Collection:**
+
 ```
 Āpastamba Dharmasūtra (c. 500-300 BCE)
 - Structure: 30 Prasnas, 1,234 verses
@@ -733,25 +818,28 @@ Vasiṣṭha Dharmasūtra (c. 300-100 BCE)
 **Complete Database of Major Inscriptions:**
 
 **Junagadh Rock Inscription (Rudradaman I):**
+
 - Date: 150 CE
 - Location: Girnar, Gujarat
 - Language: Sanskrit with Brahmi script
 - Content: Repair of Sudarshana Lake
-- Academic Study: Sircar, D.C. (1965): *Indian Epigraphy*
+- Academic Study: Sircar, D.C. (1965): _Indian Epigraphy_
 
 **Sanchi Inscriptions:**
+
 - Date Range: 1st century BCE - 1st century CE
 - Location: Sanchi, Madhya Pradesh
 - Language: Prakrit with Brahmi script
 - Content: Donations to Buddhist monuments
-- Academic Study: Marshall, J. (1923): *The Monuments of Sanchi*
+- Academic Study: Marshall, J. (1923): _The Monuments of Sanchi_
 
 **Ajanta Cave Inscriptions:**
+
 - Date Range: 5th-6th century CE
 - Location: Ajanta, Maharashtra
 - Language: Sanskrit with Brahmi script
 - Content: Donations and royal grants
-- Academic Study: Schlingloff, D. (1987): *Ajanta: Handbook of Paintings*
+- Academic Study: Schlingloff, D. (1987): _Ajanta: Handbook of Paintings_
 
 ---
 
@@ -760,6 +848,7 @@ Vasiṣṭha Dharmasūtra (c. 300-100 BCE)
 **Complete Collection by Period:**
 
 **Gupta Period Grants (4th-6th centuries CE):**
+
 ```
 - Allahabad Pillar Inscription (Samudragupta)
 - Udayagiri Cave Inscription (Chandragupta II)
@@ -768,6 +857,7 @@ Vasiṣṭha Dharmasūtra (c. 300-100 BCE)
 ```
 
 **Chola Period Grants (9th-13th centuries CE):**
+
 ```
 - Thanjavur Big Temple Inscriptions (Raja Raja Chola)
 - Gangaikonda Cholapuram Inscriptions (Rajendra Chola)
@@ -775,6 +865,7 @@ Vasiṣṭha Dharmasūtra (c. 300-100 BCE)
 ```
 
 **Vijayanagara Grants (14th-16th centuries CE):**
+
 ```
 - Hampi Inscriptions (Krishna Deva Raya)
 - Virupaksha Temple Inscriptions (Harihara II)
@@ -782,9 +873,10 @@ Vasiṣṭha Dharmasūtra (c. 300-100 BCE)
 ```
 
 **Academic References:**
-- Sircar, D.C. (1965): *Indian Epigraphy*
-- Salomon, R. (1998): *Indian Epigraphy*
-- Mehta, R.N. (1976): *Indian Epigraphy*
+
+- Sircar, D.C. (1965): _Indian Epigraphy_
+- Salomon, R. (1998): _Indian Epigraphy_
+- Mehta, R.N. (1976): _Indian Epigraphy_
 
 ---
 
@@ -795,20 +887,23 @@ Vasiṣṭha Dharmasūtra (c. 300-100 BCE)
 **Complete Collection:**
 
 **Aryabhaṭīya of Aryabhaṭa (c. 499 CE):**
+
 - Structure: 4 sections (Gitika, Ganita, Kalakriya, Gola)
 - Content: Place value system, zero, trigonometry, astronomy
-- Critical Edition: Shukla, K.S. (1976): *Aryabhaṭīya of Aryabhaṭa*
+- Critical Edition: Shukla, K.S. (1976): _Aryabhaṭīya of Aryabhaṭa_
 - Manuscripts: 15 versions (Devanagari, Grantha, Malayalam)
 
 **Brahmasphuṭasiddhānta of Brahmagupta (c. 628 CE):**
+
 - Structure: 24 chapters, 1,008 verses
 - Content: Zero rules, negative numbers, algebra
-- Critical Edition: Sharma, R.S. (1966): *Brahmasphuṭasiddhānta*
+- Critical Edition: Sharma, R.S. (1966): _Brahmasphuṭasiddhānta_
 
 **Lilavati of Bhāskara II (c. 1150 CE):**
+
 - Structure: 13 chapters, 278 verses
 - Content: Arithmetic, geometry, permutations
-- Critical Edition: Patwardhan, K.S. (1961): *Lilavati of Bhāskara II*
+- Critical Edition: Patwardhan, K.S. (1961): _Lilavati of Bhāskara II_
 
 ---
 
@@ -817,14 +912,16 @@ Vasiṣṭha Dharmasūtra (c. 300-100 BCE)
 **Complete Collection:**
 
 **Sūrya Siddhānta (c. 4th century CE):**
+
 - Structure: 14 chapters, 500 verses
 - Content: Trigonometric functions, planetary calculations
-- Critical Edition: Burgess, E. (1860): *Translation of the Surya-Siddhanta*
+- Critical Edition: Burgess, E. (1860): _Translation of the Surya-Siddhanta_
 
 **Siddhānta Shiromani of Bhāskara II (c. 1150 CE):**
+
 - Structure: 4 parts (Lilavati, Bijaganita, Ganitadhyaya, Goladhyaya)
 - Content: Complete mathematical and astronomical system
-- Critical Edition: Sharma, R.S. (1962): *Siddhānta Shiromani*
+- Critical Edition: Sharma, R.S. (1962): _Siddhānta Shiromani_
 
 ---
 
@@ -833,20 +930,23 @@ Vasiṣṭha Dharmasūtra (c. 300-100 BCE)
 **Complete Collection:**
 
 **Charaka Samhita (c. 1st-2nd century CE):**
+
 - Structure: 120 chapters, 8 sections
 - Content: Tridosha theory, pharmacology, surgery
-- Critical Edition: Sharma, R.K. (2001): *Caraka-Samhita*
+- Critical Edition: Sharma, R.K. (2001): _Caraka-Samhita_
 - Manuscripts: 25 versions (Devanagari, Grantha, Telugu)
 
 **Sushruta Samhita (c. 6th century BCE):**
+
 - Structure: 186 chapters, 6 sections
 - Content: Surgery, anatomy, medical instruments
-- Critical Edition: Bhishagratna, K.L. (1907): *Sushruta Samhita*
+- Critical Edition: Bhishagratna, K.L. (1907): _Sushruta Samhita_
 
 **Ashtanga Hridaya of Vagbhata (c. 7th century CE):**
+
 - Structure: 6 sections, 7,120 verses
 - Content: Synthesis of Charaka and Sushruta systems
-- Critical Edition: Murthy, K.R. (2005): *Ashtanga Hridaya*
+- Critical Edition: Murthy, K.R. (2005): _Ashtanga Hridaya_
 
 ---
 
@@ -855,11 +955,13 @@ Vasiṣṭha Dharmasūtra (c. 300-100 BCE)
 ### 9.1 Dramatic Literature
 
 **Nāṭya Śāstra of Bharata (c. 200 BCE - 200 CE):**
+
 - Structure: 36 chapters, 6,000 verses
 - Content: Rasa theory, stagecraft, acting techniques
-- Critical Edition: Ghosh, M. (1951): *Bharata on Drama*
+- Critical Edition: Ghosh, M. (1951): _Bharata on Drama_
 
 **Complete Collection of Sanskrit Dramas:**
+
 ```
 Mṛcchakatika of Śūdraka (c. 3rd century CE)
 Vikramorvaśīyam of Kālidāsa (c. 4th-5th century CE)
@@ -875,19 +977,22 @@ Swapnavāsavadatta of Bhāsa (c. 4th-5th century CE)
 **Complete Collection:**
 
 **Mānasāra Śilpa Śāstra (c. 5th-6th century CE):**
+
 - Structure: 70 chapters, 5,000 verses
 - Content: South Indian temple architecture
-- Critical Edition: Acharya, P.K. (1998): *Architecture of Mānasāra*
+- Critical Edition: Acharya, P.K. (1998): _Architecture of Mānasāra_
 
 **Mayamata (c. 6th-7th century CE):**
+
 - Structure: 36 chapters, 3,300 verses
 - Content: North Indian architectural principles
-- Critical Edition: Dagens, B. (1994): *Mayamata*
+- Critical Edition: Dagens, B. (1994): _Mayamata_
 
 **Vāstu Śāstra (c. 5th-6th century CE):**
+
 - Structure: 13 chapters, 1,200 verses
 - Content: Town planning and spatial organization
-- Critical Edition: Acharya, P.K. (1995): *Encyclopedia of Hindu Architecture*
+- Critical Edition: Acharya, P.K. (1995): _Encyclopedia of Hindu Architecture_
 
 ---
 
@@ -896,6 +1001,7 @@ Swapnavāsavadatta of Bhāsa (c. 4th-5th century CE)
 ### 10.1 Southeast Asian Sanskrit
 
 **Complete Collection:**
+
 ```
 Indonesia: Prambanan inscriptions (9th century CE)
 Cambodia: Angkor Wat inscriptions (12th century CE)
@@ -905,8 +1011,9 @@ Myanmar: Pagan inscriptions (11th-13th centuries CE)
 ```
 
 **Academic References:**
-- Coedès, G. (1968): *The Indianized States of Southeast Asia*
-- Pollock, S. (2006): *The Language of the Gods in the World of Men*
+
+- Coedès, G. (1968): _The Indianized States of Southeast Asia_
+- Pollock, S. (2006): _The Language of the Gods in the World of Men_
 
 ---
 
