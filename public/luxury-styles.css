@@ -1,0 +1,1142 @@
+/* SanskritNova AI - Ultra Luxury Design System */
+/* Premium aesthetics with opulent Indian royal heritage */
+
+/* ============================================
+   LUXURY DESIGN TOKENS - ROYAL EDITION
+   ============================================ */
+:root {
+  /* Royal color palette with premium metallics */
+  --luxury-gold: #D4AF37;
+  --luxury-gold-light: #F4E5B2;
+  --luxury-gold-dark: #B8941F;
+  --luxury-gold-metallic: linear-gradient(135deg, #D4AF37 0%, #F4E5B2 50%, #B8941F 100%);
+  
+  --luxury-platinum: #E5E4E2;
+  --luxury-silver: #C0C0C0;
+  --luxury-bronze: #CD7F32;
+  --luxury-copper: #B87333;
+  
+  --luxury-saffron: #FF9933;
+  --luxury-saffron-royal: #FF8C00;
+  --luxury-saffron-gradient: linear-gradient(135deg, #FF9933 0%, #FFB366 50%, #E67E00 100%);
+  
+  --luxury-emerald: #50C878;
+  --luxury-emerald-deep: #046307;
+  --luxury-ruby: #E0115F;
+  --luxury-amethyst: #9966CC;
+  --luxury-sapphire: #0F52BA;
+  
+  /* Premium neutrals with depth */
+  --luxury-white: #FFFFFF;
+  --luxury-ivory: #FFFFF0;
+  --luxury-cream: #F5F5DC;
+  --luxury-pearl: #F8F6FF;
+  --luxury-mist: #F0F8FF;
+  
+  --luxury-gray-50: #FAFAFA;
+  --luxury-gray-100: #F5F5F5;
+  --luxury-gray-200: #EEEEEE;
+  --luxury-gray-300: #E0E0E0;
+  --luxury-gray-400: #BDBDBD;
+  --luxury-gray-500: #9E9E9E;
+  --luxury-gray-600: #757575;
+  --luxury-gray-700: #616161;
+  --luxury-gray-800: #424242;
+  --luxury-gray-900: #212121;
+  --luxury-black: #000000;
+  
+  /* Semantic luxury colors */
+  --luxury-success: #4CAF50;
+  --luxury-warning: #FF9800;
+  --luxury-error: #F44336;
+  --luxury-info: #2196F3;
+  
+  /* Background gradients */
+  --luxury-bg-primary: #FFFFFF;
+  --luxury-bg-secondary: linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 100%);
+  --luxury-bg-tertiary: linear-gradient(135deg, #F5F5F5 0%, #EEEEEE 100%);
+  --luxury-bg-overlay: rgba(0, 0, 0, 0.6);
+  
+  /* Text with luxury hierarchy */
+  --luxury-text-primary: #212121;
+  --luxury-text-secondary: #424242;
+  --luxury-text-tertiary: #757575;
+  --luxury-text-inverse: #FFFFFF;
+  --luxury-text-accent: #D4AF37;
+  
+  /* Typography - Premium fonts */
+  --luxury-font-display: 'Playfair Display', 'Cormorant Garamond', 'Times New Roman', serif;
+  --luxury-font-heading: 'Cormorant Garamond', 'Playfair Display', 'Georgia', serif;
+  --luxury-font-body: 'Cormorant', 'Georgia', 'Times New Roman', serif;
+  --luxury-font-sanskrit: 'Noto Serif Devanagari', 'Devanagari Sangam MN', serif;
+  --luxury-font-mono: 'Cormorant Mono', 'Courier New', monospace;
+  
+  /* Typography scale */
+  --luxury-text-xs: 0.75rem;    /* 12px */
+  --luxury-text-sm: 0.875rem;   /* 14px */
+  --luxury-text-base: 1rem;     /* 16px */
+  --luxury-text-lg: 1.125rem;   /* 18px */
+  --luxury-text-xl: 1.25rem;    /* 20px */
+  --luxury-text-2xl: 1.5rem;    /* 24px */
+  --luxury-text-3xl: 1.875rem;  /* 30px */
+  --luxury-text-4xl: 2.25rem;   /* 36px */
+  --luxury-text-5xl: 3rem;      /* 48px */
+  --luxury-text-6xl: 3.75rem;   /* 60px */
+  --luxury-text-7xl: 4.5rem;    /* 72px */
+  --luxury-text-8xl: 6rem;      /* 96px */
+  --luxury-text-9xl: 8rem;      /* 128px */
+  
+  /* Spacing system */
+  --luxury-space-1: 0.25rem;    /* 4px */
+  --luxury-space-2: 0.5rem;     /* 8px */
+  --luxury-space-3: 0.75rem;    /* 12px */
+  --luxury-space-4: 1rem;       /* 16px */
+  --luxury-space-5: 1.25rem;    /* 20px */
+  --luxury-space-6: 1.5rem;     /* 24px */
+  --luxury-space-8: 2rem;       /* 32px */
+  --luxury-space-10: 2.5rem;    /* 40px */
+  --luxury-space-12: 3rem;      /* 48px */
+  --luxury-space-16: 4rem;      /* 64px */
+  --luxury-space-20: 5rem;      /* 80px */
+  --luxury-space-24: 6rem;      /* 96px */
+  --luxury-space-32: 8rem;      /* 128px */
+  --luxury-space-40: 10rem;     /* 160px */
+  --luxury-space-48: 12rem;     /* 192px */
+  --luxury-space-64: 16rem;     /* 256px */
+  
+  /* Border radius - Premium rounded corners */
+  --luxury-radius-xs: 2px;
+  --luxury-radius-sm: 4px;
+  --luxury-radius-md: 8px;
+  --luxury-radius-lg: 12px;
+  --luxury-radius-xl: 16px;
+  --luxury-radius-2xl: 20px;
+  --luxury-radius-3xl: 24px;
+  --luxury-radius-4xl: 32px;
+  --luxury-radius-full: 9999px;
+  
+  /* Shadows - Premium depth and elegance */
+  --luxury-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --luxury-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --luxury-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --luxury-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --luxury-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --luxury-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --luxury-shadow-3xl: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+  --luxury-shadow-4xl: 0 50px 100px -20px rgba(0, 0, 0, 0.35);
+  --luxury-shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.3);
+  --luxury-shadow-emerald: 0 4px 20px rgba(80, 200, 120, 0.3);
+  
+  /* Blur effects */
+  --luxury-blur-sm: 4px;
+  --luxury-blur-md: 8px;
+  --luxury-blur-lg: 16px;
+  --luxury-blur-xl: 24px;
+  --luxury-blur-2xl: 40px;
+  --luxury-blur-3xl: 64px;
+  
+  /* Transitions - Smooth luxury animations */
+  --luxury-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --luxury-transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --luxury-transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --luxury-transition-luxury: 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --luxury-transition-royal: 500ms cubic-bezier(0.23, 1, 0.32, 1);
+  
+  /* Z-index scale */
+  --luxury-z-dropdown: 1000;
+  --luxury-z-sticky: 1020;
+  --luxury-z-fixed: 1030;
+  --luxury-z-modal-backdrop: 1040;
+  --luxury-z-modal: 1050;
+  --luxury-z-popover: 1060;
+  --luxury-z-tooltip: 1070;
+  --luxury-z-toast: 1080;
+  --luxury-z-royal: 9999;
+}
+
+/* ============================================
+   LUXURY DARK MODE
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --luxury-bg-primary: #0A0A0A;
+    --luxury-bg-secondary: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+    --luxury-bg-tertiary: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%);
+    --luxury-bg-overlay: rgba(255, 255, 255, 0.1);
+    
+    --luxury-text-primary: #FFFFFF;
+    --luxury-text-secondary: #E0E0E0;
+    --luxury-text-tertiary: #BDBDBD;
+    --luxury-text-inverse: #000000;
+    --luxury-text-accent: #D4AF37;
+    
+    --luxury-gray-50: #212121;
+    --luxury-gray-100: #424242;
+    --luxury-gray-200: #616161;
+    --luxury-gray-300: #757575;
+    --luxury-gray-400: #9E9E9E;
+    --luxury-gray-500: #BDBDBD;
+    --luxury-gray-600: #E0E0E0;
+    --luxury-gray-700: #EEEEEE;
+    --luxury-gray-800: #F5F5F5;
+    --luxury-gray-900: #FAFAFA;
+  }
+}
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--luxury-font-body);
+  font-size: var(--luxury-text-base);
+  line-height: 1.7;
+  color: var(--luxury-text-primary);
+  background-color: var(--luxury-bg-primary);
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(80, 200, 120, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 153, 51, 0.02) 0%, transparent 50%);
+}
+
+/* ============================================
+   LUXURY TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--luxury-font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--luxury-text-primary);
+  margin-bottom: var(--luxury-space-4);
+  letter-spacing: -0.02em;
+}
+
+h1 { 
+  font-size: var(--luxury-text-6xl);
+  font-weight: 700;
+  background: var(--luxury-gold-metallic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 { 
+  font-size: var(--luxury-text-5xl);
+  font-weight: 600;
+  color: var(--luxury-text-primary);
+}
+
+h3 { 
+  font-size: var(--luxury-text-4xl);
+  font-weight: 600;
+}
+
+h4 { 
+  font-size: var(--luxury-text-3xl);
+  font-weight: 600;
+}
+
+h5 { 
+  font-size: var(--luxury-text-2xl);
+  font-weight: 500;
+}
+
+h6 { 
+  font-size: var(--luxury-text-xl);
+  font-weight: 500;
+}
+
+p {
+  margin-bottom: var(--luxury-space-4);
+  color: var(--luxury-text-secondary);
+  line-height: 1.8;
+  font-family: var(--luxury-font-body);
+}
+
+a {
+  color: var(--luxury-gold);
+  text-decoration: none;
+  transition: all var(--luxury-transition-luxury);
+  font-weight: 500;
+}
+
+a:hover {
+  color: var(--luxury-gold-dark);
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   LUXURY NAVIGATION
+   ============================================ */
+.luxury-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--luxury-z-royal);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(248, 248, 248, 0.95) 50%, 
+    rgba(240, 240, 240, 0.95) 100%);
+  backdrop-filter: blur(var(--luxury-blur-xl));
+  border-bottom: 1px solid var(--luxury-gold);
+  box-shadow: var(--luxury-shadow-gold);
+  transition: all var(--luxury-transition-luxury);
+}
+
+.luxury-nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--luxury-space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.luxury-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--luxury-space-4);
+  color: var(--luxury-text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--luxury-transition-luxury);
+}
+
+.luxury-nav-brand:hover {
+  transform: translateY(-2px);
+}
+
+.luxury-om-symbol {
+  width: 56px;
+  height: 56px;
+  background: var(--luxury-gold-metallic);
+  border-radius: var(--luxury-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--luxury-white);
+  font-family: var(--luxury-font-sanskrit);
+  font-size: var(--luxury-text-2xl);
+  font-weight: 700;
+  box-shadow: var(--luxury-shadow-gold);
+  transition: all var(--luxury-transition-luxury);
+  position: relative;
+  overflow: hidden;
+}
+
+.luxury-om-symbol::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s;
+  opacity: 0;
+}
+
+.luxury-om-symbol:hover::before {
+  animation: luxuryShine 0.6s ease-in-out;
+}
+
+.luxury-om-symbol:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.4);
+}
+
+.luxury-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.luxury-brand-title {
+  font-size: var(--luxury-text-2xl);
+  font-weight: 700;
+  color: var(--luxury-text-primary);
+  font-family: var(--luxury-font-heading);
+  letter-spacing: -0.02em;
+}
+
+.luxury-brand-subtitle {
+  font-size: var(--luxury-text-sm);
+  color: var(--luxury-gold);
+  font-family: var(--luxury-font-sanskrit);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.luxury-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--luxury-space-8);
+  list-style: none;
+}
+
+.luxury-nav-link {
+  color: var(--luxury-text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  font-family: var(--luxury-font-heading);
+  font-size: var(--luxury-text-base);
+  transition: all var(--luxury-transition-luxury);
+  position: relative;
+  padding: var(--luxury-space-3) var(--luxury-space-4);
+  border-radius: var(--luxury-radius-lg);
+}
+
+.luxury-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--luxury-gold-metallic);
+  transition: all var(--luxury-transition-luxury);
+  transform: translateX(-50%);
+  border-radius: var(--luxury-radius-full);
+}
+
+.luxury-nav-link:hover {
+  color: var(--luxury-gold);
+  background: rgba(212, 175, 55, 0.05);
+  transform: translateY(-2px);
+}
+
+.luxury-nav-link:hover::after {
+  width: 80%;
+}
+
+.luxury-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--luxury-space-4);
+}
+
+.luxury-theme-toggle {
+  background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-gold-light) 100%);
+  border: none;
+  border-radius: var(--luxury-radius-full);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--luxury-transition-luxury);
+  box-shadow: var(--luxury-shadow-gold);
+  color: var(--luxury-white);
+  font-size: var(--luxury-text-lg);
+}
+
+.luxury-theme-toggle:hover {
+  transform: scale(1.1) rotate(180deg);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.4);
+}
+
+.luxury-lang-switcher {
+  display: flex;
+  background: var(--luxury-gray-100);
+  border-radius: var(--luxury-radius-full);
+  padding: 2px;
+  box-shadow: var(--luxury-shadow-sm);
+}
+
+.luxury-lang-btn {
+  background: none;
+  border: none;
+  padding: var(--luxury-space-2) var(--luxury-space-4);
+  border-radius: var(--luxury-radius-full);
+  font-size: var(--luxury-text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--luxury-transition-luxury);
+  color: var(--luxury-text-secondary);
+}
+
+.luxury-lang-btn.active {
+  background: var(--luxury-gold-metallic);
+  color: var(--luxury-white);
+  box-shadow: var(--luxury-shadow-gold);
+}
+
+.luxury-lang-btn:hover:not(.active) {
+  color: var(--luxury-gold);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.luxury-mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--luxury-space-3);
+  border-radius: var(--luxury-radius-md);
+  transition: all var(--luxury-transition-luxury);
+}
+
+.luxury-mobile-menu-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--luxury-gold);
+  border-radius: var(--luxury-radius-full);
+  transition: all var(--luxury-transition-luxury);
+}
+
+/* ============================================
+   LUXURY HERO SECTION
+   ============================================ */
+.luxury-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--luxury-space-24) var(--luxury-space-6);
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(80, 200, 120, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, var(--luxury-ivory) 0%, var(--luxury-cream) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.luxury-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(212, 175, 55, 0.02) 20px, rgba(212, 175, 55, 0.02) 40px),
+    repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(80, 200, 120, 0.02) 20px, rgba(80, 200, 120, 0.02) 40px);
+  pointer-events: none;
+}
+
+.luxury-hero-content {
+  max-width: 1400px;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
+.luxury-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--luxury-space-3);
+  background: rgba(212, 175, 55, 0.1);
+  backdrop-filter: blur(var(--luxury-blur-md));
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: var(--luxury-space-3) var(--luxury-space-6);
+  border-radius: var(--luxury-radius-full);
+  font-size: var(--luxury-text-sm);
+  font-weight: 600;
+  margin-bottom: var(--luxury-space-8);
+  color: var(--luxury-gold);
+  box-shadow: var(--luxury-shadow-gold);
+  transition: all var(--luxury-transition-luxury);
+}
+
+.luxury-hero-badge:hover {
+  background: rgba(212, 175, 55, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3);
+}
+
+.luxury-hero-title {
+  font-size: var(--luxury-text-7xl);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--luxury-space-8);
+  font-family: var(--luxury-font-display);
+  letter-spacing: -0.03em;
+}
+
+.luxury-title-line {
+  display: block;
+  margin-bottom: var(--luxury-space-2);
+}
+
+.luxury-sanskrit-text {
+  font-family: var(--luxury-font-sanskrit);
+  font-size: var(--luxury-text-6xl);
+  font-weight: 700;
+  color: var(--luxury-gold);
+  display: block;
+  margin: var(--luxury-space-4) 0;
+  background: var(--luxury-gold-metallic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
+}
+
+.luxury-hero-subtitle {
+  font-size: var(--luxury-text-xl);
+  color: var(--luxury-text-secondary);
+  margin-bottom: var(--luxury-space-12);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+  font-family: var(--luxury-font-body);
+}
+
+.luxury-hero-stats {
+  display: flex;
+  gap: var(--luxury-space-12);
+  justify-content: center;
+  margin: var(--luxury-space-16) 0;
+  flex-wrap: wrap;
+}
+
+.luxury-stat {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(var(--luxury-blur-md));
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: var(--luxury-space-8);
+  border-radius: var(--luxury-radius-2xl);
+  min-width: 200px;
+  box-shadow: var(--luxury-shadow-md);
+  transition: all var(--luxury-transition-luxury);
+}
+
+.luxury-stat:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--luxury-shadow-xl);
+  border-color: var(--luxury-gold);
+}
+
+.luxury-stat-number {
+  display: block;
+  font-size: var(--luxury-text-4xl);
+  font-weight: 700;
+  color: var(--luxury-gold);
+  font-family: var(--luxury-font-heading);
+  margin-bottom: var(--luxury-space-2);
+}
+
+.luxury-stat-label {
+  font-size: var(--luxury-text-base);
+  color: var(--luxury-text-secondary);
+  font-weight: 500;
+  font-family: var(--luxury-font-body);
+}
+
+.luxury-hero-actions {
+  display: flex;
+  gap: var(--luxury-space-6);
+  justify-content: center;
+  margin-top: var(--luxury-space-16);
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   LUXURY BUTTONS
+   ============================================ */
+.luxury-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--luxury-space-3);
+  padding: var(--luxury-space-4) var(--luxury-space-8);
+  font-family: var(--luxury-font-heading);
+  font-size: var(--luxury-text-base);
+  font-weight: 600;
+  line-height: 1;
+  border: none;
+  border-radius: var(--luxury-radius-xl);
+  cursor: pointer;
+  transition: all var(--luxury-transition-royal);
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.02em;
+}
+
+.luxury-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+}
+
+.luxury-btn:active {
+  transform: scale(0.98);
+}
+
+/* Primary luxury button */
+.luxury-btn-primary {
+  background: var(--luxury-gold-metallic);
+  color: var(--luxury-white);
+  box-shadow: var(--luxury-shadow-gold);
+  border: 1px solid var(--luxury-gold);
+}
+
+.luxury-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s;
+}
+
+.luxury-btn-primary:hover::before {
+  left: 100%;
+}
+
+.luxury-btn-primary:hover {
+  background: var(--luxury-gold-dark);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.4);
+  transform: translateY(-4px);
+  border-color: var(--luxury-gold-dark);
+}
+
+/* Secondary luxury button */
+.luxury-btn-secondary {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--luxury-gold);
+  border: 2px solid var(--luxury-gold);
+  backdrop-filter: blur(var(--luxury-blur-md));
+  box-shadow: var(--luxury-shadow-sm);
+}
+
+.luxury-btn-secondary:hover {
+  background: var(--luxury-gold);
+  color: var(--luxury-white);
+  box-shadow: var(--luxury-shadow-gold);
+  transform: translateY(-4px);
+}
+
+/* Ghost luxury button */
+.luxury-btn-ghost {
+  background: transparent;
+  color: var(--luxury-gold);
+  border: 2px solid var(--luxury-gold);
+  backdrop-filter: blur(var(--luxury-blur-sm));
+}
+
+.luxury-btn-ghost:hover {
+  background: var(--luxury-gold);
+  color: var(--luxury-white);
+  box-shadow: var(--luxury-shadow-gold);
+  transform: translateY(-4px);
+}
+
+/* Button sizes */
+.luxury-btn-sm {
+  padding: var(--luxury-space-3) var(--luxury-space-6);
+  font-size: var(--luxury-text-sm);
+  border-radius: var(--luxury-radius-lg);
+}
+
+.luxury-btn-lg {
+  padding: var(--luxury-space-6) var(--luxury-space-12);
+  font-size: var(--luxury-text-lg);
+  border-radius: var(--luxury-radius-2xl);
+}
+
+.luxury-btn-xl {
+  padding: var(--luxury-space-8) var(--luxury-space-16);
+  font-size: var(--luxury-text-xl);
+  border-radius: var(--luxury-radius-3xl);
+}
+
+/* ============================================
+   LUXURY CARDS
+   ============================================ */
+.luxury-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(var(--luxury-blur-md));
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: var(--luxury-radius-2xl);
+  box-shadow: var(--luxury-shadow-lg);
+  overflow: hidden;
+  transition: all var(--luxury-transition-royal);
+  position: relative;
+}
+
+.luxury-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--luxury-gold-metallic);
+  opacity: 0;
+  transition: opacity var(--luxury-transition-luxury);
+}
+
+.luxury-card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--luxury-shadow-3xl);
+  border-color: var(--luxury-gold);
+}
+
+.luxury-card:hover::before {
+  opacity: 1;
+}
+
+.luxury-card-header {
+  padding: var(--luxury-space-8);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  background: rgba(212, 175, 55, 0.02);
+}
+
+.luxury-card-body {
+  padding: var(--luxury-space-8);
+}
+
+.luxury-card-footer {
+  padding: var(--luxury-space-8);
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  background: rgba(212, 175, 55, 0.02);
+}
+
+/* ============================================
+   LUXURY SECTIONS
+   ============================================ */
+.luxury-section {
+  padding: var(--luxury-space-24) var(--luxury-space-6);
+  position: relative;
+}
+
+.luxury-section-header {
+  text-align: center;
+  margin-bottom: var(--luxury-space-20);
+}
+
+.luxury-section-title {
+  font-size: var(--luxury-text-5xl);
+  font-weight: 700;
+  color: var(--luxury-text-primary);
+  margin-bottom: var(--luxury-space-6);
+  font-family: var(--luxury-font-display);
+  background: var(--luxury-gold-metallic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.luxury-section-subtitle {
+  font-size: var(--luxury-text-xl);
+  color: var(--luxury-text-secondary);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+  font-family: var(--luxury-font-body);
+}
+
+/* ============================================
+   LUXURY FEATURES GRID
+   ============================================ */
+.luxury-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--luxury-space-8);
+  padding: var(--luxury-space-8);
+}
+
+.luxury-feature-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(var(--luxury-blur-lg));
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: var(--luxury-radius-2xl);
+  padding: var(--luxury-space-12);
+  text-align: center;
+  transition: all var(--luxury-transition-royal);
+  position: relative;
+  overflow: hidden;
+}
+
+.luxury-feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--luxury-gold-metallic);
+  transform: scaleX(0);
+  transition: transform var(--luxury-transition-royal);
+}
+
+.luxury-feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.luxury-feature-card:hover {
+  transform: translateY(-16px);
+  box-shadow: var(--luxury-shadow-3xl);
+  border-color: var(--luxury-gold);
+}
+
+.luxury-feature-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--luxury-space-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--luxury-gold-metallic);
+  border-radius: var(--luxury-radius-2xl);
+  font-size: var(--luxury-text-3xl);
+  color: var(--luxury-white);
+  box-shadow: var(--luxury-shadow-gold);
+  transition: all var(--luxury-transition-luxury);
+}
+
+.luxury-feature-icon:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.4);
+}
+
+.luxury-feature-title {
+  font-size: var(--luxury-text-2xl);
+  font-weight: 600;
+  margin-bottom: var(--luxury-space-4);
+  color: var(--luxury-text-primary);
+  font-family: var(--luxury-font-heading);
+}
+
+.luxury-feature-description {
+  color: var(--luxury-text-secondary);
+  line-height: 1.8;
+  font-family: var(--luxury-font-body);
+}
+
+/* ============================================
+   LUXURY ANIMATIONS
+   ============================================ */
+@keyframes luxuryShine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes luxuryFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes luxuryPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes luxuryGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+  }
+}
+
+/* ============================================
+   LUXURY RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+  .luxury-nav-container {
+    padding: 0 var(--luxury-space-4);
+  }
+  
+  .luxury-nav-menu {
+    display: none;
+  }
+  
+  .luxury-mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .luxury-hero {
+    padding: var(--luxury-space-16) var(--luxury-space-4);
+    min-height: 90vh;
+  }
+  
+  .luxury-hero-title {
+    font-size: var(--luxury-text-5xl);
+  }
+  
+  .luxury-sanskrit-text {
+    font-size: var(--luxury-text-4xl);
+  }
+  
+  .luxury-hero-subtitle {
+    font-size: var(--luxury-text-lg);
+  }
+  
+  .luxury-hero-stats {
+    flex-direction: column;
+    gap: var(--luxury-space-4);
+  }
+  
+  .luxury-hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .luxury-features-grid {
+    grid-template-columns: 1fr;
+    gap: var(--luxury-space-6);
+  }
+  
+  .luxury-section {
+    padding: var(--luxury-space-16) var(--luxury-space-4);
+  }
+  
+  .luxury-section-title {
+    font-size: var(--luxury-text-4xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .luxury-hero-title {
+    font-size: var(--luxury-text-4xl);
+  }
+  
+  .luxury-sanskrit-text {
+    font-size: var(--luxury-text-3xl);
+  }
+  
+  .luxury-om-symbol {
+    width: 48px;
+    height: 48px;
+    font-size: var(--luxury-text-xl);
+  }
+  
+  .luxury-brand-title {
+    font-size: var(--luxury-text-xl);
+  }
+  
+  .luxury-feature-card {
+    padding: var(--luxury-space-8);
+  }
+  
+  .luxury-feature-icon {
+    width: 64px;
+    height: 64px;
+    font-size: var(--luxury-text-2xl);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY & REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible for better accessibility */
+.luxury-btn:focus-visible,
+.luxury-nav-link:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--luxury-gold);
+  outline-offset: 2px;
+  border-radius: var(--luxury-radius-sm);
+}
+
+/* ============================================
+   HIGH CONTRAST MODE
+   ============================================ */
+@media (prefers-contrast: high) {
+  .luxury-btn {
+    border-width: 2px;
+  }
+  
+  .luxury-card {
+    border-width: 2px;
+  }
+  
+  .luxury-nav {
+    border-bottom-width: 2px;
+  }
+}
+
+/* ============================================
+   DARK MODE LUXURY
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  .luxury-nav {
+    background: linear-gradient(135deg, 
+      rgba(10, 10, 10, 0.95) 0%, 
+      rgba(26, 26, 26, 0.95) 50%, 
+      rgba(42, 42, 42, 0.95) 100%);
+  }
+  
+  .luxury-hero {
+    background: 
+      radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 70% 80%, rgba(80, 200, 120, 0.05) 0%, transparent 50%),
+      linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+  }
+  
+  .luxury-card {
+    background: rgba(26, 26, 26, 0.9);
+    border-color: rgba(212, 175, 55, 0.2);
+  }
+  
+  .luxury-feature-card {
+    background: rgba(26, 26, 26, 0.95);
+    border-color: rgba(212, 175, 55, 0.2);
+  }
+  
+  .luxury-stat {
+    background: rgba(26, 26, 26, 0.8);
+    border-color: rgba(212, 175, 55, 0.3);
+  }
+}
