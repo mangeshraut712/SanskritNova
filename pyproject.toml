@@ -72,4 +72,10 @@ filterwarnings = [
     "ignore::DeprecationWarning:mangum.*:",
     "ignore::UserWarning:torch.*:",
     "ignore::UserWarning:.*_ARRAY_API.*:",
+    "ignore::DeprecationWarning:.*SwigPyPacked.*:",
+    "ignore::DeprecationWarning:.*SwigPyObject.*:",
+    "ignore::DeprecationWarning:.*swigvarlink.*:",
+    "ignore::DeprecationWarning:.*builtin type.*no __module__ attribute.*:",
+    "ignore::DeprecationWarning:frozen importlib.*:",
+    "ignore::DeprecationWarning",
 ]
