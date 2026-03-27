@@ -1,0 +1,15 @@
+{
+  "name": "sanskritnova-api",
+  "version": "1.0.0",
+  "description": "SanskritNova AI API",
+  "type": "module",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "dev": "node api/index.js",
+    "build": "echo 'No build needed - serverless functions'"
+  },
+  "keywords": ["sanskrit", "api", "ai", "transliteration"],
+  "author": "SanskritNova Team",
+  "license": "MIT"
+}
