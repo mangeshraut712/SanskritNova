@@ -246,6 +246,7 @@ async def info():
         "name": "SanskritNova AI",
         "provider": "openrouter",
         "chat_modes": ["learn", "translate", "analyze"],
+        "advanced_modes": [],
         "chat_configured": bool(os.getenv("OPENROUTER_API_KEY")),
         "transliteration": True,
     }

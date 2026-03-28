@@ -103,6 +103,29 @@
   margin-bottom: var(--luxury-space-6);
 }
 
+.luxury-chat-capabilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--luxury-space-3);
+  padding: 0 var(--luxury-space-6) var(--luxury-space-5);
+}
+
+.luxury-capability-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--luxury-space-2) var(--luxury-space-4);
+  border-radius: var(--luxury-radius-full);
+  background: rgba(191, 122, 29, 0.08);
+  border: 1px solid rgba(191, 122, 29, 0.12);
+  color: var(--luxury-text-secondary);
+  font-size: var(--luxury-text-sm);
+  font-weight: 600;
+}
+
+.luxury-capability-chip.inactive {
+  opacity: 0.72;
+}
+
 .luxury-chat-messages,
 .luxury-chat-input-area {
   background: transparent;
@@ -515,6 +538,46 @@
   font-family: var(--luxury-font-body);
   line-height: 1.8;
   margin-bottom: var(--luxury-space-3);
+}
+
+.luxury-message-meta {
+  display: grid;
+  gap: var(--luxury-space-3);
+  margin-bottom: var(--luxury-space-3);
+}
+
+.luxury-message-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--luxury-space-1) var(--luxury-space-3);
+  border-radius: var(--luxury-radius-full);
+  background: rgba(191, 122, 29, 0.1);
+  color: var(--luxury-text-secondary);
+  font-size: var(--luxury-text-xs);
+  font-weight: 600;
+  margin-right: var(--luxury-space-2);
+}
+
+.luxury-message-block {
+  display: grid;
+  gap: var(--luxury-space-2);
+}
+
+.luxury-message-block-title {
+  font-size: var(--luxury-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--luxury-text-tertiary);
+  font-weight: 700;
+}
+
+.luxury-message-list {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: var(--luxury-space-1);
+  color: var(--luxury-text-secondary);
+  font-size: var(--luxury-text-sm);
 }
 
 .luxury-message-time {
@@ -1784,6 +1847,13 @@
 [data-theme='dark'] .luxury-mode-btn {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(216, 154, 66, 0.12);
+  color: #ddd1c0;
+}
+
+[data-theme='dark'] .luxury-capability-chip,
+[data-theme='dark'] .luxury-message-badge {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(216, 154, 66, 0.14);
   color: #ddd1c0;
 }
 

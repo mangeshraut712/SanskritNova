@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 import os
 from pathlib import Path
 from typing import Literal
@@ -24,6 +25,9 @@ try:
     import numpy as np
 except ImportError:
     np = None
+
+
+logger = logging.getLogger(__name__)
 
 
 OPENROUTER_URL = os.getenv(
@@ -73,6 +77,38 @@ FALLBACK_REFERENCE_PASSAGES = [
         "text": (
             "The Gita Reading track in SanskritNova is designed for learners moving from "
             "transliteration into guided verse reading, explanation, and literary context."
+        ),
+    },
+    {
+        "source": "SanskritReference",
+        "chunk_id": "sanskrit",
+        "text": (
+            "संस्कृत (Sanskrit) is a classical language of South Asia known for its precise grammar, "
+            "long literary tradition, and major role in philosophy, ritual, poetry, and knowledge systems."
+        ),
+    },
+    {
+        "source": "SanskritReference",
+        "chunk_id": "iast",
+        "text": (
+            "IAST stands for International Alphabet of Sanskrit Transliteration. It is a Roman-script "
+            "standard used to represent Sanskrit sounds precisely, including long vowels and retroflex consonants."
+        ),
+    },
+    {
+        "source": "SanskritReference",
+        "chunk_id": "devanagari",
+        "text": (
+            "Devanagari is the script most commonly used to write Sanskrit in modern study materials. "
+            "It represents consonants, vowels, diacritics, and conjunct clusters in a structured way."
+        ),
+    },
+    {
+        "source": "SanskritReference",
+        "chunk_id": "greeting",
+        "text": (
+            "Common Sanskrit greetings include नमस्ते (namaste), नमः (namaḥ), and respectful "
+            "forms used in study and recitation contexts. नमस्ते is the most familiar everyday greeting."
         ),
     },
 ]
@@ -449,6 +485,7 @@ def _runtime_metadata() -> dict[str, object]:
         "model": _openrouter_model(),
         "grounded_answer": _grounded_answer_available(),
         "agentic_rag": AGENTIC_RAG_AVAILABLE,
+        "advanced_modes": ["grounded", "agentic"],
     }
 
 
@@ -604,8 +641,8 @@ async def agentic_rag_api(request: AgenticAnswerRequest):
                 attempts=result["attempts"],
                 quality=result["quality"],
             )
-        except Exception:
-            pass
+        except Exception as exc:
+            logger.warning("Agentic pipeline failed, using grounded fallback: %s", exc)
 
     sources = _retrieve_grounded_results(request.message, 3)
     if not sources:

@@ -45,21 +45,21 @@ The repo also includes the operational pieces needed to ship that experience:
 
 ## Product Surface
 
-| Surface | User value | Runtime |
-| --- | --- | --- |
-| Tutor Studio | Ask for explanation, translation, or analysis in one place | [`public/index.html`](public/index.html) + [`api/index.py`](api/index.py) locally, [`api/index_complex.py`](api/index_complex.py) on Vercel |
-| Transliteration Lab | Convert Devanagari ↔ IAST with history and copy flow | [`public/index.html`](public/index.html) + `/api/transliterate` |
-| Guided Tracks | Keep the learning path compact and product-shaped | [`public/index.html`](public/index.html) |
+| Surface             | User value                                                                                     | Runtime                                                                                                                                     |
+| ------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tutor Studio        | Ask for explanation, translation, analysis, grounded answers, or agentic fallback in one place | [`public/index.html`](public/index.html) + [`api/index.py`](api/index.py) locally, [`api/index_complex.py`](api/index_complex.py) on Vercel |
+| Transliteration Lab | Convert Devanagari ↔ IAST with history and copy flow                                           | [`public/index.html`](public/index.html) + `/api/transliterate`                                                                             |
+| Guided Tracks       | Keep the learning path compact and product-shaped                                              | [`public/index.html`](public/index.html)                                                                                                    |
 
 ## At A Glance
 
-| Area | Default path | Extended path |
-| --- | --- | --- |
-| Frontend | Static single-page app in [`public/`](public) | PWA support via [`public/sw.js`](public/sw.js) and [`public/manifest.json`](public/manifest.json) |
-| Local API | [`api/index.py`](api/index.py) | [`api/index_complex.py`](api/index_complex.py) for grounded and agentic flows |
-| Production API | [`api/index_complex.py`](api/index_complex.py) on Vercel | OpenRouter-backed chat, grounded fallback, and agentic fallback |
-| AI / retrieval | Product-safe defaults | Local index + RAG stack in [`code/`](code) |
-| Release flow | [`scripts/release-checks.sh`](scripts/release-checks.sh) | [`scripts/deploy-vercel.sh`](scripts/deploy-vercel.sh) and [`scripts/commit-release.sh`](scripts/commit-release.sh) |
+| Area           | Default path                                             | Extended path                                                                                                       |
+| -------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Frontend       | Static single-page app in [`public/`](public)            | PWA support via [`public/sw.js`](public/sw.js) and [`public/manifest.json`](public/manifest.json)                   |
+| Local API      | [`api/index.py`](api/index.py)                           | [`api/index_complex.py`](api/index_complex.py) for grounded and agentic flows                                       |
+| Production API | [`api/index_complex.py`](api/index_complex.py) on Vercel | OpenRouter-backed chat, grounded fallback, and agentic fallback                                                     |
+| AI / retrieval | Product-safe defaults                                    | Local index + RAG stack in [`code/`](code)                                                                          |
+| Release flow   | [`scripts/release-checks.sh`](scripts/release-checks.sh) | [`scripts/deploy-vercel.sh`](scripts/deploy-vercel.sh) and [`scripts/commit-release.sh`](scripts/commit-release.sh) |
 
 ## Quick Start
 
@@ -206,6 +206,7 @@ Generated local folders such as `node_modules/`, `venv/`, `.vercel/`, `.ruff_cac
 - API entrypoint: [`api/index_complex.py`](api/index_complex.py)
 - Routing and caching: [`vercel.json`](vercel.json)
 - Upload filtering: [`.vercelignore`](.vercelignore)
+- Runtime metadata is exposed at `GET /api/health` and `GET /api/info`
 
 ### Extended AI path
 
@@ -252,6 +253,8 @@ The OpenRouter-backed extended API in [`api/index_complex.py`](api/index_complex
 
 - `POST /api/grounded-answer`
 - `POST /api/agentic-answer`
+
+The homepage tutor UI now surfaces grounded and agentic modes explicitly. When the provider is unavailable, production falls back to structured local reference answers instead of returning a raw failure.
 
 </details>
 

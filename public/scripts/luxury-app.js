@@ -84,6 +84,8 @@ const TRANSLATIONS = {
         learn: ['📖', 'Learn'],
         translate: ['🔄', 'Translate'],
         analyze: ['🔍', 'Analyze'],
+        grounded: ['🧭', 'Grounded'],
+        agentic: ['🧠', 'Agentic'],
       },
       placeholder: 'Type your message in Sanskrit or English...',
       suggestions: [
@@ -98,6 +100,10 @@ const TRANSLATIONS = {
         learn: 'Switched to Learning mode. I will help you learn Sanskrit concepts.',
         translate: 'Switched to Translation mode. I can translate between Sanskrit and English.',
         analyze: 'Switched to Analysis mode. I can analyze Sanskrit grammar and structure.',
+        grounded:
+          'Switched to Grounded mode. I will answer from source-backed references when available.',
+        agentic:
+          'Switched to Agentic mode. I will try the deeper reasoning pipeline and fall back safely if needed.',
       },
     },
     // Transliteration Section
@@ -262,6 +268,8 @@ const TRANSLATIONS = {
         learn: ['📖', 'सीखें'],
         translate: ['🔄', 'अनुवाद'],
         analyze: ['🔍', 'विश्लेषण'],
+        grounded: ['🧭', 'संदर्भित'],
+        agentic: ['🧠', 'एजेंटिक'],
       },
       placeholder: 'संस्कृत या अंग्रेजी में अपना संदेश टाइप करें...',
       suggestions: [
@@ -278,6 +286,9 @@ const TRANSLATIONS = {
           'अनुवाद मोड में स्विच किया गया। मैं संस्कृत और अंग्रेजी के बीच अनुवाद कर सकता हूं।',
         analyze:
           'विश्लेषण मोड में स्विच किया गया। मैं संस्कृत व्याकरण और संरचना का विश्लेषण कर सकता हूं।',
+        grounded: 'संदर्भित मोड में स्विच किया गया। उपलब्ध होने पर मैं स्रोत-आधारित उत्तर दूंगा।',
+        agentic:
+          'एजेंटिक मोड में स्विच किया गया। मैं गहरे तर्क पथ का उपयोग करूंगा और आवश्यकता होने पर सुरक्षित फॉलबैक दूंगा।',
       },
     },
     // Transliteration Section
@@ -390,6 +401,7 @@ const LuxuryApp = {
     voiceRecognition: null,
     speechSynthesis: null,
     autoTransliterationRequestId: 0,
+    apiInfo: null,
   },
 
   // DOM element references
@@ -402,6 +414,7 @@ const LuxuryApp = {
     this.initializeSpeechAPI();
     this.initializeTheme();
     this.initializeLanguage();
+    this.loadApiCapabilities();
     this.startAnimations();
     console.log('🌟 SanskritNova Luxury App Initialized');
   },
@@ -427,6 +440,7 @@ const LuxuryApp = {
       chatInput: document.getElementById('chat-input'),
       sendBtn: document.getElementById('send-btn'),
       voiceBtn: document.getElementById('voice-btn'),
+      chatCapabilities: document.getElementById('chat-capabilities'),
       modeButtons: document.querySelectorAll('.luxury-mode-btn'),
       suggestionChips: document.querySelectorAll('.luxury-suggestion-chip'),
 
@@ -733,6 +747,8 @@ const LuxuryApp = {
       learn: chatData.modes.learn,
       translate: chatData.modes.translate,
       analyze: chatData.modes.analyze,
+      grounded: chatData.modes.grounded,
+      agentic: chatData.modes.agentic,
     };
 
     if (sectionTitle) sectionTitle.textContent = chatData.title;
@@ -764,6 +780,8 @@ const LuxuryApp = {
         chip.textContent = chatData.suggestions[index];
       }
     });
+
+    this.updateCapabilityChips();
   },
 
   updateTransliterationSection() {
@@ -910,32 +928,106 @@ const LuxuryApp = {
       // Call real API
       const response = await this.sendChatMessageApi(message, this.state.currentChatMode);
       this.hideTypingIndicator();
-      this.addMessage(response.reply, 'ai');
+      this.addMessage(response.reply, 'ai', response);
     } catch (error) {
       this.hideTypingIndicator();
       // Fallback to simulated response if API fails
       const fallbackResponse = this.generateAIResponse(message);
-      this.addMessage(fallbackResponse, 'ai');
+      if (typeof fallbackResponse === 'string') {
+        this.addMessage(fallbackResponse, 'ai');
+      } else {
+        this.addMessage(fallbackResponse.reply, 'ai', fallbackResponse);
+      }
       this.showToast('Using offline mode', 'warning');
     }
   },
 
-  addMessage(message, sender) {
+  addMessage(message, sender, metadata = {}) {
     const messageElement = document.createElement('div');
     messageElement.className = `luxury-message ${sender}`;
 
     const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-    messageElement.innerHTML = `
-      <div class="luxury-message-content">${message}</div>
-      <div class="luxury-message-time">${time}</div>
-    `;
+    const contentElement = document.createElement('div');
+    contentElement.className = 'luxury-message-content';
+    contentElement.textContent = message;
+    messageElement.appendChild(contentElement);
+
+    if (metadata.quality || metadata.model || metadata.sources || metadata.steps) {
+      const metaElement = document.createElement('div');
+      metaElement.className = 'luxury-message-meta';
+      const labels =
+        this.state.currentLanguage === 'hi'
+          ? { quality: 'गुणवत्ता', model: 'मॉडल', sources: 'स्रोत', pipeline: 'पाइपलाइन' }
+          : { quality: 'Quality', model: 'Model', sources: 'Sources', pipeline: 'Pipeline' };
+
+      if (metadata.quality) {
+        const qualityBadge = document.createElement('span');
+        qualityBadge.className = 'luxury-message-badge';
+        qualityBadge.textContent = `${labels.quality}: ${metadata.quality}`;
+        metaElement.appendChild(qualityBadge);
+      }
+
+      if (metadata.model) {
+        const modelBadge = document.createElement('span');
+        modelBadge.className = 'luxury-message-badge';
+        modelBadge.textContent = `${labels.model}: ${metadata.model}`;
+        metaElement.appendChild(modelBadge);
+      }
+
+      if (Array.isArray(metadata.sources) && metadata.sources.length > 0) {
+        const sourcesBlock = document.createElement('div');
+        sourcesBlock.className = 'luxury-message-block';
+
+        const title = document.createElement('div');
+        title.className = 'luxury-message-block-title';
+        title.textContent = labels.sources;
+        sourcesBlock.appendChild(title);
+
+        const list = document.createElement('ul');
+        list.className = 'luxury-message-list';
+        metadata.sources.forEach((source) => {
+          const item = document.createElement('li');
+          item.textContent = `${source.source} · ${source.chunk_id}`;
+          list.appendChild(item);
+        });
+        sourcesBlock.appendChild(list);
+        metaElement.appendChild(sourcesBlock);
+      }
+
+      if (Array.isArray(metadata.steps) && metadata.steps.length > 0) {
+        const stepsBlock = document.createElement('div');
+        stepsBlock.className = 'luxury-message-block';
+
+        const title = document.createElement('div');
+        title.className = 'luxury-message-block-title';
+        title.textContent = labels.pipeline;
+        stepsBlock.appendChild(title);
+
+        const list = document.createElement('ul');
+        list.className = 'luxury-message-list';
+        metadata.steps.forEach((step) => {
+          const item = document.createElement('li');
+          item.textContent = step;
+          list.appendChild(item);
+        });
+        stepsBlock.appendChild(list);
+        metaElement.appendChild(stepsBlock);
+      }
+
+      messageElement.appendChild(metaElement);
+    }
+
+    const timeElement = document.createElement('div');
+    timeElement.className = 'luxury-message-time';
+    timeElement.textContent = time;
+    messageElement.appendChild(timeElement);
 
     this.elements.chatContainer.appendChild(messageElement);
     this.elements.chatContainer.scrollTop = this.elements.chatContainer.scrollHeight;
 
     // Add to history
-    this.state.chatHistory.push({ message, sender, time });
+    this.state.chatHistory.push({ message, sender, time, metadata });
 
     // Animate message
     messageElement.style.opacity = '0';
@@ -951,33 +1043,142 @@ const LuxuryApp = {
     const trimmed = message.trim();
     const hasDevanagari = /[\u0900-\u097F]/.test(trimmed);
     const transliteration = hasDevanagari ? this.performTransliteration(trimmed) : trimmed;
+    const lowerMessage = trimmed.toLowerCase();
+
+    const fallbackEntries = [
+      {
+        id: 'yoga',
+        matches: ['yoga', 'योग'],
+        summary:
+          'Yoga (योग) is commonly explained as union, disciplined practice, and inward integration of body, mind, and awareness.',
+      },
+      {
+        id: 'dharma',
+        matches: ['dharma', 'धर्म'],
+        summary:
+          'Dharma (धर्म) can refer to duty, right conduct, sustaining order, and what is fitting in context.',
+      },
+      {
+        id: 'namaste',
+        matches: ['namaste', 'नमस्ते'],
+        summary:
+          'Namaste (नमस्ते) is a respectful greeting derived from नमः, often understood as “I bow to you” or “respectful greetings.”',
+      },
+      {
+        id: 'sanskrit',
+        matches: ['sanskrit', 'संस्कृत'],
+        summary:
+          'Sanskrit (संस्कृत) is a classical language known for precise grammar, a long literary tradition, and major influence on philosophy and ritual.',
+      },
+      {
+        id: 'iast',
+        matches: ['iast', 'transliteration', 'devanagari', 'देवनागरी'],
+        summary:
+          'IAST is the International Alphabet of Sanskrit Transliteration, a Roman-script standard used to represent Sanskrit sounds precisely.',
+      },
+      {
+        id: 'gita',
+        matches: ['gita', 'गीता'],
+        summary:
+          'The Gita is a practical Sanskrit study text because it combines memorable verse, philosophical vocabulary, and rich grammatical examples.',
+      },
+    ];
+
+    const matchedEntry = fallbackEntries.find((entry) =>
+      entry.matches.some((term) => lowerMessage.includes(term) || trimmed.includes(term))
+    );
+    const fallbackSource = matchedEntry
+      ? [
+          {
+            source: 'SanskritReference',
+            chunk_id: matchedEntry.id,
+            text: matchedEntry.summary,
+          },
+        ]
+      : [];
 
     if (this.state.currentChatMode === 'translate') {
       if (hasDevanagari) {
-        return `Offline translation mode: IAST transliteration is "${transliteration}". I can provide a fuller translation once the live tutor is available.`;
+        return {
+          reply: `Offline translation mode: IAST transliteration is "${transliteration}". I can provide a fuller translation once the live tutor is available.`,
+          model: 'offline-fallback',
+          quality: 'fallback',
+          sources: fallbackSource,
+        };
       }
-      return `Offline translation mode is limited right now. Try a short Sanskrit phrase and I can still help with transliteration and basic phrasing.`;
+      return {
+        reply:
+          'Offline translation mode is limited right now. Try a short Sanskrit phrase and I can still help with transliteration and basic phrasing.',
+        model: 'offline-fallback',
+        quality: 'fallback',
+        sources: fallbackSource,
+      };
     }
 
     if (this.state.currentChatMode === 'analyze') {
       if (hasDevanagari) {
-        return `Offline analysis mode: I detect Devanagari text and can read it as "${transliteration}". For a deeper grammatical breakdown, reconnect the live tutor.`;
+        return {
+          reply: `Offline analysis mode: I detect Devanagari text and can read it as "${transliteration}". For a deeper grammatical breakdown, reconnect the live tutor.`,
+          model: 'offline-fallback',
+          quality: 'fallback',
+          sources: fallbackSource,
+        };
       }
-      return `Offline analysis mode is available for quick guidance, but detailed grammatical parsing needs the live tutor.`;
+      return {
+        reply:
+          'Offline analysis mode is available for quick guidance, but detailed grammatical parsing needs the live tutor.',
+        model: 'offline-fallback',
+        quality: 'fallback',
+        sources: fallbackSource,
+      };
     }
 
-    const lowerMessage = trimmed.toLowerCase();
-    if (lowerMessage.includes('yoga') || trimmed.includes('योग')) {
-      return 'Offline tutor note: yoga (योग) is commonly understood as union, disciplined practice, and inward integration of mind and body.';
+    if (this.state.currentChatMode === 'grounded') {
+      return {
+        reply: matchedEntry
+          ? `Offline grounded mode: ${matchedEntry.summary}`
+          : 'Offline grounded mode is available with local reference notes, but the live retrieval service is currently unavailable.',
+        model: 'offline-fallback',
+        quality: 'fallback',
+        sources: fallbackSource,
+      };
     }
-    if (lowerMessage.includes('dharma') || trimmed.includes('धर्म')) {
-      return 'Offline tutor note: dharma (धर्म) can refer to duty, right conduct, sustaining order, and what is fitting in context.';
+
+    if (this.state.currentChatMode === 'agentic') {
+      return {
+        reply: matchedEntry
+          ? `Offline agentic mode: ${matchedEntry.summary}`
+          : 'Offline agentic mode is using the simpler local fallback because the live reasoning pipeline is unavailable.',
+        model: 'offline-fallback',
+        quality: 'fallback',
+        sources: fallbackSource,
+        steps: ['Agentic pipeline unavailable, used local structured fallback.'],
+      };
     }
+
+    if (matchedEntry) {
+      return {
+        reply: `Offline tutor note: ${matchedEntry.summary}`,
+        model: 'offline-fallback',
+        quality: 'fallback',
+        sources: fallbackSource,
+      };
+    }
+
     if (hasDevanagari) {
-      return `Offline tutor note: I can still read your Sanskrit as "${transliteration}" and help with basic phrasing while the live tutor is unavailable.`;
+      return {
+        reply: `Offline tutor note: I can still read your Sanskrit as "${transliteration}" and help with basic phrasing while the live tutor is unavailable.`,
+        model: 'offline-fallback',
+        quality: 'fallback',
+      };
     }
 
-    return 'Offline tutor note: the live model is unavailable, but you can still use transliteration and guided tracks while reconnecting.';
+    return {
+      reply:
+        'Offline tutor note: the live model is unavailable, but you can still use transliteration, grounded mode, and guided tracks while reconnecting.',
+      model: 'offline-fallback',
+      quality: 'fallback',
+    };
   },
 
   showTypingIndicator() {
@@ -1319,18 +1520,23 @@ const LuxuryApp = {
   },
 
   updateTransliterationHistory() {
-    const historyHTML = this.state.transliterationHistory
-      .map(
-        (item) => `
-      <div class="luxury-history-item">
-        <div class="luxury-history-devanagari">${item.input}</div>
-        <div class="luxury-history-iast">${item.output}</div>
-      </div>
-    `
-      )
-      .join('');
+    this.elements.translitHistory.innerHTML = '';
+    this.state.transliterationHistory.forEach((item) => {
+      const row = document.createElement('div');
+      row.className = 'luxury-history-item';
 
-    this.elements.translitHistory.innerHTML = historyHTML;
+      const input = document.createElement('div');
+      input.className = 'luxury-history-devanagari';
+      input.textContent = item.input;
+
+      const output = document.createElement('div');
+      output.className = 'luxury-history-iast';
+      output.textContent = item.output;
+
+      row.appendChild(input);
+      row.appendChild(output);
+      this.elements.translitHistory.appendChild(row);
+    });
   },
 
   // ============================================
@@ -1339,11 +1545,24 @@ const LuxuryApp = {
   async sendChatMessageApi(message, mode = 'learn') {
     try {
       this.showLoading();
-      const response = await ApiManager.post('/api/chat', {
-        message,
-        mode,
-        lang: this.state.currentLanguage,
-      });
+      let response;
+      if (mode === 'grounded') {
+        response = await ApiManager.post('/api/grounded-answer', {
+          message,
+          k: 3,
+          lang: this.state.currentLanguage,
+        });
+      } else if (mode === 'agentic') {
+        response = await ApiManager.post('/api/agentic-answer', {
+          message,
+        });
+      } else {
+        response = await ApiManager.post('/api/chat', {
+          message,
+          mode,
+          lang: this.state.currentLanguage,
+        });
+      }
       return response;
     } catch (error) {
       ErrorManager.handleApiError(error, 'Failed to send message. Please try again.');
@@ -1385,8 +1604,62 @@ const LuxuryApp = {
     ToastManager.show(message, type);
   },
 
+  async loadApiCapabilities() {
+    try {
+      this.state.apiInfo = await ApiManager.get('/api/info');
+    } catch (error) {
+      this.state.apiInfo = null;
+    }
+
+    this.updateCapabilityChips();
+  },
+
+  updateCapabilityChips() {
+    if (!this.elements.chatCapabilities) return;
+
+    const info = this.state.apiInfo || {};
+    const labels =
+      this.state.currentLanguage === 'hi'
+        ? {
+            runtime: 'रनटाइम',
+            groundedReady: 'संदर्भ तैयार',
+            groundedFallback: 'संदर्भ फॉलबैक',
+            agenticReady: 'एजेंटिक तैयार',
+            agenticFallback: 'एजेंटिक फॉलबैक',
+          }
+        : {
+            runtime: 'Runtime',
+            groundedReady: 'Grounded ready',
+            groundedFallback: 'Grounded fallback',
+            agenticReady: 'Agentic ready',
+            agenticFallback: 'Agentic fallback',
+          };
+    const runtimeChip = this.elements.chatCapabilities.querySelector('[data-capability="runtime"]');
+    const groundedChip = this.elements.chatCapabilities.querySelector(
+      '[data-capability="grounded"]'
+    );
+    const agenticChip = this.elements.chatCapabilities.querySelector('[data-capability="agentic"]');
+
+    if (runtimeChip) {
+      runtimeChip.textContent = `${labels.runtime}: ${info.runtime || 'local'}`;
+    }
+
+    if (groundedChip) {
+      groundedChip.textContent = info.grounded_answer
+        ? labels.groundedReady
+        : labels.groundedFallback;
+      groundedChip.classList.toggle('inactive', !info.grounded_answer);
+    }
+
+    if (agenticChip) {
+      agenticChip.textContent = info.agentic_rag ? labels.agenticReady : labels.agenticFallback;
+      agenticChip.classList.toggle('inactive', !info.agentic_rag);
+    }
+  },
+
   getPreferredSpeechLanguage(sampleText = '') {
-    const text = sampleText || this.elements.chatInput?.value || this.elements.inputText?.value || '';
+    const text =
+      sampleText || this.elements.chatInput?.value || this.elements.inputText?.value || '';
     const hasDevanagari = /[\u0900-\u097F]/.test(text);
     if (this.state.currentLanguage === 'hi' || hasDevanagari) {
       return 'hi-IN';
