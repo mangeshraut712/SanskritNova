@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SanskritNova | Luxury Sanskrit Learning Studio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
     <link rel="icon" href="icon-192.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles/shared-variables.css" />
     <link rel="stylesheet" href="styles/luxury-styles.css" />
-    <link rel="stylesheet" href="styles/luxury-components.css" />
+    <link
+      rel="preload"
+      href="styles/luxury-components.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="styles/luxury-components.css" /></noscript>
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#bf7a1d" />
     <meta

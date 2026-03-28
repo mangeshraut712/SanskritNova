@@ -411,11 +411,13 @@ const LuxuryApp = {
   init() {
     this.cacheElements();
     this.initializeEventListeners();
-    this.initializeSpeechAPI();
     this.initializeTheme();
     this.initializeLanguage();
-    this.loadApiCapabilities();
     this.startAnimations();
+    this.runNonCriticalWork(() => {
+      this.initializeSpeechAPI();
+      this.loadApiCapabilities();
+    });
     console.log('🌟 SanskritNova Luxury App Initialized');
   },
 
@@ -1677,39 +1679,24 @@ const LuxuryApp = {
     return PerformanceManager.debounce(func, wait);
   },
 
+  runNonCriticalWork(callback) {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(callback, { timeout: 1200 });
+      return;
+    }
+
+    window.setTimeout(callback, 200);
+  },
+
   // ============================================
   // ANIMATIONS
   // ============================================
   startAnimations() {
-    // Animate hero elements on load
-    this.animateHeroElements();
-
-    // Initialize scroll animations
-    this.initializeScrollAnimations();
+    this.runNonCriticalWork(() => this.initializeScrollAnimations());
   },
 
   animateHeroElements() {
-    const elements = [
-      '.luxury-hero-badge',
-      '.luxury-hero-title',
-      '.luxury-hero-subtitle',
-      '.luxury-hero-stats',
-      '.luxury-hero-actions',
-    ];
-
-    elements.forEach((selector, index) => {
-      const element = document.querySelector(selector);
-      if (element) {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-
-        setTimeout(() => {
-          element.style.transition = 'all 0.8s ease';
-          element.style.opacity = '1';
-          element.style.transform = 'translateY(0)';
-        }, index * 200);
-      }
-    });
+    // Intentionally no hero entrance animation: text should paint immediately for LCP.
   },
 
   initializeScrollAnimations() {

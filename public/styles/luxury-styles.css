@@ -938,6 +938,15 @@ a:hover {
   scroll-margin-top: 96px;
 }
 
+#features,
+#chat,
+#translit,
+#tracks,
+.luxury-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
+
 .luxury-section-header {
   text-align: center;
   margin-bottom: var(--luxury-space-12);
