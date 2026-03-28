@@ -4,7 +4,6 @@
 # Backend/API ownership
 api/ @mangeshraut712
 code/ @mangeshraut712
-sanskrit_rag/ @mangeshraut712
 
 # Frontend ownership
 public/ @mangeshraut712
@@ -17,7 +16,6 @@ k8s/ @mangeshraut712
 # Documentation
 README.md @mangeshraut712
 CONTRIBUTING.md @mangeshraut712
-docs/ @mangeshraut712
 
 # Tests
 tests/ @mangeshraut712

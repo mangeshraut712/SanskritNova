@@ -4,50 +4,120 @@
 // ============================================
 // API CONFIGURATION
 // ============================================
-export const API_BASE_URL =
-  window.location.hostname === 'localhost'
-    ? 'http://localhost:8000'
-    : 'https://sanskrit-nova.vercel.app';
+const LOOPBACK_HOSTS = new Set(['localhost', '127.0.0.1', '::1']);
+const NORMALIZED_HOSTNAME = window.location.hostname.replace(/^\[(.*)\]$/, '$1');
+
+function resolveApiBaseOverride() {
+  const searchParams = new URLSearchParams(window.location.search);
+  const queryOverride = searchParams.get('apiBaseUrl');
+  const storedOverride = window.localStorage.getItem('sanskritnova.apiBaseUrl');
+  const runtimeOverride = window.SANSKRITNOVA_API_BASE_URL;
+
+  return queryOverride || storedOverride || runtimeOverride || '';
+}
+
+function resolveApiBaseUrl() {
+  const override = resolveApiBaseOverride().trim();
+  if (override) {
+    return override.replace(/\/$/, '');
+  }
+
+  if (LOOPBACK_HOSTS.has(NORMALIZED_HOSTNAME)) {
+    return 'http://127.0.0.1:8000';
+  }
+
+  return window.location.origin;
+}
+
+export const API_BASE_URL = resolveApiBaseUrl();
 
 // ============================================
 // THEME MANAGEMENT UTILITIES
 // ============================================
 export class ThemeManager {
-  static initializeTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+  static getStorageKey() {
+    return 'theme';
+  }
 
-    this.applyTheme(theme);
+  static getSystemTheme() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  static getStoredPreference() {
+    return localStorage.getItem(this.getStorageKey()) || 'system';
+  }
+
+  static resolveTheme(preference) {
+    return preference === 'system' ? this.getSystemTheme() : preference;
+  }
+
+  static updateToggleMetadata(preference, resolvedTheme) {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const icon = preference === 'system' ? '◐' : resolvedTheme === 'dark' ? '☀️' : '🌙';
+
+    if (themeIcon) {
+      themeIcon.textContent = icon;
+    }
+
+    if (themeToggle) {
+      const readablePreference =
+        preference === 'system'
+          ? `System (${resolvedTheme})`
+          : preference[0].toUpperCase() + preference.slice(1);
+      themeToggle.setAttribute('aria-label', `Theme: ${readablePreference}`);
+      themeToggle.setAttribute('title', `Theme: ${readablePreference}`);
+    }
+  }
+
+  static updateThemeColor(resolvedTheme) {
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeColorMeta) {
+      themeColorMeta.setAttribute('content', resolvedTheme === 'dark' ? '#111319' : '#bf7a1d');
+    }
+  }
+
+  static initializeTheme() {
+    const themePreference = this.getStoredPreference();
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    this.applyTheme(themePreference);
 
     // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        this.applyTheme(e.matches ? 'dark' : 'light');
+    mediaQuery.addEventListener('change', () => {
+      if (this.getStoredPreference() === 'system') {
+        this.applyTheme('system');
       }
     });
   }
 
-  static applyTheme(theme) {
+  static applyTheme(preference) {
     const root = document.documentElement;
-    const themeIcon = document.getElementById('theme-icon');
+    const resolvedTheme = this.resolveTheme(preference);
 
-    if (theme === 'dark') {
+    if (resolvedTheme === 'dark') {
       root.setAttribute('data-theme', 'dark');
-      if (themeIcon) themeIcon.textContent = '☀️';
     } else {
       root.removeAttribute('data-theme');
-      if (themeIcon) themeIcon.textContent = '🌙';
     }
+
+    root.setAttribute('data-theme-preference', preference);
+    this.updateToggleMetadata(preference, resolvedTheme);
+    this.updateThemeColor(resolvedTheme);
   }
 
   static toggleTheme() {
-    const currentTheme =
-      document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    const currentPreference = this.getStoredPreference();
+    const nextPreference =
+      currentPreference === 'system' ? 'dark' : currentPreference === 'dark' ? 'light' : 'system';
 
-    this.applyTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
+    if (nextPreference === 'system') {
+      localStorage.removeItem(this.getStorageKey());
+    } else {
+      localStorage.setItem(this.getStorageKey(), nextPreference);
+    }
+
+    this.applyTheme(nextPreference);
 
     // Animate theme toggle
     const themeToggle = document.getElementById('theme-toggle');
@@ -58,7 +128,10 @@ export class ThemeManager {
       }, 300);
     }
 
-    return newTheme;
+    return {
+      preference: nextPreference,
+      resolvedTheme: this.resolveTheme(nextPreference),
+    };
   }
 }
 

@@ -9,6 +9,7 @@ on:
 
 env:
   PYTHON_VERSION: '3.11'
+  NODE_VERSION: '20'
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
@@ -23,6 +24,15 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Node dependencies
+        run: npm ci
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -34,6 +44,15 @@ jobs:
 
       - name: Compile source
         run: python -m compileall api code
+
+      - name: Check frontend formatting
+        run: npm run format:check
+
+      - name: Parse JavaScript entrypoints
+        run: |
+          node --check api/index.js
+          node --check public/scripts/utils.js
+          node --check public/scripts/luxury-app.js
 
       - name: Run tests
         run: pytest tests

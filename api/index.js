@@ -1,3 +1,15 @@
+const OPENROUTER_URL =
+  process.env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api/v1/chat/completions';
+
+const SYSTEM_PROMPT = `You are SanskritNova AI, an expert Sanskrit learning guide.
+
+Rules:
+- Teach with clarity and cultural respect.
+- Default to concise explanations unless the learner asks for depth.
+- Use Sanskrit examples when helpful and explain them in accessible English.
+- When asked to transliterate, provide both Devanagari and Roman transliteration.
+- If a claim is uncertain, say so directly instead of inventing details.`;
+
 const tracks = [
   {
     slug: 'sanskrit-foundations',
@@ -39,7 +51,7 @@ function transliterateToIAST(text) {
     अ: 'a',
     आ: 'ā',
     इ: 'i',
-    'ी': 'ī',
+    ई: 'ī',
     उ: 'u',
     ऊ: 'ū',
     ऋ: 'ṛ',
@@ -105,6 +117,7 @@ function transliterateToIAST(text) {
   };
 
   const marks = { 'ं': 'ṃ', 'ः': 'ḥ', 'ँ': 'm̐', ऽ: "'", '।': '.', '॥': '..' };
+  const digits = { '०': '0', '१': '1', '२': '2', '३': '3', '४': '4', '५': '5', '६': '6', '७': '7', '८': '8', '९': '9' };
   const virama = '्';
 
   let output = '';
@@ -146,6 +159,17 @@ function transliterateToIAST(text) {
       continue;
     }
 
+    if (digits[char]) {
+      output += digits[char];
+      i++;
+      continue;
+    }
+
+    if (vowelSigns[char] || char === virama) {
+      i++;
+      continue;
+    }
+
     output += char;
     i++;
   }
@@ -153,36 +177,149 @@ function transliterateToIAST(text) {
   return output;
 }
 
-export default function handler(req, res) {
-  const { url, method, query } = req;
+function modeInstruction(mode, lang = 'en') {
+  if (lang === 'hi') {
+    if (mode === 'translate') {
+      return 'इनपुट को स्पष्ट रूप से अनुवाद करें। बारीकियों को बनाए रखें और लिप्यंतरण शामिल करें।';
+    }
+    if (mode === 'analyze') {
+      return 'संस्कृत व्याकरण, अर्थ और संदर्भ का विश्लेषण करें। इसे पठनीय रखें।';
+    }
+    return 'उपयोगकर्ता को संस्कृत शिक्षक के रूप में सिखाएं। उदाहरणों का उपयोग करें।';
+  }
 
-  // Enable CORS
+  if (mode === 'translate') {
+    return 'Translate the input clearly. Preserve nuance and include transliteration.';
+  }
+  if (mode === 'analyze') {
+    return 'Analyze the Sanskrit grammar, meaning, and context. Keep it readable.';
+  }
+  return 'Teach the user as a Sanskrit tutor. Use examples.';
+}
+
+function openRouterConfig() {
+  return {
+    apiKey: process.env.OPENROUTER_API_KEY || '',
+    model: process.env.OPENROUTER_MODEL || 'openai/gpt-4.1-mini',
+    referer: process.env.OPENROUTER_APP_URL || 'https://sanskrit-nova.vercel.app',
+    title: process.env.OPENROUTER_APP_NAME || 'SanskritNova AI',
+  };
+}
+
+function defaultChatReply(mode, lang) {
+  if (lang === 'hi') {
+    return `मैं आपकी '${mode}' मोड में सहायता कर रहा हूँ। कृपया OpenRouter API कॉन्फ़िगर करें।`;
+  }
+  return `I'm helping you in '${mode}' mode. Please configure OpenRouter API key.`;
+}
+
+function applyCommonHeaders(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Referrer-Policy', 'same-origin');
+}
+
+function getPathInfo(req) {
+  const parsed = new URL(req.url || '/', 'http://localhost');
+  return {
+    pathname: parsed.pathname,
+    searchParams: parsed.searchParams,
+  };
+}
+
+async function parseJsonBody(req) {
+  if (req.body && typeof req.body === 'object') {
+    return req.body;
+  }
+
+  if (typeof req.body === 'string') {
+    return req.body ? JSON.parse(req.body) : {};
+  }
+
+  return await new Promise((resolve, reject) => {
+    let raw = '';
+    req.on('data', (chunk) => {
+      raw += chunk;
+    });
+    req.on('end', () => {
+      if (!raw) {
+        resolve({});
+        return;
+      }
+      try {
+        resolve(JSON.parse(raw));
+      } catch (error) {
+        reject(error);
+      }
+    });
+    req.on('error', reject);
+  });
+}
+
+async function openRouterReply({ message, mode, lang }) {
+  const config = openRouterConfig();
+  if (!config.apiKey) {
+    return null;
+  }
+
+  const response = await fetch(OPENROUTER_URL, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${config.apiKey}`,
+      'Content-Type': 'application/json',
+      'HTTP-Referer': config.referer,
+      'X-Title': config.title,
+    },
+    body: JSON.stringify({
+      model: config.model,
+      messages: [
+        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'system', content: modeInstruction(mode, lang) },
+        { role: 'user', content: message },
+      ],
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`OpenRouter request failed with status ${response.status}`);
+  }
+
+  const body = await response.json();
+  return body?.choices?.[0]?.message?.content?.trim() || null;
+}
+
+export default async function handler(req, res) {
+  const { method } = req;
+  const { pathname, searchParams } = getPathInfo(req);
+
+  applyCommonHeaders(res);
 
   if (method === 'OPTIONS') {
     res.status(200).end();
     return;
   }
 
-  if (url === '/api/health' && method === 'GET') {
+  if (pathname === '/api/health' && method === 'GET') {
     res.status(200).json({ status: 'ok', service: 'sanskritnova-ai-api' });
     return;
   }
 
-  if (url === '/api/info' && method === 'GET') {
+  if (pathname === '/api/info' && method === 'GET') {
     res.status(200).json({
       name: 'SanskritNova AI',
       provider: 'openrouter',
       chat_modes: ['learn', 'translate', 'analyze'],
+      chat_configured: Boolean(openRouterConfig().apiKey),
       transliteration: true,
     });
     return;
   }
 
-  if (url === '/api/tracks' && method === 'GET') {
-    const lang = query.lang || 'en';
+  if (pathname === '/api/tracks' && method === 'GET') {
+    const lang = searchParams.get('lang') || 'en';
     const tracksData = tracks.map((track) => ({
       slug: track.slug,
       title: lang === 'hi' ? track.title_hi : track.title,
@@ -194,27 +331,60 @@ export default function handler(req, res) {
     return;
   }
 
-  if (url === '/api/transliterate' && method === 'POST') {
-    const { text } = req.body;
+  if (pathname === '/api/transliterate' && method === 'POST') {
+    let payload;
+    try {
+      payload = await parseJsonBody(req);
+    } catch {
+      res.status(400).json({ error: 'Invalid JSON body' });
+      return;
+    }
+
+    const text = typeof payload.text === 'string' ? payload.text : '';
     res.status(200).json({
-      devanagari: text || '',
-      iast: transliterateToIAST(text || ''),
+      devanagari: text,
+      iast: transliterateToIAST(text),
     });
     return;
   }
 
-  if (url === '/api/chat' && method === 'POST') {
-    const { message, mode = 'learn', lang = 'en' } = req.body;
+  if (pathname === '/api/chat' && method === 'POST') {
+    let payload;
+    try {
+      payload = await parseJsonBody(req);
+    } catch {
+      res.status(400).json({ error: 'Invalid JSON body' });
+      return;
+    }
 
-    let reply;
-    if (lang === 'hi') {
-      reply = `मैं आपकी '${mode}' मोड में सहायता कर रहा हूँ। कृपया OpenRouter API कॉन्फ़िगर करें।`;
-    } else {
-      reply = `I'm helping you in '${mode}' mode. Please configure OpenRouter API key.`;
+    const message = typeof payload.message === 'string' ? payload.message : '';
+    const mode = payload.mode || 'learn';
+    const lang = payload.lang || 'en';
+
+    if (!message.trim()) {
+      res.status(400).json({ error: 'Message is required' });
+      return;
+    }
+
+    const config = openRouterConfig();
+    if (config.apiKey) {
+      try {
+        const reply = await openRouterReply({ message, mode, lang });
+        res.status(200).json({
+          reply: reply || defaultChatReply(mode, lang),
+          model: config.model,
+          mode,
+        });
+        return;
+      } catch (error) {
+        console.error('OpenRouter request failed:', error);
+        res.status(502).json({ error: 'OpenRouter request failed' });
+        return;
+      }
     }
 
     res.status(200).json({
-      reply,
+      reply: defaultChatReply(mode, lang),
       model: 'simplified',
       mode,
     });

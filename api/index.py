@@ -1,6 +1,8 @@
+import os
 from typing import Literal
 
-from fastapi import FastAPI
+import httpx
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -51,9 +53,24 @@ LEARNING_TRACKS = [
     },
 ]
 
+OPENROUTER_URL = os.getenv(
+    "OPENROUTER_BASE_URL",
+    "https://openrouter.ai/api/v1/chat/completions",
+)
+
+SYSTEM_PROMPT = """You are SanskritNova AI, an expert Sanskrit learning guide.
+
+Rules:
+- Teach with clarity and cultural respect.
+- Default to concise explanations unless the learner asks for depth.
+- Use Sanskrit examples when helpful and explain them in accessible English.
+- When asked to transliterate, provide both Devanagari and Roman transliteration.
+- If a claim is uncertain, say so directly instead of inventing details.
+"""
+
 # Transliteration mappings
 INDEPENDENT_VOWELS = {
-    "अ": "a", "आ": "ā", "इ": "i", "ी": "ī", "उ": "u", "ऊ": "ū",
+    "अ": "a", "आ": "ā", "इ": "i", "ई": "ī", "उ": "u", "ऊ": "ū",
     "ऋ": "ṛ", "ॠ": "ṝ", "ऌ": "ḷ", "ॡ": "ḹ", "ए": "e", "ऐ": "ai",
     "ओ": "o", "औ": "au"
 }
@@ -75,7 +92,57 @@ VOWEL_SIGNS = {
 }
 
 MARKS = {"ं": "ṃ", "ः": "ḥ", "ँ": "m̐", "ऽ": "'", "।": ".", "॥": ".."}
+DIGITS = {"०": "0", "१": "1", "२": "2", "३": "3", "४": "4", "५": "5", "६": "6", "७": "7", "८": "8", "९": "9"}
 VIRAMA = "्"
+
+
+def _openrouter_model() -> str:
+    return os.getenv("OPENROUTER_MODEL", "openai/gpt-4.1-mini")
+
+
+def _mode_instruction(mode: str, lang: str = "en") -> str:
+    if lang == "hi":
+        if mode == "translate":
+            return "इनपुट को स्पष्ट रूप से अनुवाद करें। बारीकियों को बनाए रखें और लिप्यंतरण शामिल करें।"
+        if mode == "analyze":
+            return "संस्कृत व्याकरण, अर्थ और संदर्भ का विश्लेषण करें। इसे पठनीय रखें।"
+        return "उपयोगकर्ता को संस्कृत शिक्षक के रूप में सिखाएं। उदाहरणों का उपयोग करें।"
+
+    if mode == "translate":
+        return "Translate the input clearly. Preserve nuance and include transliteration."
+    if mode == "analyze":
+        return "Analyze the Sanskrit grammar, meaning, and context. Keep it readable."
+    return "Teach the user as a Sanskrit tutor. Use examples."
+
+
+async def _openrouter_reply(message: str, mode: str, lang: str) -> str | None:
+    api_key = os.getenv("OPENROUTER_API_KEY")
+    if not api_key:
+        return None
+
+    payload = {
+        "model": _openrouter_model(),
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "system", "content": _mode_instruction(mode, lang)},
+            {"role": "user", "content": message},
+        ],
+    }
+
+    async with httpx.AsyncClient(timeout=45.0) as client:
+        response = await client.post(
+            OPENROUTER_URL,
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+                "HTTP-Referer": os.getenv("OPENROUTER_APP_URL", "https://sanskrit-nova.vercel.app"),
+                "X-Title": os.getenv("OPENROUTER_APP_NAME", "SanskritNova AI"),
+            },
+            json=payload,
+        )
+        response.raise_for_status()
+        body = response.json()
+        return body["choices"][0]["message"]["content"].strip()
 
 # Pydantic models
 class Track(BaseModel):
@@ -137,6 +204,15 @@ def transliterate_to_iast(text: str) -> str:
             output.append(MARKS[char])
             index += 1
             continue
+
+        if char in DIGITS:
+            output.append(DIGITS[char])
+            index += 1
+            continue
+
+        if char in VOWEL_SIGNS or char == VIRAMA:
+            index += 1
+            continue
             
         output.append(char)
         index += 1
@@ -154,6 +230,7 @@ async def info():
         "name": "SanskritNova AI",
         "provider": "openrouter",
         "chat_modes": ["learn", "translate", "analyze"],
+        "chat_configured": bool(os.getenv("OPENROUTER_API_KEY")),
         "transliteration": True,
     }
 
@@ -189,7 +266,14 @@ async def transliterate_api(request: TransliterationRequest):
 
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat_api(request: ChatRequest):
-    # Simplified response for now - requires OpenRouter API key setup
+    if os.getenv("OPENROUTER_API_KEY"):
+        try:
+            reply = await _openrouter_reply(request.message, request.mode, request.lang)
+        except httpx.HTTPError as exc:
+            raise HTTPException(status_code=502, detail="OpenRouter request failed") from exc
+        if reply:
+            return ChatResponse(reply=reply, model=_openrouter_model(), mode=request.mode)
+
     if request.lang == "hi":
         reply = f"मैं आपकी '{request.mode}' मोड में सहायता कर रहा हूँ। कृपया OpenRouter API कॉन्फ़िगर करें।"
     else:

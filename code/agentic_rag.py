@@ -155,14 +155,6 @@ def _get_retriever():
     except ImportError:
         pass
 
-    # Try sanskrit_rag wrapper
-    try:
-        from sanskrit_rag.rag_pipeline import SanskritRAG
-        logger.debug("Loaded SanskritRAG via sanskrit_rag.rag_pipeline")
-        return SanskritRAG()
-    except ImportError:
-        pass
-
     logger.warning("SanskritRAG not available from any import path — using mock retriever")
     return None
 

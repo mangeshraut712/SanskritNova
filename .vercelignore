@@ -1,0 +1,8 @@
+api/*.py
+tests
+docker
+k8s
+netlify
+data
+htmlcov
+coverage.xml

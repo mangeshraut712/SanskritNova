@@ -10,6 +10,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 try:
+    from code.search_normalization import lexical_score
+except ImportError:  # pragma: no cover
+    lexical_score = None
+
+try:
     from mangum import Mangum
 except ImportError:  # pragma: no cover
     Mangum = None
@@ -265,16 +270,19 @@ def _mode_instruction(mode: str, lang: str = "en") -> str:
 
 
 def _load_local_retriever():
-    """Lazily load and cache the sanskrit_rag Retriever. Returns None on failure."""
+    """Lazily load and cache the in-repo Retriever. Returns None on failure."""
     global _LOCAL_RETRIEVER
 
     if _LOCAL_RETRIEVER is not None:
         return _LOCAL_RETRIEVER
 
     try:
-        from sanskrit_rag.retriever import Retriever
+        from code.retriever import Retriever
     except Exception:
-        return None
+        try:
+            from retriever import Retriever
+        except Exception:
+            return None
 
     try:
         retriever = Retriever()
@@ -305,7 +313,7 @@ def _retrieve_with_local_retriever(query: str, k: int) -> list[dict[str, object]
 
 
 def _retrieve_from_legacy_chunks(query: str, k: int) -> list[dict[str, object]]:
-    """Fallback retrieval using naive token-count scoring on legacy chunks.npy."""
+    """Fallback retrieval using script-aware lexical scoring on legacy chunks.npy."""
     if np is None:
         return []
     if not LEGACY_CHUNKS_PATH.exists():
@@ -316,16 +324,19 @@ def _retrieve_from_legacy_chunks(query: str, k: int) -> list[dict[str, object]]:
     except Exception:
         return []
 
-    tokens = [token for token in query.lower().split() if token]
     ranked = []
     for index, text in enumerate(chunks):
         text_str = str(text)
-        score = sum(text_str.lower().count(token) for token in tokens) if tokens else 0
+        if lexical_score is None:
+            score = 0.0
+        else:
+            score = lexical_score(query, text_str)
         ranked.append((score, index, text_str))
     ranked.sort(key=lambda item: item[0], reverse=True)
     return [
         {"source": "SanskritCorpus", "chunk_id": item[1], "text": item[2]}
         for item in ranked[:k]
+        if item[0] > 0
     ]
 
 

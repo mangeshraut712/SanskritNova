@@ -2,16 +2,12 @@
 /* Premium interactions with royal elegance and smooth animations */
 
 import {
-  API_BASE_URL,
   ThemeManager,
   LanguageManager,
   ToastManager,
   ApiManager,
-  AnimationManager,
-  ValidationManager,
-  StorageManager,
+  PerformanceManager,
   ErrorManager,
-  CONSTANTS,
 } from './utils.js';
 
 // ============================================
@@ -21,49 +17,47 @@ const TRANSLATIONS = {
   en: {
     // Navigation
     nav: {
-      chat: 'चाट',
-      translit: 'लिप्यन्तर',
-      dictionary: 'शब्दकोश',
-      grammar: 'व्याकरण',
-      tracks: 'पाठ्यक्रम',
-      knowledgeBase: '📚 Knowledge Base',
+      features: 'Highlights',
+      tutor: 'Tutor',
+      translit: 'Transliteration',
+      tracks: 'Tracks',
     },
     // Hero Section
     hero: {
-      badge: '🇮🇳 Royal Heritage • Premium Design',
-      title: ['Experience the Luxury', 'संस्कृतम् अध्ययनम्', 'of Sanskrit Learning'],
+      badge: 'Focused Sanskrit Learning Experience',
+      title: ['Learn Sanskrit', 'संस्कृतम् सरलम् सुन्दरम्', 'with Calm, Precise AI Guidance'],
       subtitle:
-        'Embark on a majestic journey through the timeless wisdom of Sanskrit, enhanced by cutting-edge AI technology and presented with unparalleled luxury.',
+        'SanskritNova presents the actual product and only the product: tutor, transliteration, and guided learning paths in a polished single-page experience.',
       stats: {
-        heritage: 'Years of Heritage',
-        words: 'Sanskrit Words',
-        accuracy: 'AI Accuracy',
-        support: 'Premium Support',
+        heritage: 'Personal Tutor',
+        words: 'Script Bridge',
+        accuracy: 'API-Backed',
+        support: 'Mobile Ready',
       },
       actions: {
-        startJourney: ['🚀', 'Begin Your Journey'],
-        exploreFeatures: ['✨', 'Explore Features'],
+        startJourney: ['✦', 'Try the Tutor'],
+        exploreFeatures: ['◌', 'See the Highlights'],
       },
     },
     // Features Section
     features: {
-      title: 'Premium Features',
-      subtitle: 'Experience Sanskrit learning with unparalleled luxury and sophistication',
+      title: 'What Matters Here',
+      subtitle: 'A shorter, clearer showcase of the core SanskritNova experience.',
       items: {
         ai: {
-          title: 'AI-Powered Learning',
+          title: 'Personal Sanskrit Tutor',
           description:
-            'Advanced artificial intelligence provides personalized Sanskrit learning experiences with real-time feedback and adaptive learning paths.',
+            'Ask questions in English or Sanskrit and get study-focused responses for learning, translation, and explanation.',
         },
         library: {
-          title: 'Royal Library',
+          title: 'Fast Transliteration',
           description:
-            'Access to an exquisite collection of Sanskrit texts, from ancient Vedas to classical literature, curated with scholarly precision.',
+            'Convert between Devanagari and IAST in a workflow built for repetition, correction, and quick copy/paste study.',
         },
         transliteration: {
-          title: 'Precision Transliteration',
+          title: 'Guided Learning Paths',
           description:
-            'State-of-the-art transliteration technology ensures accurate conversion between Devanagari and IAST scripts with cultural authenticity.',
+            'Move from foundations to reading practice through curated tracks instead of scrolling through documentation-heavy pages.',
         },
         design: {
           title: 'Luxury Design',
@@ -82,55 +76,10 @@ const TRANSLATIONS = {
         },
       },
     },
-    // Knowledge Base Section
-    knowledgeBase: {
-      title: 'Research-Grade Knowledge Base',
-      subtitle:
-        'Access the most comprehensive digital library of Sanskrit and Hinduism with verified academic sources',
-      items: {
-        texts: {
-          title: '10,000+ Sanskrit Texts',
-          description:
-            'Complete collection of Vedic, Upanishadic, philosophical, and classical Sanskrit texts with critical editions.',
-          action: ['🔍', 'Explore Library'],
-        },
-        manuscripts: {
-          title: '5,000+ Manuscripts',
-          description:
-            'Verified manuscript collections from premier institutions including BORI, Cambridge, Oxford, and GRETIL.',
-          action: ['📜', 'Browse Manuscripts'],
-        },
-        sources: {
-          title: 'Peer-Reviewed Sources',
-          description:
-            '500+ academic references with complete bibliographic information and scholarly verification.',
-          action: ['📖', 'View Bibliography'],
-        },
-        search: {
-          title: 'Advanced Search',
-          description:
-            'Full-text search in Sanskrit, IAST, and English with filtering by period, category, and repository.',
-          action: ['🔍', 'Search Database'],
-        },
-        excellence: {
-          title: 'Academic Excellence',
-          description:
-            'Research-grade digital knowledge base built exclusively on verified, historically authenticated sources.',
-          action: ['🏛️', 'Access Library'],
-        },
-        access: {
-          title: 'Open Access',
-          description:
-            'Free access to primary sources, critical editions, and peer-reviewed scholarship for global researchers.',
-          action: ['📚', 'Open Library'],
-        },
-      },
-    },
     // Chat Section
     chat: {
-      title: 'AI Sanskrit Tutor',
-      subtitle:
-        'Engage in sophisticated conversations with our AI tutor for personalized Sanskrit learning',
+      title: 'Tutor Studio',
+      subtitle: 'Ask for meaning, phrasing, or explanation without leaving the page.',
       modes: {
         learn: ['📖', 'Learn'],
         translate: ['🔄', 'Translate'],
@@ -144,7 +93,7 @@ const TRANSLATIONS = {
         'Basic Sanskrit greetings',
       ],
       welcome:
-        'नमस्ते! I am your premium AI Sanskrit tutor. How may I assist you in your Sanskrit learning journey today?',
+        'नमस्ते. Ask for a phrase, translation, or grammar hint and the tutor will respond in a focused study mode.',
       modeMessages: {
         learn: 'Switched to Learning mode. I will help you learn Sanskrit concepts.',
         translate: 'Switched to Translation mode. I can translate between Sanskrit and English.',
@@ -153,12 +102,12 @@ const TRANSLATIONS = {
     },
     // Transliteration Section
     transliteration: {
-      title: 'Royal Transliteration',
-      subtitle: 'Experience precision transliteration between Devanagari and IAST scripts',
-      label: 'Enter Sanskrit Text',
-      outputLabel: 'Transliterated Text',
-      placeholder: 'Type or paste Sanskrit text in Devanagari or IAST...',
-      outputPlaceholder: 'Transliterated text will appear here...',
+      title: 'Transliteration Lab',
+      subtitle: 'One clear tool, refined for fast Sanskrit script conversion.',
+      label: 'Input',
+      outputLabel: 'Output',
+      placeholder: 'रामो गच्छति / rāmo gacchati',
+      outputPlaceholder: 'Transliterated text will appear here',
       actions: {
         transliterate: ['🔄', 'Transliterate'],
         swapScript: ['⇄', 'Swap Script'],
@@ -166,115 +115,41 @@ const TRANSLATIONS = {
         speak: ['🔊', 'Speak'],
         clear: ['🗑️', 'Clear'],
       },
-      historyTitle: 'Recent Transliterations',
+      historyTitle: 'Recent Examples',
       emptyMessage: 'Please enter text to transliterate',
       successMessage: 'Transliteration completed',
       warningMessage: 'Please enter text to transliterate',
     },
-    // Dictionary Section
-    dictionary: {
-      title: 'Royal Sanskrit Dictionary',
-      subtitle: 'Explore the vast ocean of Sanskrit vocabulary with scholarly precision',
-      placeholder: 'Search Sanskrit words...',
-      meanings: {
-        dharma: ['duty', 'righteousness', 'cosmic law', 'virtue'],
-        yoga: ['union', 'discipline', 'meditation', 'practice'],
-      },
-      examples: {
-        dharma: {
-          sanskrit: 'धर्मो रक्षति रक्षितः',
-          translation: 'Dharma protects the protector of dharma',
-        },
-        yoga: {
-          sanskrit: 'योगश्चित्तवृत्तिनिरोधः',
-          translation: 'Yoga is the cessation of mental modifications',
-        },
-      },
-    },
-    // Grammar Section
-    grammar: {
-      title: 'Master Sanskrit Grammar',
-      subtitle: 'Delve into the elegant structure of Sanskrit grammar with expert guidance',
-      tabs: {
-        basics: 'Basics',
-        verbs: 'Verbs',
-        nouns: 'Nouns',
-        sandhi: 'Sandhi',
-        syntax: 'Syntax',
-      },
-      lessons: {
-        alphabet: {
-          title: 'Alphabet & Sounds',
-          description:
-            'Master the Sanskrit alphabet with proper pronunciation and phonetic understanding.',
-        },
-        vowels: {
-          title: 'Vowels & Consonants',
-          description:
-            'Understand the classification and properties of Sanskrit vowels and consonants.',
-        },
-        meter: {
-          title: 'Sanskrit Meter',
-          description: 'Learn the poetic meters that give Sanskrit literature its musical quality.',
-        },
-        declensions: {
-          title: 'Noun Declensions',
-          description: 'Master the eight cases of Sanskrit noun declension with examples.',
-        },
-        gender: {
-          title: 'Gender & Number',
-          description: 'Understand the three genders and three numbers in Sanskrit grammar.',
-        },
-        sandhi: {
-          title: 'Sandhi Rules',
-          description:
-            'Learn the euphonic combinations that make Sanskrit poetry flow beautifully.',
-        },
-        sentence: {
-          title: 'Sentence Structure',
-          description: 'Understand Sanskrit word order and sentence construction patterns.',
-        },
-      },
-    },
     // Learning Tracks Section
     tracks: {
-      title: 'Premium Learning Tracks',
-      subtitle: 'Curated learning paths designed for different levels and goals',
+      title: 'Guided Tracks',
+      subtitle: 'Three compact paths that cover the practical starting points.',
       items: {
         foundations: {
           title: 'Sanskrit Foundations',
           subtitle: 'संस्कृत आधार',
           description:
-            'Begin your Sanskrit journey with the fundamentals. Learn the alphabet, basic grammar, and essential vocabulary.',
+            'Learn the script, basic sounds, and core sentence patterns before moving into reading or tutoring flows.',
           level: 'Beginner',
           duration: '2 weeks',
           actions: ['Start Track', 'Details'],
         },
         gita: {
-          title: 'Bhagavad Gita Mastery',
-          subtitle: 'भगवद् गीता',
+          title: 'Spoken Sanskrit',
+          subtitle: 'संवाद अभ्यास',
           description:
-            'Dive deep into the Bhagavad Gita with verse-by-verse study, philosophical insights, and practical applications.',
-          level: 'Intermediate',
-          duration: '4 weeks',
+            'Practice greetings, prompts, and study dialogue in a track aligned with the tutor interface.',
+          level: 'Practice',
+          duration: '3 weeks',
           actions: ['Start Track', 'Details'],
         },
         advanced: {
-          title: 'Advanced Grammar',
-          subtitle: 'व्याकरण प्रयोगशाला',
+          title: 'Gita Reading',
+          subtitle: 'गीता पठन',
           description:
-            'Master advanced Sanskrit grammar including complex constructions, poetic devices, and linguistic analysis.',
-          level: 'Advanced',
-          duration: '6 weeks',
-          actions: ['Start Track', 'Details'],
-        },
-        vedic: {
-          title: 'Vedic Wisdom',
-          subtitle: 'वैदिक ज्ञानम्',
-          description:
-            'Explore the ancient Vedas with scholarly commentary, ritual understanding, and philosophical depth.',
-          level: 'Expert',
-          duration: '8 weeks',
+            'Move from transliteration into guided verse reading and explanation with a more literary focus.',
+          level: 'Intermediate',
+          duration: '4 weeks',
           actions: ['Start Track', 'Details'],
         },
       },
@@ -284,7 +159,7 @@ const TRANSLATIONS = {
       learning: 'Learning',
       resources: 'Resources',
       connect: 'Connect',
-      copyright: '© 2026 SanskritNova AI. All rights reserved. Premium Sanskrit Learning Platform.',
+      copyright: '© 2026 SanskritNova AI. Product showcase only, trimmed to the essentials.',
     },
     // General
     general: {
@@ -302,49 +177,47 @@ const TRANSLATIONS = {
   hi: {
     // Navigation
     nav: {
-      chat: 'Chat',
-      translit: 'Transliteration',
-      dictionary: 'Dictionary',
-      grammar: 'Grammar',
-      tracks: 'Tracks',
-      knowledgeBase: '📚 ज्ञान संग्रह',
+      features: 'मुख्य बिंदु',
+      tutor: 'मार्गदर्शक',
+      translit: 'लिप्यंतरण',
+      tracks: 'पाठ्यक्रम',
     },
     // Hero Section
     hero: {
-      badge: '🇮🇳 शाही विरासत • प्रीमियम डिज़ाइन',
-      title: ['संस्कृत अध्ययन का', 'संस्कृतम् अध्ययनम्', 'लक्ज़री अनुभव करें'],
+      badge: 'केंद्रित संस्कृत अध्ययन अनुभव',
+      title: ['संस्कृत सीखें', 'संस्कृतम् सरलम् सुन्दरम्', 'AI मार्गदर्शन के साथ'],
       subtitle:
-        'संस्कृत की कालातीत ज्ञान की भव्य यात्रा पर जाएं, जो कटिंग-एज AI तकनीक द्वारा बढ़ाई गई है और अतुलनीय लक्ज़री के साथ प्रस्तुत की गई है।',
+        'SanskritNova केवल आवश्यक उत्पाद अनुभव दिखाता है: मार्गदर्शक, लिप्यंतरण, और निर्देशित अध्ययन पथ एक ही सुंदर पेज पर।',
       stats: {
-        heritage: 'वर्षों की विरासत',
-        words: 'संस्कृत शब्द',
-        accuracy: 'AI सटीकता',
-        support: 'प्रीमियम समर्थन',
+        heritage: 'व्यक्तिगत मार्गदर्शक',
+        words: 'लिपि सेतु',
+        accuracy: 'API समर्थित',
+        support: 'मोबाइल तैयार',
       },
       actions: {
-        startJourney: ['🚀', 'अपनी यात्रा शुरू करें'],
-        exploreFeatures: ['✨', 'सुविधाएं देखें'],
+        startJourney: ['✦', 'मार्गदर्शक खोलें'],
+        exploreFeatures: ['◌', 'मुख्य बिंदु देखें'],
       },
     },
     // Features Section
     features: {
-      title: 'प्रीमियम सुविधाएं',
-      subtitle: 'अतुलनीय लक्ज़री और परिष्कार के साथ संस्कृत अध्ययन का अनुभव करें',
+      title: 'मुख्य अनुभव',
+      subtitle: 'SanskritNova का संक्षिप्त और स्पष्ट उत्पाद प्रदर्शन।',
       items: {
         ai: {
-          title: 'AI-संचालित अध्ययन',
+          title: 'व्यक्तिगत संस्कृत मार्गदर्शक',
           description:
-            'उन्नत कृत्रिम बुद्धिमत्ता व्यक्तिगत संस्कृत अध्ययन अनुभव प्रदान करती है, जिसमें रियल-टाइम फीडबैक और अनुकूलनीय अध्ययन पथ हैं।',
+            'अंग्रेज़ी या संस्कृत में पूछें और अध्ययन, अनुवाद, तथा व्याख्या के लिए केंद्रित उत्तर पाएँ।',
         },
         library: {
-          title: 'शाही पुस्तकालय',
+          title: 'तेज़ लिप्यंतरण',
           description:
-            'प्राचीन वेदों से लेकर शास्त्रीय साहित्य तक संस्कृत ग्रंथों के अद्भुत संग्रह तक पहुंच, जिसे विद्वानानुदात्त परिशुद्धता के साथ संकलित किया गया है।',
+            'देवनागरी और IAST के बीच बदलें, और अभ्यास के लिए तेज़ कॉपी-पेस्ट प्रवाह बनाए रखें।',
         },
         transliteration: {
-          title: 'सटीक लिप्यंतरण',
+          title: 'निर्देशित अध्ययन पथ',
           description:
-            'अत्याधुनिक लिप्यंतरण तकनीक देवनागरी और IAST लिपियों के बीच सांस्कृतिक प्रामाणिकता के साथ सटीक रूपांतरण सुनिश्चित करती है।',
+            'फाउंडेशन से पढ़ने के अभ्यास तक जाएँ, बिना अतिरिक्त डॉक्युमेंटेशन जैसे लंबे पेजों के।',
         },
         design: {
           title: 'लक्ज़री डिज़ाइन',
@@ -363,55 +236,10 @@ const TRANSLATIONS = {
         },
       },
     },
-    // Knowledge Base Section
-    knowledgeBase: {
-      title: 'अनुसंधान-ग्रेड ज्ञान संग्रह',
-      subtitle:
-        'सत्यापित अकादमिक स्रोतों के साथ संस्कृत और हिंदू धर्म का सबसेे व्यापक डिजिटल पुस्तकालय तक पहुंच',
-      items: {
-        texts: {
-          title: '10,000+ संस्कृत ग्रंथ',
-          description:
-            'वैदिक, उपनिषदिक, दार्शनिक, और शास्त्रीय संस्कृत ग्रंथों का पूरा संग्रह, जिसमें महत्वपूर्ण संस्करण शामिल हैं।',
-          action: ['🔍', 'पुस्तकालय देखें'],
-        },
-        manuscripts: {
-          title: '5,000+ पांडुलिपियां',
-          description:
-            'BORI, कैम्ब्रिज, ऑक्सफोर्ड, और GRETIL सहित प्रमुख संस्थानों से सत्यापित पांडुलिपि संग्रह।',
-          action: ['📜', 'पांडुलिपियां ब्राउज़ करें'],
-        },
-        sources: {
-          title: 'पीर-रिव्यू स्रोत',
-          description:
-            '500+ अकादमिक संदर्भ, जिनमें पूरी ग्रंथसूची जानकारी और विद्वान सत्यापन शामिल है।',
-          action: ['📖', 'ग्रंथसूची देखें'],
-        },
-        search: {
-          title: 'उन्नत खोज',
-          description:
-            'संस्कृत, IAST, और अंग्रेजी में पूर्ण-पाठ खोज, जिसमें अवधि, श्रेणी, और भंडार द्वारा फ़िल्टरिंग है।',
-          action: ['🔍', 'डेटाबेस खोजें'],
-        },
-        excellence: {
-          title: 'अकादमिक उत्कृष्टि',
-          description:
-            'अनुसंधान-ग्रेड डिजिटल ज्ञान संग्रह, जो विशेष रूप से सत्यापित, ऐतिहासिक रूप से प्रमाणित स्रोतों पर बनाया गया है।',
-          action: ['🏛️', 'पुस्तकालय तक पहुंच'],
-        },
-        access: {
-          title: 'मुफ्त पहुंच',
-          description:
-            'वैश्विक शोधकर्ताओं के लिए प्राथमिक स्रोत, महत्वपूर्ण संस्करण, और पीर-रिव्यू विद्वानता तक मुफ्त पहुंच।',
-          action: ['📚', 'पुस्तकालय खोलें'],
-        },
-      },
-    },
     // Chat Section
     chat: {
-      title: 'AI संस्कृत ट्यूटर',
-      subtitle:
-        'व्यक्तिगत संस्कृत अध्ययन के लिए हमारे AI ट्यूटर के साथ परिष्कृत वार्तालाप में संलग्न हों',
+      title: 'मार्गदर्शक स्टूडियो',
+      subtitle: 'अर्थ, वाक्य-विन्यास, या व्याख्या पूछें और उसी पेज पर रहें।',
       modes: {
         learn: ['📖', 'सीखें'],
         translate: ['🔄', 'अनुवाद'],
@@ -425,7 +253,7 @@ const TRANSLATIONS = {
         'बुनियादी संस्कृत अभिवादन',
       ],
       welcome:
-        'नमस्ते! मैं आपका प्रीमियम AI संस्कृत ट्यूटर हूं। मैं आपके संस्कृत अध्ययन यात्रा में कैसे सहायता कर सकता हूं?',
+        'नमस्ते। कोई वाक्य, अनुवाद, या व्याकरण संकेत पूछें और मार्गदर्शक केंद्रित उत्तर देगा।',
       modeMessages: {
         learn: 'अध्ययन मोड में स्विच किया गया। मैं आपको संस्कृत अवधारण सिखाने में मदद करूंगा।',
         translate:
@@ -436,12 +264,12 @@ const TRANSLATIONS = {
     },
     // Transliteration Section
     transliteration: {
-      title: 'शाही लिप्यंतरण',
-      subtitle: 'देवनागरी और IAST लिपियों के बीच सटीक लिप्यंतरण का अनुभव करें',
-      label: 'संस्कृत पाठ दर्ज करें',
-      outputLabel: 'लिप्यंतरित पाठ',
-      placeholder: 'देवनागरी या IAST में संस्कृत पाठ टाइप या पेस्ट करें...',
-      outputPlaceholder: 'लिप्यंतरित पाठ यहां दिखाई देगा...',
+      title: 'लिप्यंतरण प्रयोगशाला',
+      subtitle: 'तेज़ संस्कृत लिपि रूपांतरण के लिए एक स्पष्ट उपकरण।',
+      label: 'इनपुट',
+      outputLabel: 'आउटपुट',
+      placeholder: 'रामो गच्छति / rāmo gacchati',
+      outputPlaceholder: 'लिप्यंतरित पाठ यहां दिखाई देगा',
       actions: {
         transliterate: ['🔄', 'लिप्यंतरित करें'],
         swapScript: ['⇄', 'लिपि बदलें'],
@@ -449,114 +277,40 @@ const TRANSLATIONS = {
         speak: ['🔊', 'बोलें'],
         clear: ['🗑️', 'साफ करें'],
       },
-      historyTitle: 'हाल के लिप्यंतरण',
+      historyTitle: 'हाल के उदाहरण',
       emptyMessage: 'कृपया लिप्यंतरण के लिए पाठ दर्ज करें',
       successMessage: 'लिप्यंतरण पूर्ण',
       warningMessage: 'कृपया लिप्यंतरण के लिए पाठ दर्ज करें',
     },
-    // Dictionary Section
-    dictionary: {
-      title: 'शाही संस्कृत शब्दकोश',
-      subtitle: 'विद्वानानुदात्त परिशुद्धता के साथ संस्कृत शब्दावली के विशाल सागर का अन्वेषण करें',
-      placeholder: 'संस्कृत शब्द खोजें...',
-      meanings: {
-        dharma: ['कर्तव्य', 'धार्मिकता', 'ब्रह्मांडीय नियम', 'पुण्य'],
-        yoga: ['एकता', 'अनुशासन', 'ध्यान', 'अभ्यास'],
-      },
-      examples: {
-        dharma: {
-          sanskrit: 'धर्मो रक्षति रक्षितः',
-          translation: 'धर्म धर्म के रक्षक की रक्षा करता है',
-        },
-        yoga: {
-          sanskrit: 'योगश्चित्तवृत्तिनिरोधः',
-          translation: 'योग मानसिक संशोधन का निवारण है',
-        },
-      },
-    },
-    // Grammar Section
-    grammar: {
-      title: 'संस्कृत व्याकरण में महारत',
-      subtitle: 'विशेषज्ञ मार्गदर्शन के साथ संस्कृत व्याकरण की सुंदर संरचना में गहराएं',
-      tabs: {
-        basics: 'बेसिक',
-        verbs: 'क्रियाएं',
-        nouns: 'संज्ञाएं',
-        sandhi: 'संधि',
-        syntax: 'वाक्य-विन्यास',
-      },
-      lessons: {
-        alphabet: {
-          title: 'वर्णमाला और ध्वनियां',
-          description:
-            'उचित उच्चारण और ध्वन्यात्मक समझ के साथ संस्कृत वर्णमाला में महारत हासिल करें।',
-        },
-        vowels: {
-          title: 'स्वर और व्यंजन',
-          description: 'संस्कृत स्वर और व्यंजन की वर्गीकरण और गुणों को समझें।',
-        },
-        meter: {
-          title: 'संस्कृत छंद',
-          description: 'वे काव्य छंद सीखें जो संस्कृत साहित्य को संगीतमय गुण देते हैं।',
-        },
-        declensions: {
-          title: 'संज्ञा विभक्तियां',
-          description:
-            'उदाहरणों के साथ संस्कृत संज्ञा विभक्तियों के आठ कारकों में महारत हासिल करें।',
-        },
-        gender: {
-          title: 'लिंग और वचन',
-          description: 'संस्कृत व्याकरण में तीन लिंगों और तीन वचनों को समझें।',
-        },
-        sandhi: {
-          title: 'संधि नियम',
-          description: 'वे ध्वन्योत्पादक संयोजन सीखें जो संस्कृत काव्य को सुगमत बनाते हैं।',
-        },
-        sentence: {
-          title: 'वाक्य संरचना',
-          description: 'संस्कृत शब्द क्रम और वाक्य निर्माण पैटर्न को समझें।',
-        },
-      },
-    },
     // Learning Tracks Section
     tracks: {
-      title: 'प्रीमियम अध्ययन पथ',
-      subtitle: 'विभिन्न स्तरों और लक्ष्यों के लिए डिज़ाइन किए गए व्यवस्थित अध्ययन पथ',
+      title: 'निर्देशित पाठ्यक्रम',
+      subtitle: 'व्यावहारिक शुरुआत के लिए तीन संक्षिप्त अध्ययन पथ।',
       items: {
         foundations: {
           title: 'संस्कृत आधार',
           subtitle: 'संस्कृत आधार',
-          description:
-            'मूल बातों के साथ अपनी संस्कृत यात्रा शुरू करें। वर्णमाला, बुनियादी व्याकरण, और आवश्यक शब्दावली सीखें।',
+          description: 'पठन या मार्गदर्शक उपयोग से पहले लिपि, ध्वनियाँ, और मूल वाक्य संरचना सीखें।',
           level: 'शुरुआती',
           duration: '2 सप्ताह',
           actions: ['पथ शुरू करें', 'विवरण'],
         },
         gita: {
-          title: 'भगवद् गीता महारत',
-          subtitle: 'भगवद् गीता',
+          title: 'संवाद अभ्यास',
+          subtitle: 'संवाद अभ्यास',
           description:
-            'श्लोक-दर-श्लोक अध्ययन, दार्शनिक अंतर्दृष्टि, और व्यावहारिक अनुप्रयोगों के साथ भगवद् गीता में गहराएं।',
-          level: 'मध्यवर्ती',
-          duration: '4 सप्ताह',
+            'अभिवादन, छोटे प्रश्न, और अध्ययन संवाद का अभ्यास करें जो मार्गदर्शक अनुभाग से मेल खाते हों।',
+          level: 'अभ्यास',
+          duration: '3 सप्ताह',
           actions: ['पथ शुरू करें', 'विवरण'],
         },
         advanced: {
-          title: 'उन्नत व्याकरण',
-          subtitle: 'व्याकरण प्रयोगशाला',
+          title: 'गीता पठन',
+          subtitle: 'गीता पठन',
           description:
-            'जटिल निर्माण, काव्य उपकरण, और भाषावैज्ञानिक विश्लेषण सहित उन्नत संस्कृत व्याकरण में महारत हासिल करें।',
-          level: 'उन्नत',
-          duration: '6 सप्ताह',
-          actions: ['पथ शुरू करें', 'विवरण'],
-        },
-        vedic: {
-          title: 'वैदिक ज्ञान',
-          subtitle: 'वैदिक ज्ञानम्',
-          description:
-            'विद्वानानुदात्त टिप्पणी, अनुष्ठान समझ, और दार्शनिक गहराई के साथ प्राचीन वेदों का अन्वेषण करें।',
-          level: 'विशेषज्ञ',
-          duration: '8 सप्ताह',
+            'लिप्यंतरण से आगे बढ़कर श्लोक पठन, अर्थ, और व्याख्या के साथ साहित्यिक अध्ययन करें।',
+          level: 'मध्यवर्ती',
+          duration: '4 सप्ताह',
           actions: ['पथ शुरू करें', 'विवरण'],
         },
       },
@@ -566,8 +320,7 @@ const TRANSLATIONS = {
       learning: 'अध्ययन',
       resources: 'संसाधन',
       connect: 'जुड़ें',
-      copyright:
-        '© 2026 SanskritNova AI. सभी अधिकार सुरक्षित। प्रीमियम संस्कृत अध्ययन प्लेटफ़ॉर्म।',
+      copyright: '© 2026 SanskritNova AI. केवल आवश्यक उत्पाद प्रदर्शन।',
     },
     // General
     general: {
@@ -598,7 +351,6 @@ const LuxuryApp = {
     chatHistory: [],
     transliterationHistory: [],
     currentChatMode: 'learn',
-    currentGrammarTab: 'basics',
     voiceRecognition: null,
     speechSynthesis: null,
   },
@@ -651,15 +403,6 @@ const LuxuryApp = {
       speakOutputBtn: document.getElementById('speak-output'),
       clearOutputBtn: document.getElementById('clear-output'),
       translitHistory: document.getElementById('translit-history'),
-
-      // Dictionary
-      dictSearch: document.getElementById('dict-search'),
-      dictSearchBtn: document.getElementById('dict-search-btn'),
-      dictResults: document.getElementById('dict-results'),
-
-      // Grammar
-      tabButtons: document.querySelectorAll('.luxury-tab-btn'),
-      tabPanes: document.querySelectorAll('.luxury-tab-pane'),
 
       // Loading and Toasts
       loadingOverlay: document.getElementById('loading-overlay'),
@@ -726,17 +469,6 @@ const LuxuryApp = {
       this.debounce(() => this.autoTransliterate(), 500)
     );
 
-    // Dictionary search
-    this.elements.dictSearchBtn?.addEventListener('click', () => this.searchDictionary());
-    this.elements.dictSearch?.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') this.searchDictionary();
-    });
-
-    // Grammar tabs
-    this.elements.tabButtons.forEach((btn) => {
-      btn.addEventListener('click', (e) => this.switchGrammarTab(e.target.dataset.tab));
-    });
-
     // Intersection Observer for animations
     this.initializeIntersectionObserver();
   },
@@ -746,8 +478,13 @@ const LuxuryApp = {
   // ============================================
   toggleMobileMenu() {
     this.state.isMobileMenuOpen = !this.state.isMobileMenuOpen;
-    this.elements.mobileNav.classList.toggle('active');
-    this.elements.mobileMenuToggle.classList.toggle('active');
+    this.elements.mobileNav.classList.toggle('active', this.state.isMobileMenuOpen);
+    this.elements.mobileNav.hidden = !this.state.isMobileMenuOpen;
+    this.elements.mobileMenuToggle.classList.toggle('active', this.state.isMobileMenuOpen);
+    this.elements.mobileMenuToggle.setAttribute(
+      'aria-expanded',
+      String(this.state.isMobileMenuOpen)
+    );
 
     // Animate menu items
     if (this.state.isMobileMenuOpen) {
@@ -794,8 +531,8 @@ const LuxuryApp = {
   },
 
   toggleTheme() {
-    const newTheme = ThemeManager.toggleTheme();
-    const themeName = newTheme === 'dark' ? 'dark' : 'light';
+    const { preference, resolvedTheme } = ThemeManager.toggleTheme();
+    const themeName = preference === 'system' ? `system (${resolvedTheme})` : resolvedTheme;
     ToastManager.show(this.getTranslation('general.themeChanged', { theme: themeName }), 'success');
   },
 
@@ -806,18 +543,15 @@ const LuxuryApp = {
     if (this.state.currentLanguage === lang) return;
 
     this.state.currentLanguage = LanguageManager.switchLanguage(lang);
+    document.documentElement.lang = lang;
     this.updateContentLanguage(lang);
+    this.updateSpeechLanguage();
 
     const langName = lang === 'en' ? 'English' : 'हिन्दी';
     ToastManager.show(
       this.getTranslation('general.languageChanged', { language: langName }),
       'success'
     );
-  },
-
-  initializeLanguage() {
-    this.state.currentLanguage = LanguageManager.initializeLanguage();
-    this.updateContentLanguage(this.state.currentLanguage);
   },
 
   getTranslation(key, params = {}) {
@@ -876,18 +610,13 @@ const LuxuryApp = {
   },
 
   updateNavigation(lang) {
-    // Update navigation links
-    const navLinks = document.querySelectorAll('.luxury-nav-link');
     const navTranslations = this.getTranslation('nav');
-
-    if (navLinks.length >= 6) {
-      navLinks[0].textContent = navTranslations.chat;
-      navLinks[1].textContent = navTranslations.translit;
-      navLinks[2].textContent = navTranslations.dictionary;
-      navLinks[3].textContent = navTranslations.grammar;
-      navLinks[4].textContent = navTranslations.tracks;
-      navLinks[5].textContent = navTranslations.knowledgeBase;
-    }
+    document.querySelectorAll('[data-nav]').forEach((link) => {
+      const key = link.dataset.nav;
+      if (key && navTranslations[key]) {
+        link.textContent = navTranslations[key];
+      }
+    });
   },
 
   updateHeroSection(lang) {
@@ -949,6 +678,126 @@ const LuxuryApp = {
     });
   },
 
+  updateChatSection(lang) {
+    const chatData = this.getTranslation('chat');
+    const sectionTitle = document.querySelector('#chat .luxury-section-title');
+    const sectionSubtitle = document.querySelector('#chat .luxury-section-subtitle');
+    const header = document.querySelector('.luxury-chat-header span');
+    const modeMap = {
+      learn: chatData.modes.learn,
+      translate: chatData.modes.translate,
+      analyze: chatData.modes.analyze,
+    };
+
+    if (sectionTitle) sectionTitle.textContent = chatData.title;
+    if (sectionSubtitle) sectionSubtitle.textContent = chatData.subtitle;
+    if (header) header.textContent = `🤖 ${chatData.title}`;
+    if (this.elements.chatInput) this.elements.chatInput.placeholder = chatData.placeholder;
+
+    this.elements.modeButtons.forEach((button) => {
+      const content = modeMap[button.dataset.mode];
+      const spans = button.querySelectorAll('span');
+      if (!content || spans.length < 2) return;
+
+      spans[0].textContent = content[0];
+      spans[1].textContent = content[1];
+    });
+
+    const sendLabel = this.elements.sendBtn?.querySelector('span');
+    if (sendLabel) sendLabel.textContent = lang === 'hi' ? 'भेजें' : 'Send';
+
+    const initialMessage = this.elements.chatContainer?.querySelector(
+      '.luxury-message.ai .luxury-message-content'
+    );
+    if (initialMessage && this.elements.chatContainer.children.length === 1) {
+      initialMessage.textContent = chatData.welcome;
+    }
+
+    this.elements.suggestionChips.forEach((chip, index) => {
+      if (chatData.suggestions[index]) {
+        chip.textContent = chatData.suggestions[index];
+      }
+    });
+  },
+
+  updateTransliterationSection() {
+    const transliterationData = this.getTranslation('transliteration');
+    const sectionTitle = document.querySelector('#translit .luxury-section-title');
+    const sectionSubtitle = document.querySelector('#translit .luxury-section-subtitle');
+    const labels = document.querySelectorAll('#translit .luxury-form-label');
+    const actionMap = {
+      'transliterate-btn': transliterationData.actions.transliterate,
+      'swap-script': transliterationData.actions.swapScript,
+      'copy-output': transliterationData.actions.copy,
+      'speak-output': transliterationData.actions.speak,
+      'clear-output': transliterationData.actions.clear,
+    };
+
+    if (sectionTitle) sectionTitle.textContent = transliterationData.title;
+    if (sectionSubtitle) sectionSubtitle.textContent = transliterationData.subtitle;
+    if (labels.length >= 2) {
+      labels[0].textContent = transliterationData.label;
+      labels[1].textContent = transliterationData.outputLabel;
+    }
+    if (this.elements.inputText)
+      this.elements.inputText.placeholder = transliterationData.placeholder;
+    if (this.elements.outputText) {
+      this.elements.outputText.placeholder = transliterationData.outputPlaceholder;
+    }
+
+    Object.entries(actionMap).forEach(([id, content]) => {
+      const button = document.getElementById(id);
+      const spans = button?.querySelectorAll('span');
+      if (!button || !spans || spans.length < 2) return;
+
+      spans[0].textContent = content[0];
+      spans[1].textContent = content[1];
+    });
+
+    const historyTitle = document.querySelector('.luxury-history-title');
+    if (historyTitle) historyTitle.textContent = transliterationData.historyTitle;
+  },
+
+  updateOtherSections(lang) {
+    const tracksData = this.getTranslation('tracks');
+    const footerData = this.getTranslation('footer');
+
+    const tracksTitle = document.querySelector('#tracks .luxury-section-title');
+    const tracksSubtitle = document.querySelector('#tracks .luxury-section-subtitle');
+    if (tracksTitle) tracksTitle.textContent = tracksData.title;
+    if (tracksSubtitle) tracksSubtitle.textContent = tracksData.subtitle;
+
+    const trackItems = Object.values(tracksData.items);
+    document.querySelectorAll('.luxury-track-card').forEach((card, index) => {
+      const track = trackItems[index];
+      if (!track) return;
+
+      const title = card.querySelector('.luxury-track-title');
+      const subtitle = card.querySelector('.luxury-track-subtitle');
+      const description = card.querySelector('.luxury-track-description');
+      const level = card.querySelector('.luxury-track-level');
+      const duration = card.querySelector('.luxury-track-duration');
+      const buttons = card.querySelectorAll('.luxury-track-actions .luxury-btn');
+
+      if (title) title.textContent = track.title;
+      if (subtitle) subtitle.textContent = track.subtitle;
+      if (description) description.textContent = track.description;
+      if (level) level.textContent = track.level;
+      if (duration) duration.textContent = track.duration;
+      if (buttons.length >= 2) {
+        buttons[0].textContent = track.actions[0];
+        buttons[1].textContent = track.actions[1];
+      }
+    });
+
+    document.querySelectorAll('.luxury-footer').forEach((footer) => {
+      const copyright = footer.querySelector('.luxury-footer-copyright');
+      if (copyright) {
+        copyright.textContent = footerData.copyright;
+      }
+    });
+  },
+
   // ============================================
   // LANGUAGE INITIALIZATION
   // ============================================
@@ -968,6 +817,8 @@ const LuxuryApp = {
       btn.classList.toggle('active', btn.dataset.lang === this.state.currentLanguage);
       btn.setAttribute('aria-pressed', btn.dataset.lang === this.state.currentLanguage);
     });
+
+    document.documentElement.lang = this.state.currentLanguage;
 
     // Update content
     this.updateContentLanguage(this.state.currentLanguage);
@@ -1049,26 +900,36 @@ const LuxuryApp = {
   },
 
   generateAIResponse(message) {
-    const responses = {
-      learn: [
-        "That's an excellent question! In Sanskrit, this concept is beautifully expressed through...",
-        'Let me explain this fundamental concept in Sanskrit philosophy...',
-        'This is one of the most important principles in Sanskrit grammar...',
-      ],
-      translate: [
-        'The translation of this would be: [Translation would appear here]',
-        'In Sanskrit, this can be expressed as: [Sanskrit translation]',
-        'The most accurate translation would be: [Translation]',
-      ],
-      analyze: [
-        'Grammatically, this follows the pattern of [grammatical analysis]',
-        'The structure here shows [structural analysis]',
-        'From a linguistic perspective, this demonstrates [analysis]',
-      ],
-    };
+    const trimmed = message.trim();
+    const hasDevanagari = /[\u0900-\u097F]/.test(trimmed);
+    const transliteration = hasDevanagari ? this.performTransliteration(trimmed) : trimmed;
 
-    const modeResponses = responses[this.state.currentChatMode] || responses.learn;
-    return modeResponses[Math.floor(Math.random() * modeResponses.length)];
+    if (this.state.currentChatMode === 'translate') {
+      if (hasDevanagari) {
+        return `Offline translation mode: IAST transliteration is "${transliteration}". I can provide a fuller translation once the live tutor is available.`;
+      }
+      return `Offline translation mode is limited right now. Try a short Sanskrit phrase and I can still help with transliteration and basic phrasing.`;
+    }
+
+    if (this.state.currentChatMode === 'analyze') {
+      if (hasDevanagari) {
+        return `Offline analysis mode: I detect Devanagari text and can read it as "${transliteration}". For a deeper grammatical breakdown, reconnect the live tutor.`;
+      }
+      return `Offline analysis mode is available for quick guidance, but detailed grammatical parsing needs the live tutor.`;
+    }
+
+    const lowerMessage = trimmed.toLowerCase();
+    if (lowerMessage.includes('yoga') || trimmed.includes('योग')) {
+      return 'Offline tutor note: yoga (योग) is commonly understood as union, disciplined practice, and inward integration of mind and body.';
+    }
+    if (lowerMessage.includes('dharma') || trimmed.includes('धर्म')) {
+      return 'Offline tutor note: dharma (धर्म) can refer to duty, right conduct, sustaining order, and what is fitting in context.';
+    }
+    if (hasDevanagari) {
+      return `Offline tutor note: I can still read your Sanskrit as "${transliteration}" and help with basic phrasing while the live tutor is unavailable.`;
+    }
+
+    return 'Offline tutor note: the live model is unavailable, but you can still use transliteration and guided tracks while reconnecting.';
   },
 
   showTypingIndicator() {
@@ -1111,13 +972,15 @@ const LuxuryApp = {
     if ('speechSynthesis' in window) {
       this.state.speechSynthesis = window.speechSynthesis;
     }
+
+    this.updateSpeechLanguage();
   },
 
   setupVoiceRecognition() {
     const recognition = this.state.voiceRecognition;
     recognition.continuous = false;
     recognition.interimResults = false;
-    recognition.lang = 'en-US';
+    recognition.lang = this.getPreferredSpeechLanguage();
 
     recognition.onstart = () => {
       this.elements.voiceBtn.classList.add('recording');
@@ -1149,6 +1012,8 @@ const LuxuryApp = {
       this.showToast('Voice recognition not supported', 'error');
       return;
     }
+
+    this.updateSpeechLanguage();
 
     if (this.elements.voiceBtn.classList.contains('recording')) {
       this.state.voiceRecognition.stop();
@@ -1296,7 +1161,7 @@ const LuxuryApp = {
     }
 
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US';
+    utterance.lang = this.getPreferredSpeechLanguage(text);
     utterance.rate = 0.8;
 
     this.state.speechSynthesis.speak(utterance);
@@ -1336,125 +1201,8 @@ const LuxuryApp = {
   },
 
   // ============================================
-  // DICTIONARY FUNCTIONALITY
-  // ============================================
-  searchDictionary() {
-    const query = this.elements.dictSearch.value.trim();
-    if (!query) {
-      this.showToast('Please enter a word to search', 'warning');
-      return;
-    }
-
-    this.showLoading();
-
-    // Simulate API call
-    setTimeout(() => {
-      const results = this.performDictionarySearch(query);
-      this.displayDictionaryResults(results);
-      this.hideLoading();
-      this.showToast(`Found ${results.length} results`, 'success');
-    }, 500);
-  },
-
-  performDictionarySearch(query) {
-    // Simulated dictionary results
-    const dictionary = [
-      {
-        sanskrit: 'धर्मः',
-        phonetic: '[dharmaḥ]',
-        meanings: ['duty', 'righteousness', 'cosmic law', 'virtue'],
-        example: {
-          sanskrit: 'धर्मो रक्षति रक्षितः',
-          translation: 'Dharma protects the protector of dharma',
-        },
-      },
-      {
-        sanskrit: 'योगः',
-        phonetic: '[yogaḥ]',
-        meanings: ['union', 'discipline', 'meditation', 'practice'],
-        example: {
-          sanskrit: 'योगश्चित्तवृत्तिनिरोधः',
-          translation: 'Yoga is the cessation of mental modifications',
-        },
-      },
-    ];
-
-    return dictionary.filter(
-      (entry) =>
-        entry.sanskrit.includes(query) ||
-        entry.meanings.some((meaning) => meaning.includes(query.toLowerCase()))
-    );
-  },
-
-  displayDictionaryResults(results) {
-    if (results.length === 0) {
-      this.elements.dictResults.innerHTML = `
-        <div class="luxury-dictionary-entry">
-          <div class="luxury-result-header">
-            <div class="luxury-result-sanskrit">No results found</div>
-          </div>
-          <p>Try searching for another word.</p>
-        </div>
-      `;
-      return;
-    }
-
-    const resultsHTML = results
-      .map(
-        (entry) => `
-      <div class="luxury-dictionary-entry">
-        <div class="luxury-result-header">
-          <div class="luxury-result-sanskrit">${entry.sanskrit}</div>
-          <div class="luxury-result-phonetic">${entry.phonetic}</div>
-        </div>
-        <div class="luxury-result-meanings">
-          ${entry.meanings.map((meaning) => `<span class="luxury-meaning-tag">${meaning}</span>`).join('')}
-        </div>
-        <div class="luxury-example">
-          <div class="luxury-example-sanskrit">${entry.example.sanskrit}</div>
-          <div class="luxury-example-translation">${entry.example.translation}</div>
-        </div>
-      </div>
-    `
-      )
-      .join('');
-
-    this.elements.dictResults.innerHTML = resultsHTML;
-  },
-
-  // ============================================
-  // GRAMMAR TABS
-  // ============================================
-  switchGrammarTab(tabName) {
-    this.state.currentGrammarTab = tabName;
-
-    // Update active button
-    this.elements.tabButtons.forEach((btn) => {
-      btn.classList.toggle('active', btn.dataset.tab === tabName);
-    });
-
-    // Update active pane
-    this.elements.tabPanes.forEach((pane) => {
-      pane.classList.toggle('active', pane.id === tabName);
-    });
-  },
-
-  // ============================================
   // API INTEGRATION METHODS
   // ============================================
-  async apiCall(endpoint, options = {}) {
-    try {
-      this.showLoading();
-      const response = await ApiManager.request(endpoint, options);
-      return response;
-    } catch (error) {
-      ErrorManager.handleApiError(error);
-      throw error;
-    } finally {
-      this.hideLoading();
-    }
-  },
-
   async sendChatMessageApi(message, mode = 'learn') {
     try {
       this.showLoading();
@@ -1487,24 +1235,6 @@ const LuxuryApp = {
     }
   },
 
-  async getLearningTracks() {
-    try {
-      return await this.apiCall('/api/tracks');
-    } catch (error) {
-      console.error('Learning tracks API Error:', error);
-      return [];
-    }
-  },
-
-  async getHealthStatus() {
-    try {
-      return await this.apiCall('/api/health');
-    } catch (error) {
-      console.error('Health API Error:', error);
-      return null;
-    }
-  },
-
   // ============================================
   // UTILITY FUNCTIONS
   // ============================================
@@ -1520,6 +1250,21 @@ const LuxuryApp = {
 
   showToast(message, type = 'info') {
     ToastManager.show(message, type);
+  },
+
+  getPreferredSpeechLanguage(sampleText = '') {
+    const text = sampleText || this.elements.chatInput?.value || this.elements.inputText?.value || '';
+    const hasDevanagari = /[\u0900-\u097F]/.test(text);
+    if (this.state.currentLanguage === 'hi' || hasDevanagari) {
+      return 'hi-IN';
+    }
+    return 'en-US';
+  },
+
+  updateSpeechLanguage() {
+    if (this.state.voiceRecognition) {
+      this.state.voiceRecognition.lang = this.getPreferredSpeechLanguage();
+    }
   },
 
   debounce(func, wait) {
@@ -1584,15 +1329,7 @@ const LuxuryApp = {
   },
 
   initializeIntersectionObserver() {
-    // Parallax effect for hero section
-    const hero = document.querySelector('.luxury-hero');
-    if (hero) {
-      window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.5;
-        hero.style.transform = `translateY(${parallax}px)`;
-      });
-    }
+    // Intentionally no parallax: scrolling should stay stable and predictable.
   },
 
   // ============================================
@@ -1600,7 +1337,7 @@ const LuxuryApp = {
   // ============================================
   startJourney() {
     this.scrollToSection('chat');
-    this.showToast('Welcome to your Sanskrit journey!', 'success');
+    this.showToast('Tutor ready.', 'success');
   },
 
   scrollToFeatures() {

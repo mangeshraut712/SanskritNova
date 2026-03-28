@@ -1,6 +1,6 @@
 # Makefile for SanskritNova AI
 
-.PHONY: help test lint format clean serve-api serve-site dev install-deps check-deps
+.PHONY: help test lint format clean serve-api serve-site dev install-deps check-deps verify-release
 
 # Default target
 help:
@@ -17,6 +17,7 @@ help:
 	@echo "  serve-site     - Start web frontend"
 	@echo "  dev            - Start both API and web"
 	@echo "  clean          - Clean cache and artifacts"
+	@echo "  verify-release - Run release checks for GitHub + Vercel"
 	@echo "  install-deps   - Install development dependencies"
 	@echo "  check-deps     - Check dependency versions"
 	@echo ""
@@ -75,4 +76,28 @@ coverage:
 	@echo "📈 Coverage report generated in htmlcov/"
 
 build: ## Byte-compile source for a quick build sanity check
-	python -m compileall api code sanskrit_rag
+	python -m compileall api code
+
+serve-api:
+	@echo "🚀 Starting API server on http://127.0.0.1:8000"
+	python3 -m uvicorn api.index:app --reload --host 127.0.0.1 --port 8000
+
+serve-site:
+	@echo "🌐 Starting frontend server"
+	python3 scripts/serve_public.py
+
+dev:
+	@echo "🛠️ Starting local development stack"
+	python3 scripts/dev.py
+
+clean:
+	@echo "🧹 Cleaning cache and generated artifacts..."
+	find . -type d -name "__pycache__" -prune -exec rm -rf {} +
+	find . -type d -name ".pytest_cache" -prune -exec rm -rf {} +
+	find . -type d -name "htmlcov" -prune -exec rm -rf {} +
+	find . -type f -name "*.pyc" -delete
+	@echo "✅ Cleanup complete"
+
+verify-release:
+	@echo "🚦 Running release checks..."
+	bash scripts/release-checks.sh

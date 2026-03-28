@@ -1,14 +1,17 @@
 // Service Worker for SanskritNova PWA
-const CACHE_NAME = 'sanskritnova-v1.1.0';
-const STATIC_CACHE = 'sanskritnova-static-v1.1.0';
-const DYNAMIC_CACHE = 'sanskritnova-dynamic-v1.1.0';
+const CACHE_NAME = 'sanskritnova-v1.4.0';
+const STATIC_CACHE = 'sanskritnova-static-v1.4.0';
+const DYNAMIC_CACHE = 'sanskritnova-dynamic-v1.4.0';
 
 // Assets to cache immediately
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/styles.css',
-  '/app.js',
+  '/styles/shared-variables.css',
+  '/styles/luxury-styles.css',
+  '/styles/luxury-components.css',
+  '/scripts/luxury-app.js',
+  '/scripts/utils.js',
   '/manifest.json',
   '/icon-192.svg',
   '/icon-512.svg',

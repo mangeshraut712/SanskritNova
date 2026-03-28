@@ -27,6 +27,9 @@ venv/
 env/
 ENV/
 
+# Node.js dependencies
+node_modules/
+
 # Models & large binary files
 models/
 *.gguf

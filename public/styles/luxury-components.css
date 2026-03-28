@@ -11,6 +11,242 @@
   list-style: none;
 }
 
+/* ============================================
+   POLISHED COMPONENT OVERRIDES
+   ============================================ */
+.luxury-chat-container,
+.luxury-transliteration-container,
+.luxury-tracks-container {
+  margin: 0 auto;
+  max-width: 1120px;
+  border-radius: 28px;
+  box-shadow: 0 26px 60px rgba(52, 40, 20, 0.08);
+}
+
+.luxury-chat-header {
+  background: linear-gradient(135deg, #c9842d 0%, #ead198 100%);
+  color: #1f1b15;
+  padding: var(--luxury-space-6) var(--luxury-space-8);
+  font-size: var(--luxury-text-xl);
+}
+
+.luxury-chat-header::before {
+  display: none;
+}
+
+.luxury-chat-messages {
+  max-height: 300px;
+  padding: var(--luxury-space-5);
+}
+
+.luxury-chat-input-area,
+.luxury-translit-form {
+  padding-top: var(--luxury-space-5);
+}
+
+.luxury-input-group {
+  margin-bottom: var(--luxury-space-4);
+}
+
+.luxury-track-header,
+.luxury-track-body,
+.luxury-transliteration-header {
+  padding: var(--luxury-space-6);
+}
+
+.luxury-track-description {
+  min-height: 0;
+}
+
+.luxury-suggestion-chip {
+  background: rgba(184, 148, 31, 0.08);
+  border: 1px solid rgba(184, 148, 31, 0.12);
+}
+
+.luxury-transliteration-header,
+.luxury-track-header {
+  background: rgba(184, 148, 31, 0.04);
+}
+
+.luxury-track-card {
+  box-shadow: 0 18px 44px rgba(52, 40, 20, 0.08);
+}
+
+.luxury-track-card:hover {
+  transform: translateY(-8px);
+}
+
+[data-theme='dark'] .luxury-chat-container,
+[data-theme='dark'] .luxury-transliteration-container,
+[data-theme='dark'] .luxury-tracks-container,
+[data-theme='dark'] .luxury-track-card {
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .luxury-chat-header {
+  color: #17130e;
+}
+
+/* ============================================
+   APPLE + INDIAN REFINEMENT
+   ============================================ */
+.luxury-chat-container,
+.luxury-transliteration-container,
+.luxury-tracks-container {
+  background: rgba(255, 252, 246, 0.9);
+  border: 1px solid rgba(191, 122, 29, 0.1);
+  box-shadow: 0 28px 64px rgba(46, 33, 16, 0.08);
+}
+
+.luxury-chat-modes {
+  padding: var(--luxury-space-5) var(--luxury-space-6) 0;
+  margin-bottom: var(--luxury-space-6);
+}
+
+.luxury-chat-messages,
+.luxury-chat-input-area {
+  background: transparent;
+}
+
+.luxury-mode-btn {
+  background: rgba(255, 251, 245, 0.78);
+  border: 1px solid rgba(191, 122, 29, 0.14);
+  color: #69594a;
+}
+
+.luxury-mode-btn.active {
+  color: #fffaf0;
+}
+
+.luxury-chat-input,
+.luxury-translit-input,
+.luxury-translit-output {
+  border: 1px solid rgba(191, 122, 29, 0.16);
+}
+
+.luxury-chat-input,
+.luxury-translit-output {
+  font-family: var(--luxury-font-body);
+}
+
+.luxury-voice-btn,
+.luxury-action-btn,
+.luxury-suggestion-chip {
+  background: rgba(255, 251, 245, 0.8);
+  border-color: rgba(191, 122, 29, 0.12);
+  color: #6a5a49;
+}
+
+.luxury-history-item {
+  background: rgba(255, 251, 245, 0.74);
+  border-color: rgba(191, 122, 29, 0.1);
+}
+
+.luxury-history-item:hover {
+  background: rgba(191, 122, 29, 0.08);
+}
+
+.luxury-history-iast {
+  color: #8f6b42;
+}
+
+.luxury-tracks-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.luxury-track-card {
+  background: rgba(255, 252, 246, 0.82);
+  border-color: rgba(191, 122, 29, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.luxury-track-header {
+  background: linear-gradient(135deg, #c9842d 0%, #ead198 100%);
+}
+
+.luxury-track-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.luxury-track-actions {
+  margin-top: auto;
+}
+
+@media (max-width: 1080px) {
+  .luxury-tracks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .luxury-tracks-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+[data-theme='dark'] .luxury-chat-container,
+[data-theme='dark'] .luxury-transliteration-container,
+[data-theme='dark'] .luxury-tracks-container {
+  background: rgba(18, 21, 29, 0.82);
+  border-color: rgba(216, 154, 66, 0.12);
+}
+
+[data-theme='dark'] .luxury-chat-messages,
+[data-theme='dark'] .luxury-chat-input-area,
+[data-theme='dark'] .luxury-chat-modes {
+  background: transparent;
+}
+
+[data-theme='dark'] .luxury-mode-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(216, 154, 66, 0.12);
+  color: #ddd1c0;
+}
+
+[data-theme='dark'] .luxury-mode-btn.active {
+  background: linear-gradient(135deg, #d0882f 0%, #f0d39a 100%);
+  color: #1b1610;
+}
+
+[data-theme='dark'] .luxury-chat-input,
+[data-theme='dark'] .luxury-translit-input,
+[data-theme='dark'] .luxury-translit-output {
+  background: rgba(13, 16, 23, 0.94);
+  border-color: rgba(47, 116, 118, 0.18);
+  color: #ece3d5;
+}
+
+[data-theme='dark'] .luxury-voice-btn,
+[data-theme='dark'] .luxury-action-btn,
+[data-theme='dark'] .luxury-suggestion-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(216, 154, 66, 0.12);
+  color: #d7cab9;
+}
+
+[data-theme='dark'] .luxury-history-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(216, 154, 66, 0.12);
+}
+
+[data-theme='dark'] .luxury-history-devanagari {
+  color: #f1e8dc;
+}
+
+[data-theme='dark'] .luxury-history-iast,
+[data-theme='dark'] .luxury-track-duration {
+  color: #c4b39e;
+}
+
+[data-theme='dark'] .luxury-track-card {
+  background: rgba(22, 25, 34, 0.9);
+  border-color: rgba(216, 154, 66, 0.12);
+}
+
 .luxury-nav-link {
   color: var(--luxury-text-secondary);
   text-decoration: none;
@@ -142,10 +378,10 @@
 .luxury-chat-modes {
   display: flex;
   gap: var(--luxury-space-4);
-  margin-bottom: var(--luxury-space-8);
+  margin-bottom: var(--luxury-space-6);
   justify-content: center;
   flex-wrap: wrap;
-  padding: var(--luxury-space-6);
+  padding: var(--luxury-space-5) var(--luxury-space-6) 0;
 }
 
 .luxury-mode-btn {
@@ -154,8 +390,8 @@
   gap: var(--luxury-space-3);
   padding: var(--luxury-space-4) var(--luxury-space-8);
   border-radius: var(--luxury-radius-2xl);
-  border: 2px solid var(--luxury-gray-200);
-  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(191, 122, 29, 0.14);
+  background: rgba(255, 251, 245, 0.78);
   color: var(--luxury-text-secondary);
   font-weight: 500;
   cursor: pointer;
@@ -183,8 +419,8 @@
 .luxury-chat-messages {
   max-height: 400px;
   overflow-y: auto;
-  padding: var(--luxury-space-8);
-  background: rgba(255, 255, 255, 0.5);
+  padding: var(--luxury-space-6);
+  background: transparent;
 }
 
 .luxury-message {
@@ -203,9 +439,9 @@
 }
 
 .luxury-message.ai {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   color: var(--luxury-text-primary);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(191, 122, 29, 0.12);
   box-shadow: var(--luxury-shadow-md);
 }
 
@@ -222,9 +458,9 @@
 }
 
 .luxury-chat-input-area {
-  padding: var(--luxury-space-8);
-  background: rgba(255, 255, 255, 0.8);
-  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  padding: var(--luxury-space-6);
+  background: transparent;
+  border-top: 1px solid rgba(191, 122, 29, 0.08);
 }
 
 .luxury-input-group {
@@ -237,7 +473,7 @@
 .luxury-chat-input {
   flex: 1;
   padding: var(--luxury-space-6);
-  border: 2px solid var(--luxury-gray-200);
+  border: 1px solid rgba(191, 122, 29, 0.16);
   border-radius: var(--luxury-radius-2xl);
   background: rgba(255, 255, 255, 0.9);
   font-size: var(--luxury-text-base);
@@ -254,8 +490,8 @@
 }
 
 .luxury-voice-btn {
-  background: rgba(255, 255, 255, 0.9);
-  border: 2px solid var(--luxury-gray-200);
+  background: rgba(255, 251, 245, 0.82);
+  border: 1px solid rgba(191, 122, 29, 0.14);
   padding: var(--luxury-space-4);
   border-radius: var(--luxury-radius-full);
   cursor: pointer;
@@ -296,7 +532,7 @@
   font-family: var(--luxury-font-heading);
   font-size: var(--luxury-text-base);
   box-shadow: var(--luxury-shadow-gold);
-  min-width: 100px;
+  min-width: 108px;
 }
 
 .luxury-send-btn:hover {
@@ -313,8 +549,8 @@
 }
 
 .luxury-suggestion-chip {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid var(--luxury-gray-200);
+  background: rgba(255, 251, 245, 0.76);
+  border: 1px solid rgba(191, 122, 29, 0.12);
   border-radius: var(--luxury-radius-full);
   padding: var(--luxury-space-3) var(--luxury-space-6);
   font-size: var(--luxury-text-sm);
@@ -337,7 +573,7 @@
    LUXURY TRANSLITERATION COMPONENTS
    ============================================ */
 .luxury-transliteration-container {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 252, 246, 0.9);
   backdrop-filter: blur(var(--luxury-blur-lg));
   border: 1px solid rgba(212, 175, 55, 0.1);
   border-radius: var(--luxury-radius-3xl);
@@ -345,12 +581,12 @@
   overflow: hidden;
   margin: var(--luxury-space-8) auto;
   max-width: 1000px;
-  padding: var(--luxury-space-12);
+  padding: var(--luxury-space-10);
 }
 
 .luxury-transliteration-header {
   text-align: center;
-  margin-bottom: var(--luxury-space-12);
+  margin-bottom: var(--luxury-space-8);
 }
 
 .luxury-transliteration-title {
@@ -395,7 +631,7 @@
   width: 100%;
   min-height: 120px;
   padding: var(--luxury-space-6);
-  border: 2px solid var(--luxury-gray-200);
+  border: 1px solid rgba(191, 122, 29, 0.16);
   border-radius: var(--luxury-radius-2xl);
   font-family: var(--luxury-font-sanskrit);
   font-size: var(--luxury-text-xl);
@@ -416,9 +652,9 @@
 }
 
 .luxury-translit-output {
-  background: rgba(248, 248, 248, 0.9);
+  background: rgba(249, 244, 236, 0.92);
   color: var(--luxury-text-secondary);
-  border-color: var(--luxury-gray-300);
+  border-color: rgba(191, 122, 29, 0.12);
 }
 
 .luxury-output-actions {
@@ -429,8 +665,8 @@
 }
 
 .luxury-action-btn {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--luxury-gray-200);
+  background: rgba(255, 251, 245, 0.84);
+  border: 1px solid rgba(191, 122, 29, 0.12);
   padding: var(--luxury-space-3) var(--luxury-space-6);
   border-radius: var(--luxury-radius-lg);
   font-size: var(--luxury-text-sm);
@@ -484,8 +720,8 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--luxury-space-4);
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  background: rgba(255, 251, 245, 0.76);
+  border: 1px solid rgba(191, 122, 29, 0.1);
   border-radius: var(--luxury-radius-xl);
   cursor: pointer;
   transition: all var(--luxury-transition-luxury);
@@ -493,7 +729,7 @@
 }
 
 .luxury-history-item:hover {
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(191, 122, 29, 0.08);
   border-color: var(--luxury-gold);
   transform: translateX(8px);
   box-shadow: var(--luxury-shadow-md);
@@ -507,7 +743,7 @@
 }
 
 .luxury-history-iast {
-  color: var(--luxury-text-secondary);
+  color: #8f6b42;
   font-size: var(--luxury-text-sm);
   font-style: italic;
   font-family: var(--luxury-font-body);
@@ -863,7 +1099,7 @@
    LUXURY TRACKS COMPONENTS
    ============================================ */
 .luxury-tracks-container {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 252, 246, 0.9);
   backdrop-filter: blur(var(--luxury-blur-lg));
   border: 1px solid rgba(212, 175, 55, 0.1);
   border-radius: var(--luxury-radius-3xl);
@@ -871,7 +1107,7 @@
   overflow: hidden;
   margin: var(--luxury-space-8) auto;
   max-width: 1200px;
-  padding: var(--luxury-space-12);
+  padding: var(--luxury-space-10);
 }
 
 .luxury-tracks-header {
@@ -893,18 +1129,21 @@
 
 .luxury-tracks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--luxury-space-8);
+  align-items: stretch;
 }
 
 .luxury-track-card {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  background: rgba(255, 252, 246, 0.82);
+  border: 1px solid rgba(191, 122, 29, 0.1);
   border-radius: var(--luxury-radius-2xl);
   overflow: hidden;
   transition: all var(--luxury-transition-royal);
   backdrop-filter: blur(var(--luxury-blur-sm));
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .luxury-track-card::before {
@@ -930,7 +1169,7 @@
 }
 
 .luxury-track-header {
-  background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-gold-light) 100%);
+  background: linear-gradient(135deg, #c9842d 0%, #ead198 100%);
   color: var(--luxury-white);
   padding: var(--luxury-space-8);
   text-align: center;
@@ -965,6 +1204,9 @@
 
 .luxury-track-body {
   padding: var(--luxury-space-8);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .luxury-track-description {
@@ -1003,6 +1245,13 @@
   display: flex;
   gap: var(--luxury-space-4);
   justify-content: center;
+  margin-top: auto;
+}
+
+@media (max-width: 1080px) {
+  .luxury-tracks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* ============================================
@@ -1448,4 +1697,66 @@
   .luxury-loading-spinner {
     background: rgba(42, 42, 42, 0.95);
   }
+}
+
+/* ============================================
+   FINAL COMPONENT OVERRIDES
+   ============================================ */
+[data-theme='dark'] .luxury-chat-container,
+[data-theme='dark'] .luxury-transliteration-container,
+[data-theme='dark'] .luxury-tracks-container {
+  background: rgba(18, 21, 29, 0.82);
+  border-color: rgba(216, 154, 66, 0.12);
+}
+
+[data-theme='dark'] .luxury-chat-messages,
+[data-theme='dark'] .luxury-chat-input-area,
+[data-theme='dark'] .luxury-chat-modes {
+  background: transparent;
+}
+
+[data-theme='dark'] .luxury-mode-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(216, 154, 66, 0.12);
+  color: #ddd1c0;
+}
+
+[data-theme='dark'] .luxury-mode-btn.active {
+  background: linear-gradient(135deg, #d0882f 0%, #f0d39a 100%);
+  color: #1b1610;
+}
+
+[data-theme='dark'] .luxury-chat-input,
+[data-theme='dark'] .luxury-translit-input,
+[data-theme='dark'] .luxury-translit-output {
+  background: rgba(13, 16, 23, 0.94);
+  border-color: rgba(47, 116, 118, 0.18);
+  color: #ece3d5;
+}
+
+[data-theme='dark'] .luxury-voice-btn,
+[data-theme='dark'] .luxury-action-btn,
+[data-theme='dark'] .luxury-suggestion-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(216, 154, 66, 0.12);
+  color: #d7cab9;
+}
+
+[data-theme='dark'] .luxury-history-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(216, 154, 66, 0.12);
+}
+
+[data-theme='dark'] .luxury-history-devanagari {
+  color: #f1e8dc;
+}
+
+[data-theme='dark'] .luxury-history-iast,
+[data-theme='dark'] .luxury-track-duration {
+  color: #c4b39e;
+}
+
+[data-theme='dark'] .luxury-track-card {
+  background: rgba(22, 25, 34, 0.9);
+  border-color: rgba(216, 154, 66, 0.12);
 }

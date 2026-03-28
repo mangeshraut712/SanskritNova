@@ -54,19 +54,19 @@ Repository = "https://github.com/mangeshraut712/SanskritNova"
 Issues = "https://github.com/mangeshraut712/SanskritNova/issues"
 
 [tool.hatch.build.targets.wheel]
-packages = ["api", "code", "sanskrit_rag", "tests"]
+packages = ["api", "code", "tests"]
 
 [tool.ruff]
 target-version = "py311"
 line-length = 100
-src = ["api", "code", "sanskrit_rag", "tests"]
+src = ["api", "code", "tests"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-q"
+addopts = "-q -p no:debugging"
 asyncio_mode = "auto"
 filterwarnings = [
     "ignore::DeprecationWarning:mangum.*:",

@@ -41,3 +41,37 @@ def test_load_chunks_falls_back_to_legacy_when_json_is_malformed(tmp_path, monke
         {"chunk_id": 0, "source": "unknown", "text": "योगः"},
         {"chunk_id": 1, "source": "unknown", "text": "धर्मः"},
     ]
+
+
+def test_retrieve_uses_lexical_fallback_for_cross_script_query(monkeypatch):
+    module = _import_retriever_module(monkeypatch)
+
+    class DummySparseMatrix:
+        def toarray(self):
+            return np.array([[1.0]], dtype="float32")
+
+    class DummyModel:
+        def transform(self, texts):
+            return DummySparseMatrix()
+
+    class DummyIndex:
+        def search(self, query_emb, k):
+            return (
+                np.array([[0.0, 0.0]], dtype="float32"),
+                np.array([[1, 0]], dtype="int64"),
+            )
+
+    retriever = module.Retriever.__new__(module.Retriever)
+    retriever.backend = "tfidf"
+    retriever.model = DummyModel()
+    retriever.index = DummyIndex()
+    retriever.chunks = [
+        {"chunk_id": 0, "source": "sutra", "text": "रामो गच्छति"},
+        {"chunk_id": 1, "source": "sutra", "text": "योगः चित्तवृत्तिनिरोधः"},
+    ]
+    retriever._chunk_texts = [chunk["text"] for chunk in retriever.chunks]
+
+    results = retriever.retrieve("ramo gacchati", k=1)
+
+    assert len(results) == 1
+    assert results[0]["text"] == "रामो गच्छति"
