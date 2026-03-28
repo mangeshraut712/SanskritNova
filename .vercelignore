@@ -1,4 +1,4 @@
-api/*.py
+api/index.js
 tests
 docker
 k8s

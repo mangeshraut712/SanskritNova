@@ -199,10 +199,10 @@ function modeInstruction(mode, lang = 'en') {
 
 function openRouterConfig() {
   return {
-    apiKey: process.env.OPENROUTER_API_KEY || '',
-    model: process.env.OPENROUTER_MODEL || 'openai/gpt-4.1-mini',
-    referer: process.env.OPENROUTER_APP_URL || 'https://sanskrit-nova.vercel.app',
-    title: process.env.OPENROUTER_APP_NAME || 'SanskritNova AI',
+    apiKey: (process.env.OPENROUTER_API_KEY || '').trim(),
+    model: (process.env.OPENROUTER_MODEL || 'openai/gpt-4.1-mini').trim(),
+    referer: (process.env.OPENROUTER_APP_URL || 'https://sanskrit-nova.vercel.app').trim(),
+    title: (process.env.OPENROUTER_APP_NAME || 'SanskritNova AI').trim(),
   };
 }
 

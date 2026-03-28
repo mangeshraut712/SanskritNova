@@ -6,6 +6,8 @@ Tests the agentic RAG functionality with proper mocking.
 
 
 import pytest
+import sys
+import types
 
 
 def test_agentic_rag_imports():
@@ -101,3 +103,23 @@ def test_agentic_rag_error_messages():
             
     except ImportError:
         pytest.skip("Agentic RAG module not available")
+
+
+def test_get_retriever_handles_runtime_init_failures(monkeypatch):
+    try:
+        import code.agentic_rag as agentic_rag
+    except ImportError:
+        pytest.skip("Agentic RAG module not available")
+
+    failing_module = types.ModuleType("rag_pipeline")
+
+    class FailingSanskritRAG:
+        def __init__(self):
+            raise FileNotFoundError("missing local model")
+
+    failing_module.SanskritRAG = FailingSanskritRAG
+
+    monkeypatch.setitem(sys.modules, "code.rag_pipeline", failing_module)
+    monkeypatch.setitem(sys.modules, "rag_pipeline", failing_module)
+
+    assert agentic_rag._get_retriever() is None

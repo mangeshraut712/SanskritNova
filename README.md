@@ -21,7 +21,7 @@
   <img alt="Python" src="https://img.shields.io/badge/python-3.11%2B-3776AB?style=flat-square&logo=python&logoColor=white">
   <img alt="Node" src="https://img.shields.io/badge/node-18%2B-339933?style=flat-square&logo=node.js&logoColor=white">
   <img alt="Frontend" src="https://img.shields.io/badge/frontend-single--page-111111?style=flat-square">
-  <img alt="Backend" src="https://img.shields.io/badge/backend-FastAPI%20%2B%20Node-009688?style=flat-square">
+  <img alt="Backend" src="https://img.shields.io/badge/backend-FastAPI%20%2B%20Vercel-009688?style=flat-square">
   <img alt="Deploy" src="https://img.shields.io/badge/deploy-Vercel-000000?style=flat-square&logo=vercel&logoColor=white">
   <img alt="Release Checks" src="https://img.shields.io/badge/release%20checks-repo%20native-6E56CF?style=flat-square">
 </p>
@@ -47,7 +47,7 @@ The repo also includes the operational pieces needed to ship that experience:
 
 | Surface | User value | Runtime |
 | --- | --- | --- |
-| Tutor Studio | Ask for explanation, translation, or analysis in one place | [`public/index.html`](public/index.html) + [`api/index.py`](api/index.py) locally, [`api/index.js`](api/index.js) on Vercel |
+| Tutor Studio | Ask for explanation, translation, or analysis in one place | [`public/index.html`](public/index.html) + [`api/index.py`](api/index.py) locally, [`api/index_complex.py`](api/index_complex.py) on Vercel |
 | Transliteration Lab | Convert Devanagari ↔ IAST with history and copy flow | [`public/index.html`](public/index.html) + `/api/transliterate` |
 | Guided Tracks | Keep the learning path compact and product-shaped | [`public/index.html`](public/index.html) |
 
@@ -57,7 +57,7 @@ The repo also includes the operational pieces needed to ship that experience:
 | --- | --- | --- |
 | Frontend | Static single-page app in [`public/`](public) | PWA support via [`public/sw.js`](public/sw.js) and [`public/manifest.json`](public/manifest.json) |
 | Local API | [`api/index.py`](api/index.py) | [`api/index_complex.py`](api/index_complex.py) for grounded and agentic flows |
-| Production API | [`api/index.js`](api/index.js) on Vercel | OpenRouter-backed chat in the same handler |
+| Production API | [`api/index_complex.py`](api/index_complex.py) on Vercel | OpenRouter-backed chat, grounded fallback, and agentic fallback |
 | AI / retrieval | Product-safe defaults | Local index + RAG stack in [`code/`](code) |
 | Release flow | [`scripts/release-checks.sh`](scripts/release-checks.sh) | [`scripts/deploy-vercel.sh`](scripts/deploy-vercel.sh) and [`scripts/commit-release.sh`](scripts/commit-release.sh) |
 
@@ -203,7 +203,7 @@ Generated local folders such as `node_modules/`, `venv/`, `.vercel/`, `.ruff_cac
 ### Production Vercel flow
 
 - Static assets: served from [`public/`](public)
-- API entrypoint: [`api/index.js`](api/index.js)
+- API entrypoint: [`api/index_complex.py`](api/index_complex.py)
 - Routing and caching: [`vercel.json`](vercel.json)
 - Upload filtering: [`.vercelignore`](.vercelignore)
 

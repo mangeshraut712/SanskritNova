@@ -97,7 +97,7 @@ VIRAMA = "्"
 
 
 def _openrouter_model() -> str:
-    return os.getenv("OPENROUTER_MODEL", "openai/gpt-4.1-mini")
+    return os.getenv("OPENROUTER_MODEL", "openai/gpt-4.1-mini").strip()
 
 
 def _mode_instruction(mode: str, lang: str = "en") -> str:
@@ -115,8 +115,24 @@ def _mode_instruction(mode: str, lang: str = "en") -> str:
     return "Teach the user as a Sanskrit tutor. Use examples."
 
 
+def _fallback_chat_reply(message: str, mode: str, lang: str) -> str:
+    lower_message = message.lower()
+
+    if "yoga" in lower_message or "योग" in message:
+        base = "योग (yoga) is commonly explained as union, disciplined practice, and inward integration."
+    elif "dharma" in lower_message or "धर्म" in message:
+        base = "धर्म (dharma) can refer to duty, right conduct, sustaining order, and what is fitting in context."
+    else:
+        base = "The live model is currently unavailable, but the SanskritNova API is still responding."
+
+    if lang == "hi":
+        return f"लाइव मॉडल अभी उपलब्ध नहीं है। {base}"
+
+    return f"Live model temporarily unavailable. {base}"
+
+
 async def _openrouter_reply(message: str, mode: str, lang: str) -> str | None:
-    api_key = os.getenv("OPENROUTER_API_KEY")
+    api_key = (os.getenv("OPENROUTER_API_KEY") or "").strip()
     if not api_key:
         return None
 
@@ -135,8 +151,8 @@ async def _openrouter_reply(message: str, mode: str, lang: str) -> str | None:
             headers={
                 "Authorization": f"Bearer {api_key}",
                 "Content-Type": "application/json",
-                "HTTP-Referer": os.getenv("OPENROUTER_APP_URL", "https://sanskrit-nova.vercel.app"),
-                "X-Title": os.getenv("OPENROUTER_APP_NAME", "SanskritNova AI"),
+                "HTTP-Referer": os.getenv("OPENROUTER_APP_URL", "https://sanskrit-nova.vercel.app").strip(),
+                "X-Title": os.getenv("OPENROUTER_APP_NAME", "SanskritNova AI").strip(),
             },
             json=payload,
         )
@@ -270,7 +286,8 @@ async def chat_api(request: ChatRequest):
         try:
             reply = await _openrouter_reply(request.message, request.mode, request.lang)
         except httpx.HTTPError as exc:
-            raise HTTPException(status_code=502, detail="OpenRouter request failed") from exc
+            reply = _fallback_chat_reply(request.message, request.mode, request.lang)
+            return ChatResponse(reply=reply, model="fallback-reference", mode=request.mode)
         if reply:
             return ChatResponse(reply=reply, model=_openrouter_model(), mode=request.mode)
 

@@ -144,7 +144,8 @@ def _get_retriever():
         from code.rag_pipeline import SanskritRAG
         logger.debug("Loaded SanskritRAG via code.rag_pipeline")
         return SanskritRAG()
-    except ImportError:
+    except Exception as exc:
+        logger.debug("code.rag_pipeline unavailable: %s", exc)
         pass
 
     # Try relative import (when running inside code/)
@@ -152,7 +153,8 @@ def _get_retriever():
         from rag_pipeline import SanskritRAG
         logger.debug("Loaded SanskritRAG via rag_pipeline")
         return SanskritRAG()
-    except ImportError:
+    except Exception as exc:
+        logger.debug("rag_pipeline unavailable: %s", exc)
         pass
 
     logger.warning("SanskritRAG not available from any import path — using mock retriever")
