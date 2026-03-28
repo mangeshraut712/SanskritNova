@@ -132,6 +132,12 @@ const TRANSLATIONS = {
             'Learn the script, basic sounds, and core sentence patterns before moving into reading or tutoring flows.',
           level: 'Beginner',
           duration: '2 weeks',
+          detailsHeading: 'Track Outline',
+          plan: [
+            'Learn the Devanagari basics and core sounds.',
+            'Practice short Sanskrit words in the transliteration lab.',
+            'Build enough confidence to move into tutor-led study.',
+          ],
           actions: ['Start Track', 'Details'],
         },
         gita: {
@@ -141,6 +147,12 @@ const TRANSLATIONS = {
             'Practice greetings, prompts, and study dialogue in a track aligned with the tutor interface.',
           level: 'Practice',
           duration: '3 weeks',
+          detailsHeading: 'Track Outline',
+          plan: [
+            'Start with greetings and short exchanges.',
+            'Use the tutor for guided phrasing practice.',
+            'Repeat common prompts until they feel natural.',
+          ],
           actions: ['Start Track', 'Details'],
         },
         advanced: {
@@ -150,6 +162,12 @@ const TRANSLATIONS = {
             'Move from transliteration into guided verse reading and explanation with a more literary focus.',
           level: 'Intermediate',
           duration: '4 weeks',
+          detailsHeading: 'Track Outline',
+          plan: [
+            'Read a short verse with transliteration support.',
+            'Switch to analysis mode for meaning and grammar.',
+            'Use the tutor to unpack context and vocabulary.',
+          ],
           actions: ['Start Track', 'Details'],
         },
       },
@@ -293,6 +311,12 @@ const TRANSLATIONS = {
           description: 'पठन या मार्गदर्शक उपयोग से पहले लिपि, ध्वनियाँ, और मूल वाक्य संरचना सीखें।',
           level: 'शुरुआती',
           duration: '2 सप्ताह',
+          detailsHeading: 'पाठ्यक्रम रूपरेखा',
+          plan: [
+            'देवनागरी की मूल आकृतियाँ और ध्वनियाँ सीखें।',
+            'लिप्यंतरण प्रयोगशाला में छोटे शब्दों का अभ्यास करें।',
+            'फिर मार्गदर्शक आधारित अध्ययन के लिए आधार तैयार करें।',
+          ],
           actions: ['पथ शुरू करें', 'विवरण'],
         },
         gita: {
@@ -302,6 +326,12 @@ const TRANSLATIONS = {
             'अभिवादन, छोटे प्रश्न, और अध्ययन संवाद का अभ्यास करें जो मार्गदर्शक अनुभाग से मेल खाते हों।',
           level: 'अभ्यास',
           duration: '3 सप्ताह',
+          detailsHeading: 'पाठ्यक्रम रूपरेखा',
+          plan: [
+            'अभिवादन और छोटे संवाद से शुरुआत करें।',
+            'मार्गदर्शक की मदद से वाक्य विन्यास का अभ्यास करें।',
+            'बार-बार प्रयोग करके बोलचाल में सहजता लाएँ।',
+          ],
           actions: ['पथ शुरू करें', 'विवरण'],
         },
         advanced: {
@@ -311,6 +341,12 @@ const TRANSLATIONS = {
             'लिप्यंतरण से आगे बढ़कर श्लोक पठन, अर्थ, और व्याख्या के साथ साहित्यिक अध्ययन करें।',
           level: 'मध्यवर्ती',
           duration: '4 सप्ताह',
+          detailsHeading: 'पाठ्यक्रम रूपरेखा',
+          plan: [
+            'छोटे श्लोक को लिप्यंतरण के साथ पढ़ें।',
+            'विश्लेषण मोड से अर्थ और व्याकरण देखें।',
+            'मार्गदर्शक के साथ संदर्भ और शब्दावली समझें।',
+          ],
           actions: ['पथ शुरू करें', 'विवरण'],
         },
       },
@@ -353,6 +389,7 @@ const LuxuryApp = {
     currentChatMode: 'learn',
     voiceRecognition: null,
     speechSynthesis: null,
+    autoTransliterationRequestId: 0,
   },
 
   // DOM element references
@@ -404,6 +441,10 @@ const LuxuryApp = {
       clearOutputBtn: document.getElementById('clear-output'),
       translitHistory: document.getElementById('translit-history'),
 
+      // Tracks
+      trackCards: document.querySelectorAll('.luxury-track-card'),
+      trackActionButtons: document.querySelectorAll('[data-track-action]'),
+
       // Loading and Toasts
       loadingOverlay: document.getElementById('loading-overlay'),
       toastContainer: document.getElementById('toast-container'),
@@ -422,7 +463,7 @@ const LuxuryApp = {
 
     // Language switcher
     this.elements.langButtons.forEach((btn) => {
-      btn.addEventListener('click', (e) => this.switchLanguage(e.target.dataset.lang));
+      btn.addEventListener('click', (e) => this.switchLanguage(e.currentTarget.dataset.lang));
     });
 
     // Navigation smooth scroll
@@ -448,12 +489,17 @@ const LuxuryApp = {
 
     // Chat modes
     this.elements.modeButtons.forEach((btn) => {
-      btn.addEventListener('click', (e) => this.switchChatMode(e.target.dataset.mode));
+      btn.addEventListener('click', (e) => this.switchChatMode(e.currentTarget.dataset.mode));
     });
 
     // Suggestion chips
     this.elements.suggestionChips.forEach((chip) => {
-      chip.addEventListener('click', (e) => this.useSuggestion(e.target.textContent));
+      chip.addEventListener('click', (e) => this.useSuggestion(e.currentTarget.textContent));
+    });
+
+    // Track actions
+    this.elements.trackActionButtons.forEach((button) => {
+      button.addEventListener('click', (e) => this.handleTrackAction(e.currentTarget));
     });
 
     // Transliteration
@@ -767,9 +813,8 @@ const LuxuryApp = {
     if (tracksTitle) tracksTitle.textContent = tracksData.title;
     if (tracksSubtitle) tracksSubtitle.textContent = tracksData.subtitle;
 
-    const trackItems = Object.values(tracksData.items);
-    document.querySelectorAll('.luxury-track-card').forEach((card, index) => {
-      const track = trackItems[index];
+    this.elements.trackCards.forEach((card) => {
+      const track = this.getTrackContent(card.dataset.track);
       if (!track) return;
 
       const title = card.querySelector('.luxury-track-title');
@@ -778,12 +823,18 @@ const LuxuryApp = {
       const level = card.querySelector('.luxury-track-level');
       const duration = card.querySelector('.luxury-track-duration');
       const buttons = card.querySelectorAll('.luxury-track-actions .luxury-btn');
+      const detailsTitle = card.querySelector('.luxury-track-details-title');
+      const detailsList = card.querySelector('.luxury-track-details-list');
 
       if (title) title.textContent = track.title;
       if (subtitle) subtitle.textContent = track.subtitle;
       if (description) description.textContent = track.description;
       if (level) level.textContent = track.level;
       if (duration) duration.textContent = track.duration;
+      if (detailsTitle) detailsTitle.textContent = track.detailsHeading;
+      if (detailsList) {
+        detailsList.innerHTML = track.plan.map((item) => `<li>${item}</li>`).join('');
+      }
       if (buttons.length >= 2) {
         buttons[0].textContent = track.actions[0];
         buttons[1].textContent = track.actions[1];
@@ -828,6 +879,8 @@ const LuxuryApp = {
   // CHAT FUNCTIONALITY
   // ============================================
   switchChatMode(mode) {
+    if (!mode) return;
+
     this.state.currentChatMode = mode;
 
     // Update active button
@@ -836,12 +889,7 @@ const LuxuryApp = {
     });
 
     // Add mode message
-    const modeMessages = {
-      learn: 'Switched to Learning mode. I will help you learn Sanskrit concepts.',
-      translate: 'Switched to Translation mode. I can translate between Sanskrit and English.',
-      analyze: 'Switched to Analysis mode. I can analyze Sanskrit grammar and structure.',
-    };
-
+    const modeMessages = this.getTranslation('chat.modeMessages');
     this.addMessage(modeMessages[mode], 'ai');
   },
 
@@ -957,6 +1005,78 @@ const LuxuryApp = {
   useSuggestion(suggestion) {
     this.elements.chatInput.value = suggestion;
     this.elements.chatInput.focus();
+  },
+
+  getTrackContent(trackId) {
+    const trackKeyMap = {
+      foundations: 'foundations',
+      spoken: 'gita',
+      gita: 'advanced',
+    };
+
+    const trackKey = trackKeyMap[trackId];
+    if (!trackKey) return null;
+
+    return this.getTranslation(`tracks.items.${trackKey}`);
+  },
+
+  handleTrackAction(button) {
+    const card = button.closest('.luxury-track-card');
+    const trackId = card?.dataset.track;
+    const action = button.dataset.trackAction;
+
+    if (!card || !trackId || !action) return;
+
+    if (action === 'details') {
+      this.toggleTrackDetails(card, button);
+      return;
+    }
+
+    this.startTrack(trackId);
+  },
+
+  toggleTrackDetails(card, button) {
+    const details = card.querySelector('.luxury-track-details');
+    if (!details) return;
+
+    const shouldOpen = details.hidden;
+    details.hidden = !shouldOpen;
+    button.setAttribute('aria-expanded', String(shouldOpen));
+  },
+
+  startTrack(trackId) {
+    const track = this.getTrackContent(trackId);
+    if (!track) return;
+
+    const trackActions = {
+      foundations: () => {
+        this.scrollToSection('translit');
+        this.elements.inputText.value = 'नमस्ते';
+        this.autoTransliterate();
+        this.elements.inputText.focus();
+      },
+      spoken: () => {
+        this.scrollToSection('chat');
+        this.switchChatMode('learn');
+        this.elements.chatInput.value =
+          this.state.currentLanguage === 'hi'
+            ? 'संस्कृत में अभिवादन कैसे करें?'
+            : 'How do I greet in Sanskrit?';
+        this.elements.chatInput.focus();
+      },
+      gita: () => {
+        this.scrollToSection('chat');
+        this.switchChatMode('analyze');
+        this.elements.chatInput.value =
+          this.state.currentLanguage === 'hi'
+            ? 'इस वाक्यांश का विश्लेषण करें: योगः चित्तवृत्तिनिरोधः'
+            : 'Analyze this phrase: योगः चित्तवृत्तिनिरोधः';
+        this.elements.chatInput.focus();
+      },
+    };
+
+    trackActions[trackId]?.();
+    this.showToast(track.title, 'success');
   },
 
   // ============================================
@@ -1109,11 +1229,24 @@ const LuxuryApp = {
     return result;
   },
 
-  autoTransliterate() {
+  async autoTransliterate() {
     const input = this.elements.inputText.value.trim();
-    if (input) {
-      const output = this.performTransliteration(input);
-      this.elements.outputText.value = output;
+    const requestId = ++this.state.autoTransliterationRequestId;
+
+    if (!input) {
+      this.elements.outputText.value = '';
+      return;
+    }
+
+    try {
+      const response = await this.transliterateText(input);
+      if (requestId === this.state.autoTransliterationRequestId) {
+        this.elements.outputText.value = response.iast;
+      }
+    } catch (error) {
+      if (requestId === this.state.autoTransliterationRequestId) {
+        this.elements.outputText.value = this.performTransliteration(input);
+      }
     }
   },
 

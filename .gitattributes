@@ -1,0 +1,10 @@
+# Keep GitHub language stats focused on the core application and ML code.
+# Static frontend assets and deployment/ops files still live in the repo,
+# but they should not dominate the repository language breakdown.
+
+public/** linguist-vendored
+netlify/** linguist-vendored
+scripts/** linguist-vendored
+docker/** linguist-vendored
+k8s/** linguist-vendored
+Makefile linguist-vendored
